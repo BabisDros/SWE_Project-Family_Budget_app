@@ -52,13 +52,12 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>504</x>
+      <x>408</x>
       <y>560</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Προβολή οικογενειακού
-προϋπολογισμού</panel_attributes>
+    <panel_attributes>Προβολή προϋπολογισμού</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -66,11 +65,11 @@
     <coordinates>
       <x>200</x>
       <y>416</y>
-      <w>320</w>
+      <w>224</w>
       <h>176</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>380.0;198.0;10.0;10.0</additional_attributes>
+    <additional_attributes>260.0;198.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -290,32 +289,20 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>496</x>
-      <y>624</y>
+      <x>608</x>
+      <y>568</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Προβολή ατομικού
-προϋπολογισμού</panel_attributes>
+    <panel_attributes>Οικογενειακού</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>200</x>
-      <y>416</y>
-      <w>312</w>
-      <h>240</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>370.0;278.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>240</x>
       <y>24</y>
-      <w>504</w>
+      <w>560</w>
       <h>656</h>
     </coordinates>
     <panel_attributes/>
@@ -331,5 +318,38 @@
     </coordinates>
     <panel_attributes/>
     <additional_attributes>420.0;18.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>520</x>
+      <y>624</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Aτομικού</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>496</x>
+      <y>592</y>
+      <w>56</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>576</y>
+      <w>64</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
 </diagram>
