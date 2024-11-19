@@ -49,4 +49,4 @@
 ![image](/docs/markdown/uml/requirements/uc3-activity-diagram.jpg)
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/)
+![image](/docs/markdown/uml/requirements/uc3-sequence-diagram.jpg)

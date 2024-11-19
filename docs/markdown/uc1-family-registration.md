@@ -34,4 +34,4 @@
 ![image](/docs/markdown/uml/requirements/uc1-activity-diagram.jpg).
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/).
+![image](/docs/markdown/uml/requirements/uc1-sequence-diagram.jpg).

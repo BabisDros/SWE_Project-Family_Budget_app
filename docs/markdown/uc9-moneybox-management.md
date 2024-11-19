@@ -56,4 +56,4 @@
 ![image](/docs/markdown/uml/requirements/uc9-activity-diagram.jpg).
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/).
+![image](/docs/markdown/uml/requirements/uc9-sequence-diagram.jpg).
