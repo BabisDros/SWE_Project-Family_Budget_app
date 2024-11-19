@@ -64,7 +64,7 @@ fontsize=10
       <x>210</x>
       <y>210</y>
       <w>20</w>
-      <h>520</h>
+      <h>440</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>
@@ -132,11 +132,11 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <x>380</x>
       <y>150</y>
       <w>30</w>
-      <h>590</h>
+      <h>520</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=0</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;570.0;10.0;540.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -144,11 +144,11 @@ layer=0</panel_attributes>
       <x>540</x>
       <y>150</y>
       <w>30</w>
-      <h>590</h>
+      <h>510</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=0</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;570.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -156,13 +156,13 @@ layer=0</panel_attributes>
       <x>210</x>
       <y>160</y>
       <w>30</w>
-      <h>580</h>
+      <h>520</h>
     </coordinates>
     <panel_attributes>lt=.
 
 layer=-1
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;560.0;10.0;540.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -233,8 +233,12 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>140</h>
     </coordinates>
     <panel_attributes>loop
+--
+[remainingMembers&gt;0]
+layer=-1
+
 bg=ORANGE
-layer=-1</panel_attributes>
+fg=RED</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -265,11 +269,11 @@ layer=-1</panel_attributes>
       <x>920</x>
       <y>160</y>
       <w>30</w>
-      <h>450</h>
+      <h>490</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=0</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;430.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;470.0;10.0;430.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -332,14 +336,14 @@ lt=&lt;.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
+      <x>390</x>
       <y>610</y>
-      <w>160</w>
+      <w>170</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>userList
 lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -353,81 +357,19 @@ lt=&lt;.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>220</x>
-      <y>670</y>
-      <w>180</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Μη Δημιουργία
-επιπλεόν λογαριασμού
-lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>140</x>
       <y>360</y>
       <w>870</w>
-      <h>380</h>
+      <h>300</h>
     </coordinates>
-    <panel_attributes>alt 
+    <panel_attributes>opt
 --
 [extraAccount=true]
-
-
-
-
-
-
-
-
-
-
-
-
--.
-[extraAccount=false]
-
 fg=BLUE
 bg=LIGHT_GRAY
 layer=-2</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>540</x>
-      <y>680</y>
-      <w>20</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>bg=WHITE</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>390</x>
-      <y>690</y>
-      <w>170</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>stopRegistration()
-lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>380</x>
-      <y>680</y>
-      <w>20</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
