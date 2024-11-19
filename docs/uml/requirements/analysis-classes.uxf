@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>240</y>
+      <x>250</x>
+      <y>300</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -16,8 +16,8 @@ RegisterUI</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>250</x>
-      <y>380</y>
+      <x>240</x>
+      <y>440</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -28,8 +28,8 @@ User</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>310</y>
+      <x>180</x>
+      <y>370</y>
       <w>130</w>
       <h>50</h>
     </coordinates>
@@ -40,41 +40,8 @@ RegisterController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>130</y>
-      <w>100</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;boundary&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>450</x>
-      <y>130</y>
-      <w>100</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;controller&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>600</x>
-      <y>130</y>
-      <w>100</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;entity&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>650</x>
-      <y>240</y>
+      <x>640</x>
+      <y>300</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -85,8 +52,8 @@ SurplusManagementUI</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>310</y>
+      <x>610</x>
+      <y>370</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -97,8 +64,8 @@ SurplusManagementController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>380</y>
+      <x>370</x>
+      <y>440</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -109,8 +76,8 @@ Family</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
-      <y>380</y>
+      <x>500</x>
+      <y>440</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -121,8 +88,8 @@ MoneyBox</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
-      <y>240</y>
+      <x>380</x>
+      <y>300</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -133,8 +100,8 @@ LoginUI</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>310</y>
+      <x>340</x>
+      <y>370</y>
       <w>110</w>
       <h>50</h>
     </coordinates>
@@ -145,8 +112,8 @@ LoginController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>240</y>
+      <x>510</x>
+      <y>300</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -157,8 +124,8 @@ PersonalUI</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>310</y>
+      <x>470</x>
+      <y>370</y>
       <w>120</w>
       <h>50</h>
     </coordinates>
@@ -169,8 +136,8 @@ BudgetController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
-      <y>380</y>
+      <x>630</x>
+      <y>440</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -181,8 +148,8 @@ CashFlow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>380</y>
+      <x>760</x>
+      <y>440</y>
       <w>140</w>
       <h>50</h>
     </coordinates>
@@ -193,8 +160,8 @@ CashFlowCategory</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>240</y>
+      <x>830</x>
+      <y>300</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -205,8 +172,8 @@ MoneyBoxUI</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>850</x>
-      <y>310</y>
+      <x>840</x>
+      <y>370</y>
       <w>150</w>
       <h>50</h>
     </coordinates>

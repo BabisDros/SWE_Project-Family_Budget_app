@@ -17,6 +17,6 @@ The result of the project is the existance of an app to help families organize a
 
   [Non-functional requirements](/docs/markdown/non-functional-requirements.md)
 
-  [Domain model](/docs/markdown/uml/requirements/)
+  [Domain model](/docs/markdown/uml/requirements/domain-model.jpg)
   
-  [Analysis classes](/docs/markdown/uml/requirements/)
+  [Analysis classes](/docs/markdown/uml/requirements/analysis-classes.jpg)
