@@ -58,6 +58,7 @@ password: String
     <panel_attributes>Family
 --
 familyName: String
+/familySaving
 /familySurplus
 </panel_attributes>
     <additional_attributes/>
