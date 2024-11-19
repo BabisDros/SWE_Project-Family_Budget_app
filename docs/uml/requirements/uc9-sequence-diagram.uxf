@@ -122,9 +122,9 @@ lt=&lt;&lt;&lt;-</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>84</x>
+      <x>70</x>
       <y>742</y>
-      <w>1148</w>
+      <w>1078</w>
       <h>420</h>
     </coordinates>
     <panel_attributes>opt
@@ -196,7 +196,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <x>644</x>
       <y>294</y>
       <w>28</w>
-      <h>56</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>
@@ -362,9 +362,9 @@ fg=BLUE</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>84</x>
+      <x>70</x>
       <y>210</y>
-      <w>868</w>
+      <w>882</w>
       <h>168</h>
     </coordinates>
     <panel_attributes>loop
@@ -407,7 +407,7 @@ layer=1</panel_attributes>
       <w>280</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>createMoneybox(name,amount)
+    <panel_attributes>createMoneyBox(name,amount)
 lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -590,24 +590,6 @@ lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>84</x>
-      <y>406</y>
-      <w>1148</w>
-      <h>238</h>
-    </coordinates>
-    <panel_attributes>opt
---
-[validName=true]
-
-
-layer=-2
-fg=RED
-bg=GREEN</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>140</x>
@@ -692,14 +674,14 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>126</x>
-      <y>168</y>
+      <y>112</y>
       <w>42</w>
-      <h>1386</h>
+      <h>1442</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=-1
 fg=DARK_GRAY</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;970.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1010.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -717,9 +699,9 @@ lt=&lt;&lt;&lt;-</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>84</x>
+      <x>70</x>
       <y>1274</y>
-      <w>1148</w>
+      <w>896</w>
       <h>252</h>
     </coordinates>
     <panel_attributes>opt
@@ -877,7 +859,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>280</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>delete()
+    <panel_attributes>delete(this)
 lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -890,22 +872,6 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>84</x>
-      <y>980</y>
-      <w>1106</w>
-      <h>168</h>
-    </coordinates>
-    <panel_attributes>opt
---
-[validName=true]
-layer=-1
-bg=TRANSPARENT
-fg=DARK_GRAY</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -948,7 +914,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <x>84</x>
       <y>840</y>
       <w>896</w>
-      <h>126</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>loop
 --
