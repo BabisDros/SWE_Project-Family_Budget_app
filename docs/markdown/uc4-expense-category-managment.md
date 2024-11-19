@@ -53,4 +53,4 @@
 
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc4-activity-diagram.png)
+![image](/docs/markdown/uml/requirements/uc4-activity-diagram.jpg)
