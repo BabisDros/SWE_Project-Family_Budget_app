@@ -4,8 +4,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>340</y>
+      <x>560</x>
+      <y>310</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -18,8 +18,8 @@ has &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>300</y>
+      <x>750</x>
+      <y>270</y>
       <w>210</w>
       <h>110</h>
     </coordinates>
@@ -27,17 +27,16 @@ has &gt;</panel_attributes>
 --
 amount: Int
 category: CashFlowCategory
-dateStart: Date
-dateEnd: Date</panel_attributes>
+dateStart: Date</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>410</x>
-      <y>300</y>
+      <x>380</x>
+      <y>270</y>
       <w>190</w>
-      <h>110</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -50,24 +49,23 @@ password: String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>90</y>
+      <x>370</x>
+      <y>60</y>
       <w>210</w>
-      <h>120</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Family
 --
 familyName: String
 /familySaving
-/familySurplus
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
-      <y>330</y>
+      <x>250</x>
+      <y>300</y>
       <w>110</w>
       <h>90</h>
     </coordinates>
@@ -81,8 +79,8 @@ Protector</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
-      <y>250</y>
+      <x>40</x>
+      <y>220</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
@@ -93,10 +91,10 @@ Protector</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>410</x>
-      <y>530</y>
+      <x>380</x>
+      <y>500</y>
       <w>210</w>
-      <h>120</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>MoneyBox
 --
@@ -109,22 +107,22 @@ target: Int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>400</y>
+      <x>470</x>
+      <y>360</y>
       <w>70</w>
-      <h>150</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=*
 has &gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
-      <y>90</y>
+      <x>100</x>
+      <y>60</y>
       <w>140</w>
       <h>80</h>
     </coordinates>
@@ -136,8 +134,8 @@ category: String</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>120</y>
+      <x>230</x>
+      <y>90</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -150,22 +148,22 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>200</y>
+      <x>470</x>
+      <y>130</y>
       <w>90</w>
-      <h>120</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=*
 &lt; belongs</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>220</x>
-      <y>250</y>
+      <x>190</x>
+      <y>220</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
@@ -177,8 +175,8 @@ limit: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
-      <y>160</y>
+      <x>90</x>
+      <y>130</y>
       <w>80</w>
       <h>110</h>
     </coordinates>
@@ -188,12 +186,134 @@ limit: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>160</y>
+      <x>180</x>
+      <y>130</y>
       <w>80</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>460</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>OneOff
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>850</x>
+      <y>460</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Repeating
+--
+DateEnd: Date
+reccurence: reccurPeriod</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>370</y>
+      <w>80</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>370</y>
+      <w>90</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>270</y>
+      <w>110</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+reccurPeriod
+--
+Daily
+Weekly
+Monthly
+Yearly</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>500</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Αllowance 
+--
+amount: Int
+date: Date
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>250</x>
+      <y>530</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+&lt; has</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>60</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>MonthlySurplus
+--
+date: Date
+/surplus</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>90</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+has &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
 </diagram>
