@@ -4,8 +4,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>891</x>
-      <y>0</y>
+      <x>1122</x>
+      <y>99</y>
       <w>22</w>
       <h>22</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>0</y>
+      <x>1122</x>
+      <y>99</y>
       <w>33</w>
       <h>110</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>781</x>
-      <y>88</y>
+      <x>1012</x>
+      <y>187</y>
       <w>253</w>
       <h>44</h>
     </coordinates>
@@ -38,8 +38,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>880</x>
-      <y>209</y>
+      <x>1111</x>
+      <y>308</y>
       <w>44</w>
       <h>44</h>
     </coordinates>
@@ -49,8 +49,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>121</y>
+      <x>1122</x>
+      <y>220</y>
       <w>33</w>
       <h>110</h>
     </coordinates>
@@ -60,8 +60,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>220</y>
+      <x>517</x>
+      <y>319</y>
       <w>616</w>
       <h>154</h>
     </coordinates>
@@ -71,8 +71,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>814</x>
-      <y>385</y>
+      <x>1045</x>
+      <y>539</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -82,8 +82,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1232</x>
-      <y>385</y>
+      <x>1463</x>
+      <y>484</y>
       <w>154</w>
       <h>44</h>
     </coordinates>
@@ -93,19 +93,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>242</y>
+      <x>1122</x>
+      <y>462</y>
       <w>33</w>
-      <h>165</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>913</x>
-      <y>220</y>
+      <x>1144</x>
+      <y>319</y>
       <w>418</w>
       <h>187</h>
     </coordinates>
@@ -115,9 +115,9 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>308</x>
-      <y>275</y>
-      <w>176</w>
+      <x>539</x>
+      <y>374</y>
+      <w>198</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>[Ο προστάτης επιλέγει 
@@ -127,9 +127,9 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>902</x>
-      <y>308</y>
-      <w>165</w>
+      <x>1155</x>
+      <y>396</y>
+      <w>198</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>[Ο προστάτης επιλέγει
@@ -139,8 +139,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>781</x>
-      <y>814</y>
+      <x>1012</x>
+      <y>913</y>
       <w>231</w>
       <h>44</h>
     </coordinates>
@@ -150,9 +150,9 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>803</x>
-      <y>495</y>
-      <w>198</w>
+      <x>1012</x>
+      <y>638</y>
+      <w>220</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>Έλεγχος ύπαρξης ονόματος</panel_attributes>
@@ -161,19 +161,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>418</y>
+      <x>1122</x>
+      <y>572</y>
       <w>33</w>
-      <h>99</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>880</x>
-      <y>583</y>
+      <x>1111</x>
+      <y>770</y>
       <w>44</w>
       <h>44</h>
     </coordinates>
@@ -183,31 +183,31 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>528</y>
+      <x>1122</x>
+      <y>671</y>
       <w>33</w>
-      <h>77</h>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>616</y>
+      <x>1122</x>
+      <y>803</y>
       <w>33</w>
-      <h>220</h>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>297</x>
-      <y>924</y>
-      <w>165</w>
+      <x>528</x>
+      <y>1023</y>
+      <w>187</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>[Το όνομα δεν υπάρχει]</panel_attributes>
@@ -216,9 +216,9 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>143</x>
-      <y>869</y>
-      <w>143</w>
+      <x>341</x>
+      <y>968</y>
+      <w>165</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>[Το όνομα υπάρχει]</panel_attributes>
@@ -227,19 +227,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>737</x>
-      <y>396</y>
+      <x>968</x>
+      <y>440</y>
       <w>165</w>
-      <h>231</h>
+      <h>374</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;10.0;10.0;190.0;130.0;190.0</additional_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0;10.0;320.0;130.0;320.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>891</x>
-      <y>924</y>
+      <x>1122</x>
+      <y>1023</y>
       <w>22</w>
       <h>22</h>
     </coordinates>
@@ -249,8 +249,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>847</y>
+      <x>1122</x>
+      <y>946</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -260,8 +260,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1320</x>
-      <y>308</y>
+      <x>1551</x>
+      <y>407</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -272,8 +272,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1298</x>
-      <y>418</y>
+      <x>1529</x>
+      <y>517</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -283,9 +283,9 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1221</x>
-      <y>495</y>
-      <w>176</w>
+      <x>1430</x>
+      <y>594</y>
+      <w>198</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>Επιβεβαίωση διαγραφής</panel_attributes>
@@ -294,8 +294,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1287</x>
-      <y>583</y>
+      <x>1518</x>
+      <y>682</y>
       <w>44</w>
       <h>44</h>
     </coordinates>
@@ -305,8 +305,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1298</x>
-      <y>528</y>
+      <x>1529</x>
+      <y>627</y>
       <w>33</w>
       <h>77</h>
     </coordinates>
@@ -316,8 +316,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1320</x>
-      <y>660</y>
+      <x>1551</x>
+      <y>759</y>
       <w>154</w>
       <h>33</h>
     </coordinates>
@@ -327,8 +327,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1298</x>
-      <y>616</y>
+      <x>1529</x>
+      <y>715</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -338,8 +338,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1232</x>
-      <y>693</y>
+      <x>1463</x>
+      <y>792</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -349,9 +349,9 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1496</x>
-      <y>693</y>
-      <w>132</w>
+      <x>1727</x>
+      <y>792</y>
+      <w>165</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>datastore
@@ -361,8 +361,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1386</x>
-      <y>704</y>
+      <x>1617</x>
+      <y>803</y>
       <w>132</w>
       <h>33</h>
     </coordinates>
@@ -372,8 +372,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1001</x>
-      <y>825</y>
+      <x>1232</x>
+      <y>924</y>
       <w>121</w>
       <h>33</h>
     </coordinates>
@@ -383,9 +383,9 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1100</x>
-      <y>814</y>
-      <w>132</w>
+      <x>1331</x>
+      <y>913</y>
+      <w>154</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>datastore
@@ -395,8 +395,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1298</x>
-      <y>726</y>
+      <x>1529</x>
+      <y>825</y>
       <w>33</w>
       <h>209</h>
     </coordinates>
@@ -406,8 +406,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1298</x>
-      <y>913</y>
+      <x>1529</x>
+      <y>1012</y>
       <w>22</w>
       <h>22</h>
     </coordinates>
@@ -417,8 +417,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>220</x>
-      <y>352</y>
+      <x>451</x>
+      <y>451</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -428,8 +428,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>209</x>
-      <y>462</y>
+      <x>440</x>
+      <y>561</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -439,8 +439,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>385</y>
+      <x>517</x>
+      <y>484</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -450,8 +450,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>198</x>
-      <y>770</y>
+      <x>429</x>
+      <y>869</y>
       <w>187</w>
       <h>44</h>
     </coordinates>
@@ -461,8 +461,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>209</x>
-      <y>671</y>
+      <x>440</x>
+      <y>770</y>
       <w>165</w>
       <h>44</h>
     </coordinates>
@@ -472,8 +472,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>275</x>
-      <y>869</y>
+      <x>506</x>
+      <y>968</y>
       <w>44</w>
       <h>44</h>
     </coordinates>
@@ -483,9 +483,9 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>748</x>
-      <y>572</y>
-      <w>143</w>
+      <x>979</x>
+      <y>759</y>
+      <w>154</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>[Το όνομα υπάρχει]</panel_attributes>
@@ -494,18 +494,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>704</y>
-      <w>33</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>286</x>
+      <x>517</x>
       <y>803</y>
       <w>33</w>
       <h>88</h>
@@ -516,8 +505,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>88</x>
-      <y>561</y>
+      <x>517</x>
+      <y>902</y>
+      <w>33</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>319</x>
+      <y>660</y>
       <w>209</w>
       <h>352</h>
     </coordinates>
@@ -527,9 +527,9 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>913</x>
-      <y>660</y>
-      <w>165</w>
+      <x>1144</x>
+      <y>693</y>
+      <w>187</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>[Το όνομα δεν υπάρχει]</panel_attributes>
@@ -538,8 +538,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>902</y>
+      <x>517</x>
+      <y>1001</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -549,9 +549,9 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>209</x>
-      <y>979</y>
-      <w>209</w>
+      <x>440</x>
+      <y>1078</y>
+      <w>231</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>Αποθήκευση νέου ονόματος</panel_attributes>
@@ -560,8 +560,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>121</x>
-      <y>990</y>
+      <x>352</x>
+      <y>1089</y>
       <w>110</w>
       <h>33</h>
     </coordinates>
@@ -571,8 +571,8 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>0</x>
-      <y>979</y>
+      <x>231</x>
+      <y>1078</y>
       <w>132</w>
       <h>44</h>
     </coordinates>
@@ -583,8 +583,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>1012</y>
+      <x>517</x>
+      <y>1111</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -594,8 +594,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>286</x>
-      <y>1089</y>
+      <x>517</x>
+      <y>1188</y>
       <w>22</w>
       <h>22</h>
     </coordinates>
@@ -605,8 +605,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>275</x>
-      <y>550</y>
+      <x>506</x>
+      <y>649</y>
       <w>44</w>
       <h>44</h>
     </coordinates>
@@ -616,8 +616,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>495</y>
+      <x>517</x>
+      <y>594</y>
       <w>33</w>
       <h>77</h>
     </coordinates>
@@ -627,8 +627,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>286</x>
-      <y>583</y>
+      <x>517</x>
+      <y>682</y>
       <w>33</w>
       <h>110</h>
     </coordinates>
@@ -638,8 +638,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1430</x>
-      <y>594</y>
+      <x>1661</x>
+      <y>693</y>
       <w>22</w>
       <h>22</h>
     </coordinates>
@@ -649,12 +649,34 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>594</y>
+      <x>1551</x>
+      <y>693</y>
       <w>132</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1111</x>
+      <y>429</y>
+      <w>44</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1122</x>
+      <y>341</y>
+      <w>33</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
