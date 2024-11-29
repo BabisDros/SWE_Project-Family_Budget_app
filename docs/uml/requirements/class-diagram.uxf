@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>360</y>
+      <w>228</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>User
+--
+_- nextId: Long_
+- id: Long {readOnly}
+- familyPosition: FamPos
+- name: String
+- username: String
+- password: String
+- family: Family
+--
++ getID(): Long{query}
++ getFamilyPosition(): FamPos{query}
++ getUsername(): String{query}
++ getPassword(): String{query}
++ getName(): String{query}
++ getCashFlows(): List&lt;CashFlow&gt;
++ getFamily(): Family
+
++ setFamilyPosition(position: FamPos)
++ setFamily(family: Family)
++ setUsername(username: String)
++ setPassword(password: String)
++ setName(name: String)
++ addCashFlow(cashFlow: CashFlow)
+
++ verifyCredentials(user: String, pass: String): Boolean
++ toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>348</y>
+      <w>186</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>CashFlow
+--
+- amount: Int
+- category: CashFlowCategory
+- dateStart: Date
+--
++ getAmount(): Int{query}
++ getCategory(): CashFlowCategory{query}
++ getDateStart(): Date{query}
+
++ setAmount(amount: Int)
++ setCategory(category: CashFlowCategory)
++ setDateStart(date: Date)
+
++ toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>684</x>
+      <y>588</y>
+      <w>66</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>OneOff
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>588</y>
+      <w>198</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Repeating
+--
+- DateEnd: Date
+- reccurence: reccurPeriod
+--
++ getDateEnd(): Date{query}
++ getRecurrencePeriod(): recurPeriod{query}
++ getMonthlyAmount(): Int{query}
+
++ setDateEnd(date: Date)
++ setRecurrencePeriod(period: recurPeriod)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>714</x>
+      <y>522</y>
+      <w>60</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>522</y>
+      <w>42</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>912</x>
+      <y>468</y>
+      <w>66</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+recurPeriod
+--
+Daily
+Weekly
+Monthly
+Yearly</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>366</y>
+      <w>66</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+FamPos
+--
+Member
+Protector</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>366</x>
+      <y>0</y>
+      <w>228</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>Family
+--
+_- nextId: Long_
+- id: Long {readOnly}
+- familyName: String
+- Savings: Long
+- yearlySaving: Long
+--
++ getID(): Long{query}
++ getName(): String{query}
++ getSaving(): Long{query}
++ getYearlySaving(): Long{query}
++ getMembers(): List&lt;User&gt;
++ getMonthlySurpluses(): List&lt;MonthlySurplus&gt;
++ getCurrentSurplus(): Int
++ getCategories(): List&lt;CashFlowCategory&gt;
+
++ setName(name: String)
++ addSaving(amount: Int)
++ addMember(user: User)
++ addSurplus(surplus: MonthlySurplus)
++ addCategory(category: CashFlowCategory)
++ resetYearlySaving()
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>174</x>
+      <y>630</y>
+      <w>156</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>MoneyBox
+--
+- reason: String
+- target: Int
+- currentAmount: Int
+--
++ getReason(): String{query}
++ getTarget(): Int{query}
++ getCurrentAmount: Int{query}
++ getAllowances: List&lt;Allowance&gt;
++ IsTargetReached(): Boolean {query}
+
++ setReason(reason: String)
++ setTarget(targer: Int)
++ addMoney(allowance: Allowance)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>456</y>
+      <w>156</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Αllowance 
+--
+- amount: Int
+- date: Date
+--
++ getAmount(): Int{query}
++ getDate(): Date{query}
+
++ setAmount()
++ setDate()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>102</y>
+      <w>150</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategory
+--
+- category: String
+--
++ getCategoryName(): String {query}
+
++ setCategoryName(name: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>222</y>
+      <w>108</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Expense
+--
+- limit: Int
+--
++ getLimit(): Int{query}
+
++ setLimit(limit: Int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>222</y>
+      <w>66</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Income
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>72</y>
+      <w>156</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>MonthlySurplus
+--
+- date: Date
+- surplus: Int
+--
++ getDate(): Date {query}
++ getSurplus(): Int {query}
+
++ setDate(date: Date)
++ setSurplus(surplus: Int)
++ addSurplus(surplus: Int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>168</y>
+      <w>54</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>186</x>
+      <y>168</y>
+      <w>48</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>126</y>
+      <w>144</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- categories</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>240</y>
+      <w>60</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- members</panel_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>588</x>
+      <y>120</y>
+      <w>126</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- surpluses</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>414</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- cashflows</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>606</y>
+      <w>186</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- moneyBoxes</panel_attributes>
+    <additional_attributes>10.0;130.0;280.0;130.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>246</x>
+      <y>558</y>
+      <w>66</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+- allowances</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>528</y>
+      <w>18</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>390</y>
+      <w>72</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+</diagram>

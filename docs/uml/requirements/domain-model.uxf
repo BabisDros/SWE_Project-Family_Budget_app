@@ -217,7 +217,7 @@ limit: int</panel_attributes>
     <panel_attributes>Repeating
 --
 DateEnd: Date
-reccurence: reccurPeriod</panel_attributes>
+recurence: recurPeriod</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -251,7 +251,7 @@ reccurence: reccurPeriod</panel_attributes>
       <h>110</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
-reccurPeriod
+recurPeriod
 --
 Daily
 Weekly
