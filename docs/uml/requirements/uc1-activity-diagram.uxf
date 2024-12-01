@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>9</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>342</x>
-      <y>54</y>
-      <w>18</w>
-      <h>18</h>
+      <x>506</x>
+      <y>0</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>288</x>
-      <y>207</y>
-      <w>135</w>
-      <h>54</h>
+      <x>440</x>
+      <y>308</y>
+      <w>165</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Δημιουργία
 λογαριασμού
@@ -28,55 +28,55 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>153</y>
-      <w>27</w>
-      <h>72</h>
+      <x>506</x>
+      <y>220</y>
+      <w>33</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>279</x>
-      <y>297</y>
-      <w>144</w>
-      <h>54</h>
+      <x>429</x>
+      <y>440</y>
+      <w>176</w>
+      <h>66</h>
     </coordinates>
-    <panel_attributes>Ορισμός 
-λογαριασμού προστάτη</panel_attributes>
+    <panel_attributes>Ορισμός ως
+λογαριασμός προστάτη</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>342</y>
-      <w>27</w>
-      <h>63</h>
+      <x>506</x>
+      <y>495</y>
+      <w>33</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>252</y>
-      <w>27</w>
-      <h>63</h>
+      <x>506</x>
+      <y>363</y>
+      <w>33</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>333</x>
-      <y>558</y>
-      <w>36</w>
-      <h>36</h>
+      <x>495</x>
+      <y>1089</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -84,22 +84,22 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>396</y>
-      <w>180</w>
-      <h>198</h>
+      <x>297</x>
+      <y>671</y>
+      <w>220</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>[υπάρχουν μέλη]
 lt=&lt;-</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;10.0;10.0;200.0;180.0;200.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0;10.0;400.0;180.0;400.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>342</x>
-      <y>630</y>
-      <w>18</w>
-      <h>18</h>
+      <x>506</x>
+      <y>1177</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=final</panel_attributes>
     <additional_attributes/>
@@ -107,10 +107,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>333</x>
-      <y>387</y>
-      <w>36</w>
-      <h>36</h>
+      <x>495</x>
+      <y>660</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -118,10 +118,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>414</y>
-      <w>27</w>
-      <h>54</h>
+      <x>506</x>
+      <y>693</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -129,21 +129,21 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>585</y>
-      <w>27</w>
-      <h>63</h>
+      <x>506</x>
+      <y>1122</y>
+      <w>33</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>468</x>
-      <y>153</y>
-      <w>126</w>
-      <h>45</h>
+      <x>660</x>
+      <y>264</y>
+      <w>154</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ΠΧ. Διαχείριση
 Λογαριασμών</panel_attributes>
@@ -152,21 +152,21 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>180</y>
-      <w>72</w>
-      <h>45</h>
+      <x>594</x>
+      <y>297</y>
+      <w>88</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>288</x>
-      <y>450</y>
-      <w>135</w>
-      <h>54</h>
+      <x>440</x>
+      <y>737</y>
+      <w>165</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Δημιουργία επιπλέον
 λογαριασμού
@@ -176,21 +176,21 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>495</y>
-      <w>27</w>
-      <h>81</h>
+      <x>506</x>
+      <y>792</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>468</x>
-      <y>405</y>
-      <w>126</w>
-      <h>45</h>
+      <x>660</x>
+      <y>682</y>
+      <w>154</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ΠΧ. Διαχείριση
 Λογαριασμών</panel_attributes>
@@ -199,10 +199,10 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>432</y>
-      <w>72</w>
-      <h>54</h>
+      <x>594</x>
+      <y>715</y>
+      <w>88</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;40.0;60.0;10.0</additional_attributes>
@@ -210,10 +210,10 @@ symbol=substate</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>504</x>
-      <y>225</y>
-      <w>90</w>
-      <h>54</h>
+      <x>704</x>
+      <y>352</y>
+      <w>110</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>&lt;&lt;datastore&gt;&gt;
 Λογαριασμοί
@@ -223,21 +223,21 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>225</y>
-      <w>108</w>
-      <h>45</h>
+      <x>594</x>
+      <y>330</y>
+      <w>132</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>100.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>504</x>
-      <y>477</y>
-      <w>90</w>
-      <h>54</h>
+      <x>704</x>
+      <y>770</y>
+      <w>110</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>&lt;&lt;datastore&gt;&gt;
 Λογαριασμοί
@@ -247,10 +247,10 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>477</y>
-      <w>108</w>
-      <h>36</h>
+      <x>594</x>
+      <y>770</y>
+      <w>132</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>100.0;20.0;10.0;10.0</additional_attributes>
@@ -258,10 +258,10 @@ symbol=substate</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>297</x>
-      <y>126</y>
-      <w>108</w>
-      <h>36</h>
+      <x>451</x>
+      <y>88</y>
+      <w>132</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Εγγραφή</panel_attributes>
     <additional_attributes/>
@@ -269,12 +269,139 @@ symbol=substate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>63</y>
-      <w>27</w>
-      <h>81</h>
+      <x>506</x>
+      <y>11</y>
+      <w>33</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>693</x>
+      <y>176</y>
+      <w>110</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;datastore&gt;&gt;
+Λογαριασμοί
+οικογενειών</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>451</x>
+      <y>187</y>
+      <w>132</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Δημιουργία
+οικογένειας</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>187</y>
+      <w>143</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>506</x>
+      <y>121</y>
+      <w>33</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>429</x>
+      <y>561</y>
+      <w>176</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Πρόσθεση χρήστη
+στην οικογένεια</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>506</x>
+      <y>1122</y>
+      <w>33</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>506</x>
+      <y>616</y>
+      <w>33</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>429</x>
+      <y>968</y>
+      <w>176</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Πρόσθεση χρήστη
+στην οικογένεια</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>506</x>
+      <y>902</y>
+      <w>33</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>429</x>
+      <y>847</y>
+      <w>176</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Ορισμός ως
+λογαριασμός μέλους</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>506</x>
+      <y>1023</y>
+      <w>33</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
