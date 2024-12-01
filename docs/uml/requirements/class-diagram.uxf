@@ -86,7 +86,7 @@ _- nextId: Long_
     </coordinates>
     <panel_attributes>Repeating
 --
-- DateEnd: Date
+- dateEnd: Date
 - reccurence: reccurPeriod
 --
 + getDateEnd(): Date{query}
@@ -164,7 +164,7 @@ Protector</panel_attributes>
 _- nextId: Long_
 - id: Long {readOnly}
 - familyName: String
-- Savings: Long
+- savings: Long
 - yearlySaving: Long
 --
 + getID(): Long{query}
@@ -351,7 +351,7 @@ m2=1
       <w>60</w>
       <h>132</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 - members</panel_attributes>
