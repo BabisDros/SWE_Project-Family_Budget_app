@@ -173,7 +173,7 @@ _- nextId: Long_
 + getYearlySaving(): Long{query}
 + getMembers(): List&lt;User&gt;
 + getMonthlySurpluses(): List&lt;MonthlySurplus&gt;
-+ getCurrentSurplus(): Int
++ getCurrentSurplus(): MonthlySurplus
 + getCategories(): List&lt;CashFlowCategory&gt;
 
 + setName(name: String)
