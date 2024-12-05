@@ -12,7 +12,6 @@ public class MoneyBox {
     MoneyBox()
     {
         allowances = new ArrayList<>();
-        currentAmount = 0;
     }
 
     MoneyBox(String reason, int target)
@@ -42,8 +41,6 @@ public class MoneyBox {
     }
 
     public boolean addMoney(Allowance allowance) {
-        if (allowance == null)
-            return false;
         if (allowance.getAmount() == 0)
             return false;
         if (currentAmount + allowance.getAmount() > target)

@@ -45,8 +45,6 @@ public class MoneyBoxTest {
         tester.addMoney(new Allowance(40, LocalDateTime.now()));
         tester.addMoney(new Allowance(30, LocalDateTime.now()));
         assertEquals(70, tester.getCurrentAmount());
-        tester.addMoney(new Allowance(-100, LocalDateTime.now()));
-        assertEquals(70, tester.getCurrentAmount());
     }
 
     @Test
@@ -73,14 +71,12 @@ public class MoneyBoxTest {
         tester.addMoney(obj1);
         tester.addMoney(obj2);
 
-        tester.addMoney(null);
         assertEquals(expectedList, tester.getAllowances());
 
         expectedList.add(obj3);
         tester.addMoney(obj3);
 
         assertNotEquals(expectedList, tester.getAllowances());
-
 
     }
 

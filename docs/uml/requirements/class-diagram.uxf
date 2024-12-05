@@ -32,7 +32,7 @@ _- nextId: Long_
 + setUsername(username: String)
 + setPassword(password: String)
 + setName(name: String)
-+ addCashFlow(cashFlow: CashFlow)
++ addCashFlow(cashFlow: CashFlow): Boolean
 
 + verifyCredentials(user: String, pass: String): Boolean
 + toString(): String</panel_attributes>
@@ -177,10 +177,10 @@ _- nextId: Long_
 + getCategories(): List&lt;CashFlowCategory&gt;
 
 + setName(name: String)
-+ addSaving(amount: Int)
-+ addMember(user: User)
++ addSaving(amount: Int): Boolean
++ addMember(user: User): Boolean
 + addSurplus(surplus: MonthlySurplus)
-+ addCategory(category: CashFlowCategory)
++ addCategory(category: CashFlowCategory): Boolean
 + resetYearlySaving()
 
 
@@ -195,9 +195,9 @@ _- nextId: Long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>174</x>
+      <x>168</x>
       <y>630</y>
-      <w>156</w>
+      <w>174</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>MoneyBox
@@ -214,7 +214,7 @@ _- nextId: Long_
 
 + setReason(reason: String)
 + setTarget(targer: Int)
-+ addMoney(allowance: Allowance)
++ addMoney(allowance: Allowance): Boolean
 
 </panel_attributes>
     <additional_attributes/>
@@ -304,7 +304,8 @@ _- nextId: Long_
 
 + setDate(date: Date)
 + setSurplus(surplus: Int)
-+ addSurplus(surplus: Int)</panel_attributes>
++ addSurplus(surplus: CashFlow)
++ removeSurplus(surplus: CashFlow)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -388,16 +389,16 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
+      <x>336</x>
       <y>606</y>
-      <w>186</w>
+      <w>174</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 - moneyBoxes</panel_attributes>
-    <additional_attributes>10.0;130.0;280.0;130.0;280.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;260.0;130.0;260.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
