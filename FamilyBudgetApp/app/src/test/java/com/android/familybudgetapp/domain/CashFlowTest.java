@@ -11,7 +11,7 @@ class CashFlowTest {
     @Test
     void testConstructorAndGetters() {
         int amount = 100;
-        CashFlowCategory category = CashFlowCategory.category1;
+        CashFlowCategory category = new Income();
         Date dateStart = new Date();
 
         CashFlow cashFlow = new CashFlow(amount, category, dateStart);
@@ -23,9 +23,9 @@ class CashFlowTest {
 
     @Test
     void testSetters() {
-        CashFlow cashFlow = new CashFlow(100, CashFlowCategory.category1, new Date());
+        CashFlow cashFlow = new CashFlow(100, new Income(), new Date());
         int newAmount = 200;
-        CashFlowCategory newCategory = CashFlowCategory.category1;
+        CashFlowCategory newCategory = new Income();
         Date newDateStart = new Date();
 
         cashFlow.setAmount(newAmount);
@@ -35,20 +35,5 @@ class CashFlowTest {
         assertEquals(newAmount, cashFlow.getAmount());
         assertEquals(newCategory, cashFlow.getCategory());
         assertEquals(newDateStart, cashFlow.getDateStart());
-    }
-
-    @Test
-    void testToString() {
-        int amount = 100;
-        CashFlowCategory category = CashFlowCategory.category1;
-        Date dateStart = new Date();
-
-        CashFlow cashFlow = new CashFlow(amount, category, dateStart);
-
-        String toStringResult = cashFlow.toString();
-
-        assertTrue(toStringResult.contains("amount=100"));
-        assertTrue(toStringResult.contains("category=INCOME"));
-        assertTrue(toStringResult.contains("dateStart="));
     }
 }

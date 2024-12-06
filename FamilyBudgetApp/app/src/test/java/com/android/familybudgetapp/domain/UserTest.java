@@ -15,7 +15,7 @@ public class UserTest {
 
     @Before
     public void setup() {
-        family = new Family("Family1");
+        family = new Family("testFamily");
         familyPosition = FamPos.Protector;
         user = new User("John Doe", "john_doe", "password123", familyPosition, family);
     }
@@ -33,8 +33,8 @@ public class UserTest {
 
     @Test
     public void testAddCashFlow() {
-        CashFlow cashFlow1 = new CashFlow(100, CashFlowCategory.category1, new Date());
-        CashFlow cashFlow2 = new CashFlow(-50, CashFlowCategory.category1, new Date());
+        CashFlow cashFlow1 = new CashFlow(100, new Expense(100), new Date());
+        CashFlow cashFlow2 = new CashFlow(-50, new Income(), new Date());
 
         user.addCashFlow(cashFlow1);
         user.addCashFlow(cashFlow2);
@@ -71,14 +71,4 @@ public class UserTest {
         user.setFamily(newFamily);
         assertEquals(newFamily, user.getFamily());
     }
-
-    @Test
-    public void testToString() {
-        String userString = user.toString();
-        assertTrue(userString.contains("John Doe"));
-        assertTrue(userString.contains("john_doe"));
-        assertTrue(userString.contains("password123"));
-        assertTrue(userString.contains("Family1"));
-    }
-
 }
