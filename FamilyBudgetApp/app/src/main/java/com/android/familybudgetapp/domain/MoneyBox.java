@@ -52,7 +52,7 @@ public class MoneyBox {
 
     public List<Allowance> getAllowances()
     {
-        return allowances;
+        return new ArrayList<>(allowances);
     }
     public boolean isTargetReached()
     {

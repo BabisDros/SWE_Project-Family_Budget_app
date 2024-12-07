@@ -2,6 +2,7 @@ package com.android.familybudgetapp.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ class CashFlowTest {
     void testConstructorAndGetters() {
         int amount = 100;
         CashFlowCategory category = new Income();
-        Date dateStart = new Date();
+        LocalDateTime dateStart = LocalDateTime.now();
 
         CashFlow cashFlow = new CashFlow(amount, category, dateStart);
 
@@ -23,10 +24,10 @@ class CashFlowTest {
 
     @Test
     void testSetters() {
-        CashFlow cashFlow = new CashFlow(100, new Income(), new Date());
+        CashFlow cashFlow = new CashFlow(100, new Income(), LocalDateTime.now());
         int newAmount = 200;
         CashFlowCategory newCategory = new Income();
-        Date newDateStart = new Date();
+        LocalDateTime newDateStart = LocalDateTime.now();
 
         cashFlow.setAmount(newAmount);
         cashFlow.setCategory(newCategory);

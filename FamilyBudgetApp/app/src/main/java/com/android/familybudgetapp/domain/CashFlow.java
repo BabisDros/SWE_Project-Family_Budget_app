@@ -1,14 +1,15 @@
 package com.android.familybudgetapp.domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CashFlow {
 
     private int amount;
     private CashFlowCategory category;
-    private Date dateStart;
+    private LocalDateTime dateStart;
 
-    public CashFlow(int amount, CashFlowCategory category, Date dateStart) {
+    public CashFlow(int amount, CashFlowCategory category, LocalDateTime dateStart) {
         this.amount = amount;
         this.category = category;
         this.dateStart = dateStart;
@@ -21,7 +22,7 @@ public class CashFlow {
         return category;
     }
 
-    public Date getDateStart() {
+    public LocalDateTime getDateStart() {
         return dateStart;
     }
 
@@ -33,7 +34,7 @@ public class CashFlow {
         this.category = category;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(LocalDateTime dateStart) {
         this.dateStart = dateStart;
     }
 

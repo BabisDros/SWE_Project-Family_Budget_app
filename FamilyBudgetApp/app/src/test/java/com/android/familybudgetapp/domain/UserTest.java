@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Date;
 
@@ -33,8 +34,8 @@ public class UserTest {
 
     @Test
     public void testAddCashFlow() {
-        CashFlow cashFlow1 = new CashFlow(100, new Expense(100), new Date());
-        CashFlow cashFlow2 = new CashFlow(-50, new Income(), new Date());
+        CashFlow cashFlow1 = new CashFlow(100, new Expense(100), LocalDateTime.now());
+        CashFlow cashFlow2 = new CashFlow(-50, new Income(), LocalDateTime.now());
 
         user.addCashFlow(cashFlow1);
         user.addCashFlow(cashFlow2);

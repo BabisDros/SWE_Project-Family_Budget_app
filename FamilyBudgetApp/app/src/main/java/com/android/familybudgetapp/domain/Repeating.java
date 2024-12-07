@@ -1,27 +1,28 @@
 package com.android.familybudgetapp.domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.time.YearMonth;
 
 public class Repeating extends CashFlow {
-    private Date dateEnd;
+    private LocalDateTime dateEnd;
     private recurPeriod recurrencePeriod;
     // Getters
-    public Date getDateEnd() {
+    public LocalDateTime getDateEnd() {
         return dateEnd;
     }
     public recurPeriod getRecurrencePeriod() {
         return recurrencePeriod;
     }
 
-    public Repeating(int amount, CashFlowCategory category, Date dateStart, Date dateEnd, recurPeriod recurrencePeriod) {
+    public Repeating(int amount, CashFlowCategory category, LocalDateTime dateStart, LocalDateTime dateEnd, recurPeriod recurrencePeriod) {
         super(amount, category, dateStart);
         this.dateEnd = dateEnd;
         this.recurrencePeriod = recurrencePeriod;
     }
 
     // Setters
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(LocalDateTime dateEnd) {
         this.dateEnd = dateEnd;
     }
     public void setRecurrencePeriod(recurPeriod recurrencePeriod) {

@@ -50,15 +50,15 @@ _- nextId: Long_
 --
 - amount: Int
 - category: CashFlowCategory
-- dateStart: Date
+- dateStart: LocalDateTime
 --
 + getAmount(): Int{query}
 + getCategory(): CashFlowCategory{query}
-+ getDateStart(): Date{query}
++ getDateStart(): LocalDateTime{query}
 
 + setAmount(amount: Int)
 + setCategory(category: CashFlowCategory)
-+ setDateStart(date: Date)
++ setDateStart(date: LocalDateTime)
 
 + toString(): String
 </panel_attributes>
@@ -86,14 +86,14 @@ _- nextId: Long_
     </coordinates>
     <panel_attributes>Repeating
 --
-- dateEnd: Date
+- dateEnd: LocalDateTime
 - reccurence: reccurPeriod
 --
-+ getDateEnd(): Date{query}
++ getDateEnd(): LocalDateTime{query}
 + getRecurrencePeriod(): recurPeriod{query}
 + getMonthlyAmount(): Int{query}
 
-+ setDateEnd(date: Date)
++ setDateEnd(date: LocalDateTime)
 + setRecurrencePeriod(period: recurPeriod)</panel_attributes>
     <additional_attributes/>
   </element>
@@ -230,13 +230,13 @@ _- nextId: Long_
     <panel_attributes>Αllowance 
 --
 - amount: Int
-- date: Date
+- date: LocalDateTime
 --
 + getAmount(): Int{query}
-+ getDate(): Date{query}
++ getDate(): LocalDateTime{query}
 
-+ setAmount()
-+ setDate()
++ setAmount(amount: Int)
++ setDate(date: LocalDateTime)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -250,7 +250,7 @@ _- nextId: Long_
     </coordinates>
     <panel_attributes>CashFlowCategory
 --
-- category: String
+- name: String
 --
 + getCategoryName(): String {query}
 
@@ -296,13 +296,13 @@ _- nextId: Long_
     </coordinates>
     <panel_attributes>MonthlySurplus
 --
-- date: Date
+- date: LocalDateTime
 - surplus: Int
 --
-+ getDate(): Date {query}
++ getDate(): LocalDateTime {query}
 + getSurplus(): Int {query}
 
-+ setDate(date: Date)
++ setDate(date: LocalDateTime)
 + setSurplus(surplus: Int)
 + addSurplus(surplus: CashFlow)
 + removeSurplus(surplus: CashFlow)</panel_attributes>
