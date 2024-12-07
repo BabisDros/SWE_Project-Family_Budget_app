@@ -3,7 +3,6 @@ package com.android.familybudgetapp.domain;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.time.YearMonth;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,8 +78,41 @@ class RepeatingTest {
     }
 
     @Test
+    void testGetMonthlyAmountFinalMonthDaily() {
+        int dailyAmount = 10;
+        LocalDateTime now = LocalDateTime.now();
+        int endDay = 15; // end mid-month
+        LocalDateTime dateEnd = LocalDateTime.of(now.getYear(), now.getMonthValue(), endDay, 0, 0);
+
+        Repeating daily = new Repeating(dailyAmount, new Income(), now.minusMonths(1), dateEnd, recurPeriod.Daily);
+
+        assertEquals(dailyAmount * endDay, daily.getMonthlyAmount());
+    }
+
+    @Test
+    void testGetMonthlyAmountFinalMonthWeekly() {
+        int weeklyAmount = 70;
+        LocalDateTime now = LocalDateTime.now();
+        int endDay = 15;
+        LocalDateTime dateEnd = LocalDateTime.of(now.getYear(), now.getMonthValue(), endDay, 0, 0);
+
+        Repeating weekly = new Repeating(weeklyAmount, new Income(), now.minusMonths(1), dateEnd, recurPeriod.Weekly);
+
+        int remainingWeeks = (int) Math.ceil(endDay / 7.0);
+        assertEquals(weeklyAmount * remainingWeeks, weekly.getMonthlyAmount());
+    }
+
+    @Test
     void testGetMonthlyAmountInvalidRecurrence() {
         Repeating invalid = new Repeating(100, new Income(), LocalDateTime.now(), LocalDateTime.now().plusMonths(1), null);
         assertThrows(IllegalArgumentException.class, invalid::getMonthlyAmount);
+    }
+
+    @Test
+    void testGetMonthlyAmountRecurrenceEnded() {
+        LocalDateTime dateEnd = LocalDateTime.now().minusMonths(1);
+        Repeating repeating = new Repeating(100, new Income(), LocalDateTime.now().minusMonths(2), dateEnd, recurPeriod.Daily);
+
+        assertEquals(0, repeating.getMonthlyAmount());
     }
 }
