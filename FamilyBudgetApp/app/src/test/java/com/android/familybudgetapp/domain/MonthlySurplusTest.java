@@ -72,6 +72,10 @@ public class MonthlySurplusTest
             surplus.addCashFlowToSurplus(cashFlow);
         });
 
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.addCashFlowToSurplus(null);
+        });
+
     }
 
     @Test

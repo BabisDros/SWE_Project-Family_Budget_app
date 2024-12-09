@@ -8,9 +8,8 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+
 
 public class FamilyTest
 {
@@ -27,14 +26,14 @@ public class FamilyTest
     public void instantiateObjectWithInvalidArguments()
     {
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Family(" test ");;
+            new Family(" test ");
         });
 
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Family(" ");;
+            new Family(" ");
         });
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Family(null);;
+            new Family(null);
         });
 
     }
@@ -204,6 +203,7 @@ public class FamilyTest
         assertTrue(family.canAddToSavings(100));
         assertTrue(family.canAddToSavings(0));
     }
+
     @Test
     public void canAddToSavingsNegativeAmount()
     {
@@ -246,6 +246,8 @@ public class FamilyTest
     @Test
     public void canRemoveFromSavingsInvalidAmount()
     {
+        assertFalse(family.canRemoveFromSavings(-1));
+
         //remove from zero savings
         assertFalse(family.canRemoveFromSavings(1));
 
@@ -338,7 +340,6 @@ public class FamilyTest
     @Test
     public void validateInvalidSurplus()
     {
-
         MonthlySurplus surplus=new MonthlySurplus(LocalDateTime.now());
         family.addSurplus(surplus);
 
