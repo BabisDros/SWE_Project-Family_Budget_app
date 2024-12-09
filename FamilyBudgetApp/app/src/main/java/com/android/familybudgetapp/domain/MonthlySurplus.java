@@ -54,6 +54,10 @@ public class MonthlySurplus
             YearMonth currentYearMonth= YearMonth.of(date.getYear(),date.getMonth());
             return currentYearMonth.isBefore(cashFlowYearMonthDateEnd);
         }
-        else  return true;
+        else
+        {
+            OneOff oneOff = (OneOff) cashFlow;
+            return oneOff.getDateStart().toLocalDate().isEqual(LocalDateTime.now().toLocalDate());
+        }
     }
 }
