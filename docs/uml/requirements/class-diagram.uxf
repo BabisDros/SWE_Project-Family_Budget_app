@@ -169,7 +169,7 @@ Protector</panel_attributes>
     <coordinates>
       <x>459</x>
       <y>0</y>
-      <w>351</w>
+      <w>414</w>
       <h>441</h>
     </coordinates>
     <panel_attributes>Family
@@ -179,28 +179,28 @@ _- nextId: Long_
 - familyName: String
 - savings: Long
 - yearlySaving: Long
+- currentSurplus: MonthlySurplus
 --
 + getID(): Long{query}
 + getName(): String{query}
 + getSaving(): Long{query}
 + getYearlySaving(): Long{query}
-+ getMembers(): List&lt;User&gt;
-+ getMonthlySurpluses(): List&lt;MonthlySurplus&gt;
++ getMembers(): Map&lt;String, User&gt;
++ getMonthlySurpluses(): Map&lt;YearMonth, MonthlySurplus&gt;
 + getCurrentSurplus(): MonthlySurplus
-+ getCategories(): List&lt;CashFlowCategory&gt;
++ getCategories(): Map&lt;String, CashFlowCategory&gt;
 
 + setName(name: String)
-_+ validateName(name: String): Boolean_
 + addToSavings(amount: Int)
-_+ addToSavings(amount: Int): Boolean_
+_+ canAddToSavings(amount: Int): Boolean_
 + removeFromSavings(amount: Int)
-_+ removeFromSavings(amount: Int): Boolean_
+_+ canRemoveFromSavings(amount: Int): Boolean_
 + addMember(user: User)
 _+ validateMember(user: User): Boolean_
 + addSurplus(surplus: MonthlySurplus)
 _+ validateSurplus(surplus: MonthlySurplus): Boolean_
-+ addCategory(category: CashFlowCategory)
-_+ validateCategory(category: CashFlowCategory): Boolean_
++ addCashFlowCategory(category: CashFlowCategory)
+_+ validateCashFlowCategory(category: CashFlowCategory): Boolean_
 + resetYearlySaving()
 
 
@@ -218,7 +218,7 @@ _+ validateCategory(category: CashFlowCategory): Boolean_
       <x>90</x>
       <y>1053</y>
       <w>351</w>
-      <h>270</h>
+      <h>261</h>
     </coordinates>
     <panel_attributes>MoneyBox
 --
@@ -233,11 +233,10 @@ _+ validateCategory(category: CashFlowCategory): Boolean_
 + IsTargetReached(): Boolean {query}
 
 + setReason(reason: String)
-_+ validateReason(reason: String): Boolean_
 + setTarget(targer: Int)
 _+ validateTarget(target: Int): Boolean_
 + addMoney(allowance: Allowance): Boolean
-_+ validateAllowance(allowance: Allowance): Boolean_
++ validateAddMoney(allowance: Allowance): Boolean
 
 </panel_attributes>
     <additional_attributes/>
@@ -260,8 +259,7 @@ _+ validateAllowance(allowance: Allowance): Boolean_
 
 + setAmount(amount: Int)
 _+ validateAmount(amount: Int): Boolean_
-+ setDate(date: LocalDateTime)
-_+ validateDate(date: LocalDateTime): Boolean_</panel_attributes>
++ setDate(date: LocalDateTime)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -270,7 +268,7 @@ _+ validateDate(date: LocalDateTime): Boolean_</panel_attributes>
       <x>45</x>
       <y>261</y>
       <w>243</w>
-      <h>117</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>CashFlowCategory
 --
@@ -278,8 +276,7 @@ _+ validateDate(date: LocalDateTime): Boolean_</panel_attributes>
 --
 + getName(): String {query}
 
-+ setName(name: String)
-_+ validateName(name: String): Boolean_</panel_attributes>
++ setName(name: String)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -297,7 +294,7 @@ _+ validateName(name: String): Boolean_</panel_attributes>
 + getLimit(): Int{query}
 
 + setLimit(limit: Int)
-_+ validateLimit(limit: Int): Boolean_</panel_attributes>
+_+ isLimitValid(limit: Int): Boolean_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -315,7 +312,7 @@ _+ validateLimit(limit: Int): Boolean_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
+      <x>1017</x>
       <y>216</y>
       <w>333</w>
       <h>207</h>
@@ -329,34 +326,32 @@ _+ validateLimit(limit: Int): Boolean_</panel_attributes>
 + getSurplus(): Int {query}
 
 + setDate(date: LocalDateTime)
-_+ validateDate(date: LocalDateTime): Boolean_
-+ addSurplus(surplus: CashFlow)
-_+ validateAddSurplus(surplus: CashFlow): Boolean_
-+ removeSurplus(surplus: CashFlow)
-_+ validateRemoveSurplus(surplus: CashFlow): Boolean_</panel_attributes>
++ addCashFlowToSurplus(surplus: CashFlow)
+_+ validateCashFlow(surplus: CashFlow): Boolean_
++ removeSurplus(surplus: CashFlow)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>369</y>
+      <y>360</y>
       <w>81</w>
-      <h>90</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>189</x>
-      <y>369</y>
+      <y>360</y>
       <w>72</w>
-      <h>90</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -389,16 +384,16 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>801</x>
+      <x>864</x>
       <y>288</y>
-      <w>180</w>
+      <w>171</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 - surpluses</panel_attributes>
-    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

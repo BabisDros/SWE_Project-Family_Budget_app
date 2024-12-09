@@ -57,7 +57,10 @@ public class MonthlySurplus
         else
         {
             OneOff oneOff = (OneOff) cashFlow;
-            return oneOff.getDateStart().toLocalDate().isEqual(LocalDateTime.now().toLocalDate());
+
+            YearMonth cashFlowYearMonthDateEnd=YearMonth.of(oneOff.getDateStart().getYear(),oneOff.getDateStart().getMonth());
+            YearMonth currentYearMonth= YearMonth.of(date.getYear(),date.getMonth());
+            return currentYearMonth.isBefore(cashFlowYearMonthDateEnd);
         }
     }
 }
