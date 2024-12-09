@@ -1,25 +1,28 @@
 package com.android.familybudgetapp.domain;
 
+import java.time.YearMonth;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Family
 {
     private final long id;
-    private static long  idCounter=0;
-    private  String familyName;
-    private long  yearlySavings;
-    private long  savings;
-    private Set<User> members = new HashSet<>();
-    private Set<CashFlowCategory>  categories = new HashSet<>();
-    private  Set<MonthlySurplus> monthlySurpluses = new HashSet<>();
-    private int currentSurplus;
+    private static long idCounter=0;
+    private String familyName;
+    private long yearlySavings=0;
+    private long savings=0;
+    private Map<String, User> members = new HashMap<>();
+    private Map<String, CashFlowCategory> cashFlowCategories = new HashMap<>();
+    private Map<YearMonth, MonthlySurplus>  monthlySurpluses = new HashMap<>();
+    private MonthlySurplus currentSurplus;
 
 
     public Family(String name)
     {
         setName(name);
-        this.id = idCounter++;
+        this.id = ++idCounter;
     }
 
     public long getID()
@@ -41,24 +44,24 @@ public class Family
         return yearlySavings;
     }
 
-    public  Set<User> getMembers()
+    public  Map<String, User> getMembers()
     {
-         return new HashSet<User>(members);
+         return new HashMap<String, User> (members);
     }
 
-    public Set<MonthlySurplus> getMonthlySurpluses()
+    public Map<YearMonth, MonthlySurplus> getMonthlySurpluses()
     {
-        return new HashSet<MonthlySurplus>(monthlySurpluses) ;
+        return new HashMap<>(monthlySurpluses) ;
     }
 
-    public long getCurrentSurplus()
+    public MonthlySurplus getCurrentSurplus()
     {
         return currentSurplus;
     }
 
-    public Set<CashFlowCategory> getCategories()
+    public Map<String, CashFlowCategory> getCashFlowCategories()
     {
-        return new HashSet<CashFlowCategory>(categories) ;
+        return new HashMap<>(cashFlowCategories) ;
     }
 
     public void setName(String familyName)
@@ -67,20 +70,41 @@ public class Family
         {
             throw new IllegalArgumentException("Name shouldn't be null");
         }
-        else if (!Utilities.isUsernameValid(familyName))
+        else if (!Utilities.isAlphanumericWithSpaces(familyName))
         {
-            throw new IllegalArgumentException("Name should be consisted by:Numbers, letters and underscores");
+            throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters and underscores");
         }
         this.familyName = familyName;
     }
 
-    public void addToSavings(int amount)
+    public void addToSavings(long amount)
     {
-        if(amount<0)
+        if(!canAddToSavings(amount))
         {
             throw new IllegalArgumentException("Amount should not be negative");
         }
         savings+=amount;
+        yearlySavings+=amount;
+    }
+
+    public boolean canAddToSavings(long amount)
+    {
+        return  amount>=0;
+    }
+
+    public void removeFromSavings(long amount)
+    {
+        if(!canRemoveFromSavings(amount))
+        {
+            throw new IllegalArgumentException("Amount is invalid. Amount is negative or savings amount is insufficient");
+        }
+        savings-=amount;
+        yearlySavings-=amount;
+    }
+
+    public boolean canRemoveFromSavings(long amount)
+    {
+        return  amount>=0 && savings-amount>=0;
     }
 
     public  void addMember(User user)
@@ -89,7 +113,16 @@ public class Family
         {
             throw new IllegalArgumentException ("User shouldn't be null");
         }
-        members.add(user);
+        else if(!validateMember(user))
+        {
+            throw new IllegalArgumentException(String.format("User %s already exists.", user.getName()));
+        }
+        members.put(user.getName(), user);
+    }
+
+    public  boolean validateMember(User user)
+    {
+       return !members.containsKey(user.getName());
     }
 
     public void addSurplus(MonthlySurplus surplus)
@@ -98,17 +131,39 @@ public class Family
         {
             throw new IllegalArgumentException ("Surplus shouldn't be null");
         }
-        monthlySurpluses.add(surplus);
+        else if(!validateSurplus(surplus))
+        {
+            throw new IllegalArgumentException ("Surplus already exists");
+        }
+        currentSurplus=surplus;
+        monthlySurpluses.put(YearMonth.of(surplus.getDate().getYear(),surplus.getDate().getMonth()), surplus);
     }
 
-    public void addCategory(CashFlowCategory category)
+
+    public boolean validateSurplus(MonthlySurplus surplus)
+    {
+        return !monthlySurpluses.containsKey(YearMonth.of(surplus.getDate().getYear(),surplus.getDate().getMonth()));
+    }
+
+    public void addCashFlowCategory(CashFlowCategory category)
     {
         if(category==null)
         {
             throw new IllegalArgumentException ("Category shouldn't be null");
-
         }
-        categories.add(category);
+        else if(!validateCashFlowCategory(category))
+        {
+            throw new IllegalArgumentException ("There is already a category with this name.");
+        }
+        cashFlowCategories.put(category.getName(), category);
+    }
+
+    /**
+     * @param category cate
+     */
+    public boolean validateCashFlowCategory(CashFlowCategory category)
+    {
+        return !cashFlowCategories.containsKey(category.getName());
     }
 
     public void resetYearSavings()

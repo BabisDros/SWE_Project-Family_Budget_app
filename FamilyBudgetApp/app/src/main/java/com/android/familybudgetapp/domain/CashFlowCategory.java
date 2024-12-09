@@ -2,18 +2,29 @@ package com.android.familybudgetapp.domain;
 
 public abstract class CashFlowCategory
 {
-    private String name;
+    protected String name;
 
-    public String getCategoryName()
+    /**
+     * @return the name of the category
+     */
+    public String getName()
     {
         return name;
     }
 
-    public void setCategory(String name)
+    /**
+     * @param name alphanumerical value with spaces.
+     */
+    public void setName(String name)
     {
         if(name==null)
         {
             throw new IllegalArgumentException("Name shouldn't be null");
+        }
+        else if(!Utilities.isAlphanumericWithSpaces(name))
+        {
+            throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters" +
+                    " and spaces ONLY between them");
         }
         this.name=name;
     }
