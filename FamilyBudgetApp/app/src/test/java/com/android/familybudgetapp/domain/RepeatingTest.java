@@ -82,7 +82,7 @@ public class RepeatingTest {
         int endDay = 15; // end mid-month
         LocalDateTime dateEnd = LocalDateTime.of(now.getYear(), now.getMonthValue(), endDay, 0, 0);
 
-        Repeating daily = new Repeating(dailyAmount, new Income(), now.minusMonths(1), dateEnd, recurPeriod.Daily);
+        Repeating daily = new Repeating(dailyAmount, new Income("test"), now.minusMonths(1), dateEnd, recurPeriod.Daily);
 
         assertEquals(dailyAmount * endDay, daily.getMonthlyAmount());
     }
@@ -94,7 +94,7 @@ public class RepeatingTest {
         int endDay = 15;
         LocalDateTime dateEnd = LocalDateTime.of(now.getYear(), now.getMonthValue(), endDay, 0, 0);
 
-        Repeating weekly = new Repeating(weeklyAmount, new Income(), now.minusMonths(1), dateEnd, recurPeriod.Weekly);
+        Repeating weekly = new Repeating(weeklyAmount, new Income("test"), now.minusMonths(1), dateEnd, recurPeriod.Weekly);
 
         int remainingWeeks = (int) Math.ceil(endDay / 7.0);
         assertEquals(weeklyAmount * remainingWeeks, weekly.getMonthlyAmount());
@@ -103,7 +103,7 @@ public class RepeatingTest {
     @Test
     public void testGetMonthlyAmountRecurrenceEnded() {
         LocalDateTime dateEnd = LocalDateTime.now().minusMonths(1);
-        Repeating repeating = new Repeating(100, new Income(), LocalDateTime.now().minusMonths(2), dateEnd, recurPeriod.Daily);
+        Repeating repeating = new Repeating(100, new Income("test"), LocalDateTime.now().minusMonths(2), dateEnd, recurPeriod.Daily);
 
         assertEquals(0, repeating.getMonthlyAmount());
     }
