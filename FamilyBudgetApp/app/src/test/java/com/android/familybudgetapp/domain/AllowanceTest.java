@@ -24,18 +24,25 @@ public class AllowanceTest {
     }
 
     @Test
-    public void InitiateNegative() {
-        tester = new Allowance(-10, dateTester);
-        assertEquals(0, tester.getAmount());
-        assertEquals(LocalDateTime.MIN, tester.getDate());
+    public void instantiateObjectWithInvalidArguments() {
+        assertThrows(IllegalArgumentException.class, ()-> {
+                    new Allowance(-10, dateTester);
+                });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new Allowance(0, dateTester);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new Allowance(20, null);
+        });
     }
 
     @Test
     public void setAmount() {
         tester.setAmount(150);
         assertEquals(150, tester.getAmount());
-        tester.setAmount(-10);
-        assertEquals(150, tester.getAmount());
+        assertThrows(IllegalArgumentException.class, ()-> {
+            tester.setAmount(-10);
+        });
     }
 
     @Test

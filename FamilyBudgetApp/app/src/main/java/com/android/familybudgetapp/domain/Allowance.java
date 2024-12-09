@@ -11,19 +11,21 @@ public class Allowance {
     Allowance(){}
     Allowance(int amount, LocalDateTime date)
     {
-        if (amount < 0)
-            return;
-        this.amount = amount;
-        this.date = date;
+        setAmount(amount);
+        setDate(date);
     }
     public int getAmount() {
         return amount;
     }
 
     public void setAmount(int amount) {
-        if (amount<0)
-            return;
+        if (!validateAmount(amount))
+            throw new IllegalArgumentException("Amount for Allowance should be more than 0");
         this.amount = amount;
+    }
+    public static boolean validateAmount(int amount)
+    {
+        return amount > 0;
     }
 
     public LocalDateTime getDate() {
@@ -31,6 +33,8 @@ public class Allowance {
     }
 
     public void setDate(LocalDateTime date) {
+        if(date == null)
+            throw new IllegalArgumentException("Date shouldn't be null");
         this.date = date;
     }
 }

@@ -17,6 +17,26 @@ public class MoneyBoxTest {
         tester = new MoneyBox("Reason", 100);
     }
 
+    @Test public void instantiateObjectWithInvalidArguments() {
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox(" test ", 100);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox(" ", 100);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox("", 100);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox(null, 100);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox("OK", -100);
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            new MoneyBox("OK", 0);
+        });
+    }
     @Test
     public void getReason() {
         assertEquals("Reason", tester.getReason());
@@ -50,8 +70,14 @@ public class MoneyBoxTest {
     @Test
     public void addMoney() {
         assertEquals(0, tester.getCurrentAmount());
-        assertFalse(tester.addMoney(new Allowance()));
-        assertFalse(tester.addMoney(new Allowance(tester.getTarget()+1, LocalDateTime.now())));
+
+        assertThrows(IllegalArgumentException.class, ()-> {
+            tester.addMoney(new Allowance());
+        });
+        assertThrows(IllegalArgumentException.class, ()-> {
+            tester.addMoney(new Allowance(tester.getTarget()+1, LocalDateTime.now()));
+        });
+
         assertTrue(tester.addMoney(new Allowance(15, LocalDateTime.now())));
         assertTrue(tester.addMoney(new Allowance(20, LocalDateTime.of(2060, 10, 5, 6, 30))));
         assertEquals(35, tester.getCurrentAmount());
@@ -63,7 +89,6 @@ public class MoneyBoxTest {
         assertEquals(expectedList, tester.getAllowances());
         Allowance obj1 = new Allowance(15, LocalDateTime.now());
         Allowance obj2 = new Allowance(20, LocalDateTime.of(2060, 10, 5, 6, 30));
-        Allowance obj3 = new Allowance();
 
         expectedList.add(obj1);
         expectedList.add(obj2);
@@ -72,11 +97,6 @@ public class MoneyBoxTest {
         tester.addMoney(obj2);
 
         assertEquals(expectedList, tester.getAllowances());
-
-        expectedList.add(obj3);
-        tester.addMoney(obj3);
-
-        assertNotEquals(expectedList, tester.getAllowances());
 
     }
 
