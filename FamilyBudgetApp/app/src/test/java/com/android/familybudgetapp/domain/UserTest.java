@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 public class UserTest {
@@ -33,8 +33,8 @@ public class UserTest {
 
     @Test
     public void testAddCashFlow() {
-        CashFlow cashFlow1 = new CashFlow(100, new Expense(100), new Date());
-        CashFlow cashFlow2 = new CashFlow(-50, new Income(), new Date());
+        CashFlow cashFlow1 = new OneOff(100, new Expense("test",100), LocalDateTime.now());
+        CashFlow cashFlow2 = new OneOff(-50, new Income("testName"), LocalDateTime.now());
 
         user.addCashFlow(cashFlow1);
         user.addCashFlow(cashFlow2);
@@ -44,6 +44,7 @@ public class UserTest {
         assertTrue(cashFlows.contains(cashFlow1));
         assertTrue(cashFlows.contains(cashFlow2));
     }
+
 
     @Test
     public void testVerifyCredentials() {

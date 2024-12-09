@@ -2,7 +2,7 @@ package com.android.familybudgetapp.domain;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,9 +12,9 @@ class RepeatingTest {
     @Test
     void testConstructorAndGetters() {
         int amount = 100;
-        CashFlowCategory category = new Income();
-        Date dateStart = new Date();
-        Date dateEnd = new Date(dateStart.getTime() + 1000);
+        CashFlowCategory category = new Income("test");
+        LocalDateTime dateStart = LocalDateTime.now();
+        LocalDateTime dateEnd = dateStart.plusMonths(100);
         recurPeriod recurrencePeriod = recurPeriod.Monthly;
 
         Repeating repeating = new Repeating(amount, category, dateStart, dateEnd, recurrencePeriod);
@@ -28,8 +28,8 @@ class RepeatingTest {
 
     @Test
     void testSetters() {
-        Repeating repeating = new Repeating(100, new Income(), new Date(), new Date(), recurPeriod.Monthly);
-        Date newDateEnd = new Date(System.currentTimeMillis() + 1000);
+        Repeating repeating = new Repeating(100, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), recurPeriod.Monthly);
+        LocalDateTime newDateEnd = LocalDateTime.now().plusMonths(10);
         recurPeriod newRecurrencePeriod = recurPeriod.Weekly;
 
         repeating.setDateEnd(newDateEnd);
@@ -41,9 +41,9 @@ class RepeatingTest {
 
     @Test
     void testToString() {
-        Date dateStart = new Date();
-        Date dateEnd = new Date(dateStart.getTime() + 1000);
-        Repeating repeating = new Repeating(100, new Income(), dateStart, dateEnd, recurPeriod.Monthly);
+        LocalDateTime dateStart = LocalDateTime.now().plusMonths(10);
+        LocalDateTime dateEnd = dateStart.plusMonths(10);
+        Repeating repeating = new Repeating(100, new Income("test"), dateStart, dateEnd, recurPeriod.Monthly);
 
         String toStringResult = repeating.toString();
 
@@ -61,25 +61,25 @@ class RepeatingTest {
         int daysOfCurMonth = currentMonth.lengthOfMonth();
 
         // Daily
-        Repeating daily = new Repeating(dailyAmount, new Income(), new Date(), new Date(), recurPeriod.Daily);
+        Repeating daily = new Repeating(dailyAmount, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), recurPeriod.Daily);
         assertEquals(dailyAmount * daysOfCurMonth, daily.getMonthlyAmount());
 
         // Weekly
-        Repeating weekly = new Repeating(weeklyAmount, new Income(), new Date(), new Date(), recurPeriod.Weekly);
+        Repeating weekly = new Repeating(weeklyAmount, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), recurPeriod.Weekly);
         assertEquals(weeklyAmount * (daysOfCurMonth / 7), weekly.getMonthlyAmount());
 
         // Monthly
-        Repeating monthly = new Repeating(monthlyAmount, new Income(), new Date(), new Date(), recurPeriod.Monthly);
+        Repeating monthly = new Repeating(monthlyAmount, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), recurPeriod.Monthly);
         assertEquals(monthlyAmount, monthly.getMonthlyAmount());
 
         // Yearly
-        Repeating yearly = new Repeating(yearlyAmount, new Income(), new Date(), new Date(), recurPeriod.Yearly);
+        Repeating yearly = new Repeating(yearlyAmount, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), recurPeriod.Yearly);
         assertEquals(yearlyAmount / 12, yearly.getMonthlyAmount());
     }
 
     @Test
     void testGetMonthlyAmountInvalidRecurrence() {
-        Repeating invalid = new Repeating(100, new Income(), new Date(), new Date(), null);
+        Repeating invalid = new Repeating(100, new Income("test"), LocalDateTime.now(), LocalDateTime.now(), null);
         assertThrows(IllegalArgumentException.class, invalid::getMonthlyAmount);
     }
 }
