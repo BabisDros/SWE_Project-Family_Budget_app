@@ -36,11 +36,29 @@ public class Repeating extends CashFlow {
     }
     // Calculates and returns the monthly amount based on the recurrence period
     public int getMonthlyAmount() {
+        if (dateEnd.isBefore(LocalDateTime.now())) {
+            return 0;
+        }
+
         int daysOfCurMonth = YearMonth.now().lengthOfMonth();
+        int endDay = dateEnd.getDayOfMonth();
+        int endMonth = dateEnd.getMonthValue();
+        int endYear = dateEnd.getYear();
         switch (recurrencePeriod) {
             case Daily:
+                // check if dateEnd is this month, return partial
+                if (LocalDateTime.now().getMonthValue() == endMonth &&
+                        LocalDateTime.now().getYear() == endYear) {
+                    return getAmount() * endDay;
+                }
+                // ongoing
                 return getAmount() * daysOfCurMonth;
             case Weekly:
+                if (LocalDateTime.now().getMonthValue() == endMonth &&
+                        LocalDateTime.now().getYear() == endYear) {
+                    int remainingWeeks = (int) Math.ceil(endDay / 7.0);
+                    return getAmount() * remainingWeeks;
+                }
                 return getAmount() * (daysOfCurMonth/7);
             case Monthly:
                 return getAmount();
