@@ -14,7 +14,7 @@ public class User {
     private String username;
     private String password;
     private Family family;
-    private List<CashFlow> cashFlows;
+    private List<CashFlow> cashFlows = new ArrayList<>();;
 
     public User(String name, String username, String password, FamPos familyPosition, Family family) {
         this.id = nextId++;
@@ -23,7 +23,6 @@ public class User {
         setPassword(password);
         setFamilyPosition(familyPosition);
         setFamily(family);
-        this.cashFlows = new ArrayList<>();
     }
 
     // Getters
@@ -88,27 +87,21 @@ public class User {
     }
 
     public void setName(String name) {
-        if (!validateName(name)) {
-            System.err.println("Invalid name value: " + name);
-            throw new IllegalArgumentException("Name is invalid.");
+        if(name==null)
+        {
+            throw new IllegalArgumentException("Name shouldn't be null");
+        }
+        else if (!Utilities.isAlphanumericWithSpaces(name))
+        {
+            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
         }
         this.name = name;
     }
 
-    private boolean validateName(String name) {
-        return (name!=null) && (Utilities.isAlphanumericWithSpaces(name));
-    }
-
     public void addCashFlow(CashFlow cashflow) {
-        if (!validateAddCashFlow(cashflow)) {
-            System.err.println("Invalid cashflow value: " + cashflow);
-            throw new IllegalArgumentException("Cashflow is invalid.");
-        }
+        if (cashflow == null)
+            throw new IllegalArgumentException("CashFlow is null.");
         this.cashFlows.add(cashflow);
-    }
-
-    private boolean validateAddCashFlow(CashFlow cashflow) {
-        return (cashflow != null) && (cashflow.getAmount() > 0);
     }
 
     @Override
@@ -122,5 +115,14 @@ public class User {
                 ", family=" + family +
                 ", cashFlows=" + cashFlows +
                 '}';
+    }
+
+    /**
+     * Used ONLY for Junit tests
+     * @return nextID
+     */
+    public static Long getNextID()
+    {
+        return nextId;
     }
 }

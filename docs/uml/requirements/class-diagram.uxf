@@ -5,9 +5,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>549</y>
+      <y>576</y>
       <w>351</w>
-      <h>504</h>
+      <h>441</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -28,21 +28,13 @@ _- nextId: Long_
 + getFamily(): Family
 
 + setFamilyPosition(position: FamPos)
-_+ validateFamilyPosition(position: FamPos): Boolean_
 + setFamily(family: Family)
-_+ validateFamily(family: Family): Boolean_
 + setUsername(username: String)
-_+ validateUsername(username: String): Boolean_
 + setPassword(password: String)
-_+ validatePassword(password: String): Boolean_
 + setName(name: String)
-_+ validateName(name: String): Boolean_
 + addCashFlow(cashFlow: CashFlow): Boolean
-_+ validateAddCashFlow(cashFlow: CashFlow): Boolean_
 + removeCashFlow(cashFlow: CashFlow): Boolean
-_+ validateRemoveCashFlow(cashFlow: CashFlow): Boolean_
 
-+ verifyCredentials(user: String, pass: String): Boolean
 + toString(): String</panel_attributes>
     <additional_attributes/>
   </element>
@@ -67,7 +59,6 @@ _+ validateRemoveCashFlow(cashFlow: CashFlow): Boolean_
 + setAmount(amount: Int)
 _+ validateAmount(amount: Int): Boolean_
 + setCategory(category: CashFlowCategory)
-_+ validateCategory(category: CashFlowCategory): Boolean_
 + setDateStart(date: LocalDateTime)
 _+ validateDateStart(date: LocalDateTime): Boolean_
 
@@ -93,7 +84,7 @@ _+ validateDateStart(date: LocalDateTime): Boolean_
       <x>1080</x>
       <y>990</y>
       <w>369</w>
-      <h>189</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>Repeating
 --
@@ -106,8 +97,7 @@ _+ validateDateStart(date: LocalDateTime): Boolean_
 
 + setDateEnd(date: LocalDateTime)
 _+ validateDateEnd(date: LocalDateTime): Boolean_
-+ setRecurrencePeriod(period: recurPeriod)
-_+ validateRecurrencePeriod(period: recurPeriod): Boolean_</panel_attributes>
++ setRecurrencePeriod(period: recurPeriod)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -373,13 +363,13 @@ m2=1
       <x>648</x>
       <y>432</y>
       <w>90</w>
-      <h>135</h>
+      <h>162</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 - members</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -413,15 +403,15 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>432</x>
-      <y>1044</y>
+      <y>1008</y>
       <w>243</w>
-      <h>117</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 - moneyBoxes</panel_attributes>
-    <additional_attributes>10.0;100.0;240.0;100.0;240.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;240.0;140.0;240.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

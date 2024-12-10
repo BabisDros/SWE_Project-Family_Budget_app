@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.domain;
 
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 
 public abstract class CashFlow {
 
@@ -26,22 +27,20 @@ public abstract class CashFlow {
     }
 
     public void setAmount(int amount) {
-        if (!validateAmount(amount)) {
-            System.err.println("Invalid amount value: " + amount);
+        if (!validateAmount(amount))
             throw new IllegalArgumentException("Amount is invalid.");
-        }
         this.amount = amount;
     }
 
     public void setCategory(CashFlowCategory category) {
+        if (category == null)
+            throw new IllegalArgumentException("Category can't be null");
         this.category = category;
     }
 
     public void setDateStart(LocalDateTime dateStart) {
-        if (!validateDateStart(dateStart)) {
-            System.err.println("Invalid dateStart: " + dateStart);
+        if (!validateDateStart(dateStart))
             throw new IllegalArgumentException("dateStart is invalid.");
-        }
         this.dateStart = dateStart;
     }
 
@@ -50,7 +49,7 @@ public abstract class CashFlow {
     }
 
     public boolean validateDateStart(LocalDateTime start) {
-        return (start != null) && start.isAfter(LocalDateTime.now());
+        return (start != null) && !YearMonth.from(start).isBefore(YearMonth.now());
     }
 
     @Override

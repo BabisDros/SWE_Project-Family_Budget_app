@@ -14,11 +14,13 @@ public class UserTest {
     private User user;
     private Family family;
     private FamPos familyPosition;
+    private Long currentId;
 
     @Before
     public void setup() {
         family = new Family("testFamily");
         familyPosition = FamPos.Protector;
+        currentId = User.getNextID();
         user = new User("John Doe", "john_doe", "password123", familyPosition, family);
     }
 
@@ -27,7 +29,7 @@ public class UserTest {
         assertEquals("John Doe", user.getName());
         assertEquals("john_doe", user.getUsername());
         assertEquals("password123", user.getPassword());
-        assertEquals(4, user.getID());
+        assertEquals(currentId, user.getID());
         assertEquals(familyPosition, user.getFamilyPosition());
         assertEquals(family, user.getFamily());
         assertNotNull(user.getCashFlows());

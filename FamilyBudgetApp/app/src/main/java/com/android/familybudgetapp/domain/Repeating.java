@@ -23,10 +23,8 @@ public class Repeating extends CashFlow {
 
     // Setters
     public void setDateEnd(LocalDateTime dateEnd) {
-        if (!validateDateEnd(dateEnd)) {
-            System.err.println("Invalid dateEnd: " + dateEnd);
+        if (!validateDateEnd(dateEnd))
             throw new IllegalArgumentException("dateEnd is invalid.");
-        }
         this.dateEnd = dateEnd;
     }
     public void setRecurrencePeriod(recurPeriod recurrencePeriod) {
@@ -73,7 +71,7 @@ public class Repeating extends CashFlow {
 
     private boolean validateDateEnd(LocalDateTime dateEnd) {
         return dateEnd != null &&
-                !dateEnd.isBefore(LocalDateTime.now()) &&
+                !YearMonth.from(dateEnd).isBefore(YearMonth.now()) &&
                 !dateEnd.isBefore((getDateStart()));
     }
 }
