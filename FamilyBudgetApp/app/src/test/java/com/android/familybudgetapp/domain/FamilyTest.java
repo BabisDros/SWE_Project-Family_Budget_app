@@ -43,7 +43,7 @@ public class FamilyTest
     {
         // Temporary get access to private field to reset it,
         // instead of creating a method in the Class specifically for the test.
-        Field field = Family.class.getDeclaredField("idCounter");
+        Field field = Family.class.getDeclaredField("nextId");
         field.setAccessible(true);
         field.set(null, 1);
 

@@ -12,7 +12,7 @@ public class CommonStringValidations
 
     /**
      * @param name Characters >= 3. First and last character alphanumerical. Between them,
-     *   alphanumerical or underscore.
+     *   alphanumerical or space.
      */
     public static boolean isAlphanumericWithSpaces(String name)
     {

@@ -9,20 +9,20 @@ import java.util.Map;
 public class Family
 {
     private final long id;
-    private static long idCounter=1;
+    private static long nextId =1;
     private String familyName;
-    private long yearlySavings=0;
     private long savings=0;
+    private long yearlySavings=0;
+    private MonthlySurplus currentSurplus;
     private Map<Long, User> members = new HashMap<>();
     private Map<String, CashFlowCategory> cashFlowCategories = new HashMap<>();
     private Map<YearMonth, MonthlySurplus>  monthlySurpluses = new HashMap<>();
-    private MonthlySurplus currentSurplus;
 
 
     public Family(String name)
     {
         setName(name);
-        this.id = idCounter++;
+        this.id = nextId++;
     }
 
     public long getID()
