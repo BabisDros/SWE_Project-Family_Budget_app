@@ -1,5 +1,6 @@
 package com.android.familybudgetapp.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 
@@ -22,6 +23,10 @@ public class Repeating extends CashFlow {
 
     // Setters
     public void setDateEnd(LocalDateTime dateEnd) {
+        if (!validateDateEnd(dateEnd)) {
+            System.err.println("Invalid dateEnd: " + dateEnd);
+            throw new IllegalArgumentException("dateEnd is invalid.");
+        }
         this.dateEnd = dateEnd;
     }
     public void setRecurrencePeriod(recurPeriod recurrencePeriod) {
@@ -67,5 +72,11 @@ public class Repeating extends CashFlow {
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");
         }
+    }
+
+    private boolean validateDateEnd(LocalDateTime dateEnd) {
+        return dateEnd != null &&
+                !dateEnd.isBefore(LocalDateTime.now()) &&
+                !dateEnd.isBefore((getDateStart()));
     }
 }
