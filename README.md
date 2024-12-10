@@ -26,4 +26,4 @@ The result of the project is the existance of an app to help families organize a
 
   [Methods Sequence diagrams](/docs/markdown/r3-methods-sequence-diagrams%20.md)
 
-  [Coverage Report](/README.md)
+  [Coverage Report](/docs/coverage-reports/domain-coverage.png)
