@@ -63,4 +63,13 @@ public class MonthlySurplus
             return currentYearMonth.isBefore(cashFlowYearMonthDateEnd);
         }
     }
+
+    public void removeCashFlowFromSurplus(CashFlow cashFlow)
+    {
+        if(cashFlow==null)
+        {
+            throw new IllegalArgumentException("CashFlow shouldn't be null");
+        }
+        this.surplus-=cashFlow.getAmount();
+    }
 }

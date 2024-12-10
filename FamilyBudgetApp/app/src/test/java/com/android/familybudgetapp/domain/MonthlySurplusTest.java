@@ -112,4 +112,22 @@ public class MonthlySurplusTest
         assertFalse(surplus.validateCashFlow(wrongEndDateRepeating));
         assertFalse(surplus.validateCashFlow(wrongDateOneOff));
     }
+
+    @Test
+    public void removeNullCashFlowFromSurplus()
+    {
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.removeCashFlowFromSurplus(null);
+        });
+    }
+
+    @Test
+    public void removeValidCashFlowFromSurplus()
+    {
+
+        CashFlow cashFlow=new Repeating(10,new Income("test"),date,date.plusMonths(5),recurPeriod.Daily);
+        surplus.addCashFlowToSurplus(cashFlow);
+        surplus.removeCashFlowFromSurplus(cashFlow);
+        assertEquals(0,surplus.getSurplus());
+    }
 }

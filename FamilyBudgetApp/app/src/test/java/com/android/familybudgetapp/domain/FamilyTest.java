@@ -180,7 +180,7 @@ public class FamilyTest
     @Test
     public void addToSavingsValidAmount()
     {
-        long amount = 100;
+        int amount = 100;
         family.addToSavings(amount);
         family.addToSavings(amount);
         assertEquals(amount * 2, family.getSavings());
@@ -190,7 +190,7 @@ public class FamilyTest
     @Test
     public void addToSavingsWrongAmount()
     {
-        long amount = -100;
+        int amount = -100;
         assertThrows(IllegalArgumentException.class, () ->
         {
             family.addToSavings(amount);
@@ -213,7 +213,7 @@ public class FamilyTest
     @Test
     public void removeFromSavingsValidAmount()
     {
-        long amount=10;
+        int amount=10;
         family.addToSavings(amount);
         family.removeFromSavings(amount);
         assertEquals(0, family.getSavings());

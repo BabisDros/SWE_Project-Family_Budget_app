@@ -77,7 +77,7 @@ public class Family
         this.familyName = familyName;
     }
 
-    public void addToSavings(long amount)
+    public void addToSavings(int amount)
     {
         if(!canAddToSavings(amount))
         {
@@ -87,12 +87,12 @@ public class Family
         yearlySavings+=amount;
     }
 
-    public boolean canAddToSavings(long amount)
+    public boolean canAddToSavings(int amount)
     {
         return  amount>=0;
     }
 
-    public void removeFromSavings(long amount)
+    public void removeFromSavings(int amount)
     {
         if(!canRemoveFromSavings(amount))
         {
@@ -102,12 +102,12 @@ public class Family
         yearlySavings-=amount;
     }
 
-    public boolean canRemoveFromSavings(long amount)
+    public boolean canRemoveFromSavings(int amount)
     {
         return  amount>=0 && savings-amount>=0;
     }
 
-    public  void addMember(User user)
+    public void addMember(User user)
     {
         if(user==null)
         {
@@ -120,7 +120,7 @@ public class Family
         members.put(user.getID(), user);
     }
 
-    public  boolean validateMember(User user)
+    public boolean validateMember(User user)
     {
        return !members.containsKey(user.getID());
     }
