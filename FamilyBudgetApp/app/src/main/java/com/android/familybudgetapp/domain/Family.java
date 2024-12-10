@@ -157,13 +157,22 @@ public class Family
         }
         cashFlowCategories.put(category.getName(), category);
     }
-    
+
     /**
      * @param category cate
      */
     public boolean validateCashFlowCategory(CashFlowCategory category)
     {
         return !cashFlowCategories.containsKey(category.getName());
+    }
+
+    public void removeCashFlowCategory(CashFlowCategory category)
+    {
+        if(category==null)
+        {
+            throw new IllegalArgumentException ("Category shouldn't be null");
+        }
+        cashFlowCategories.remove(category.getName(), category);
     }
 
     public void resetYearSavings()
