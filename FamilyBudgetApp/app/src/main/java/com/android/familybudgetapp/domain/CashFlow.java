@@ -26,6 +26,10 @@ public abstract class CashFlow {
     }
 
     public void setAmount(int amount) {
+        if (!validateAmount(amount)) {
+            System.err.println("Invalid amount value: " + amount);
+            throw new IllegalArgumentException("Amount is invalid.");
+        }
         this.amount = amount;
     }
 
@@ -34,7 +38,19 @@ public abstract class CashFlow {
     }
 
     public void setDateStart(LocalDateTime dateStart) {
+        if (!validateDateStart(dateStart)) {
+            System.err.println("Invalid dateStart: " + dateStart);
+            throw new IllegalArgumentException("dateStart is invalid.");
+        }
         this.dateStart = dateStart;
+    }
+
+    private boolean validateAmount(int amount) {
+        return (amount > 0);
+    }
+
+    public boolean validateDateStart(LocalDateTime start) {
+        return (start != null) && !start.isBefore(LocalDateTime.now());
     }
 
     @Override
