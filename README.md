@@ -20,3 +20,10 @@ The result of the project is the existance of an app to help families organize a
   [Domain model](/docs/markdown/uml/requirements/domain-model.jpg)
   
   [Analysis classes](/docs/markdown/uml/requirements/analysis-classes.jpg)
+
+* R3 (Design and implementation of domain logix)\
+ [Class diagram](/docs/markdown/uml/design/class-diagram.jpg)
+
+  [Methods Sequence diagrams](/docs/markdown/r3-methods-sequence-diagrams%20.md)
+
+  [Coverage Report](/README.md)
