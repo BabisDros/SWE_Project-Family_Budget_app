@@ -93,7 +93,7 @@ public class User {
         {
             throw new IllegalArgumentException("Name shouldn't be null");
         }
-        else if (!Utilities.isAlphanumericWithSpaces(name))
+        else if (!CommonStringValidations.isAlphanumericWithSpaces(name))
         {
             throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
         }

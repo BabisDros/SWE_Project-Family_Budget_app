@@ -31,10 +31,10 @@ public class MoneyBoxTest {
             new MoneyBox(null, 100);
         });
         assertThrows(IllegalArgumentException.class, ()-> {
-            new MoneyBox("OK", -100);
+            new MoneyBox("New shoes", -100);
         });
         assertThrows(IllegalArgumentException.class, ()-> {
-            new MoneyBox("OK", 0);
+            new MoneyBox("New laptop", 0);
         });
     }
     @Test
@@ -109,7 +109,13 @@ public class MoneyBoxTest {
         assertTrue(tester.isTargetReached());
     }
 
-
+    @Test
+    public void validate()
+    {
+        assertTrue(MoneyBox.validateTarget(1));
+        assertFalse(MoneyBox.validateTarget(0));
+        assertFalse(MoneyBox.validateTarget(-1));
+    }
 
 
 
