@@ -159,4 +159,11 @@ public class RepeatingTest {
         Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
         assertThrows(IllegalArgumentException.class, () -> {repeating.setCategory(null);});
     }
+
+    @Test
+    public void dateStartBeforeNow() {
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
+        assertThrows(IllegalArgumentException.class, () -> {repeating.setDateStart(LocalDateTime.now().minusMonths(2));});
+    }
+
 }
