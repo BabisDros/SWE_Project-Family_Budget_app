@@ -4,5 +4,6 @@ public enum recurPeriod {
     Daily,
     Weekly,
     Monthly,
-    Yearly
+    Yearly,
+    testcase,
 }
