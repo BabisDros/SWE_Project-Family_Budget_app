@@ -173,24 +173,25 @@ _- nextId: Long_
 --
 + getID(): Long{query}
 + getName(): String{query}
-+ getSaving(): Long{query}
-+ getYearlySaving(): Long{query}
-+ getMembers(): Map&lt;String, User&gt;
++ getSavings(): Long{query}
++ getYearlySavings(): Long{query}
++ getMembers(): Map&lt;Long, User&gt;
 + getMonthlySurpluses(): Map&lt;YearMonth, MonthlySurplus&gt;
 + getCurrentSurplus(): MonthlySurplus
-+ getCategories(): Map&lt;String, CashFlowCategory&gt;
++ getCashflowCategories(): Map&lt;String, CashFlowCategory&gt;
 
 + setName(name: String)
 + addToSavings(amount: Int)
-_+ canAddToSavings(amount: Int): Boolean_
++ canAddToSavings(amount: Int): Boolean_
 + removeFromSavings(amount: Int)
-_+ canRemoveFromSavings(amount: Int): Boolean_
++ canRemoveFromSavings(amount: Int): Boolean_
 + addMember(user: User)
-_+ validateMember(user: User): Boolean_
++ validateMember(user: User): Boolean_
 + addSurplus(surplus: MonthlySurplus)
-_+ validateSurplus(surplus: MonthlySurplus): Boolean_
++ validateSurplus(surplus: MonthlySurplus): Boolean_
 + addCashFlowCategory(category: CashFlowCategory)
-_+ validateCashFlowCategory(category: CashFlowCategory): Boolean_
++ validateCashFlowCategory(category: CashFlowCategory): Boolean_
++ removeCashFlowCategory(category: CashFlowCategory)
 + resetYearlySaving()
 
 
@@ -316,9 +317,9 @@ _+ isLimitValid(limit: Int): Boolean_</panel_attributes>
 + getSurplus(): Int {query}
 
 + setDate(date: LocalDateTime)
-+ addCashFlowToSurplus(surplus: CashFlow)
-_+ validateCashFlow(surplus: CashFlow): Boolean_
-+ removeSurplus(surplus: CashFlow)</panel_attributes>
++ addCashFlowToSurplus(cashFlow: CashFlow)
++ validateCashFlow(cashFlow: CashFlow): Boolean_
++ removeCashFlowFromSurplus(cashFlow: CashFlow)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
