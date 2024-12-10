@@ -57,31 +57,56 @@ public class User {
 
     // Setters
     public void setFamilyPosition(FamPos position) {
+        if (position == null) {
+            throw new IllegalArgumentException("Family Position cannot be null.");
+        }
         this.familyPosition = position;
     }
 
     public void setFamily(Family family) {
+        if (family == null) {
+            throw new IllegalArgumentException("Family cannot be null.");
+        }
         this.family = family;
     }
 
     public void setUsername(String username) {
+        if (username == null) {
+            throw new IllegalArgumentException("Username cannot be null.");
+        }
+        if (!Utilities.isUsernameValid(username)) {
+            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and underscores");
+        }
         this.username = username;
     }
 
     public void setPassword(String password) {
+        if (password == null) {
+            throw new IllegalArgumentException("Password cannot be null.");
+        }
         this.password = password;
     }
 
     public void setName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name cannot be null.");
+        }
+        if (!Utilities.isAlphanumericWithSpaces(name)) {
+            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
+        }
         this.name = name;
     }
 
-    public boolean addCashFlow(CashFlow cashFlow) {
-        return this.cashFlows.add(cashFlow);
+    public void addCashFlow(CashFlow cashflow) {
+        if (!validateAddCashFlow(cashflow)) {
+            System.err.println("Invalid cashflow value: " + cashflow);
+            throw new IllegalArgumentException("Cashflow is invalid.");
+        }
+        this.cashFlows.add(cashflow);
     }
 
-    public boolean verifyCredentials(String user, String pass) {
-        return this.username.equals(user) && this.password.equals(pass);
+    private boolean validateAddCashFlow(CashFlow cashflow) {
+        return (cashflow != null) && (cashflow.getAmount() > 0);
     }
 
     @Override
