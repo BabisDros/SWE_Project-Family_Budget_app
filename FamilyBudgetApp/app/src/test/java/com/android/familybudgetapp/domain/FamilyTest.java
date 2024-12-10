@@ -417,6 +417,24 @@ public class FamilyTest
     }
 
     @Test
+    public void removeNullCashFlowCategory()
+    {
+        assertThrows(IllegalArgumentException.class, () ->
+        {
+            family.removeCashFlowCategory(null);
+        });
+    }
+
+    @Test
+    public void removeValidCashFlowCategory()
+    {
+        CashFlowCategory expense1=new Expense("test",10);
+        family.addCashFlowCategory(expense1);
+        family.removeCashFlowCategory(expense1);
+        assertFalse(family.getCashFlowCategories().containsKey(expense1.getName()));
+    }
+
+    @Test
     public void resetYearSavings()
     {
         family.addToSavings(100);
