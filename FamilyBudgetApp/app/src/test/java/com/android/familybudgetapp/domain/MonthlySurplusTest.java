@@ -63,23 +63,27 @@ public class MonthlySurplusTest
         assertEquals(amount*2,surplus.getSurplus());
     }
 
-    // Need to simulate passage of time
-   // @Test
+
+   @Test
     public void addInvalidCashFlowToSurplus()
     {
-        CashFlow cashFlow=new Repeating(10,new Income("test"),date.minusMonths(5),date.minusMonths(1),recurPeriod.Monthly);
-        CashFlow oneOff=new OneOff(10,new Income("test"),date);
+        Repeating expiredEndDateRepeating=new  Repeating(10,new Income("test"),date,date.plusDays(1),recurPeriod.Monthly);
+        OneOff expiredDateOneOff = new OneOff(10,new Income("test"),date);
+        // Simulate passage of time
+        expiredEndDateRepeating.DebugSetDateStart(date.minusMonths(5));
+        expiredEndDateRepeating.DebugSetDateEnd(date.minusMonths(1));
+        expiredDateOneOff.DebugSetDateStart(date.minusMonths(1));
 
         assertThrows(IllegalArgumentException.class, ()-> {
             surplus.addCashFlowToSurplus(null);
         });
 
         assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(cashFlow);
+            surplus.addCashFlowToSurplus(expiredEndDateRepeating);
         });
 
         assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(oneOff);
+            surplus.addCashFlowToSurplus(expiredDateOneOff);
         });
 
     }
@@ -94,12 +98,16 @@ public class MonthlySurplusTest
         assertTrue(surplus.validateCashFlow(oneOff));
     }
 
-    // Need to simulate passage of time
-    //@Test
+
+    @Test
     public void validateInvalidCashFlow()
     {
-        CashFlow wrongEndDateRepeating=new  Repeating(10,new Income("test"),date.minusMonths(5),date.minusMonths(1),recurPeriod.Monthly);
-        CashFlow wrongDateOneOff=new  Repeating(10,new Income("test"),date.minusMonths(5),date.minusMonths(1),recurPeriod.Monthly);
+        Repeating wrongEndDateRepeating=new  Repeating(10,new Income("test"),date,date.plusDays(1),recurPeriod.Monthly);
+        CashFlow wrongDateOneOff = new OneOff(10,new Income("test"),date);
+        // Simulate passage of time
+        wrongEndDateRepeating.DebugSetDateStart(date.minusMonths(5));
+        wrongEndDateRepeating.DebugSetDateEnd(date.minusMonths(1));
+        wrongDateOneOff.DebugSetDateStart(date.minusMonths(1));
 
         assertFalse(surplus.validateCashFlow(wrongEndDateRepeating));
         assertFalse(surplus.validateCashFlow(wrongDateOneOff));

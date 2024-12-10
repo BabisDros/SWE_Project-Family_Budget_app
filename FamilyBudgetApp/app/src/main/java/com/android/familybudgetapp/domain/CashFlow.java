@@ -60,4 +60,12 @@ public abstract class CashFlow {
                 ", dateStart=" + dateStart +
                 '}';
     }
+
+    /**
+     * Used ONLY to assist Junit tests with time Simulation
+     */
+    public void DebugSetDateStart(LocalDateTime date)
+    {
+        this.dateStart = date;
+    }
 }

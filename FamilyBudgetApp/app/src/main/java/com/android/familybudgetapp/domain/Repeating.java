@@ -74,4 +74,12 @@ public class Repeating extends CashFlow {
                 !YearMonth.from(dateEnd).isBefore(YearMonth.now()) &&
                 !dateEnd.isBefore((getDateStart()));
     }
+
+    /**
+     * Used ONLY to assist Junit tests with time Simulation
+     */
+    public void DebugSetDateEnd(LocalDateTime date)
+    {
+        this.dateEnd = date;
+    }
 }

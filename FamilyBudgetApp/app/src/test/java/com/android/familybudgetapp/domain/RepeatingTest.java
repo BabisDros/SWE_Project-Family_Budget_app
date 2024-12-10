@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.YearMonth;
 
 public class RepeatingTest {
 
@@ -89,7 +88,15 @@ public class RepeatingTest {
         assertEquals(recurPeriod.Weekly, repeating.getRecurrencePeriod());
     }
 
-
+    @Test
+    public void testDebugMethods()
+    {
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
+        repeating.DebugSetDateStart(dateStart.minusMonths(5));
+        repeating.DebugSetDateEnd(dateEnd.minusMonths(4));
+        assertEquals(dateStart.minusMonths(5), repeating.getDateStart());
+        assertEquals(dateEnd.minusMonths(4), repeating.getDateEnd());
+    }
 
 
 
