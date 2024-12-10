@@ -23,7 +23,7 @@ public class Repeating extends CashFlow {
 
     // Setters
     public void setDateEnd(LocalDateTime dateEnd) {
-        if (!validateDateEnd(dateEnd))
+        if (!validateDateEnd(getDateStart(), dateEnd))
             throw new IllegalArgumentException("dateEnd is invalid.");
         this.dateEnd = dateEnd;
     }
@@ -69,10 +69,10 @@ public class Repeating extends CashFlow {
         }
     }
 
-    private boolean validateDateEnd(LocalDateTime dateEnd) {
+    public static boolean validateDateEnd(LocalDateTime dateStart, LocalDateTime dateEnd) {
         return dateEnd != null &&
                 !YearMonth.from(dateEnd).isBefore(YearMonth.now()) &&
-                !dateEnd.isBefore((getDateStart()));
+                !dateEnd.isBefore(dateStart);
     }
 
     /**

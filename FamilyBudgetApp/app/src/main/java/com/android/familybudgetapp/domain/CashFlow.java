@@ -44,11 +44,11 @@ public abstract class CashFlow {
         this.dateStart = dateStart;
     }
 
-    private boolean validateAmount(int amount) {
+    public static boolean validateAmount(int amount) {
         return (amount > 0);
     }
 
-    public boolean validateDateStart(LocalDateTime start) {
+    public static boolean validateDateStart(LocalDateTime start) {
         return (start != null) && !YearMonth.from(start).isBefore(YearMonth.now());
     }
 
