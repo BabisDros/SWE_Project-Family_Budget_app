@@ -1,10 +1,10 @@
 package com.android.familybudgetapp.domain;
 
+import com.android.familybudgetapp.utilities.CommonStringValidations;
+
 import java.time.YearMonth;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class Family
 {
@@ -70,7 +70,7 @@ public class Family
         {
             throw new IllegalArgumentException("Name shouldn't be null");
         }
-        else if (!Utilities.isAlphanumericWithSpaces(familyName))
+        else if (!CommonStringValidations.isAlphanumericWithSpaces(familyName))
         {
             throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
         }

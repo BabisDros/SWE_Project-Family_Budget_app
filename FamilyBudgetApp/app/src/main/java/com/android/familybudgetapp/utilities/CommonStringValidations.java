@@ -1,6 +1,6 @@
-package com.android.familybudgetapp.domain;
+package com.android.familybudgetapp.utilities;
 
-public class Utilities
+public class CommonStringValidations
 {
     /**
      * @param name Characters >= 2. First character alphanumerical and others alphanumerical or underscore.
