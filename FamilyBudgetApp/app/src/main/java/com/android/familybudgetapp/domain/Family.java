@@ -72,7 +72,7 @@ public class Family
         }
         else if (!Utilities.isAlphanumericWithSpaces(familyName))
         {
-            throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters and underscores");
+            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
         }
         this.familyName = familyName;
     }
