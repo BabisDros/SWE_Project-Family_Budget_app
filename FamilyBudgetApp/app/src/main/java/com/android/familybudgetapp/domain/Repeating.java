@@ -30,19 +30,9 @@ public class Repeating extends CashFlow {
         this.dateEnd = dateEnd;
     }
     public void setRecurrencePeriod(recurPeriod recurrencePeriod) {
-        if (!validateRecurrencePeriod(recurrencePeriod)) {
-            System.err.println("Invalid recurrence period: " + recurrencePeriod);
-            throw new IllegalArgumentException("Invalid recurrence period.");
-        }
         this.recurrencePeriod = recurrencePeriod;
     }
 
-    private boolean validateRecurrencePeriod(recurPeriod recurrencePeriod) {
-        return (recurrencePeriod == recurPeriod.Daily ||
-                recurrencePeriod == recurPeriod.Weekly ||
-                recurrencePeriod == recurPeriod.Monthly ||
-                recurrencePeriod == recurPeriod.Yearly);
-    }
     @Override
     public String toString() {
         return "Repeating{" +
@@ -52,10 +42,6 @@ public class Repeating extends CashFlow {
     }
     // Calculates and returns the monthly amount based on the recurrence period
     public double getMonthlyAmount() {
-        if (dateEnd.isBefore(LocalDateTime.now())) {
-            return 0;
-        }
-
         int daysOfCurMonth = YearMonth.now().lengthOfMonth();
         int endDay = dateEnd.getDayOfMonth();
         int endMonth = dateEnd.getMonthValue();
