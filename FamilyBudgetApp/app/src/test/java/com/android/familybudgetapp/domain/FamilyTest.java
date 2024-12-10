@@ -45,7 +45,7 @@ public class FamilyTest
         // instead of creating a method in the Class specifically for the test.
         Field field = Family.class.getDeclaredField("idCounter");
         field.setAccessible(true);
-        field.set(null, 0);
+        field.set(null, 1);
 
         Family family1 = new Family("TestFamily");
         Family family2 = new Family("TestFamily2");
@@ -80,9 +80,9 @@ public class FamilyTest
     {
         User member1 = new User("john", "1234", "12345", FamPos.Member, family);
         User member2 = new User("doe", "5678", "5678", FamPos.Protector, family);
-        Map<String, User> testMap = new HashMap<>();
-        testMap.put(member1.getName(), member1);
-        testMap.put(member2.getName(), member2);
+        Map<Long, User> testMap = new HashMap<>();
+        testMap.put(member1.getID(), member1);
+        testMap.put(member2.getID(), member2);
 
         family.addMember(member1);
         family.addMember(member2);
@@ -251,7 +251,6 @@ public class FamilyTest
         //remove from zero savings
         assertFalse(family.canRemoveFromSavings(1));
 
-
         family.addToSavings(10);
         assertFalse(family.canRemoveFromSavings(11));
     }
@@ -261,7 +260,7 @@ public class FamilyTest
     {
         User member=new User("john","1234","12345",FamPos.Member, family );
         family.addMember(member);
-        assertTrue(family.getMembers().containsKey(member.getName()));
+        assertTrue(family.getMembers().containsKey(member.getID()));
     }
 
     @Test

@@ -9,11 +9,11 @@ import java.util.Set;
 public class Family
 {
     private final long id;
-    private static long idCounter=0;
+    private static long idCounter=1;
     private String familyName;
     private long yearlySavings=0;
     private long savings=0;
-    private Map<String, User> members = new HashMap<>();
+    private Map<Long, User> members = new HashMap<>();
     private Map<String, CashFlowCategory> cashFlowCategories = new HashMap<>();
     private Map<YearMonth, MonthlySurplus>  monthlySurpluses = new HashMap<>();
     private MonthlySurplus currentSurplus;
@@ -22,7 +22,7 @@ public class Family
     public Family(String name)
     {
         setName(name);
-        this.id = ++idCounter;
+        this.id = idCounter++;
     }
 
     public long getID()
@@ -44,9 +44,9 @@ public class Family
         return yearlySavings;
     }
 
-    public  Map<String, User> getMembers()
+    public  Map<Long, User> getMembers()
     {
-         return new HashMap<String, User> (members);
+         return new HashMap<> (members);
     }
 
     public Map<YearMonth, MonthlySurplus> getMonthlySurpluses()
@@ -117,12 +117,12 @@ public class Family
         {
             throw new IllegalArgumentException(String.format("User %s already exists.", user.getName()));
         }
-        members.put(user.getName(), user);
+        members.put(user.getID(), user);
     }
 
     public  boolean validateMember(User user)
     {
-       return !members.containsKey(user.getName());
+       return !members.containsKey(user.getID());
     }
 
     public void addSurplus(MonthlySurplus surplus)
@@ -157,7 +157,7 @@ public class Family
         }
         cashFlowCategories.put(category.getName(), category);
     }
-
+    
     /**
      * @param category cate
      */
