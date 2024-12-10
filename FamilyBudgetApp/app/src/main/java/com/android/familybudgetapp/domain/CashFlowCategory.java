@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.domain;
 
+import com.android.familybudgetapp.utilities.CommonStringValidations;
+
 public abstract class CashFlowCategory
 {
     protected String name;
@@ -21,7 +23,7 @@ public abstract class CashFlowCategory
         {
             throw new IllegalArgumentException("Name shouldn't be null");
         }
-        else if(!Utilities.isAlphanumericWithSpaces(name))
+        else if(!CommonStringValidations.isAlphanumericWithSpaces(name))
         {
             throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters" +
                     " and spaces ONLY between them");

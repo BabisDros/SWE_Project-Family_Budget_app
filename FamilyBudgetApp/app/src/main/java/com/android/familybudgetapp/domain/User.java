@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.domain;
 
+import com.android.familybudgetapp.utilities.CommonStringValidations;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +76,7 @@ public class User {
         if (username == null) {
             throw new IllegalArgumentException("Username cannot be null.");
         }
-        if (!Utilities.isUsernameValid(username)) {
+        if (!CommonStringValidations.isUsernameValid(username)) {
             throw new IllegalArgumentException("Name should only consist of: Numbers, letters and underscores");
         }
         this.username = username;
@@ -96,7 +98,7 @@ public class User {
     }
 
     private boolean validateName(String name) {
-        return (name!=null) && (Utilities.isAlphanumericWithSpaces(name));
+        return (name!=null) && (CommonStringValidations.isAlphanumericWithSpaces(name));
     }
 
     public void addCashFlow(CashFlow cashflow) {

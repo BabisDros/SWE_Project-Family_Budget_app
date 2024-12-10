@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.domain;
 
+import com.android.familybudgetapp.utilities.CommonStringValidations;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class MoneyBox {
     public void setReason(String reason) {
         if(reason == null)
             throw new IllegalArgumentException("Reason shouldn't be null");
-        else if (!Utilities.isAlphanumericWithSpaces(reason))
+        else if (!CommonStringValidations.isAlphanumericWithSpaces(reason))
             throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters" +
                     " and spaces ONLY between them");
         this.reason = reason;
