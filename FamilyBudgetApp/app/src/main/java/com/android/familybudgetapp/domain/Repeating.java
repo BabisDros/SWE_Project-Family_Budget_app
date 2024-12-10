@@ -17,8 +17,8 @@ public class Repeating extends CashFlow {
 
     public Repeating(int amount, CashFlowCategory category, LocalDateTime dateStart, LocalDateTime dateEnd, recurPeriod recurrencePeriod) {
         super(amount, category, dateStart);
-        this.dateEnd = dateEnd;
-        this.recurrencePeriod = recurrencePeriod;
+        setDateEnd(dateEnd);
+        setRecurrencePeriod(recurrencePeriod);
     }
 
     // Setters
@@ -30,7 +30,18 @@ public class Repeating extends CashFlow {
         this.dateEnd = dateEnd;
     }
     public void setRecurrencePeriod(recurPeriod recurrencePeriod) {
+        if (!validateRecurrencePeriod(recurrencePeriod)) {
+            System.err.println("Invalid recurrence period: " + recurrencePeriod);
+            throw new IllegalArgumentException("Invalid recurrence period.");
+        }
         this.recurrencePeriod = recurrencePeriod;
+    }
+
+    private boolean validateRecurrencePeriod(recurPeriod recurrencePeriod) {
+        return (recurrencePeriod == recurPeriod.Daily ||
+                recurrencePeriod == recurPeriod.Weekly ||
+                recurrencePeriod == recurPeriod.Monthly ||
+                recurrencePeriod == recurPeriod.Yearly);
     }
     @Override
     public String toString() {
@@ -40,7 +51,7 @@ public class Repeating extends CashFlow {
                 '}';
     }
     // Calculates and returns the monthly amount based on the recurrence period
-    public int getMonthlyAmount() {
+    public double getMonthlyAmount() {
         if (dateEnd.isBefore(LocalDateTime.now())) {
             return 0;
         }
@@ -61,14 +72,14 @@ public class Repeating extends CashFlow {
             case Weekly:
                 if (LocalDateTime.now().getMonthValue() == endMonth &&
                         LocalDateTime.now().getYear() == endYear) {
-                    int remainingWeeks = (int) Math.ceil(endDay / 7.0);
+                    double remainingWeeks = endDay / 7.0;
                     return getAmount() * remainingWeeks;
                 }
-                return getAmount() * (daysOfCurMonth/7);
+                return getAmount() * (daysOfCurMonth/7.0);
             case Monthly:
                 return getAmount();
             case Yearly:
-                return getAmount() / 12;
+                return getAmount() / 12.0;
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");
         }

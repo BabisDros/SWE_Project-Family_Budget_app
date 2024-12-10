@@ -18,11 +18,11 @@ public class User {
 
     public User(String name, String username, String password, FamPos familyPosition, Family family) {
         this.id = nextId++;
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.familyPosition = familyPosition;
-        this.family = family;
+        setName(name);
+        setUsername(username);
+        setPassword(password);
+        setFamilyPosition(familyPosition);
+        setFamily(family);
         this.cashFlows = new ArrayList<>();
     }
 
@@ -88,13 +88,15 @@ public class User {
     }
 
     public void setName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null.");
-        }
-        if (!Utilities.isAlphanumericWithSpaces(name)) {
-            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
+        if (!validateName(name)) {
+            System.err.println("Invalid name value: " + name);
+            throw new IllegalArgumentException("Name is invalid.");
         }
         this.name = name;
+    }
+
+    private boolean validateName(String name) {
+        return (name!=null) && (Utilities.isAlphanumericWithSpaces(name));
     }
 
     public void addCashFlow(CashFlow cashflow) {

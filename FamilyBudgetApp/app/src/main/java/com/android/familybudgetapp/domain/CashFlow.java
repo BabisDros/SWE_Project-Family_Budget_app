@@ -9,9 +9,9 @@ public abstract class CashFlow {
     private LocalDateTime dateStart;
 
     public CashFlow(int amount, CashFlowCategory category, LocalDateTime dateStart) {
-        this.amount = amount;
-        this.category = category;
-        this.dateStart = dateStart;
+        setAmount(amount);
+        setCategory(category);
+        setDateStart(dateStart);
     }
     public int getAmount() {
         return amount;
