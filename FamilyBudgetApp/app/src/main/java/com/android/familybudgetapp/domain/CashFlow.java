@@ -50,7 +50,7 @@ public abstract class CashFlow {
     }
 
     public boolean validateDateStart(LocalDateTime start) {
-        return (start != null) && !start.isBefore(LocalDateTime.now());
+        return (start != null) && start.isAfter(LocalDateTime.now());
     }
 
     @Override
