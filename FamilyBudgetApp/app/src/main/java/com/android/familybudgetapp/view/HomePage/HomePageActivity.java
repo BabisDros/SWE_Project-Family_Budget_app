@@ -8,9 +8,12 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.memorydao.MemoryInitializer;
 import com.android.familybudgetapp.view.Budget.Personal.PersonalBudgetActivity;
 
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
+
+    private static boolean initialized = false;
 
     /**
      * Current app homepage
@@ -31,6 +34,12 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         findViewById(R.id.btn_family_budget).setOnClickListener(v -> presenter.onFamilyBudget());
 
         findViewById(R.id.btn_personal_budget).setOnClickListener(v -> presenter.onPersonalBudget());
+
+        if (!initialized)
+        {
+            new MemoryInitializer().prepareData();
+            initialized = true;
+        }
     }
 
     public void personalBudget()

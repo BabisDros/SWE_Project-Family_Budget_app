@@ -18,6 +18,11 @@ public abstract class CashFlow {
         return amount;
     }
 
+    public int getMonthlyAmount()
+    {
+        return getAmount();
+    }
+
     public CashFlowCategory getCategory() {
         return category;
     }

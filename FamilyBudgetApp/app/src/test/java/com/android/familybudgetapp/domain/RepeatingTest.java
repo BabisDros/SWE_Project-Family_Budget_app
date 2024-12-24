@@ -83,7 +83,7 @@ public class RepeatingTest {
     public void testGetMonthlyAmount_WeeklyRecurrence_Ongoing() {
         Repeating repeating = new Repeating(100, expenseCategory, dateStart, dateEnd, recurPeriod.Weekly);
         int daysOfCurMonth = YearMonth.now().lengthOfMonth();
-        assertEquals(repeating.getAmount() * (daysOfCurMonth/7.0), repeating.getMonthlyAmount());
+        assertEquals(repeating.getAmount() * (daysOfCurMonth/7), repeating.getMonthlyAmount());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class RepeatingTest {
         dateEnd = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth()+2, 0, 0);
         Repeating repeating = new Repeating(100, expenseCategory, dateStart, dateEnd, recurPeriod.Weekly);
         int endDay = dateEnd.getDayOfMonth();
-        double remainingWeeks = endDay / 7.0;
+        int remainingWeeks = endDay / 7;
         assertEquals(repeating.getAmount()*remainingWeeks, repeating.getMonthlyAmount());
     }
 
@@ -100,7 +100,7 @@ public class RepeatingTest {
     public void testGetMonthlyAmount_MonthlyRecurrence() {
         Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
 
-        double monthlyAmount = repeating.getMonthlyAmount();
+        int monthlyAmount = repeating.getMonthlyAmount();
         assertEquals(500, monthlyAmount);
     }
 
@@ -108,7 +108,7 @@ public class RepeatingTest {
     public void testGetMonthlyAmount_YearlyRecurrence() {
         Repeating repeating = new Repeating(12000, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
 
-        double monthlyAmount = repeating.getMonthlyAmount();
+        int monthlyAmount = repeating.getMonthlyAmount();
         assertEquals(1000, monthlyAmount);
     }
 
@@ -164,6 +164,13 @@ public class RepeatingTest {
     public void dateStartBeforeNow() {
         Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
         assertThrows(IllegalArgumentException.class, () -> {repeating.setDateStart(LocalDateTime.now().minusMonths(2));});
+    }
+
+    @Test
+    public void OneOffMonthly()
+    {
+        OneOff oneOff = new OneOff(500, incomeCategory, dateStart);
+        assertEquals(500, oneOff.getMonthlyAmount());
     }
 
 }

@@ -39,7 +39,7 @@ public class Repeating extends CashFlow {
                 '}';
     }
     // Calculates and returns the monthly amount based on the recurrence period
-    public double getMonthlyAmount() {
+    public int getMonthlyAmount() {
         int daysOfCurMonth = YearMonth.now().lengthOfMonth();
         int endDay = dateEnd.getDayOfMonth();
         int endMonth = dateEnd.getMonthValue();
@@ -56,14 +56,14 @@ public class Repeating extends CashFlow {
             case Weekly:
                 if (LocalDateTime.now().getMonthValue() == endMonth &&
                         LocalDateTime.now().getYear() == endYear) {
-                    double remainingWeeks = endDay / 7.0;
+                    int remainingWeeks = endDay / 7;
                     return getAmount() * remainingWeeks;
                 }
-                return getAmount() * (daysOfCurMonth/7.0);
+                return getAmount() * (daysOfCurMonth/7);
             case Monthly:
                 return getAmount();
             case Yearly:
-                return getAmount() / 12.0;
+                return getAmount() / 12;
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");
         }

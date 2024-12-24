@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">FamilyBudgetApp</string>
+    <string name="details">More details</string>
     <string name="personal_budget">Personal Budget</string>
     <string name="budget_details">Show more details</string>
     <string name="family_budget">Family Budget</string>
+    <string name="expenses">Expenses</string>
 </resources>
