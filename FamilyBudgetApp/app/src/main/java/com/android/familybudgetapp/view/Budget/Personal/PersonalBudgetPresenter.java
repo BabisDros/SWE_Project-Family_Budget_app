@@ -3,13 +3,13 @@ package com.android.familybudgetapp.view.Budget.Personal;
 
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.CashFlow;
+import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.Income;
-import com.android.familybudgetapp.domain.OneOff;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
+import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,38 +35,46 @@ public class PersonalBudgetPresenter{
         this.currentUser = user;
     }
 
-    public List<CashFlow> getExpensesOfCurrentUser()
+    /**
+     * @param type enumeration of Income or Expense
+     * @return list of cashFlows corresponding to the current month
+     */
+    private List<CashFlow> getUserCashFlowOfType(cashFlowType type)
     {
-        List<CashFlow> newList = currentUser.getCashFlows();
-        for(CashFlow item: newList)
+        Object classType;
+        switch (type)
         {
-            if (item.getCategory().getClass() == Income.class)
-            {
-                newList.remove(item);
+            case Expense:
+                classType = Expense.class;
+                break;
+            case Income:
+                classType = Income.class;
+                break;
+            default:
+                throw new IllegalArgumentException("Illegal enumeration value");
+        }
+
+        List<CashFlow> newList = new ArrayList<>();
+        for(CashFlow item: currentUser.getCashFlows())
+        {
+            if (item.getCategory().getClass() != classType)
                 continue;
-            }
-            if (item.getClass() == OneOff.class)
-            {
-                if (item.getDateStart().toLocalDate().isBefore(LocalDate.now()))
-                {
-                    newList.remove(item);
-                }
-            } else if (item.getClass() == Repeating.class)
-            {
-                if (((Repeating)item).getDateEnd().toLocalDate().isBefore(LocalDate.now()))
-                {
-                    newList.remove(item);
-                }
-            }
+            if (InDateRange.cashFlowInMonthlyRange(item))
+                newList.add(item);
         }
         return newList;
     }
 
-
-    public List<Tuples<String, Integer>> getExpensePerCategory(List<CashFlow> cashFlowList)
+    /**
+     * @param type enumeration of Income or Expense
+     * @return list of pairs containing the category name and the amount corresponding to it
+     */
+    private List<Tuples<String, Integer>> getUserCashFlowPerCategoryOfType(cashFlowType type)
     {
+
         Map<String, Integer> dict = new HashMap<>();
         List<Tuples<String, Integer>> tuplesList = new ArrayList<>();
+        List<CashFlow> cashFlowList = getUserCashFlowOfType(type);
         for(CashFlow item: cashFlowList)
         {
             String name = item.getCategory().getName();
@@ -78,4 +86,20 @@ public class PersonalBudgetPresenter{
         }
         return tuplesList;
     }
+
+    public List<Tuples<String, Integer>> getUserExpensePerCategory()
+    {
+        return getUserCashFlowPerCategoryOfType(cashFlowType.Expense);
+    }
+    public List<Tuples<String, Integer>> getUserIncomePerCategory()
+    {
+        return getUserCashFlowPerCategoryOfType(cashFlowType.Income);
+    }
+
+    private enum cashFlowType
+    {
+        Income,
+        Expense
+    }
+
 }

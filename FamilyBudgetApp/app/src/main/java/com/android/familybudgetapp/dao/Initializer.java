@@ -1,8 +1,11 @@
 package com.android.familybudgetapp.dao;
 
+import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
+import com.android.familybudgetapp.domain.Income;
+import com.android.familybudgetapp.domain.OneOff;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.domain.recurPeriod;
@@ -31,10 +34,14 @@ public abstract class Initializer {
         FamilyDAO familyDAO = getFamilyDAO();
         Family family = new Family("Family surname test");
         familyDAO.save(family);
-        Expense category1 = new Expense("Food", 200);
-        family.addCashFlowCategory(category1);
-        Expense category2 = new Expense("Clothes", 500);
-        family.addCashFlowCategory(category2);
+        Expense categoryExpense1 = new Expense("Food", 200);
+        family.addCashFlowCategory(categoryExpense1);
+        Expense categoryExpense2 = new Expense("Clothes", 500);
+        family.addCashFlowCategory(categoryExpense2);
+        Income categoryIncome1 = new Income("Job");
+        family.addCashFlowCategory(categoryIncome1);
+        Income categoryIncome2 = new Income("Casino");
+        family.addCashFlowCategory(categoryIncome2);
 
         UserDAO userDAO = getUserDAO();
         User user1 = new User("Name test", "usernameTest", "passwordTest", FamPos.Protector, family);
@@ -44,12 +51,39 @@ public abstract class Initializer {
 
         currentUserID = user1.getID();
 
-        user1.addCashFlow(new Repeating(150, category1, LocalDateTime.of(2024, 12, 20, 0, 0),
-                LocalDateTime.of(2026, 12, 20, 0, 0), recurPeriod.Monthly));
-        user1.addCashFlow(new Repeating(20, category1, LocalDateTime.of(2024, 12, 20, 0, 0),
-                LocalDateTime.of(2026, 12, 20, 0, 0), recurPeriod.Monthly));
-        user1.addCashFlow(new Repeating(80, category2, LocalDateTime.of(2024, 12, 20, 0, 0),
-                LocalDateTime.of(2026, 12, 20, 0, 0), recurPeriod.Weekly));
+        // Requires DebugSet, since we are re-adding old cashFlows
+        Repeating repeating;
+        OneOff oneOff;
+
+        //expenses
+        repeating = new Repeating(150, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user1.addCashFlow(repeating);
+
+        repeating = new Repeating(20, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2025, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user1.addCashFlow(repeating);
+
+        repeating = new Repeating(80, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Weekly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        repeating.setDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user1.addCashFlow(repeating);
+
+        //income
+        repeating = new Repeating(600, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user1.addCashFlow(repeating);
+
+        oneOff = new OneOff(1000, categoryIncome2, LocalDateTime.now());
+        oneOff.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        user1.addCashFlow(oneOff);
+
+        oneOff = new OneOff(3000, categoryIncome2, LocalDateTime.now());
+        oneOff.DebugSetDateStart(LocalDateTime.of(2025, 1, 20, 0, 0));
+        user1.addCashFlow(oneOff);
     }
 
     /**

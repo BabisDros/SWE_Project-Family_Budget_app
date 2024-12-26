@@ -3,7 +3,6 @@ package com.android.familybudgetapp.view.HomePage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
         findViewById(R.id.btn_family_budget).setOnClickListener(v -> presenter.onFamilyBudget());
 
-        findViewById(R.id.btn_personal_budget).setOnClickListener(v -> presenter.onPersonalBudget());
+        findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
 
         if (!initialized)
         {

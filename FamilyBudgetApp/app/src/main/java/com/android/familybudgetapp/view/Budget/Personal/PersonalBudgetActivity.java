@@ -3,6 +3,7 @@ package com.android.familybudgetapp.view.Budget.Personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,26 +17,34 @@ import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 
 import java.util.List;
 
-public class PersonalBudgetActivity extends AppCompatActivity implements PersonalBudgetView,
-    BudgetRecyclerViewAdapter.ItemSelectionListener{
-
-    private Button btnBudgetDetails;
+public class PersonalBudgetActivity extends AppCompatActivity implements PersonalBudgetView{
 
     protected void onCreate(Bundle savedInstanceSate)
     {
         super.onCreate(savedInstanceSate);
         setContentView(R.layout.activity_show_budget_personal);
         final PersonalBudgetPresenter presenter = new PersonalBudgetPresenter();
-        findViewById(R.id.btn_personal_budget).setOnClickListener(v -> showDetails());
+        findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> showDetailedExpenses());
+        findViewById(R.id.btn_personal_income).setOnClickListener(v -> showDetailedIncome());
 
         PersonalBudgetViewModel viewModel = new ViewModelProvider(this).get(PersonalBudgetViewModel.class);
         viewModel.getPresenter().setView(this);
 
         // recycler
-        List<Tuples<String,Integer>> expensesList = viewModel.getPresenter().getExpensePerCategory(viewModel.getPresenter().getExpensesOfCurrentUser());
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new BudgetRecyclerViewAdapter(expensesList, this)); // they had ,this
+        List<Tuples<String,Integer>> expensesList = viewModel.getPresenter().getUserExpensePerCategory();
+        RecyclerView recyclerViewExpense = findViewById(R.id.recyclerView_expense);
+        recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewExpense.setAdapter(new BudgetRecyclerViewAdapter(expensesList));
+
+        // recycler
+        List<Tuples<String,Integer>> incomeList = viewModel.getPresenter().getUserIncomePerCategory();
+        RecyclerView recyclerViewIncome = findViewById(R.id.recyclerView_income);
+        recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewIncome.setAdapter(new BudgetRecyclerViewAdapter(incomeList));
+
+        //surplus
+        //((TextView)findViewById(R.id.txt_personal_monthly_surplus)).setText("placeholder");
+
     }
 
     protected void onPause()
@@ -43,14 +52,19 @@ public class PersonalBudgetActivity extends AppCompatActivity implements Persona
         super.onPause();
     }
 
-    // used on button
-    private void showDetails()
+    private void showDetailedExpenses()
     {
+
+    }
+
+    private void showDetailedIncome()
+    {
+
     }
 
 
     /**
-     * Default action for the button of every object of the recycler
+     * Default action for onClick listener
      */
     public void DefaultAction_ReturnToHome()
     {

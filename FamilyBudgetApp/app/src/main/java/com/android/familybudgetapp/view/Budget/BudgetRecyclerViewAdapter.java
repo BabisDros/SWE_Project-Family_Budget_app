@@ -16,16 +16,12 @@ import java.util.List;
 public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecyclerViewAdapter.ViewHolder> {
 
     private final List<Tuples<String, Integer>> mValues;
-    private final ItemSelectionListener listener;
 
     /**
      * @param items The list of objects which are to displayed
-     * @param listener reference of listener to accept user actions
      */
-    public BudgetRecyclerViewAdapter(List<Tuples<String, Integer>> items,
-                                     ItemSelectionListener listener) {
+    public BudgetRecyclerViewAdapter(List<Tuples<String, Integer>> items) {
         mValues = items;
-        this.listener = listener;
     }
 
     /**
@@ -51,7 +47,6 @@ public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecycl
         final Tuples<String, Integer> currentItem = mValues.get(position);
         holder.txtItemName.setText(currentItem.getFirst());
         holder.txtItemAmount.setText(String.valueOf(currentItem.getSecond()));
-        holder.btnDetails.setOnClickListener(v -> listener.DefaultAction_ReturnToHome());
     }
 
     @Override
@@ -62,7 +57,6 @@ public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView txtItemName;
         public final TextView txtItemAmount;
-        public final Button btnDetails;
 
         /**
          * Constructor of ViewHolder
@@ -73,14 +67,8 @@ public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecycl
             super(view);
             txtItemName = view.findViewById(R.id.item_name);
             txtItemAmount = view.findViewById(R.id.item_value);
-            btnDetails = view.findViewById(R.id.btn_details);
         }
 
     }
 
-
-    public interface ItemSelectionListener
-    {
-        void DefaultAction_ReturnToHome();
-    }
 }
