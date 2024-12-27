@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget;
+package com.android.familybudgetapp.view.Budget.ShowBudget;
 
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
@@ -72,6 +72,26 @@ public class BudgetViewModel extends ViewModel {
                 return "Monthly";
         }
         throw new IllegalArgumentException((String) Objects.requireNonNull(state.get("dateRange")) + "is not acceptable");
+    }
+
+    /**
+     * Called on new activity intent to update the dateRange Extra
+     */
+    public void changeToNextViewGroup()
+    {
+        state.set("viewGroup", getNextViewGroup());
+    }
+
+    public String getNextViewGroup()
+    {
+        switch ((String) Objects.requireNonNull(state.get("viewGroup")))
+        {
+            case "Personal":
+                return "Family";
+            case "Family":
+                return "Personal";
+        }
+        throw new IllegalArgumentException((String) Objects.requireNonNull(state.get("viewGroup")) + "is not acceptable");
     }
 
     protected void onCleared()

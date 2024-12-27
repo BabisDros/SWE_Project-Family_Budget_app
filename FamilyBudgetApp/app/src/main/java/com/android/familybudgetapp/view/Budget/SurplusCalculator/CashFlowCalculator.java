@@ -5,7 +5,7 @@ import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.Tuples;
-import com.android.familybudgetapp.view.Budget.cashFlowType;
+import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

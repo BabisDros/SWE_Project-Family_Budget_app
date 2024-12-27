@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.memorydao.MemoryInitializer;
-import com.android.familybudgetapp.view.Budget.BudgetActivity;
+import com.android.familybudgetapp.view.Budget.ShowBudget.BudgetActivity;
 
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
 
@@ -42,6 +42,8 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
     public void personalBudget()
     {
         Intent intent = new Intent(HomePageActivity.this, BudgetActivity.class);
+        intent.putExtra("dateRange", "Monthly");
+        intent.putExtra("viewGroup", "Personal");
         startActivity(intent);
     }
 

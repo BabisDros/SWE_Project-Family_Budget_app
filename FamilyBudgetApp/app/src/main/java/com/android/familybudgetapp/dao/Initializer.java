@@ -51,6 +51,12 @@ public abstract class Initializer {
         userDAO.save(user1);
         userDAO.save(user2);
 
+        family.addMember(user1);
+        family.addMember(user2);
+
+        user1.setFamily(family);
+        user2.setFamily(family);
+
         currentUserID = user1.getID();
 
         // Requires DebugSet, since we are re-adding old cashFlows
@@ -78,6 +84,10 @@ public abstract class Initializer {
         repeating.DebugSetDateEnd(LocalDateTime.of(2024, 11, 20, 0, 0));
         user1.addCashFlow(repeating);
 
+        repeating = new Repeating(500, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user2.addCashFlow(repeating);
 
         //income
         repeating = new Repeating(600, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);

@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget;
+package com.android.familybudgetapp.view.Budget.ShowBudget;
 
 
 import com.android.familybudgetapp.dao.UserDAO;

@@ -4,7 +4,7 @@ import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
-import com.android.familybudgetapp.view.Budget.cashFlowType;
+import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
 import java.util.List;
 

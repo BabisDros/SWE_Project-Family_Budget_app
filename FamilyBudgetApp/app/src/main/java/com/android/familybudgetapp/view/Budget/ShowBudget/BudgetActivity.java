@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget;
+package com.android.familybudgetapp.view.Budget.ShowBudget;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,32 +21,30 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
     protected void onCreate(Bundle savedInstanceSate)
     {
         super.onCreate(savedInstanceSate);
-        setContentView(R.layout.activity_show_budget_personal);
+        setContentView(R.layout.activity_show_budget);
         final BudgetPresenter presenter = new BudgetPresenter();
         findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> showDetailedExpenses());
         findViewById(R.id.btn_personal_income).setOnClickListener(v -> showDetailedIncome());
         findViewById(R.id.btn_date_range).setOnClickListener(v -> changeBudgetDateRange());
+        findViewById(R.id.btn_view_group).setOnClickListener(v  -> changeBudgetViewGroup());
         vm = new ViewModelProvider(this).get(BudgetViewModel.class);
         vm.getPresenter().setView(this);
 
         Intent intent = getIntent();
         String title = "";
-        if (intent != null) { // else is default state
+        if (intent != null) {
             if (intent.hasExtra("viewGroup")) {
                 String group = intent.getStringExtra("viewGroup");
                 vm.getState().set("viewGroup", group);
+                ((TextView) findViewById(R.id.btn_view_group)).setText(vm.getNextViewGroup() + " info");
                 title += group + " ";
             }
-            else
-                title += "Personal ";
             if (intent.hasExtra("dateRange")) { //The first time they are false
                 String dateRange = intent.getStringExtra("dateRange");
                 vm.getState().set("dateRange", dateRange);
                 ((TextView) findViewById(R.id.btn_date_range)).setText(vm.getNextDateRange() + " info");
                 title += dateRange + " ";
             }
-            else
-                title += "Monthly ";
         }
         title += "Budget";
         ((TextView)findViewById(R.id.budget_title_personal_text)).setText(title);
@@ -112,7 +110,17 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
 
         startActivity(intent);
         this.finish();
+    }
 
+    private void changeBudgetViewGroup()
+    {
+        vm.changeToNextViewGroup();
+        Intent intent = new Intent(BudgetActivity.this, BudgetActivity.class);
+        intent.putExtra("dateRange", (String) vm.getState().get("dateRange"));
+        intent.putExtra("viewGroup", (String) vm.getState().get("viewGroup"));
+
+        startActivity(intent);
+        this.finish();
     }
 
     /**
