@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Budget.Personal.PersonalBudgetActivity"
+            android:name=".view.Budget.BudgetActivity"
             android:exported="true"/>
     </application>
 

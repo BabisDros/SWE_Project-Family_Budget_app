@@ -1,28 +1,28 @@
-package com.android.familybudgetapp.view.Budget.Personal;
+package com.android.familybudgetapp.view.Budget;
 
 
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.Income;
-import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
+import com.android.familybudgetapp.view.Budget.SurplusCalculator.SurplusCalculator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PersonalBudgetPresenter{
-    private PersonalBudgetView view;
+public class BudgetPresenter {
+    private BudgetView view;
     private UserDAO userDAO;
-
+    private SurplusCalculator surplusCalculator;
     private User currentUser;
 
 
-    public void setView(PersonalBudgetView view)
+    public void setView(BudgetView view)
     {
         this.view = view;
     }
@@ -31,15 +31,27 @@ public class PersonalBudgetPresenter{
         this.userDAO = userDAO;
     }
 
+    public void setSurplusCalculator(SurplusCalculator surplusCalculator) {
+        this.surplusCalculator = surplusCalculator;
+    }
+
     public void setCurrentUser(User user) {
         this.currentUser = user;
+    }
+
+    public SurplusCalculator getSurplusCalculator(){
+        return surplusCalculator;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     /**
      * @param type enumeration of Income or Expense
      * @return list of cashFlows corresponding to the current month
      */
-    private List<CashFlow> getUserCashFlowOfType(cashFlowType type)
+    private List<CashFlow> getCashFlowOfType(cashFlowType type)
     {
         Object classType;
         switch (type)
@@ -69,12 +81,12 @@ public class PersonalBudgetPresenter{
      * @param type enumeration of Income or Expense
      * @return list of pairs containing the category name and the amount corresponding to it
      */
-    private List<Tuples<String, Integer>> getUserCashFlowPerCategoryOfType(cashFlowType type)
+    private List<Tuples<String, Integer>> getCashFlowPerCategoryOfType(cashFlowType type)
     {
 
         Map<String, Integer> dict = new HashMap<>();
         List<Tuples<String, Integer>> tuplesList = new ArrayList<>();
-        List<CashFlow> cashFlowList = getUserCashFlowOfType(type);
+        List<CashFlow> cashFlowList = getCashFlowOfType(type);
         for(CashFlow item: cashFlowList)
         {
             String name = item.getCategory().getName();
@@ -87,19 +99,18 @@ public class PersonalBudgetPresenter{
         return tuplesList;
     }
 
-    public List<Tuples<String, Integer>> getUserExpensePerCategory()
+    public List<Tuples<String, Integer>> getExpensePerCategory()
     {
-        return getUserCashFlowPerCategoryOfType(cashFlowType.Expense);
+        return getSurplusCalculator().CalculateAmountPerCategory(cashFlowType.Expense);
     }
-    public List<Tuples<String, Integer>> getUserIncomePerCategory()
+    public List<Tuples<String, Integer>> getIncomePerCategory()
     {
-        return getUserCashFlowPerCategoryOfType(cashFlowType.Income);
+        return getSurplusCalculator().CalculateAmountPerCategory(cashFlowType.Income);
     }
 
-    private enum cashFlowType
+    public int calculateSurplus()
     {
-        Income,
-        Expense
+        return surplusCalculator.CalculateSurplus();
     }
 
 }
