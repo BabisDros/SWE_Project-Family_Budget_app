@@ -47,58 +47,6 @@ public class BudgetPresenter {
         return currentUser;
     }
 
-    /**
-     * @param type enumeration of Income or Expense
-     * @return list of cashFlows corresponding to the current month
-     */
-    private List<CashFlow> getCashFlowOfType(cashFlowType type)
-    {
-        Object classType;
-        switch (type)
-        {
-            case Expense:
-                classType = Expense.class;
-                break;
-            case Income:
-                classType = Income.class;
-                break;
-            default:
-                throw new IllegalArgumentException("Illegal enumeration value");
-        }
-
-        List<CashFlow> newList = new ArrayList<>();
-        for(CashFlow item: currentUser.getCashFlows())
-        {
-            if (item.getCategory().getClass() != classType)
-                continue;
-            if (InDateRange.cashFlowInMonthlyRange(item))
-                newList.add(item);
-        }
-        return newList;
-    }
-
-    /**
-     * @param type enumeration of Income or Expense
-     * @return list of pairs containing the category name and the amount corresponding to it
-     */
-    private List<Tuples<String, Integer>> getCashFlowPerCategoryOfType(cashFlowType type)
-    {
-
-        Map<String, Integer> dict = new HashMap<>();
-        List<Tuples<String, Integer>> tuplesList = new ArrayList<>();
-        List<CashFlow> cashFlowList = getCashFlowOfType(type);
-        for(CashFlow item: cashFlowList)
-        {
-            String name = item.getCategory().getName();
-            dict.put(name, dict.getOrDefault(name, 0) + item.getMonthlyAmount());
-        }
-        for(Map.Entry<String, Integer> entry: dict.entrySet())
-        {
-            tuplesList.add(new Tuples<>(entry.getKey(), entry.getValue()));
-        }
-        return tuplesList;
-    }
-
     public List<Tuples<String, Integer>> getExpensePerCategory()
     {
         return getSurplusCalculator().CalculateAmountPerCategory(cashFlowType.Expense);

@@ -11,7 +11,7 @@ public class MoneyBox {
     private int currentAmount;
     private List<Allowance> allowances = new ArrayList<>();
 
-    MoneyBox(String reason, int target)
+    public MoneyBox(String reason, int target)
     {
         setReason(reason);
         setTarget(target);

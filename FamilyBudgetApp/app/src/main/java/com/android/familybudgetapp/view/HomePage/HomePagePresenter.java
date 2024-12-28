@@ -21,4 +21,11 @@ public class HomePagePresenter {
         view.personalBudget();
     }
 
+    /**
+     * When clicked on ShowMoneyBoxesActivity activity
+     * user is moved there from Home page
+     */
+    public void onMoneyBoxes() {
+        view.moneyBoxes();
+    }
 }

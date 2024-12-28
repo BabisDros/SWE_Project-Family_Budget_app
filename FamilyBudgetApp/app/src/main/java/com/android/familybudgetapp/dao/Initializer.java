@@ -1,10 +1,12 @@
 package com.android.familybudgetapp.dao;
 
+import com.android.familybudgetapp.domain.Allowance;
 import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.Income;
+import com.android.familybudgetapp.domain.MoneyBox;
 import com.android.familybudgetapp.domain.OneOff;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
@@ -31,9 +33,12 @@ public abstract class Initializer {
     {
         eraseData();
 
+        //families
         FamilyDAO familyDAO = getFamilyDAO();
         Family family = new Family("Family surname test");
         familyDAO.save(family);
+
+        //categories
         Expense categoryExpense1 = new Expense("Food", 200);
         family.addCashFlowCategory(categoryExpense1);
         Expense categoryExpense2 = new Expense("Clothes", 500);
@@ -45,6 +50,7 @@ public abstract class Initializer {
         Income categoryIncome2 = new Income("Casino");
         family.addCashFlowCategory(categoryIncome2);
 
+        //users
         UserDAO userDAO = getUserDAO();
         User user1 = new User("Name test", "usernameTest", "passwordTest", FamPos.Protector, family);
         User user2 = new User("Name test2", "usernameTest2", "passwordTest2", FamPos.Member, family);
@@ -106,6 +112,20 @@ public abstract class Initializer {
         oneOff = new OneOff(10000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
         user1.addCashFlow(oneOff);
+
+        //moneyboxes
+        MoneyBox moneyBox1 = new MoneyBox("Laptop", 500);
+        MoneyBox moneyBox2 = new MoneyBox("Drawing board", 200);
+        user1.addMoneyBox(moneyBox1);
+        user1.addMoneyBox(moneyBox2);
+
+        MoneyBox moneyBox3 = new MoneyBox("Laptop", 2500);
+        user2.addMoneyBox(moneyBox3);
+
+        moneyBox1.addMoney(new Allowance(100, LocalDateTime.now()));
+        moneyBox3.addMoney(new Allowance(800, LocalDateTime.now()));
+
+
     }
 
     /**

@@ -6,6 +6,16 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/btn_date_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_income" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_expense"
+        android:id="@+id/recyclerView_expenses"
         android:layout_width="185dp"
         android:layout_height="380dp"
         android:layout_marginStart="16dp"
@@ -98,18 +108,20 @@
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toEndOf="@+id/recyclerView_expense"
+        app:layout_constraintStart_toEndOf="@+id/recyclerView_expenses"
         app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
 
     <TextView
         android:id="@+id/txt_personal_monthly_surplus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_expense" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_expenses"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

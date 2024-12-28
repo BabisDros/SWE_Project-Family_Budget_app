@@ -9,4 +9,7 @@
     <string name="expenses">Expenses</string>
     <string name="income">Income</string>
     <string name="yearly_info">Yearly info</string>
+    <string name="add_moneyBox">Add Moneybox</string>
+    <string name="moneybox">Show Moneyboxes</string>
+    <string name="back">Go back</string>
 </resources>

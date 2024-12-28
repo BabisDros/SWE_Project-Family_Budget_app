@@ -25,6 +25,7 @@ _- nextId: Long_
 + getPassword(): String{query}
 + getName(): String{query}
 + getCashFlows(): List&lt;CashFlow&gt;
++ getMoneyBoxes(): Map&lt;String, MoneyBox&gt;
 + getFamily(): Family
 
 + setFamilyPosition(position: FamPos)
@@ -32,7 +33,9 @@ _- nextId: Long_
 + setUsername(username: String)
 + setPassword(password: String)
 + setName(name: String)
-+ addCashFlow(cashFlow: CashFlow): Boolean
++ addCashFlow(cashFlow: CashFlow)
++ addMoneyBox(moneyBox: MoneyBox)
++ validateMoneyBox(moneyBox: MoneyBox): Boolean
 
 + toString(): String</panel_attributes>
     <additional_attributes/>
