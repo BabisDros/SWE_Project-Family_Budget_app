@@ -8,8 +8,8 @@ public class Allowance {
     private int amount;
     private LocalDateTime date = LocalDateTime.MIN;
 
-    Allowance(){}
-    Allowance(int amount, LocalDateTime date)
+    public Allowance(){}
+    public Allowance(int amount, LocalDateTime date)
     {
         setAmount(amount);
         setDate(date);

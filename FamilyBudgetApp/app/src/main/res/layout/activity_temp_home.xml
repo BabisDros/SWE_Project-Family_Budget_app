@@ -27,4 +27,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_text" />
 
+    <Button
+        android:id="@+id/btn_moneyboxes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/moneybox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

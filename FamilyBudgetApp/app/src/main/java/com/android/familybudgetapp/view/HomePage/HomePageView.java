@@ -12,4 +12,5 @@ public interface HomePageView {
      */
     void personalBudget();
 
+    void moneyBoxes();
 }

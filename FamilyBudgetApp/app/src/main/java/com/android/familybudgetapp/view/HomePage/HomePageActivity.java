@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.memorydao.MemoryInitializer;
 import com.android.familybudgetapp.view.Budget.ShowBudget.BudgetActivity;
+import com.android.familybudgetapp.view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity;
 
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
 
@@ -31,6 +32,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         final HomePagePresenter presenter = new HomePagePresenter(this);
 
         findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
+        findViewById(R.id.btn_moneyboxes).setOnClickListener(v -> presenter.onMoneyBoxes());
 
         if (!initialized)
         {
@@ -39,11 +41,18 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         }
     }
 
+    @Override
     public void personalBudget()
     {
         Intent intent = new Intent(HomePageActivity.this, BudgetActivity.class);
         intent.putExtra("dateRange", "Monthly");
         intent.putExtra("viewGroup", "Personal");
+        startActivity(intent);
+    }
+
+    @Override
+    public void moneyBoxes() {
+        Intent intent = new Intent(HomePageActivity.this, ShowMoneyBoxesActivity.class);
         startActivity(intent);
     }
 

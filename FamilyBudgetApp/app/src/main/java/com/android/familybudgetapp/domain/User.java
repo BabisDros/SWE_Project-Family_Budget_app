@@ -1,8 +1,11 @@
 package com.android.familybudgetapp.domain;
 
 import com.android.familybudgetapp.utilities.CommonStringValidations;
+import com.android.familybudgetapp.utilities.Quadruples;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 public class User {
@@ -11,6 +14,7 @@ public class User {
     private static long nextId = 1;
 
     private final long id; // read-only
+    private HashMap<String, MoneyBox> moneyBoxes = new HashMap<>();
     private FamPos familyPosition;
     private String name;
     private String username;
@@ -104,6 +108,14 @@ public class User {
         if (cashflow == null)
             throw new IllegalArgumentException("CashFlow is null.");
         this.cashFlows.add(cashflow);
+    }
+
+    public HashMap<String, MoneyBox> getMoneyBoxes(){
+        return new HashMap<>(moneyBoxes);
+    }
+
+    public void addMoneyBox(MoneyBox moneyBox){
+        moneyBoxes.put(moneyBox.getReason(), moneyBox);
     }
 
     @Override
