@@ -65,7 +65,7 @@ public abstract class CashFlow {
     public String toString() {
         return "CashFlow{" +
                 "amount=" + amount +
-                ", category=" + category +
+                ", category=" + category.toString() +
                 ", dateStart=" + dateStart +
                 '}';
     }

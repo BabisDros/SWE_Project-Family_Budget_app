@@ -6,9 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 
 public class RepeatingTest {
 
@@ -64,59 +66,208 @@ public class RepeatingTest {
     }
 
     @Test
-    public void testGetMonthlyAmount_DailyRecurrence_Ongoing() {
-        Repeating repeating = new Repeating(10, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
-        int daysOfCurMonth = YearMonth.now().lengthOfMonth();
-        assertEquals(repeating.getMonthlyAmount(), repeating.getAmount() * daysOfCurMonth);
+    // dateStart and dateEnd within month of interest
+    public void testGetMonthlyAmountDaily() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500 * ((int) ChronoUnit.DAYS.between(dateStart.toLocalDate(), dateEnd.toLocalDate()) + 1);
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyAmount_DailyRecurrence_FinalMonth() {
-        dateStart = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth(), 0, 0);
-        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth()+2, 0, 0);
-        Repeating repeating = new Repeating(10, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
-        int endDay = dateEnd.getDayOfMonth();
-        assertEquals(  repeating.getMonthlyAmount(), repeating.getAmount() * endDay);
+    // dateStart within month of interest, dateEnd after month of interest
+    public void testGetMonthlyAmountDaily_endAfter() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.NOVEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.NOVEMBER);
+
+        int expectedAmount = 500 * 16; // 16 days in November inclusive (15-30)
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyAmount_WeeklyRecurrence_Ongoing() {
-        Repeating repeating = new Repeating(100, expenseCategory, dateStart, dateEnd, recurPeriod.Weekly);
-        int daysOfCurMonth = YearMonth.now().lengthOfMonth();
-        assertEquals(repeating.getAmount() * (daysOfCurMonth/7), repeating.getMonthlyAmount());
+    // dateStart before month of interest and dateEnd within month of interest
+    public void testGetMonthlyAmountDaily_StartBefore() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.NOVEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500 * 20;
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyAmount_WeeklyRecurrence_FinalMonth() {
-        dateStart = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth(), 0, 0);
-        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth()+2, 0, 0);
-        Repeating repeating = new Repeating(100, expenseCategory, dateStart, dateEnd, recurPeriod.Weekly);
-        int endDay = dateEnd.getDayOfMonth();
-        int remainingWeeks = endDay / 7;
-        assertEquals(repeating.getAmount()*remainingWeeks, repeating.getMonthlyAmount());
+    // month of interest not within the range of dateStart and dateEnd
+    public void testGetMonthlyAmountDaily_OutOfRange() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.NOVEMBER);
+
+        int expectedAmount = 0;
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyAmount_MonthlyRecurrence() {
+    // illegal recurrence period
+    public void testGetMonthlyAmountDaily_IllegalRecurrence() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.testcase);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        assertThrows(IllegalArgumentException.class, () -> {repeating.getMonthlyAmount(yearMonth);});
+    }
+
+    @Test
+    public void testGetMonthlyAmountWeekly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Weekly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500;
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
+    }
+
+    @Test
+    public void testGetMonthlyAmountMonthly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
         Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
 
-        int monthlyAmount = repeating.getMonthlyAmount();
-        assertEquals(500, monthlyAmount);
+        int expectedAmount = 500;
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyAmount_YearlyRecurrence() {
-        Repeating repeating = new Repeating(12000, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+    public void testGetMonthlyAmountYearly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
 
-        int monthlyAmount = repeating.getMonthlyAmount();
-        assertEquals(1000, monthlyAmount);
+        Repeating repeating = new Repeating(100, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 100 / 12;
+        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
     }
 
     @Test
-    public void testGetMonthlyInvalidRecur() {
-        Repeating repeating = new Repeating(12000, incomeCategory, dateStart, dateEnd, recurPeriod.testcase);
-        assertThrows(IllegalArgumentException.class, () -> {repeating.getMonthlyAmount();});
+    public void testGetYearlyAmountDaily() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Daily);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500 * ((int) ChronoUnit.DAYS.between(dateStart.toLocalDate(), dateEnd.toLocalDate()) + 1);
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
     }
+
+
+    @Test
+    public void testGetYearlyAmountWeekly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 15, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 20, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Weekly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500 * 1;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    public void testGetYearlyAmountMonthly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.AUGUST, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.OCTOBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Monthly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500 * 3;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    public void testGetYearlyAmountYearly() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.OCTOBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.OCTOBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    // startDate before year of interest and endDate within year of interest
+    public void testGetYearlyAmountYearly_startBefore() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+2, Month.DECEMBER);
+
+        int expectedAmount = 500;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    // startDate within year of interest and endDate after year of interest
+    public void testGetYearlyAmountYearly_endAfter() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        int expectedAmount = 500;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    // startDate and endDate out of range of year of interest
+    public void testGetYearlyAmountYearly_outOfRange() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+3, Month.DECEMBER);
+
+        int expectedAmount = 0;
+        assertEquals(expectedAmount, repeating.getYearlyAmount(yearMonth));
+    }
+
+    @Test
+    // illegal recurrence period
+    public void testGetYearlyAmountYearly_IllegalRecurrence() {
+        dateStart = LocalDateTime.of(LocalDateTime.now().getYear()+1, Month.DECEMBER, 1, 0, 0);
+        dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
+
+        Repeating repeating = new Repeating(500, incomeCategory, dateStart, dateEnd, recurPeriod.testcase);
+        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
+
+        assertThrows(IllegalArgumentException.class, () -> {repeating.getYearlyAmount(yearMonth);});
+    }
+
+
+
+
 
     @Test
     public void testSetRecurrencePeriod() {

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -95,5 +96,21 @@ public class UserTest {
                 ", family=" + user.getFamily() +
                 ", cashFlows=" + user.getCashFlows() + "}";
         assertEquals(expected, user.toString());
+    }
+
+    @Test
+    public void testMoneyBox() {
+        MoneyBox moneyBox = new MoneyBox("Test", 100);
+        MoneyBox alreadyExists = new MoneyBox("Test", 100);
+        MoneyBox nullMoneyBox = null;
+
+        user.addMoneyBox(moneyBox);
+
+        HashMap<String, MoneyBox> moneyBoxes = new HashMap<>();
+        moneyBoxes.put("Test", moneyBox);
+
+        assertEquals(moneyBoxes, user.getMoneyBoxes());
+        assertThrows(IllegalArgumentException.class, () -> {user.addMoneyBox(alreadyExists);});
+        assertThrows(IllegalArgumentException.class, () -> {user.addMoneyBox(nullMoneyBox);});
     }
 }

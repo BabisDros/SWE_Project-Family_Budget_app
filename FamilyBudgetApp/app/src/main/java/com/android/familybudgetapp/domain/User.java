@@ -110,12 +110,19 @@ public class User {
         this.cashFlows.add(cashflow);
     }
 
-    public HashMap<String, MoneyBox> getMoneyBoxes(){
+    public HashMap<String, MoneyBox> getMoneyBoxes() {
         return new HashMap<>(moneyBoxes);
     }
 
     public void addMoneyBox(MoneyBox moneyBox){
+        if (!validateMoneyBox(moneyBox)) {
+            throw new IllegalArgumentException("MoneyBox is null or already exists.");
+        }
         moneyBoxes.put(moneyBox.getReason(), moneyBox);
+    }
+
+    public boolean validateMoneyBox(MoneyBox moneybox) {
+        return moneybox != null && !moneyBoxes.containsKey(moneybox.getReason());
     }
 
     @Override
