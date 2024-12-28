@@ -16,7 +16,7 @@ public class User {
     private String username;
     private String password;
     private Family family;
-    private List<CashFlow> cashFlows = new ArrayList<>();;
+    private List<CashFlow> cashFlows = new ArrayList<>();
 
     public User(String name, String username, String password, FamPos familyPosition, Family family) {
         this.id = nextId++;

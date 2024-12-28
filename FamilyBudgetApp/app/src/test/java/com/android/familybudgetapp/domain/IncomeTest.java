@@ -19,11 +19,11 @@ public class IncomeTest
     public void instantiateObjectWithNotAcceptedArguments()
     {
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Income("$");;
+            new Income("$");
         });
 
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Income(" ");;
+            new Income(" ");
         });
     }
 

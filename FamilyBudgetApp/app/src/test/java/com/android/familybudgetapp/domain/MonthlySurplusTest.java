@@ -24,7 +24,7 @@ public class MonthlySurplusTest
     public void instantiateObjectWithInvalidArguments()
     {
         assertThrows(IllegalArgumentException.class, ()-> {
-            new MonthlySurplus(null);;
+            new MonthlySurplus(null);
         });
     }
 
