@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Quadruples;
 
 import java.util.List;
@@ -46,8 +47,8 @@ public class ShowMoneyBoxesRecyclerViewAdapter  extends RecyclerView.Adapter<Sho
         final Quadruples<String, String, Integer, Integer> currentItem = mValues.get(position);
         holder.txtItemName.setText(currentItem.getFirst());
         holder.txtItemOwner.setText(currentItem.getSecond());
-        holder.txtTarget.setText("Goal: " + currentItem.getThird());
-        holder.txtCurrent.setText("Current: " + currentItem.getFourth());
+        holder.txtTarget.setText("Goal: " + AmountConversion.toEuro(currentItem.getThird()));
+        holder.txtCurrent.setText("Current: " + AmountConversion.toEuro(currentItem.getFourth()));
     }
 
     @Override

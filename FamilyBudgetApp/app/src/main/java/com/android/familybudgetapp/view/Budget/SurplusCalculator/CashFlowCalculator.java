@@ -7,6 +7,8 @@ import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
+import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,9 +37,9 @@ public abstract class CashFlowCalculator implements SurplusCalculator {
                 if (!inDateRange(cashFlow))
                     continue;
                 if (cashFlow.getCategory() instanceof Income)
-                    total+=cashFlow.getMonthlyAmount();
+                    total+=getAmountForRange(cashFlow);
                 else
-                    total-=cashFlow.getMonthlyAmount();
+                    total-=getAmountForRange(cashFlow);
             }
         }
         return total;

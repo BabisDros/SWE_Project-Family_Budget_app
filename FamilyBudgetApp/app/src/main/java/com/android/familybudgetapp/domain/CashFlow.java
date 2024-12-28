@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.domain;
 
 import java.time.LocalDateTime;
+import java.time.Year;
 import java.time.YearMonth;
 
 public abstract class CashFlow {
@@ -23,8 +24,17 @@ public abstract class CashFlow {
         return getAmount();
     }
 
+    public int getMonthlyAmount(YearMonth yearMonth)
+    {
+        return (yearMonth.equals(YearMonth.from(getDateStart()))) ? getAmount() : 0;
+    }
+
     public int getYearlyAmount(){
         return getAmount();
+    }
+
+    public int getYearlyAmount(YearMonth yearMonth){
+        return (Year.from(yearMonth).equals(Year.from(getDateStart()))) ? getAmount() : 0;
     }
 
     public CashFlowCategory getCategory() {

@@ -1,5 +1,6 @@
 package com.android.familybudgetapp.domain;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,6 +52,18 @@ public class OneOffTest {
         OneOff oneOff = new OneOff(100, incomeCategory, LocalDateTime.of(
                 2030, Month.JANUARY, 1, 0, 0));
         assertEquals("OneOff{amount=100, category=Income{name='Salary'}, dateStart=2030-01-01T00:00}", oneOff.toString());
+    }
+
+    @Test
+    public void testNonOverloadedGetMonthlyYearly()
+    {
+        Income incomeCategory = new Income("Salary");
+        OneOff oneOff = new OneOff(100, incomeCategory, LocalDateTime.of(
+                2030, Month.JANUARY, 1, 0, 0));
+        assertEquals(100, oneOff.getMonthlyAmount(YearMonth.of(2030, Month.JANUARY)));
+        assertEquals(100, oneOff.getYearlyAmount(YearMonth.of(2030, Month.JANUARY)));
+        assertEquals(0, oneOff.getMonthlyAmount(YearMonth.of(2030, Month.FEBRUARY)));
+        assertEquals(0, oneOff.getYearlyAmount(YearMonth.of(2031, Month.JANUARY)));
     }
 
 }

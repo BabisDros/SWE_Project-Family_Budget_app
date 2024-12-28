@@ -6,6 +6,7 @@ import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,6 @@ public class monthlyCalculator extends CashFlowCalculator {
 
     @Override
     protected int getAmountForRange(CashFlow cashFlow) {
-        return cashFlow.getMonthlyAmount();
+        return cashFlow.getMonthlyAmount(YearMonth.now());
     }
 }

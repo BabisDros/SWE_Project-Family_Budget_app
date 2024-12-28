@@ -29,7 +29,7 @@ public class AddMoneyBoxPresenter {
                     " and can only be alphanumerical");
         else if (!MoneyBox.validateTarget(target))
             view.showErrorMessage("Error", "Target should be a positive number");
-        else if (false) // user.ValidateMoneyBox
+        else if (!user.validateMoneyBox(new MoneyBox(reason, target)))
         {
             view.showErrorMessage("Error", "You already have a moneyBox for that reason");
         }
