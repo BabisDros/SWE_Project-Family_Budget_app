@@ -6,17 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 
 public class MonthlySurplusTest
 {
 
     private  MonthlySurplus surplus;
-    private LocalDateTime date=LocalDateTime.now();
+    private LocalDateTime date= YearMonth.now().atEndOfMonth().atStartOfDay();;
+    private YearMonth yearMonth=YearMonth.now();
 
     @Before
     public void setUp()
     {
-        surplus=new MonthlySurplus(date);
+        surplus=new MonthlySurplus(YearMonth.now());
     }
 
 
@@ -46,9 +48,10 @@ public class MonthlySurplusTest
     @Test
     public void setDate()
     {
-        LocalDateTime newDate=date.plusMonths(1);
-        surplus.setDate(newDate);
-        assertEquals(newDate,surplus.getDate());
+        YearMonth current= yearMonth.plusMonths(1);
+        surplus.setDate(current);
+        LocalDateTime datetime=surplus.getDate();
+        assertEquals(current,YearMonth.of(datetime.getYear(),datetime.getMonth()));
     }
 
     @Test

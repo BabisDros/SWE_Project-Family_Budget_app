@@ -92,8 +92,8 @@ public class FamilyTest
     @Test
     public void getMonthlySurpluses()
     {
-        MonthlySurplus surplus1 = new MonthlySurplus(LocalDateTime.now());
-        MonthlySurplus surplus2 = new MonthlySurplus(LocalDateTime.now().plusMonths(1));
+        MonthlySurplus surplus1 = new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus2 = new MonthlySurplus(YearMonth.now().plusMonths(1));
 
         Map<YearMonth, MonthlySurplus> testSet = new HashMap<>();
         testSet.put(YearMonth.of(surplus1.getDate().getYear(), surplus1.getDate().getMonth()), surplus1);
@@ -108,7 +108,7 @@ public class FamilyTest
     @Test
     public void getCurrentSurplus()
     {
-        MonthlySurplus surplus = new MonthlySurplus(LocalDateTime.now());
+        MonthlySurplus surplus = new MonthlySurplus(YearMonth.now());
         family.addSurplus(surplus);
         assertEquals(surplus, family.getCurrentSurplus());
     }
@@ -302,7 +302,7 @@ public class FamilyTest
     @Test
     public void addValidSurplus()
     {
-        MonthlySurplus surplus=new MonthlySurplus(LocalDateTime.now());
+        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
 
         family.addSurplus(surplus);
         assertTrue(family.getMonthlySurpluses().containsKey(YearMonth.of(surplus.getDate().getYear(),surplus.getDate().getMonth()) ));
@@ -316,7 +316,7 @@ public class FamilyTest
             family.addSurplus(null);
         });
 
-        MonthlySurplus surplus=new MonthlySurplus(LocalDateTime.now());
+        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
         family.addSurplus(surplus);
         assertThrows(IllegalArgumentException.class, () ->
         {
@@ -327,8 +327,8 @@ public class FamilyTest
     @Test
     public void validateValidSurplus()
     {
-        MonthlySurplus surplus1=new MonthlySurplus(LocalDateTime.now());
-        MonthlySurplus surplus2=new MonthlySurplus(LocalDateTime.now().plusMonths(1));
+        MonthlySurplus surplus1=new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus2=new MonthlySurplus(YearMonth.now().plusMonths(1));
 
         family.addSurplus(surplus1);
 
@@ -339,7 +339,7 @@ public class FamilyTest
     @Test
     public void validateInvalidSurplus()
     {
-        MonthlySurplus surplus=new MonthlySurplus(LocalDateTime.now());
+        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
         family.addSurplus(surplus);
 
         //add same date surplus
