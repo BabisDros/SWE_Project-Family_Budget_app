@@ -23,6 +23,10 @@ public abstract class CashFlow {
         return getAmount();
     }
 
+    public int getYearlyAmount(){
+        return getAmount();
+    }
+
     public CashFlowCategory getCategory() {
         return category;
     }

@@ -12,6 +12,4 @@ public interface HomePageView {
      */
     void personalBudget();
 
-    void familyBudget();
-
 }

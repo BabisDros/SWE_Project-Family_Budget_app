@@ -21,12 +21,4 @@ public class HomePagePresenter {
         view.personalBudget();
     }
 
-    /**
-     * When clicked on FamilyBudgetActivity activity
-     * user is moved there from Home page
-     */
-    void onFamilyBudget()
-    {
-        view.familyBudget();
-    }
 }

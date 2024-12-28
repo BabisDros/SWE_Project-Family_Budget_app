@@ -39,6 +39,7 @@ public class Repeating extends CashFlow {
                 '}';
     }
     // Calculates and returns the monthly amount based on the recurrence period
+    @Override
     public int getMonthlyAmount() {
         int daysOfCurMonth = YearMonth.now().lengthOfMonth();
         int endDay = dateEnd.getDayOfMonth();
@@ -67,6 +68,15 @@ public class Repeating extends CashFlow {
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");
         }
+    }
+
+
+    // Requires yearlyImplementation
+    // will also need tests
+    @Override
+    public int getYearlyAmount()
+    {
+        return getMonthlyAmount();
     }
 
     public static boolean validateDateEnd(LocalDateTime dateStart, LocalDateTime dateEnd) {

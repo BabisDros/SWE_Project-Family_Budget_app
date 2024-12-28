@@ -38,6 +38,8 @@ public abstract class Initializer {
         family.addCashFlowCategory(categoryExpense1);
         Expense categoryExpense2 = new Expense("Clothes", 500);
         family.addCashFlowCategory(categoryExpense2);
+        Expense categoryExpense3 = new Expense("Gift", 800);
+        family.addCashFlowCategory(categoryExpense3);
         Income categoryIncome1 = new Income("Job");
         family.addCashFlowCategory(categoryIncome1);
         Income categoryIncome2 = new Income("Casino");
@@ -48,6 +50,12 @@ public abstract class Initializer {
         User user2 = new User("Name test2", "usernameTest2", "passwordTest2", FamPos.Member, family);
         userDAO.save(user1);
         userDAO.save(user2);
+
+        family.addMember(user1);
+        family.addMember(user2);
+
+        user1.setFamily(family);
+        user2.setFamily(family);
 
         currentUserID = user1.getID();
 
@@ -68,8 +76,18 @@ public abstract class Initializer {
 
         repeating = new Repeating(80, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Weekly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
-        repeating.setDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user1.addCashFlow(repeating);
+
+        repeating = new Repeating(110, categoryExpense3, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2024, 11, 20, 0, 0));
+        user1.addCashFlow(repeating);
+
+        repeating = new Repeating(500, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user2.addCashFlow(repeating);
 
         //income
         repeating = new Repeating(600, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
@@ -83,6 +101,10 @@ public abstract class Initializer {
 
         oneOff = new OneOff(3000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2025, 1, 20, 0, 0));
+        user1.addCashFlow(oneOff);
+
+        oneOff = new OneOff(10000, categoryIncome2, LocalDateTime.now());
+        oneOff.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
         user1.addCashFlow(oneOff);
     }
 
