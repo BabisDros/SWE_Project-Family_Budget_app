@@ -12,4 +12,8 @@
     <string name="add_moneyBox">Add Moneybox</string>
     <string name="moneybox">Show Moneyboxes</string>
     <string name="back">Go back</string>
+    <string name="reason">Reason</string>
+    <string name="target_amount">Target amount\n(in cents)</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
 </resources>

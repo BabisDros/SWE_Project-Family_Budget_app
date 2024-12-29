@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Tuples;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecycl
 
         final Tuples<String, Integer> currentItem = mValues.get(position);
         holder.txtItemName.setText(currentItem.getFirst());
-        holder.txtItemAmount.setText(String.valueOf(currentItem.getSecond()));
+        holder.txtItemAmount.setText(AmountConversion.toEuro(currentItem.getSecond()));
     }
 
     @Override

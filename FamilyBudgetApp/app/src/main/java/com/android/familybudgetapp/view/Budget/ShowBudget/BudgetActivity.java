@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 
@@ -102,7 +103,7 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
     }
     @Override
     public void setSurplus(int amount) {
-        ((TextView)findViewById(R.id.txt_personal_monthly_surplus)).setText("Surplus: " + String.valueOf(amount));
+        ((TextView)findViewById(R.id.txt_personal_monthly_surplus)).setText("Surplus: " + AmountConversion.toEuro(amount));
     }
 
     private void changeBudgetDateRange()

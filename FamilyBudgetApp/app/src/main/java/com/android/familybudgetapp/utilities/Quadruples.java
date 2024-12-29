@@ -1,5 +1,11 @@
 package com.android.familybudgetapp.utilities;
 
+/** Group 4 generic variables
+ * @param <T1>
+ * @param <T2>
+ * @param <T3>
+ * @param <T4>
+ */
 public class Quadruples<T1,T2,T3,T4> {
     private final T1 val1;
     private final T2 val2;

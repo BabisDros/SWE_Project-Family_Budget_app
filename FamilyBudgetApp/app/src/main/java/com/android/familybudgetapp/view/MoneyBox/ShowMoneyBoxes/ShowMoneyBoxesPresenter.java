@@ -19,8 +19,13 @@ public class ShowMoneyBoxesPresenter {
     {
         this.view = view;
         family = user.find(Initializer.currentUserID).getFamily();
+
     }
 
+    /**
+     * Find all the moneyBoxes of the logged in family
+     * @return list of moneyboxes is {@link com.android.familybudgetapp.utilities.Quadruples} format
+     */
     public List<Quadruples<String, String, Integer, Integer>> getMoneyBoxes()
     {
         List<Quadruples<String, String, Integer, Integer>> myList = new ArrayList<>();

@@ -40,7 +40,9 @@ public class Repeating extends CashFlow {
                 ", recurrencePeriod=" + recurrencePeriod +
                 '}';
     }
+
     // Calculates and returns the monthly amount based on the recurrence period
+    @Override
     public int getMonthlyAmount(YearMonth yearMonth) {
         LocalDate startOfMonth = yearMonth.atDay(1);
         LocalDate endOfMonth = yearMonth.atEndOfMonth();
@@ -82,6 +84,7 @@ public class Repeating extends CashFlow {
     }
 
     // Calculates and returns the yearly amount based on the recurrence period
+    @Override
     public int getYearlyAmount(YearMonth yearMonth) {
         LocalDate startOfYear = yearMonth.atDay(1).withDayOfYear(1);
         LocalDate endOfYear = yearMonth.atDay(1).withDayOfYear(startOfYear.lengthOfYear());

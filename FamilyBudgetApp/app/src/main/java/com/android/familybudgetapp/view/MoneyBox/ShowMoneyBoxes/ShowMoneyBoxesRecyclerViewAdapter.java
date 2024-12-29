@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Quadruples;
 
 import java.util.List;
@@ -46,8 +47,8 @@ public class ShowMoneyBoxesRecyclerViewAdapter  extends RecyclerView.Adapter<Sho
         final Quadruples<String, String, Integer, Integer> currentItem = mValues.get(position);
         holder.txtItemName.setText(currentItem.getFirst());
         holder.txtItemOwner.setText(currentItem.getSecond());
-        holder.txtGoal.setText("Goal: " + currentItem.getThird());
-        holder.txtCurrent.setText("Current: " + currentItem.getFourth());
+        holder.txtTarget.setText("Goal: " + AmountConversion.toEuro(currentItem.getThird()));
+        holder.txtCurrent.setText("Current: " + AmountConversion.toEuro(currentItem.getFourth()));
     }
 
     @Override
@@ -58,7 +59,7 @@ public class ShowMoneyBoxesRecyclerViewAdapter  extends RecyclerView.Adapter<Sho
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView txtItemName;
         public final TextView txtItemOwner;
-        public final TextView txtGoal;
+        public final TextView txtTarget;
         public final TextView txtCurrent;
 
         /**
@@ -70,7 +71,7 @@ public class ShowMoneyBoxesRecyclerViewAdapter  extends RecyclerView.Adapter<Sho
             super(view);
             txtItemName = view.findViewById(R.id.item_name);
             txtItemOwner = view.findViewById(R.id.item_owner);
-            txtGoal = view.findViewById(R.id.item_attribute1);
+            txtTarget = view.findViewById(R.id.item_attribute1);
             txtCurrent = view.findViewById(R.id.item_attribute2);
         }
 

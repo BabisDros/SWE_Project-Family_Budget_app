@@ -7,7 +7,7 @@ public class MonthlySurplus
     private LocalDateTime date;
     private int surplus;
 
-    public MonthlySurplus(LocalDateTime date)
+    public MonthlySurplus(YearMonth date)
     {
         setDate(date);
     }
@@ -22,13 +22,13 @@ public class MonthlySurplus
         return surplus;
     }
 
-    public void setDate(LocalDateTime datetime)
+    public void setDate(YearMonth yearMonth)
     {
-        if(datetime==null)
+        if(yearMonth==null)
         {
-            throw new IllegalArgumentException("Datetime shouldn't be null");
+            throw new IllegalArgumentException("YearMonth shouldn't be null");
         }
-        this.date = datetime;
+        this.date = yearMonth.atEndOfMonth().atStartOfDay();;
     }
 
     public void addCashFlowToSurplus(CashFlow cashFlow)
