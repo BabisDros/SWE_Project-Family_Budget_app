@@ -69,7 +69,12 @@ public class Repeating extends CashFlow {
                 return getAmount();
 
             case Yearly:
-                return (getAmount() * overlappingDays) / (daysOfCurMonth * 12);
+                // return the full yearly amount on the month of the start date
+                if (yearMonth.getMonth() == YearMonth.from(getDateStart()).getMonth()) {
+                    return getAmount();
+                }
+                return 0;
+
 
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");

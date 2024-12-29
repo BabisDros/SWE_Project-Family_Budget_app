@@ -159,10 +159,11 @@ public class RepeatingTest {
         dateEnd = LocalDateTime.of(LocalDateTime.now().getYear()+2, Month.DECEMBER, 1, 0, 0);
 
         Repeating repeating = new Repeating(100, incomeCategory, dateStart, dateEnd, recurPeriod.Yearly);
-        YearMonth yearMonth = YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER);
 
-        int expectedAmount = 100 / 12;
-        assertEquals(expectedAmount, repeating.getMonthlyAmount(yearMonth));
+        assertEquals(100, repeating.getMonthlyAmount(YearMonth.of(LocalDateTime.now().getYear()+1, Month.DECEMBER)));
+        assertEquals(0, repeating.getMonthlyAmount(YearMonth.of(LocalDateTime.now().getYear()+2, Month.JANUARY)));
+        assertEquals(100, repeating.getMonthlyAmount(YearMonth.of(LocalDateTime.now().getYear()+2, Month.DECEMBER)));
+        assertEquals(0, repeating.getMonthlyAmount(YearMonth.of(LocalDateTime.now().getYear()+3, Month.DECEMBER)));
     }
 
     @Test
