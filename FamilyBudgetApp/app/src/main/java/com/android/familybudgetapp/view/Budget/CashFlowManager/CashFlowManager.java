@@ -59,6 +59,9 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
             case Income:
                 classType = Income.class;
                 break;
+            case Both:
+                classType = CashFlow.class;
+                break;
             default:
                 throw new IllegalArgumentException("Illegal enumeration value");
         }
@@ -69,7 +72,7 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
             List<CashFlow> cashFlowsOfUser = new ArrayList<>();
             for(CashFlow item: user.getCashFlows())
             {
-                if (item.getCategory().getClass() != classType)
+                if (item.getCategory().getClass() != classType && classType != CashFlow.class)
                     continue;
                 if (inDateRange(item))
                     cashFlowsOfUser.add(item);
@@ -81,7 +84,7 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return List of expenses per user in the object's date range
+     * @return Map of list of {@link Expense} per user in the object's date range
      */
     public Map<Long, List<CashFlow>> getExpense()
     {
@@ -89,11 +92,19 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return List of income per user in the object's date range
+     * @return Map of list of {@link Income} per user in the object's date range
      */
     public Map<Long, List<CashFlow>> getIncome()
     {
         return getCashFlowOfType(cashFlowType.Income);
+    }
+
+    /**
+     * @return Map of list of every {@link CashFlow} per user in the object's date range
+     */
+    public Map<Long, List<CashFlow>> getExpenseAndIncome()
+    {
+        return getCashFlowOfType(cashFlowType.Both);
     }
 
     /**

@@ -50,67 +50,67 @@
         android:id="@+id/budget_title_personal_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/expenses"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_text" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
 
     <Button
-        android:id="@+id/btn_personal_expenses"
+        android:id="@+id/btn_detailed_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/expenses_details"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_expenses" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_date_range" />
 
     <Button
-        android:id="@+id/btn_personal_income"
+        android:id="@+id/btn_detailed_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/income_details"
-        app:layout_constraintStart_toEndOf="@+id/btn_personal_expenses"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_income" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_group" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_expenses"
         android:layout_width="185dp"
         android:layout_height="380dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
+        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_expenses" />
 
     <TextView
         android:id="@+id/budget_title_personal_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/income"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toEndOf="@+id/budget_title_personal_expenses"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_text" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_income"
         android:layout_width="185dp"
         android:layout_height="380dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/recyclerView_expenses"
-        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
+        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_income" />
 
     <TextView
         android:id="@+id/txt_personal_monthly_surplus"
@@ -122,10 +122,10 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_detailed_expenses" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_detailed_surplus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,9 +49,9 @@ public class DetailedBudgetActivity extends AppCompatActivity implements Detaile
         ((TextView)findViewById(R.id.text_title)).setText(title);
 
         List<Quadruples<String, String, Integer, List<LocalDateTime>>> cashFlows = getCashFlows();
-        RecyclerView recyclerViewExpense = findViewById(R.id.recyclerView_items);
-        recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewExpense.setAdapter(new DetailedBudgetRecyclerViewAdapter(cashFlows));
+        recyclerView = findViewById(R.id.recyclerView_items);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new DetailedBudgetRecyclerViewAdapter(cashFlows));
     }
 
     private void goBack() {
@@ -60,5 +61,10 @@ public class DetailedBudgetActivity extends AppCompatActivity implements Detaile
     private List<Quadruples<String, String, Integer, List<LocalDateTime>>> getCashFlows()
     {
         return vm.getPresenter().getFormatedCashFlows();
+    }
+
+    @Override
+    public SavedStateHandle getState() {
+        return vm.getState();
     }
 }

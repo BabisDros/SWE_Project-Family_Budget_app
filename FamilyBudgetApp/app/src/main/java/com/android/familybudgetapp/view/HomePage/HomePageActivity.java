@@ -31,7 +31,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
         final HomePagePresenter presenter = new HomePagePresenter(this);
 
-        findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
+        findViewById(R.id.btn_detailed_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
         findViewById(R.id.btn_moneyboxes).setOnClickListener(v -> presenter.onMoneyBoxes());
 
         if (!initialized)

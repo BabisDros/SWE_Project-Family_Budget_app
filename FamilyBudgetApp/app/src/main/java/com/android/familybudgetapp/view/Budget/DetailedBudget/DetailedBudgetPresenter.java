@@ -2,6 +2,8 @@ package com.android.familybudgetapp.view.Budget.DetailedBudget;
 
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.CashFlow;
+import com.android.familybudgetapp.domain.Expense;
+import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.Quadruples;
@@ -63,6 +65,9 @@ public class DetailedBudgetPresenter {
                 return cashFlowManager.getExpense();
             case Income:
                 return cashFlowManager.getIncome();
+            case Both:
+                return cashFlowManager.getExpenseAndIncome();
+
         }
         return new HashMap<>();
     }
@@ -81,19 +86,33 @@ public class DetailedBudgetPresenter {
     {
         Map<Long, List<CashFlow>> cashFlows = getCashFlows();
         List<Quadruples<String, String, Integer, List<LocalDateTime>>> myList = new ArrayList<>();
+        boolean stateSurplus = view.getState().get("type").equals("Surplus");
         for (Map.Entry<Long, List<CashFlow>> item: cashFlows.entrySet())
         {
+            int userSurplus = 0;
             for (CashFlow cashFlow: item.getValue())
             {
-                String category = cashFlow.getCategory().getName();
-                String owner = userDAO.find(item.getKey()).getName();
-                Integer amount = cashFlowManager.getAmount(cashFlow);
-                List<LocalDateTime> dateTimeList = new ArrayList<>();
-                dateTimeList.add(cashFlow.getDateStart());
-                if (cashFlow instanceof Repeating)
-                    dateTimeList.add(((Repeating)cashFlow).getDateEnd());
-                myList.add(new Quadruples<>(category, owner, amount, dateTimeList));
+                if (stateSurplus)
+                {
+                    if (cashFlow.getCategory() instanceof Income)
+                        userSurplus+=cashFlowManager.getAmount(cashFlow);
+                    else if (cashFlow.getCategory() instanceof Expense)
+                        userSurplus-=cashFlowManager.getAmount(cashFlow);
+                }
+                else
+                {
+                    String category = cashFlow.getCategory().getName();
+                    String owner = userDAO.find(item.getKey()).getName();
+                    Integer amount = cashFlowManager.getAmount(cashFlow);
+                    List<LocalDateTime> dateTimeList = new ArrayList<>();
+                    dateTimeList.add(cashFlow.getDateStart());
+                    if (cashFlow instanceof Repeating)
+                        dateTimeList.add(((Repeating)cashFlow).getDateEnd());
+                    myList.add(new Quadruples<>(category, owner, amount, dateTimeList));
+                }
             }
+            if (stateSurplus) // reuse Quadruple recycler to show detailed surplus
+                myList.add(new Quadruples<>("", userDAO.find(item.getKey()).getName(), userSurplus, new ArrayList<>()));
         }
         return myList;
     }

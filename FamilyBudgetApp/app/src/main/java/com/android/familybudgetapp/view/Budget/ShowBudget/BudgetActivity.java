@@ -24,8 +24,9 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
     {
         super.onCreate(savedInstanceSate);
         setContentView(R.layout.activity_show_budget);
-        findViewById(R.id.btn_personal_expenses).setOnClickListener(v -> showDetailedExpenses());
-        findViewById(R.id.btn_personal_income).setOnClickListener(v -> showDetailedIncome());
+        findViewById(R.id.btn_detailed_expenses).setOnClickListener(v -> showDetailedExpenses());
+        findViewById(R.id.btn_detailed_income).setOnClickListener(v -> showDetailedIncome());
+        findViewById(R.id.btn_detailed_surplus).setOnClickListener(v -> showDetailedSurplus());
         findViewById(R.id.btn_date_range).setOnClickListener(v -> changeBudgetDateRange());
         findViewById(R.id.btn_view_group).setOnClickListener(v  -> changeBudgetViewGroup());
         findViewById(R.id.btn_back).setOnClickListener(v    -> goBack());
@@ -101,6 +102,16 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
         intent.putExtra("dateRange", (String) vm.getState().get("dateRange"));
         intent.putExtra("viewGroup", (String) vm.getState().get("viewGroup"));
         intent.putExtra("type", "Income");
+
+        startActivity(intent);
+    }
+
+    private void showDetailedSurplus()
+    {
+        Intent intent = new Intent(BudgetActivity.this, DetailedBudgetActivity.class);
+        intent.putExtra("dateRange", (String) vm.getState().get("dateRange"));
+        intent.putExtra("viewGroup", (String) vm.getState().get("viewGroup"));
+        intent.putExtra("type", "Surplus");
 
         startActivity(intent);
     }

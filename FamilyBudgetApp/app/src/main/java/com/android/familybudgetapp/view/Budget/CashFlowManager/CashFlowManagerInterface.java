@@ -21,5 +21,7 @@ public interface CashFlowManagerInterface {
 
     Map<Long, List<CashFlow>> getIncome();
 
+    Map<Long, List<CashFlow>> getExpenseAndIncome();
+
     int getAmount(CashFlow cashFlow);
 }

@@ -55,8 +55,10 @@ public class DetailedBudgetViewModel extends ViewModel {
         {
             if (state.get("type").equals("Expense"))
                 presenter.setType(cashFlowType.Expense);
-            else
+            else if (state.get("type").equals("Income"))
                 presenter.setType(cashFlowType.Income);
+            else if (state.get("type").equals("Surplus"))
+                presenter.setType(cashFlowType.Both);
         }
         else
             throw new IllegalStateException("viewGroup was not given with Intent");

@@ -52,8 +52,11 @@ public class DetailedBudgetRecyclerViewAdapter extends RecyclerView.Adapter<Deta
         holder.txtItemName.setText(currentItem.getFirst());
         holder.txtItemOwner.setText(currentItem.getSecond());
         holder.txtItemAmount.setText("Amount: " + AmountConversion.toEuro(currentItem.getThird()));
-        holder.txtStartDate.setText("Started: " + currentItem.getFourth().get(0));
-        if (currentItem.getFourth().size() == 2)
+        if (!currentItem.getFourth().isEmpty())
+            holder.txtStartDate.setText("Started: " + currentItem.getFourth().get(0));
+        else
+            holder.txtStartDate.setVisibility(View.INVISIBLE);
+        if (currentItem.getFourth().size() > 1)
             holder.txtEndDate.setText("Ends: " + currentItem.getFourth().get(1));
         else
             holder.txtEndDate.setVisibility(View.INVISIBLE);
