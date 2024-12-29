@@ -2,23 +2,16 @@ package com.android.familybudgetapp.view.Budget.ShowBudget;
 
 
 import com.android.familybudgetapp.dao.UserDAO;
-import com.android.familybudgetapp.domain.CashFlow;
-import com.android.familybudgetapp.domain.Expense;
-import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.User;
-import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
-import com.android.familybudgetapp.view.Budget.SurplusCalculator.SurplusCalculator;
+import com.android.familybudgetapp.view.Budget.CashFlowManager.CashFlowManagerInterface;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BudgetPresenter {
     private BudgetView view;
     private UserDAO userDAO;
-    private SurplusCalculator surplusCalculator;
+    private CashFlowManagerInterface cashFlowManager;
     private User currentUser;
 
 
@@ -31,16 +24,16 @@ public class BudgetPresenter {
         this.userDAO = userDAO;
     }
 
-    public void setSurplusCalculator(SurplusCalculator surplusCalculator) {
-        this.surplusCalculator = surplusCalculator;
+    public void setCashFlowManager(CashFlowManagerInterface cashFlowManagerInterface) {
+        this.cashFlowManager = cashFlowManagerInterface;
     }
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }
 
-    public SurplusCalculator getSurplusCalculator(){
-        return surplusCalculator;
+    public CashFlowManagerInterface getCashFlowManager(){
+        return cashFlowManager;
     }
 
     public User getCurrentUser() {
@@ -49,16 +42,16 @@ public class BudgetPresenter {
 
     public List<Tuples<String, Integer>> getExpensePerCategory()
     {
-        return getSurplusCalculator().CalculateAmountPerCategory(cashFlowType.Expense);
+        return getCashFlowManager().CalculateAmountPerCategory(cashFlowType.Expense);
     }
     public List<Tuples<String, Integer>> getIncomePerCategory()
     {
-        return getSurplusCalculator().CalculateAmountPerCategory(cashFlowType.Income);
+        return getCashFlowManager().CalculateAmountPerCategory(cashFlowType.Income);
     }
 
     public int calculateSurplus()
     {
-        return surplusCalculator.CalculateSurplus();
+        return cashFlowManager.CalculateSurplus();
     }
 
 }

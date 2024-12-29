@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget.SurplusCalculator;
+package com.android.familybudgetapp.view.Budget.CashFlowManager;
 
 import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.User;
@@ -7,14 +7,16 @@ import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
-public class yearlyCalculator extends CashFlowCalculator {
-    List<User> users;
+public class monthlyManager extends CashFlowManager {
+    private List<User> users;
 
     @Override
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUsers(List<User> users)
+    {
+        this.users = new ArrayList<>(users);
     }
 
     @Override
@@ -28,13 +30,14 @@ public class yearlyCalculator extends CashFlowCalculator {
         return getCashFlowPerCategoryOfType(type);
     }
 
-    @Override
-    protected boolean inDateRange(CashFlow cashFlow) {
-        return InDateRange.cashFlowInYearlyRange(cashFlow);
+    protected boolean inDateRange(CashFlow cashFlow)
+    {
+        return InDateRange.cashFlowInMonthlyRange(cashFlow);
     }
 
     @Override
     protected int getAmountForRange(CashFlow cashFlow) {
-        return cashFlow.getYearlyAmount(YearMonth.now());
+        return cashFlow.getMonthlyAmount(YearMonth.now());
     }
+
 }

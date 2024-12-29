@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget.SurplusCalculator;
+package com.android.familybudgetapp.view.Budget.CashFlowManager;
 
 import com.android.familybudgetapp.domain.CashFlow;
 import com.android.familybudgetapp.domain.Expense;
@@ -7,8 +7,6 @@ import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
-import java.time.LocalDateTime;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.Map;
 /**
  * Abstract class used by *Date*Calculator
  */
-public abstract class CashFlowCalculator implements SurplusCalculator {
+public abstract class CashFlowManager implements CashFlowManagerInterface {
 
     protected abstract boolean inDateRange(CashFlow cashFlow);
 
@@ -48,9 +46,9 @@ public abstract class CashFlowCalculator implements SurplusCalculator {
 
     /**
      * @param type enumeration of Income or Expense
-     * @return list of cashFlows corresponding to the current month
+     * @return list of cashFlows per user corresponding to the current month
      */
-    protected List<CashFlow> getCashFlowOfType(cashFlowType type)
+    protected Map<Long, List<CashFlow>> getCashFlowOfType(cashFlowType type)
     {
         Object classType;
         switch (type)
@@ -65,19 +63,37 @@ public abstract class CashFlowCalculator implements SurplusCalculator {
                 throw new IllegalArgumentException("Illegal enumeration value");
         }
 
-        List<CashFlow> newList = new ArrayList<>();
+        Map<Long, List<CashFlow>> newList = new HashMap<>();
         for (User user: getUsers())
         {
+            List<CashFlow> cashFlowsOfUser = new ArrayList<>();
             for(CashFlow item: user.getCashFlows())
             {
                 if (item.getCategory().getClass() != classType)
                     continue;
                 if (inDateRange(item))
-                    newList.add(item);
+                    cashFlowsOfUser.add(item);
             }
+            newList.put(user.getID(), cashFlowsOfUser);
         }
 
         return newList;
+    }
+
+    /**
+     * @return List of expenses per user in the object's date range
+     */
+    public Map<Long, List<CashFlow>> getExpense()
+    {
+        return getCashFlowOfType(cashFlowType.Expense);
+    }
+
+    /**
+     * @return List of income per user in the object's date range
+     */
+    public Map<Long, List<CashFlow>> getIncome()
+    {
+        return getCashFlowOfType(cashFlowType.Income);
     }
 
     /**
@@ -89,16 +105,29 @@ public abstract class CashFlowCalculator implements SurplusCalculator {
 
         Map<String, Integer> dict = new HashMap<>();
         List<Tuples<String, Integer>> tuplesList = new ArrayList<>();
-        List<CashFlow> cashFlowList = getCashFlowOfType(type);
-        for(CashFlow item: cashFlowList)
+        Map<Long, List<CashFlow>> cashFlowList = getCashFlowOfType(type);
+        for (List<CashFlow> innerList: cashFlowList.values())
         {
-            String name = item.getCategory().getName();
-            dict.put(name, dict.getOrDefault(name, 0) + getAmountForRange(item));
+            for(CashFlow item: innerList)
+            {
+                String name = item.getCategory().getName();
+                dict.put(name, dict.getOrDefault(name, 0) + getAmountForRange(item));
+            }
         }
+
         for(Map.Entry<String, Integer> entry: dict.entrySet())
         {
             tuplesList.add(new Tuples<>(entry.getKey(), entry.getValue()));
         }
         return tuplesList;
+    }
+
+    /**
+     * @param cashFlow CashFlow for which you want the amount of the object's date range
+     * @return Amount
+     */
+    public int getAmount(CashFlow cashFlow)
+    {
+        return getAmountForRange(cashFlow);
     }
 }

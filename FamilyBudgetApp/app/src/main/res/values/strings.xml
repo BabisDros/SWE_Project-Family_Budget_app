@@ -16,4 +16,5 @@
     <string name="target_amount">Target amount\n(in cents)</string>
     <string name="save">Save</string>
     <string name="ok">OK</string>
+    <string name="surplus_detailed">Detailed Surplus</string>
 </resources>

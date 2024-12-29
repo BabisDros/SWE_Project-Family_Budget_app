@@ -38,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
         android:text="@string/personal_budget"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp"
@@ -82,9 +83,9 @@
         android:layout_width="185dp"
         android:layout_height="380dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
 
     <TextView
         android:id="@+id/budget_title_personal_income"
@@ -105,23 +106,32 @@
         android:layout_width="185dp"
         android:layout_height="380dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toEndOf="@+id/recyclerView_expenses"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
 
     <TextView
         android:id="@+id/txt_personal_monthly_surplus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
         android:text="@string/placeholder"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_expenses"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/surplus_detailed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

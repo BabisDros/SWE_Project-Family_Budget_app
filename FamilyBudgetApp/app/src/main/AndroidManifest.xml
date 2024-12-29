@@ -29,6 +29,9 @@
         <activity
             android:name=".view.MoneyBox.AddMoneyBox.AddMoneyBoxActivity"
             android:exported="true"/>
+        <activity
+            android:name=".view.Budget.DetailedBudget.DetailedBudgetActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

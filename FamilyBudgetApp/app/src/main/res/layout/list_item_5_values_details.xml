@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/item_attribute2"
-        android:layout_width="120dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
@@ -25,7 +25,7 @@
 
     <TextView
         android:id="@+id/item_attribute3"
-        android:layout_width="120dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/item_attribute1"
-        android:layout_width="120dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
