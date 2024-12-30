@@ -12,32 +12,68 @@ public class RegisterPresenter extends BasePresenter<RegisterView>
 {
     UserDAO userDAO;
     FamilyDAO familyDAO;
+    boolean familyCreated = false;
 
+    /**
+     * Sets the User DAO.
+     * @param userDAO the {@link UserDAO} instance.
+     */
     public void setUserDAO(UserDAO userDAO)
     {
         this.userDAO = userDAO;
     }
 
+    /**
+     * Sets the Family DAO.
+     * @param familyDAO the {@link FamilyDAO} instance.
+     */
     public void setFamilyDAO(FamilyDAO familyDAO)
     {
         this.familyDAO = familyDAO;
     }
 
-    public void register(String username, String password, String displayName, String familyName)
+    /**
+     * Validates input data and saves the user and family.
+     * @param username the entered username.
+     * @param password the entered password.
+     * @param displayName the entered display name.
+     * @param familyName the entered family name.
+     */
+    public void register(java.lang.String username, java.lang.String password, java.lang.String displayName, java.lang.String familyName)
     {
-        if(!validateUsername(username)) return;
-        if(!validatePassword(password)) return;
-        if(!validateDisplayName(displayName)) return;
-        if(!validateFamilyName(familyName)) return;
+        if (!validateUsername(username)) return;
+        if (!validatePassword(password)) return;
+        if (!validateDisplayName(displayName)) return;
+        if (!validateFamilyName(familyName)) return;
 
         Family family = new Family(familyName);
+
         familyDAO.save(family);
-        User newUser = new User(displayName, username, password, FamPos.Protector, family);
+
+        User newUser;
+
+        if (!familyCreated)
+        {
+            familyCreated=true;
+            newUser = new User(displayName, username, password, FamPos.Protector, family);
+        }
+        else
+        {
+            newUser = new User(displayName, username, password, FamPos.Member, family);
+        }
+
         userDAO.save(family, newUser);
-        view.goToHomepage();
+
+        view.addMemberMessage("user: " + username + " added!", "Do you want to add a member?");
     }
 
-    public boolean validateUsername(String input)
+
+    /**
+     * Validates the entered username.
+     * @param input the username to be validated.
+     * @return {@code true} if the username is valid, otherwise {@code false}.
+     */
+    public boolean validateUsername(java.lang.String input)
     {
         if (!CommonStringValidations.isUsernameValid(input))
         {
@@ -54,17 +90,27 @@ public class RegisterPresenter extends BasePresenter<RegisterView>
         return true;
     }
 
-    public boolean validatePassword(String input)
+    /**
+     * Validates the entered password.
+     * @param input the password to be validated.
+     * @return {@code true} if the password is valid, otherwise {@code false}.
+     */
+    public boolean validatePassword(java.lang.String input)
     {
         if (!CommonStringValidations.isPasswordValid(input))
         {
             view.showErrorMessage("Wrong password format", "Password should be at least four numbers or letters without spaces.");
-            return  false;
+            return false;
         }
         return true;
     }
 
-    public boolean validateDisplayName(String input)
+    /**
+     * Validates the entered display name.
+     * @param input the display name to be validated.
+     * @return {@code true} if the display name is valid, otherwise {@code false}.
+     */
+    public boolean validateDisplayName(java.lang.String input)
     {
         if (!CommonStringValidations.isAlphanumericWithSpaces(input))
         {
@@ -75,7 +121,12 @@ public class RegisterPresenter extends BasePresenter<RegisterView>
         return true;
     }
 
-    public boolean validateFamilyName(String input)
+    /**
+     * Validates the entered family name.
+     * @param input the family name to be validated.
+     * @return {@code true} if the family name is valid, otherwise {@code false}.
+     */
+    public boolean validateFamilyName(java.lang.String input)
     {
         if (!CommonStringValidations.isAlphanumericWithSpaces(input))
         {
@@ -84,11 +135,6 @@ public class RegisterPresenter extends BasePresenter<RegisterView>
             return false;
         }
         return true;
-    }
-
-    public void clear()
-    {
-        this.view = null;
     }
 }
 

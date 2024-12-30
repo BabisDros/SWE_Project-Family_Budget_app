@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.view.authentication.register;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,7 +18,9 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
     private EditText passwordField;
     private EditText displayNameField;
     private EditText familyNameField;
+    private Button btnRegister;
 
+    AlertDialog.Builder addMemberDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,6 +32,7 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
         setupRegisterBtn();
         setEditTextsReferences();
         setEditTextsFocusListeners();
+        setupAddMemberDialog();
     }
 
     public void setEditTextsFocusListeners()
@@ -70,8 +75,8 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
 
     private void setupRegisterBtn()
     {
-        Button actionButton = findViewById(R.id.btn_register);
-        actionButton.setOnClickListener(v -> register());
+        btnRegister = findViewById(R.id.btn_register);
+        btnRegister.setOnClickListener(v -> register());
     }
 
     private void register()
@@ -103,6 +108,41 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
         return familyNameField.getText().toString().trim();
     }
 
+    @Override
+    public void addMemberMessage(String title, String message)
+    {
+        addMemberDialog.setTitle(title);
+        addMemberDialog.setMessage(message);
+        addMemberDialog.show();
+    }
+
+
+    private void setupAddMemberDialog()
+    {
+        addMemberDialog = new AlertDialog.Builder(RegisterActivity.this)
+                .setCancelable(true)
+                .setNegativeButton(R.string.no,(dialog, which)->onNoClicked())
+                .setPositiveButton(R.string.yes,(dialog, which)-> onYesClicked());
+    }
+
+    private void onNoClicked()
+    {
+        goToHomepage();
+    }
+
+    private void onYesClicked()
+    {
+        familyNameField.setEnabled(false);
+        btnRegister.setText("add member");
+        clearFields();
+    }
+
+    private void clearFields()
+    {
+        usernameField.setText("");
+        passwordField.setText("");;
+        displayNameField.setText("");;
+    }
     @Override
     public void goToHomepage()
     {
