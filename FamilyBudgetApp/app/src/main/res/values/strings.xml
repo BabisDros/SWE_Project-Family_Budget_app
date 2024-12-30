@@ -17,4 +17,10 @@
     <string name="save">Save</string>
     <string name="ok">OK</string>
     <string name="surplus_detailed">Detailed Surplus</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="display_name">Display name</string>
+    <string name="family_name">Family name</string>
 </resources>

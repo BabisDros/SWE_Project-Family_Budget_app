@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.memorydao;
 
 import com.android.familybudgetapp.dao.UserDAO;
+import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
 
 
@@ -23,13 +24,15 @@ public class UserDAOMemory implements UserDAO
     }
 
     @Override
-    public void save(User entity)
+    public void save(Family family,  User user)
     {
-        users.add(entity);
+        user.setFamily(family);
+        users.add(user);
+        family.addMember(user);
     }
 
     @Override
-    public User find(long userID)
+    public User findByID(long userID)
     {
         for (User user : users)
         {
@@ -40,4 +43,17 @@ public class UserDAOMemory implements UserDAO
         }
         return null;
     }
+
+    public User findByUsername(String username)
+    {
+        for (User user : users)
+        {
+            if (user.getUsername().equals(username))
+            {
+                return user;
+            }
+        }
+        return null;
+    }
+
 }

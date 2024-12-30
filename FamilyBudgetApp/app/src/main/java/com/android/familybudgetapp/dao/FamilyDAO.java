@@ -11,7 +11,7 @@ public interface FamilyDAO
      * @param familyID Family's ID.
      * @return Family or {@code null} if family doesn't exist.
      */
-    Family find(long familyID);
+    Family findByID(long familyID);
 
     /**
      * Saves a Family object to the external data source.

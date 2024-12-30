@@ -29,7 +29,7 @@ public class FamilyDAOMemory implements FamilyDAO
     }
 
     @Override
-    public Family find(long familyID)
+    public Family findByID(long familyID)
     {
         for (Family family : families)
         {

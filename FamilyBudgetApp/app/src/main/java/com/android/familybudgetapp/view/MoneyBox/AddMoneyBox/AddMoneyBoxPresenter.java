@@ -13,7 +13,7 @@ public class AddMoneyBoxPresenter {
     public AddMoneyBoxPresenter(AddMoneyBoxView view, UserDAO users)
     {
         this.view = view;
-        user = users.find(Initializer.currentUserID);
+        user = users.findByID(Initializer.currentUserID);
     }
 
     /**

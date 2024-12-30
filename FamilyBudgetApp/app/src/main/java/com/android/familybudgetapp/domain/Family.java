@@ -72,7 +72,8 @@ public class Family
         }
         else if (!CommonStringValidations.isAlphanumericWithSpaces(familyName))
         {
-            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
+            throw new IllegalArgumentException("Characters >= 3. First and last character alphanumerical. " +
+                    "Between them, alphanumerical or space.");
         }
         this.familyName = familyName;
     }

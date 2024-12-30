@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FamilyBudgetApp"
         >
         <activity
-            android:name='.view.HomePage.HomePageActivity'
+            android:name='.view.authentication.authOptions.AuthOptionsActivity'
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -25,6 +25,15 @@
             android:exported="true"/>
         <activity
             android:name=".view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.authentication.login.LoginActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.HomePage.HomePageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.authentication.register.RegisterActivity"
             android:exported="true"/>
         <activity
             android:name=".view.MoneyBox.AddMoneyBox.AddMoneyBoxActivity"

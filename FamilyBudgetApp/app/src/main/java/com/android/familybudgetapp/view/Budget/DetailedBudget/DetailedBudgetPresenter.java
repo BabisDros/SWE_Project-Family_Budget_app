@@ -7,7 +7,6 @@ import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.Quadruples;
-import com.android.familybudgetapp.view.Budget.CashFlowManager.CashFlowManager;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.CashFlowManagerInterface;
 import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class DetailedBudgetPresenter {
     private DetailedBudgetView view;
@@ -102,7 +100,7 @@ public class DetailedBudgetPresenter {
                 else
                 {
                     String category = cashFlow.getCategory().getName();
-                    String owner = userDAO.find(item.getKey()).getName();
+                    String owner = userDAO.findByID(item.getKey()).getName();
                     Integer amount = cashFlowManager.getAmount(cashFlow);
                     List<LocalDateTime> dateTimeList = new ArrayList<>();
                     dateTimeList.add(cashFlow.getDateStart());
@@ -112,7 +110,7 @@ public class DetailedBudgetPresenter {
                 }
             }
             if (stateSurplus) // reuse Quadruple recycler to show detailed surplus
-                myList.add(new Quadruples<>("", userDAO.find(item.getKey()).getName(), userSurplus, new ArrayList<>()));
+                myList.add(new Quadruples<>("", userDAO.findByID(item.getKey()).getName(), userSurplus, new ArrayList<>()));
         }
         return myList;
     }

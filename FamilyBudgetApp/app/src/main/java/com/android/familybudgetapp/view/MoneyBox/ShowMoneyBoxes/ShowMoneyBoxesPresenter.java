@@ -18,7 +18,7 @@ public class ShowMoneyBoxesPresenter {
     public ShowMoneyBoxesPresenter(ShowMoneyBoxesView view, UserDAO user)
     {
         this.view = view;
-        family = user.find(Initializer.currentUserID).getFamily();
+        family = user.findByID(Initializer.currentUserID).getFamily();
 
     }
 

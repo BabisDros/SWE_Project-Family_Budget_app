@@ -22,7 +22,7 @@ public class BudgetViewModel extends ViewModel {
         presenter = new BudgetPresenter();
         UserDAO userDAO = new UserDAOMemory();
         presenter.setUserDao(userDAO);
-        presenter.setCurrentUser(userDAO.find(Initializer.currentUserID));
+        presenter.setCurrentUser(userDAO.findByID(Initializer.currentUserID));
     }
 
     public BudgetPresenter getPresenter() {

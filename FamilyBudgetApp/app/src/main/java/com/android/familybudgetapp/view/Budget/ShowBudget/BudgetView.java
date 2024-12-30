@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.view.Budget.ShowBudget;
 
-public interface BudgetView {
+public interface BudgetView
+{
 
     void setSurplus(int amount);
 

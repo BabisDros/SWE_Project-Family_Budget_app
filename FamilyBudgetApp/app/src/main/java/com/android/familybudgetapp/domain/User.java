@@ -89,6 +89,10 @@ public class User {
         if (password == null) {
             throw new IllegalArgumentException("Password cannot be null.");
         }
+
+        if (!CommonStringValidations.isPasswordValid(username)) {
+            throw new IllegalArgumentException("Password should only consist of:At least 4 numbers or letters");
+        }
         this.password = password;
     }
 

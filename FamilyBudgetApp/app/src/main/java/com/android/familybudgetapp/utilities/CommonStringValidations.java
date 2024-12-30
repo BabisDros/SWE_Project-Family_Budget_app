@@ -10,6 +10,15 @@ public class CommonStringValidations
        return  name.matches("[a-zA-Z0-9][a-zA-Z0-9_]+");
     }
 
+
+    /**
+     * @param password Total characters at least 4. Alphanumerical.
+     */
+    public static boolean isPasswordValid(String password)
+    {
+        return  password.matches("[a-zA-Z0-9]{4,}");
+    }
+
     /**
      * @param name Characters >= 3. First and last character alphanumerical. Between them,
      *   alphanumerical or space.
@@ -18,4 +27,6 @@ public class CommonStringValidations
     {
         return  name.matches("[a-zA-Z0-9][a-zA-Z0-9 ]+[a-zA-Z0-9]");
     }
+
+
 }
