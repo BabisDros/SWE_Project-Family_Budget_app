@@ -71,4 +71,9 @@ public class BudgetRecyclerViewAdapter extends RecyclerView.Adapter<BudgetRecycl
 
     }
 
+    public void updateData(List<Tuples<String, Integer>> newData) {
+        this.mValues.clear();
+        this.mValues.addAll(newData);
+        notifyDataSetChanged();
+    }
 }

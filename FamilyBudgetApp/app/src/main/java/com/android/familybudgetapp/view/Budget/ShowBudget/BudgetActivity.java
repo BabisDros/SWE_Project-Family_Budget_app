@@ -1,8 +1,21 @@
 package com.android.familybudgetapp.view.Budget.ShowBudget;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,11 +23,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.domain.CashFlowCategory;
+import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.utilities.AmountConversion;
+import com.android.familybudgetapp.utilities.CommonStringValidations;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 public class BudgetActivity extends AppCompatActivity implements BudgetView {
     private BudgetViewModel vm;
@@ -29,6 +51,7 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
         findViewById(R.id.btn_date_range).setOnClickListener(v -> changeBudgetDateRange());
         findViewById(R.id.btn_view_group).setOnClickListener(v  -> changeBudgetViewGroup());
         findViewById(R.id.btn_back).setOnClickListener(v    -> goBack());
+        findViewById(R.id.add_cashflow).setOnClickListener(v -> addNewCashFlow());
         vm = new ViewModelProvider(this).get(BudgetViewModel.class);
         vm.getPresenter().setView(this);
 
@@ -126,6 +149,125 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
 
         startActivity(intent);
         this.finish();
+    }
+
+    private void addNewCashFlow() {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet_add_cashflow, null);
+
+        Map<String, CashFlowCategory> categories = vm.getPresenter().getCurrentUser().getFamily().getCashFlowCategories();
+        List<String> categoryNames = new ArrayList<>(categories.keySet());
+        Spinner categorySpinner = bottomSheetView.findViewById(R.id.category_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                categoryNames
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+
+        final EditText cashFlowAmountInput = bottomSheetView.findViewById(R.id.cashflow_value);
+        final CheckBox isRecurring = bottomSheetView.findViewById(R.id.checkbox_is_recurring);
+        final Spinner recurrenceSpinner = bottomSheetView.findViewById(R.id.recurrence_spinner);
+        final LinearLayout recurrencePeriodPicker = bottomSheetView.findViewById(R.id.recurrence_period_picker);
+        final LinearLayout dateEndPicker = bottomSheetView.findViewById(R.id.date_end_picker);
+
+        // Show or hide recurring date pickers based on checkbox selection
+        isRecurring.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                dateEndPicker.setVisibility(View.VISIBLE);
+                recurrencePeriodPicker.setVisibility(View.VISIBLE);
+            } else {
+                dateEndPicker.setVisibility(View.GONE);
+                recurrencePeriodPicker.setVisibility(View.GONE);
+            }
+        });
+
+        // Date Selectors
+        final Button startDateButton = bottomSheetView.findViewById(R.id.btn_start_date);
+        startDateButton.setOnClickListener(v -> {
+            showDatePicker(startDateButton);
+        });
+        final Button endDateButton = bottomSheetView.findViewById(R.id.btn_end_date);
+        endDateButton.setOnClickListener(v -> {
+            showDatePicker(endDateButton);
+        });
+
+        // Submit button to handle the data
+        Button submitButton = bottomSheetView.findViewById(R.id.btn_submit);
+        submitButton.setOnClickListener(v -> {
+
+            String cashFlowAmount = cashFlowAmountInput.getText().toString();
+
+            // Parse startDate
+            LocalDateTime dateStart = null;
+            String dateStartStr = startDateButton.getText().toString();
+            if (!dateStartStr.equals(getString(R.string.select_start_date))) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+                dateStart = LocalDateTime.parse(startDateButton.getText().toString() + " 00:00", formatter);
+            }
+
+            // Parse endDate
+            LocalDateTime dateEnd = null;
+            String dateEndStr = endDateButton.getText().toString();
+            if (!dateEndStr.equals(getString(R.string.select_end_date)) && isRecurring.isChecked()) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+                dateEnd = LocalDateTime.parse(endDateButton.getText().toString() + " 00:00", formatter);
+            }
+
+            int recurPeriodIdx = recurrenceSpinner.getSelectedItemPosition();
+            String categoryName = (String) categorySpinner.getSelectedItem();
+
+            String result = vm.getPresenter().addCashFlow(categoryName, cashFlowAmount,
+                    isRecurring.isChecked(), dateStart, dateEnd, recurPeriodIdx);
+
+            if (result.equals("0")) {
+                refreshData();
+                bottomSheetDialog.dismiss();
+                Toast.makeText(this, "Added new cash flow.", Toast.LENGTH_LONG).show();
+            }
+
+            else {
+                Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private void showDatePicker(Button buttonToUpdate) {
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            // Format the selected date as "day-month-year"
+            String selectedDate = String.format("%02d-%02d-%04d", dayOfMonth, month + 1, year);
+
+            // Update the button text with the selected date
+            buttonToUpdate.setText(selectedDate);
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+        datePickerDialog.show();
+    }
+
+    private void refreshData() {
+        // Update expenses list
+        List<Tuples<String, Integer>> updatedExpenses = getExpensePerCategory();
+        RecyclerView recyclerViewExpense = findViewById(R.id.recyclerView_expenses);
+        BudgetRecyclerViewAdapter expenseAdapter = (BudgetRecyclerViewAdapter) recyclerViewExpense.getAdapter();
+        if (expenseAdapter != null) {
+            expenseAdapter.updateData(updatedExpenses);
+        }
+
+        // Update income list
+        List<Tuples<String, Integer>> updatedIncome = getIncomePerCategory();
+        RecyclerView recyclerViewIncome = findViewById(R.id.recyclerView_income);
+        BudgetRecyclerViewAdapter incomeAdapter = (BudgetRecyclerViewAdapter) recyclerViewIncome.getAdapter();
+        if (incomeAdapter != null) {
+            incomeAdapter.updateData(updatedIncome);
+        }
+
+        // Update surplus
+        setSurplus();
     }
 
     /**

@@ -79,8 +79,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_expenses"
-        android:layout_width="185dp"
-        android:layout_height="380dp"
+        android:layout_width="184dp"
+        android:layout_height="320dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,8 +102,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_income"
-        android:layout_width="185dp"
-        android:layout_height="380dp"
+        android:layout_width="183dp"
+        android:layout_height="323dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,11 +111,21 @@
         app:layout_constraintStart_toEndOf="@+id/recyclerView_expenses"
         app:layout_constraintTop_toBottomOf="@+id/btn_personal_expenses" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_cashflow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add"
+        android:src="@drawable/add"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/txt_personal_monthly_surplus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="40dp"
         android:text="@string/placeholder"
         android:textSize="30sp"
