@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.Budget.ShowBudget;
+package com.android.familybudgetapp.view.Budget.DetailedBudget;
 
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
@@ -8,31 +8,29 @@ import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.monthlyManager;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.yearlyManager;
+import com.android.familybudgetapp.view.Budget.ShowBudget.cashFlowType;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
-public class BudgetViewModel extends ViewModel {
-    private BudgetPresenter presenter;
+public class DetailedBudgetViewModel extends ViewModel {
+    private DetailedBudgetPresenter presenter;
     private SavedStateHandle state;
 
-    public BudgetViewModel()
-    {
-        presenter = new BudgetPresenter();
+    DetailedBudgetViewModel(){
+        presenter = new DetailedBudgetPresenter();
         UserDAO userDAO = new UserDAOMemory();
         presenter.setUserDao(userDAO);
         presenter.setCurrentUser(userDAO.find(Initializer.currentUserID));
     }
 
-    public BudgetPresenter getPresenter() {
+    public DetailedBudgetPresenter getPresenter() {
         return presenter;
     }
 
-    public BudgetViewModel(SavedStateHandle savedStateHandle) {
+    public DetailedBudgetViewModel(SavedStateHandle savedStateHandle){
         this();
         state = savedStateHandle;
-
         if (state.contains("dateRange"))
         {
             if (state.get("dateRange").equals("Monthly"))
@@ -53,6 +51,17 @@ public class BudgetViewModel extends ViewModel {
         else
             throw new IllegalStateException("viewGroup was not given with Intent");
 
+        if (state.contains("type"))
+        {
+            if (state.get("type").equals("Expense"))
+                presenter.setType(cashFlowType.Expense);
+            else if (state.get("type").equals("Income"))
+                presenter.setType(cashFlowType.Income);
+            else if (state.get("type").equals("Surplus"))
+                presenter.setType(cashFlowType.Both);
+        }
+        else
+            throw new IllegalStateException("viewGroup was not given with Intent");
     }
 
     public SavedStateHandle getState()
@@ -60,48 +69,5 @@ public class BudgetViewModel extends ViewModel {
         return state;
     }
 
-    /**
-     * Called on new activity intent to update the dateRange Extra
-     */
-    public void changeToNextDateRange()
-    {
-        state.set("dateRange", getNextDateRange());
-    }
 
-    public String getNextDateRange()
-    {
-        switch ((String) Objects.requireNonNull(state.get("dateRange")))
-        {
-            case "Monthly":
-                return "Yearly";
-            case "Yearly":
-                return "Monthly";
-        }
-        throw new IllegalArgumentException((String) Objects.requireNonNull(state.get("dateRange")) + "is not acceptable");
-    }
-
-    /**
-     * Called on new activity intent to update the dateRange Extra
-     */
-    public void changeToNextViewGroup()
-    {
-        state.set("viewGroup", getNextViewGroup());
-    }
-
-    public String getNextViewGroup()
-    {
-        switch ((String) Objects.requireNonNull(state.get("viewGroup")))
-        {
-            case "Personal":
-                return "Family";
-            case "Family":
-                return "Personal";
-        }
-        throw new IllegalArgumentException((String) Objects.requireNonNull(state.get("viewGroup")) + "is not acceptable");
-    }
-
-    protected void onCleared()
-    {
-        super.onCleared();
-    }
 }
