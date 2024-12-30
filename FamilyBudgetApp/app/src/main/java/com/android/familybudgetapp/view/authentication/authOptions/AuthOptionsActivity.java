@@ -46,6 +46,10 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
         goToActivity(RegisterActivity.class);
     }
 
+    /**
+     * Helper method that finishes this activity and starts the provided activity.
+     * @param cls The class of the activity.
+     */
     private void goToActivity(Class<?> cls)
     {
         Intent intent = new Intent(this, cls);

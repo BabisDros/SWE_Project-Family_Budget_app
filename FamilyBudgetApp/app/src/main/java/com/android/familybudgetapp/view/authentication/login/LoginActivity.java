@@ -34,12 +34,18 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
         return new ViewModelProvider(this).get(LoginViewModel.class);
     }
 
+    /**
+     * Sets up the login button and its onClick listener.
+     */
     private void setupLoginBtn()
     {
         Button actionButton = findViewById(R.id.btn_register);
         actionButton.setOnClickListener(v -> login());
     }
 
+    /**
+     * Calls presenter's login method.
+     */
     private void login()
     {
         viewModel.getPresenter().login(getUsername(), getPassword());

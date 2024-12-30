@@ -15,7 +15,7 @@ public abstract class BaseViewModel<P extends BasePresenter<? extends BaseView>>
     }
 
     /**
-     * Creates and initializes the presenter.
+     * Creates, initializes the presenter and any associated DAO.
      *
      * @return The initialized presenter.
      */
