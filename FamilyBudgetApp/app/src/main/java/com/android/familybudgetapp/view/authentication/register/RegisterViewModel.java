@@ -19,16 +19,4 @@ public class RegisterViewModel extends BaseViewModel<RegisterPresenter>
         presenter.setFamilyDAO(familyDAO);
         return presenter;
     }
-
-    public RegisterPresenter getPresenter()
-    {
-        return presenter;
-    }
-
-    @Override
-    protected void onCleared()
-    {
-        super.onCleared();
-        presenter.clear();
-    }
 }

@@ -16,16 +16,4 @@ public class LoginViewModel extends BaseViewModel<LoginPresenter>
         presenter.setUserDAO(userDAO);
         return presenter;
     }
-
-    public LoginPresenter getPresenter()
-    {
-        return presenter;
-    }
-
-    @Override
-    protected void onCleared()
-    {
-        super.onCleared();
-        presenter.clear();
-    }
 }
