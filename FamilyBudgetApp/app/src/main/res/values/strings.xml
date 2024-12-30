@@ -16,6 +16,15 @@
     <string name="target_amount">Target amount\n(in cents)</string>
     <string name="save">Save</string>
     <string name="ok">OK</string>
+    <string name="add">add</string>
+    <string name="select_start_date">Select Start Date</string>
+    <string name="select_end_date">Select End Date</string>
+    <string-array name="recurrence_periods">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
     <string name="surplus_detailed">Detailed Surplus</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
