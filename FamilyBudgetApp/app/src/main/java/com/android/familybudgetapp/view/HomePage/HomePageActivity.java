@@ -13,8 +13,6 @@ import com.android.familybudgetapp.view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesAc
 
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
 
-    private static boolean initialized = false;
-
     /**
      * Current app homepage
      * Will be used as the starting point to go from activity to activity
@@ -33,12 +31,6 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
         findViewById(R.id.btn_detailed_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
         findViewById(R.id.btn_moneyboxes).setOnClickListener(v -> presenter.onMoneyBoxes());
-
-        if (!initialized)
-        {
-            new MemoryInitializer().prepareData();
-            initialized = true;
-        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.view.authentication.authOptions;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.memorydao.MemoryInitializer;
 import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.authentication.login.LoginActivity;
@@ -14,6 +15,8 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
     Button loginButton;
     Button registerButton;
 
+    private static boolean initialized = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -26,6 +29,12 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
 
         loginButton.setOnClickListener(v -> viewModel.getPresenter().onLoginButtonClicked());
         registerButton.setOnClickListener(v ->viewModel.getPresenter().onRegisterButtonClicked());
+
+        if (!initialized)
+        {
+            new MemoryInitializer().prepareData();
+            initialized = true;
+        }
     }
 
     @Override
