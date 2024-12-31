@@ -51,7 +51,7 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
         findViewById(R.id.btn_detailed_surplus).setOnClickListener(v -> showDetailedSurplus());
         findViewById(R.id.btn_date_range).setOnClickListener(v -> changeBudgetDateRange());
         findViewById(R.id.btn_view_group).setOnClickListener(v  -> changeBudgetViewGroup());
-        findViewById(R.id.btn_back).setOnClickListener(v    -> goBack());
+        findViewById(R.id.btn_back).setOnClickListener(v -> goBack());
         findViewById(R.id.add_cashflow).setOnClickListener(v -> addNewCashFlow());
         vm = new ViewModelProvider(this).get(BudgetViewModel.class);
         vm.getPresenter().setView(this);
@@ -73,7 +73,7 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
         title += "Budget";
         ((TextView)findViewById(R.id.budget_title_personal_text)).setText(title);
 
-        // recycler for expense, use different function based on state
+        // recycler for expense
         List<Tuples<String,Integer>> expensesList = getExpensePerCategory();
         RecyclerView recyclerViewExpense = findViewById(R.id.recyclerView_expenses);
         recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this));

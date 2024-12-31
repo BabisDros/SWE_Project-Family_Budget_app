@@ -28,20 +28,21 @@ public class MonthlySurplus
         {
             throw new IllegalArgumentException("YearMonth shouldn't be null");
         }
-        this.date = yearMonth.atEndOfMonth().atStartOfDay();;
+        this.date = yearMonth.atEndOfMonth().atStartOfDay();
     }
 
+    //Remove check, redundant and problematic since CashFlow refactoring
     public void addCashFlowToSurplus(CashFlow cashFlow)
     {
         if(cashFlow==null)
         {
             throw new IllegalArgumentException("CashFlow shouldn't be null");
         }
-        else if (!validateCashFlow(cashFlow))
-        {
-            throw new IllegalArgumentException("CashFlow date is less than current MonthlySurplus date");
-        }
-        this.surplus+=cashFlow.getAmount();
+//        else if (!validateCashFlow(cashFlow))
+//        {
+ //           throw new IllegalArgumentException("CashFlow date is less than current MonthlySurplus date");
+ //       }
+        this.surplus+=cashFlow.getMonthlyAmount(YearMonth.from(date));
     }
 
     public boolean validateCashFlow(CashFlow cashFlow)
@@ -70,6 +71,6 @@ public class MonthlySurplus
         {
             throw new IllegalArgumentException("CashFlow shouldn't be null");
         }
-        this.surplus-=cashFlow.getAmount();
+        this.surplus-=cashFlow.getMonthlyAmount(YearMonth.from(date));
     }
 }

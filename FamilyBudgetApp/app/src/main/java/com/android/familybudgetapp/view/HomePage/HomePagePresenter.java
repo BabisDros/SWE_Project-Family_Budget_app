@@ -28,4 +28,12 @@ public class HomePagePresenter {
     public void onMoneyBoxes() {
         view.moneyBoxes();
     }
+
+    /**
+     * When clicked on GlobalStatisticsActivity activity
+     * user is moved there from Home page
+     */
+    public void onStats(){
+        view.stats();
+    }
 }

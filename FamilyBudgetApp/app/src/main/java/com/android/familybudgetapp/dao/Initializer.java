@@ -7,12 +7,19 @@ import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.MoneyBox;
+import com.android.familybudgetapp.domain.MonthlySurplus;
 import com.android.familybudgetapp.domain.OneOff;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.domain.recurPeriod;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 public abstract class Initializer {
 
@@ -107,6 +114,10 @@ public abstract class Initializer {
         oneOff.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
         user1.addCashFlow(oneOff);
 
+        oneOff = new OneOff(600000, categoryIncome2, LocalDateTime.now());
+        oneOff.DebugSetDateStart(LocalDateTime.of(2023, 5, 20, 0, 0));
+        user1.addCashFlow(oneOff);
+
         //moneyboxes
         MoneyBox moneyBox1 = new MoneyBox("Laptop", 500);
         MoneyBox moneyBox2 = new MoneyBox("Drawing board", 200);
@@ -119,6 +130,7 @@ public abstract class Initializer {
         moneyBox1.addMoney(new Allowance(100, LocalDateTime.now()));
         moneyBox3.addMoney(new Allowance(800, LocalDateTime.now()));
 
+        calculateMonthlySurpluses();
 
     }
 
@@ -131,4 +143,44 @@ public abstract class Initializer {
      * @return DAO of every user
      */
     public abstract UserDAO getUserDAO();
+
+    /**
+     * Set the MonthlySurplus objects for each family
+     * Assume that all the surplus goes to their saving
+     */
+    private void calculateMonthlySurpluses(){
+        Optional<YearMonth> minDate;
+        // get earliest Date of a surplus of any family
+        for (Family family: getFamilyDAO().findAll())
+        {
+            List<CashFlow> cashFlows = new ArrayList<>();
+            for (User user: family.getMembers().values())
+                cashFlows.addAll(user.getCashFlows());
+
+            Optional<LocalDateTime> temp = cashFlows.stream().map(CashFlow::getDateStart).min(Comparator.naturalOrder());
+
+            if (temp.isEmpty()) continue;
+            YearMonth currentDate = YearMonth.from(temp.get());
+            while (!currentDate.isAfter(YearMonth.now())) // make every monthly surplus till this month
+            {
+                if (currentDate.getMonth().equals(Month.JANUARY))
+                    family.resetYearSavings();
+                MonthlySurplus monthlySurplus = new MonthlySurplus(currentDate);
+                for(CashFlow cashFlow: cashFlows)
+                {
+                    if (cashFlow.getCategory() instanceof Income)
+                        monthlySurplus.addCashFlowToSurplus(cashFlow);
+                    else if (cashFlow.getCategory() instanceof Expense)
+                        monthlySurplus.removeCashFlowFromSurplus(cashFlow);
+                }
+                family.addSurplus(monthlySurplus);
+                if (monthlySurplus.getSurplus() >= 0)
+                    family.addToSavings(monthlySurplus.getSurplus());
+                else
+                    family.removeFromSavings(Math.abs(monthlySurplus.getSurplus()));
+                currentDate = currentDate.plusMonths(1);
+            }
+
+        }
+    }
 }
