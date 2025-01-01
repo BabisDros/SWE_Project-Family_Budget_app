@@ -3,33 +3,26 @@ package com.android.familybudgetapp.view.Budget.ShowBudget;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.CashFlowCategory;
-import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.utilities.AmountConversion;
-import com.android.familybudgetapp.utilities.CommonStringValidations;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.DetailedBudget.DetailedBudgetActivity;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
+import com.android.familybudgetapp.view.base.BaseActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.time.LocalDateTime;
@@ -39,8 +32,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-public class BudgetActivity extends AppCompatActivity implements BudgetView {
+public class BudgetActivity extends BaseActivity<BudgetViewModel> implements BudgetView {
     private BudgetViewModel vm;
+
+    @Override
+    protected BudgetViewModel createViewModel()
+    {
+        return new ViewModelProvider(this).get(BudgetViewModel.class);
+    }
 
     protected void onCreate(Bundle savedInstanceSate)
     {
@@ -237,18 +236,12 @@ public class BudgetActivity extends AppCompatActivity implements BudgetView {
             int recurPeriodIdx = recurrenceSpinner.getSelectedItemPosition();
             String categoryName = (String) categorySpinner.getSelectedItem();
 
-            String result = vm.getPresenter().addCashFlow(categoryName, cashFlowAmount,
+            // Validate and add cash flow with presenter
+            vm.getPresenter().addCashFlow(categoryName, cashFlowAmount,
                     isRecurring.isChecked(), dateStart, dateEnd, recurPeriodIdx);
 
-            if (result.equals("0")) {
-                refreshData();
-                bottomSheetDialog.dismiss();
-                Toast.makeText(this, "Added new cash flow.", Toast.LENGTH_LONG).show();
-            }
-
-            else {
-                Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-            }
+            refreshData();
+            bottomSheetDialog.dismiss();
         });
 
         bottomSheetDialog.setContentView(bottomSheetView);
