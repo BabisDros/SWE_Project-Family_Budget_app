@@ -174,10 +174,13 @@ public abstract class Initializer {
                         monthlySurplus.removeCashFlowFromSurplus(cashFlow);
                 }
                 family.addSurplus(monthlySurplus);
-                if (monthlySurplus.getSurplus() >= 0)
-                    family.addToSavings(monthlySurplus.getSurplus());
-                else
-                    family.removeFromSavings(Math.abs(monthlySurplus.getSurplus()));
+                if (!currentDate.equals(YearMonth.now())) // do not add to savings for current month
+                {
+                    if (monthlySurplus.getSurplus() >= 0)
+                        family.addToSavings(monthlySurplus.getSurplus());
+                    else
+                        family.removeFromSavings(Math.abs(monthlySurplus.getSurplus()));
+                }
                 currentDate = currentDate.plusMonths(1);
             }
 
