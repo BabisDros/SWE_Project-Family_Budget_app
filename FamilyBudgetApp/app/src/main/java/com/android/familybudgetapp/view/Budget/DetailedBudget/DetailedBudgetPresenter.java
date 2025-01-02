@@ -109,8 +109,8 @@ public class DetailedBudgetPresenter {
                     myList.add(new Quadruples<>(category, owner, amount, dateTimeList));
                 }
             }
-            if (stateSurplus) // reuse Quadruple recycler to show detailed surplus
-                myList.add(new Quadruples<>("", userDAO.findByID(item.getKey()).getName(), userSurplus, new ArrayList<>()));
+            if (stateSurplus) // reuse Quadruple recycler to show detailed surplus, this order places them in the same line
+                myList.add(new Quadruples<>(userDAO.findByID(item.getKey()).getName(), "", userSurplus, new ArrayList<>()));
         }
         return myList;
     }

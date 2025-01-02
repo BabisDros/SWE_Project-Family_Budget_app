@@ -12,5 +12,15 @@ public interface HomePageView {
      */
     void personalBudget();
 
+    /**
+     * When clicked on ShowMoneyBoxesActivity activity
+     * user is moved there from Home page
+     */
     void moneyBoxes();
+
+    /**
+     * When clicked on GlobalStatisticsActivity activity
+     * user is moved there from Home page
+     */
+    void stats();
 }

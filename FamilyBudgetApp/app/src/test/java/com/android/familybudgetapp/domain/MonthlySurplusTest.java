@@ -12,7 +12,7 @@ public class MonthlySurplusTest
 {
 
     private  MonthlySurplus surplus;
-    private LocalDateTime date= YearMonth.now().atEndOfMonth().atStartOfDay();;
+    private LocalDateTime date= YearMonth.now().atEndOfMonth().atStartOfDay();
     private YearMonth yearMonth=YearMonth.now();
 
     @Before
@@ -42,6 +42,10 @@ public class MonthlySurplusTest
         CashFlow cashFlow=new OneOff(10,new Income("test"),date.plusMonths(1));
         surplus.addCashFlowToSurplus(cashFlow);
 
+        assertEquals(0,surplus.getSurplus());
+
+        cashFlow=new OneOff(10,new Income("test"),yearMonth.atDay(10).atStartOfDay());
+        surplus.addCashFlowToSurplus(cashFlow);
         assertEquals(cashFlow.getAmount(),surplus.getSurplus());
     }
 

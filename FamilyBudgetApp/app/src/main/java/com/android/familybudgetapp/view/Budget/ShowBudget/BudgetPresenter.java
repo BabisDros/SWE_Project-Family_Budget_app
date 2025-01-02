@@ -10,11 +10,11 @@ import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.domain.recurPeriod;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.CashFlowManagerInterface;
-
+import com.android.familybudgetapp.view.base.BasePresenter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class BudgetPresenter {
+public class BudgetPresenter extends BasePresenter<BudgetView> {
     private BudgetView view;
     private UserDAO userDAO;
     private CashFlowManagerInterface cashFlowManager;
@@ -60,27 +60,30 @@ public class BudgetPresenter {
         return cashFlowManager.CalculateSurplus();
     }
 
-    public String addCashFlow(String categoryName, String cashFlowValue,
+    public void addCashFlow(String categoryName, String cashFlowValue,
                               boolean isRecurring, LocalDateTime dateStart, LocalDateTime dateEnd,
                               int recurrencePeriodIdx) {
 
         // category
         if (categoryName.isEmpty()) {
-            return "Please select a category.";
+            view.showErrorMessage("Error", "Please select a category.");
+            return;
         }
         CashFlowCategory category = getCurrentUser().getFamily().getCashFlowCategories().get(categoryName);
 
         // amount
         if (cashFlowValue.isEmpty() || cashFlowValue.startsWith(".") ||
                 cashFlowValue.endsWith(".") || cashFlowValue.equals("0")) {
-            return "Please enter a valid amount.";
+            view.showErrorMessage("Error", "Please enter a valid amount.");
+            return;
         }
         double euroValue = Double.parseDouble(cashFlowValue);
         int centsValue = (int) (euroValue * 100);
 
         // date start
         if (!CashFlow.validateDateStart(dateStart)) {
-            return "Invalid start date";
+            view.showErrorMessage("Error", "Please enter a valid start date.");
+            return;
         }
 
         // recurrence period
@@ -91,14 +94,13 @@ public class BudgetPresenter {
         if (isRecurring) {
             // date end
             if (!Repeating.validateDateEnd(dateStart, dateEnd)) {
-                return "Invalid end date";
+                view.showErrorMessage("Error", "Please enter a valid end date.");
+                return;
             }
             newCashFlow = new Repeating(centsValue, category, dateStart, dateEnd, period);
         } else {
             newCashFlow = new OneOff(centsValue, category, dateStart);
         }
-
         currentUser.addCashFlow(newCashFlow);
-        return "0";
     }
 }
