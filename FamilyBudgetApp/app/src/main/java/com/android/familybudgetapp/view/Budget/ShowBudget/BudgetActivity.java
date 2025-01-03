@@ -141,7 +141,6 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
     private void setSurplus()
     {
         int surplus = vm.getPresenter().calculateSurplus();
-        vm.getPresenter().updateFamilySurplus(surplus);
         setSurplus(surplus);
     }
     @Override

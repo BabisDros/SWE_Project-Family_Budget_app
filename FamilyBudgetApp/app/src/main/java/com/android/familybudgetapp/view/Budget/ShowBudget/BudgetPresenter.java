@@ -66,9 +66,12 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         return cashFlowManager.CalculateSurplus();
     }
 
-    public void updateFamilySurplus(int surplus) {
-        UserRetrievalStrategy strategy = cashFlowManager.getUserRetrievalStrategy();
-        if (cashFlowManager instanceof monthlyManager && strategy instanceof FamilyUserStrategy) {
+    public int calculateSurplus(UserRetrievalStrategy strategy)
+    {
+        return cashFlowManager.CalculateSurplus(strategy);
+    }
+    public void updateFamilySurplus(int surplus, UserRetrievalStrategy strategy) {
+        if (cashFlowManager instanceof monthlyManager) {
             Family family = ((FamilyUserStrategy) strategy).getFamily();
 
             // Update or create a new MonthlySurplus for the family object
@@ -122,5 +125,7 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
             newCashFlow = new OneOff(centsValue, category, dateStart);
         }
         currentUser.addCashFlow(newCashFlow);
+        UserRetrievalStrategy strategy = new FamilyUserStrategy(currentUser.getFamily());
+        updateFamilySurplus(calculateSurplus(strategy), strategy);
     }
 }
