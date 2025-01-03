@@ -35,8 +35,5 @@ public interface RegisterView extends BaseView
      */
     void addMemberMessage(String title,String message);
 
-    /**
-     * Changes Activity to Homepage.
-     */
-    void goToHomepage();
+    void goToMemberManagement(long familyId);
 }
