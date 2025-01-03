@@ -13,6 +13,9 @@ public class FamilyUserStrategy implements UserRetrievalStrategy {
         this.family = family;
     }
 
+    public Family getFamily() {
+        return family;
+    }
     @Override
     public List<User> getUsers() {
         return new ArrayList<>(family.getMembers().values());

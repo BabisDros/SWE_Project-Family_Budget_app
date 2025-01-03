@@ -32,6 +32,11 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
         userRetrievalStrategy = strategy;
     }
 
+    public UserRetrievalStrategy getUserRetrievalStrategy()
+    {
+        return userRetrievalStrategy;
+    }
+
     /**
      * @return Current surplus of CashFlows of range inDateRange
      */
