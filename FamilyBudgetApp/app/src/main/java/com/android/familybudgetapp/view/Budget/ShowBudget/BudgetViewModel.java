@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel;
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
+import com.android.familybudgetapp.view.Budget.CashFlowManager.FamilyUserStrategy;
+import com.android.familybudgetapp.view.Budget.CashFlowManager.PersonalUserStrategy;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.monthlyManager;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.yearlyManager;
 
@@ -46,9 +48,11 @@ public class BudgetViewModel extends ViewModel {
         if (state.contains("viewGroup"))
         {
             if (state.get("viewGroup").equals("Personal"))
-                presenter.getCashFlowManager().setUsers(new ArrayList<>(Collections.singletonList(presenter.getCurrentUser())));
+                presenter.getCashFlowManager().setUserRetrievalStrategy(
+                        new PersonalUserStrategy(presenter.getCurrentUser()));
             else
-                presenter.getCashFlowManager().setUsers(new ArrayList<>(presenter.getCurrentUser().getFamily().getMembers().values()));
+                presenter.getCashFlowManager().setUserRetrievalStrategy(
+                        new FamilyUserStrategy(presenter.getCurrentUser().getFamily()));
         }
         else
             throw new IllegalStateException("viewGroup was not given with Intent");

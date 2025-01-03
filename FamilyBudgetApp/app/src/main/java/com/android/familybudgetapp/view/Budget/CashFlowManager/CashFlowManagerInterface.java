@@ -13,7 +13,7 @@ public interface CashFlowManagerInterface {
 
     int CalculateSurplus();
 
-    void setUsers(List<User> users);
+    void setUserRetrievalStrategy(UserRetrievalStrategy strategy);
 
     List<Tuples<String, Integer>> CalculateAmountPerCategory(cashFlowType type);
 
