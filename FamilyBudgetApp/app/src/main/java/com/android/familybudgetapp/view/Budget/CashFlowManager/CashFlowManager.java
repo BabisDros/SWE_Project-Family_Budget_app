@@ -58,27 +58,6 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return Current surplus of CashFlows of range inDateRange from users in strategy
-     */
-    public int CalculateSurplus(UserRetrievalStrategy strategy) {
-        int total = 0;
-        for (User user: strategy.getUsers())
-        {
-            for(CashFlow cashFlow: user.getCashFlows())
-            {
-                if (!inDateRange(cashFlow))
-                    continue;
-                if (cashFlow.getCategory() instanceof Income)
-                    total+=getAmountForRange(cashFlow);
-                else
-                    total-=getAmountForRange(cashFlow);
-            }
-        }
-        return total;
-    }
-
-
-    /**
      * @param type enumeration of Income or Expense
      * @return list of cashFlows per user corresponding to the current month
      */

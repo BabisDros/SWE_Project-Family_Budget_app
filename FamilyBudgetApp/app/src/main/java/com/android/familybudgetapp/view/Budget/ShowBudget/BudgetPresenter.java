@@ -24,6 +24,7 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
     private BudgetView view;
     private UserDAO userDAO;
     private CashFlowManagerInterface cashFlowManager;
+    private monthlyManager familyMonthlySurplusManager;
     private User currentUser;
 
 
@@ -48,6 +49,14 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         return cashFlowManager;
     }
 
+    public void setFamilyMonthlySurplusManager(monthlyManager manager) {
+        this.familyMonthlySurplusManager = manager;
+    }
+
+    public CashFlowManagerInterface getFamilyMonthlySurplusManager() {
+        return familyMonthlySurplusManager;
+    }
+
     public User getCurrentUser() {
         return currentUser;
     }
@@ -66,20 +75,16 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         return cashFlowManager.CalculateSurplus();
     }
 
-    public int calculateSurplus(UserRetrievalStrategy strategy)
+    public void updateFamilySurplus(int surplus)
     {
-        return cashFlowManager.CalculateSurplus(strategy);
-    }
-    public void updateFamilySurplus(int surplus, UserRetrievalStrategy strategy) {
-        if (cashFlowManager instanceof monthlyManager) {
-            Family family = ((FamilyUserStrategy) strategy).getFamily();
+        FamilyUserStrategy strategy = (FamilyUserStrategy) familyMonthlySurplusManager.getUserRetrievalStrategy();
+        Family family = strategy.getFamily();
 
-            // Update or create a new MonthlySurplus for the family object
-            YearMonth currentMonth = YearMonth.now();
-            MonthlySurplus monthlySurplusObj = family.getMonthlySurpluses().putIfAbsent(currentMonth, new MonthlySurplus(currentMonth, surplus));
-            if (monthlySurplusObj != null) {
-                monthlySurplusObj.setSurplus(surplus);
-            }
+        // Update or create a new MonthlySurplus for the family object
+        YearMonth currentMonth = YearMonth.now();
+        MonthlySurplus monthlySurplusObj = family.getMonthlySurpluses().putIfAbsent(currentMonth, new MonthlySurplus(currentMonth, surplus));
+        if (monthlySurplusObj != null) {
+            monthlySurplusObj.setSurplus(surplus);
         }
     }
 
@@ -125,7 +130,6 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
             newCashFlow = new OneOff(centsValue, category, dateStart);
         }
         currentUser.addCashFlow(newCashFlow);
-        UserRetrievalStrategy strategy = new FamilyUserStrategy(currentUser.getFamily());
-        updateFamilySurplus(calculateSurplus(strategy), strategy);
+        updateFamilySurplus(familyMonthlySurplusManager.CalculateSurplus());
     }
 }

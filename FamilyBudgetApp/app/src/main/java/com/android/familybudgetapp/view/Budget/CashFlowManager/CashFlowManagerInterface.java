@@ -11,7 +11,6 @@ import java.util.Map;
 
 public interface CashFlowManagerInterface {
 
-    int CalculateSurplus(UserRetrievalStrategy strategy);
     int CalculateSurplus();
 
     void setUserRetrievalStrategy(UserRetrievalStrategy strategy);

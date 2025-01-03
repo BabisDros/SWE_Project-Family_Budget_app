@@ -34,6 +34,9 @@ public class BudgetViewModel extends ViewModel {
     public BudgetViewModel(SavedStateHandle savedStateHandle) {
         this();
         state = savedStateHandle;
+        presenter.setFamilyMonthlySurplusManager(new monthlyManager());
+        presenter.getFamilyMonthlySurplusManager().setUserRetrievalStrategy(
+                new FamilyUserStrategy(presenter.getCurrentUser().getFamily()));
 
         if (state.contains("dateRange"))
         {
