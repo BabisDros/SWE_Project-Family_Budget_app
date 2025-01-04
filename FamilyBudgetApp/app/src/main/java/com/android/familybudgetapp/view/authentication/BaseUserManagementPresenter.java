@@ -8,7 +8,7 @@ import com.android.familybudgetapp.utilities.CommonStringValidations;
 import com.android.familybudgetapp.view.base.BasePresenter;
 import com.android.familybudgetapp.view.base.BaseView;
 
-public class BaseUserManagementPresenter<V extends BaseView> extends BasePresenter<V>
+public abstract class BaseUserManagementPresenter<V extends BaseView> extends BasePresenter<V>
 {
     protected UserDAO userDAO;
     protected FamilyDAO familyDAO;
@@ -48,14 +48,11 @@ public class BaseUserManagementPresenter<V extends BaseView> extends BasePresent
                     " First character letter or number. Others letter, number or underscore");
             return false;
         }
-
-        if (userDAO.findByUsername(input) != null)
-        {
-            view.showErrorMessage("Username already exists", "Please choose a different username.");
-            return false;
-        }
-        return true;
+        return validateUsernameUniqueness(input);
     }
+
+
+    public abstract boolean validateUsernameUniqueness(String input);
 
     /**
      * Validates the entered password.

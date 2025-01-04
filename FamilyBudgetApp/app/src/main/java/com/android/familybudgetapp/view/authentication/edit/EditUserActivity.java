@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.authentication.BaseUserManagementActivity;
+import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
 
 public class EditUserActivity extends BaseUserManagementActivity<EditUserViewModel> implements EditUserView
 {
@@ -81,5 +82,13 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     public void disableFamilyField()
     {
         familyNameField.setEnabled(false);
+    }
+
+    @Override
+    public void goToMemberManagementActivity()
+    {
+        Intent intent = new Intent(this, MembersManagementActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

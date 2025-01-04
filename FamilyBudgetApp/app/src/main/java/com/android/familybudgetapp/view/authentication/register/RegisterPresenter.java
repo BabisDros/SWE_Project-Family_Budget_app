@@ -30,20 +30,33 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
             familyDAO.save(family);
             newUser = new User(displayName, username, password, FamPos.Protector, family);
             protector = newUser;
+
+            //when registering the currentUserID should be the protector's
+            Initializer.currentUserID = newUser.getID();
         }
         else
         {
             newUser = new User(displayName, username, password, FamPos.Member, family);
         }
 
-        Initializer.currentUserID = newUser.getID();
         userDAO.save(family, newUser);
         view.showAddMemberMessage("user: " + username + " added!", "Do you want to add a member?");
     }
 
     public void onNoClicked()
     {
-        view.goToMemberManagement(protector.getFamily().getID());
+        view.goToMemberManagement();
+    }
+
+    @Override
+    public boolean validateUsernameUniqueness(String input)
+    {
+        if (userDAO.findByUsername(input) != null)
+        {
+            view.showErrorMessage("Username already exists", "Please choose a different username.");
+            return false;
+        }
+        return true;
     }
 }
 

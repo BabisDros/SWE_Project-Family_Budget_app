@@ -5,10 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_btn_addMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_members"
-        android:layout_width="374dp"
-        android:layout_height="809dp"
+        android:layout_width="299dp"
+        android:layout_height="803dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"

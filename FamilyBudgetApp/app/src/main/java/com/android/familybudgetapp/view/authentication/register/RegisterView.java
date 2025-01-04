@@ -35,5 +35,5 @@ public interface RegisterView extends BaseView
      */
     void showAddMemberMessage(String title, String message);
 
-    void goToMemberManagement(long familyId);
+    void goToMemberManagement();
 }

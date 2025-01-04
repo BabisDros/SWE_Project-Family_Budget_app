@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.view.membersManagement;
 
 import com.android.familybudgetapp.dao.FamilyDAO;
+import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
@@ -14,10 +15,11 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 {
     FamilyDAO familyDAO;
     UserDAO userDAO;
-    User user;
+    User userToDelete;
 
-    //cache members list because map does not guaranty order
+    //cache membersList at every session, because MAP does not guaranty order
     List<User> members;
+
     /**
      * Sets the Family DAO.
      *
@@ -40,7 +42,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     public void onDeleteMember(User user)
     {
-        this.user=user;
+        this.userToDelete = user;
         if (user.getFamilyPosition().equals(FamPos.Protector))
         {
             view.showDeleteAccountMessage("Caution", "Deleting Protector User:"
@@ -54,12 +56,14 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
         }
     }
 
-
-    public void searchFamilyMembers(long familyId)
+    public void searchFamilyMembers()
     {
-        if (familyId != -1)
+        User currentUser = userDAO.findByID(Initializer.currentUserID);
+        Family currentFamily = familyDAO.findByID(currentUser.getFamily().getID());
+
+        if (currentFamily != null)
         {
-            members = new ArrayList<>(familyDAO.findByID(familyId).getMembers().values());
+            members = new ArrayList<>(currentFamily.getMembers().values());
             if (!members.isEmpty())
             {
                 view.populateMembersRecyclerView(members);
@@ -73,9 +77,9 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     public void onDeleteAccount()
     {
-        if(user!=null)
+        if (userToDelete != null)
         {
-            Family family = user.getFamily();
+            Family family = userToDelete.getFamily();
             for (User member : family.getMembers().values())
             {
                 userDAO.delete(member);

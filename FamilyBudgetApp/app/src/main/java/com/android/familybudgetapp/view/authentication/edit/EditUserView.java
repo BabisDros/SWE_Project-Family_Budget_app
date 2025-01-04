@@ -14,4 +14,6 @@ public interface EditUserView extends BaseView
     void setFamilyNameField(String familyName);
 
     void disableFamilyField();
+
+    void goToMemberManagementActivity();
 }

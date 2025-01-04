@@ -7,17 +7,17 @@ import com.android.familybudgetapp.view.authentication.BaseUserManagementPresent
 public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {
 
-    User user;
+    User userToEdit;
 
     public void setUserData(long userId)
     {
-        user = userDAO.findByID(userId);
-        view.setUsernameField(user.getUsername());
-        view.setPasswordField(user.getPassword());
-        view.setDisplayNameField(user.getName());
-        view.setFamilyNameField(user.getFamily().getName());
+        userToEdit = userDAO.findByID(userId);
+        view.setUsernameField(userToEdit.getUsername());
+        view.setPasswordField(userToEdit.getPassword());
+        view.setDisplayNameField(userToEdit.getName());
+        view.setFamilyNameField(userToEdit.getFamily().getName());
 
-        if (user.getFamilyPosition() == FamPos.Member)
+        if (userToEdit.getFamilyPosition() == FamPos.Member)
         {
             view.disableFamilyField();
         }
@@ -30,9 +30,34 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         if (!validateDisplayName(displayName)) return;
         if (!validateFamilyName(familyName)) return;
 
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setName(displayName);
-        user.getFamily().setName(familyName);
+        if(!familyName.equals(userToEdit.getFamily().getName()))
+        {
+            updateMembersFamilyName(familyName);
+        }
+
+        userToEdit.setUsername(username);
+        userToEdit.setPassword(password);
+        userToEdit.setName(displayName);
+        userToEdit.getFamily().setName(familyName);
+
+        view.goToMemberManagementActivity();
+    }
+
+    private void updateMembersFamilyName(String newFamilyName)
+    {
+        for(User user: userToEdit.getFamily().getMembers().values())
+        {
+            user.getFamily().setName(newFamilyName);
+        }
+    }
+    @Override
+    public boolean validateUsernameUniqueness(String input)
+    {
+        User userWithSameName = userDAO.findByUsername(input);
+        if (userWithSameName != null && !userWithSameName.equals(userToEdit))
+        {
+            return false;
+        }
+        return true;
     }
 }

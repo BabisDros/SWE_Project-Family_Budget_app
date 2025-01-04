@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,17 +14,19 @@ import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 import com.android.familybudgetapp.view.authentication.edit.EditUserActivity;
+import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MembersManagementActivity extends BaseActivity<MembersManagementViewModel>
         implements MembersManagementView, MemberRecyclerViewAdapter.MemberSelectionListener
 {
-    public static final String FAMILY_ID_EXTRA = "family_id";
     public static final String USER_ID_EXTRA = "user_id";
     MemberRecyclerViewAdapter recyclerViewAdapter;
     AlertDialog.Builder deleteAccountDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,11 +37,10 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         viewModel.getPresenter().setView(this);
 
         setupHomepageBtn();
-        Intent intent = getIntent();
-        long familyId = intent.getLongExtra(FAMILY_ID_EXTRA, -1);
 
-        viewModel.getPresenter().searchFamilyMembers(familyId);
+        viewModel.getPresenter().searchFamilyMembers();
         setupDeleteAccountDialog();
+        setupFloatBtnAddMember();
     }
 
     private void setupHomepageBtn()
@@ -49,6 +49,11 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         btnHomepage.setOnClickListener(v-> goToHomepage());
     }
 
+    private void setupFloatBtnAddMember()
+    {
+        FloatingActionButton btnAddMember = findViewById(R.id.float_btn_addMember);
+        btnAddMember.setOnClickListener(v-> goToAddMember());
+    }
 
     @Override
     public void populateMembersRecyclerView(List<User> members)
@@ -117,9 +122,17 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
                 .show();
     }
 
-    public void goToHomepage()
+    private void goToHomepage()
     {
         Intent intent = new Intent(this, HomePageActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToAddMember()
+    {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        intent.putExtra(RegisterActivity.MODE_EXTRA,RegisterActivity.ADD_MEMBER_EXTRA);
         startActivity(intent);
         finish();
     }
