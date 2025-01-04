@@ -90,11 +90,11 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     public void navigateToRegister()
     {
-        view.goToHomepageActivity();
+        view.goToRegisterActivity();
     }
 
     public void navigateToHomepage()
     {
-        view.goToRegisterActivity();
+        view.goToHomepageActivity();
     }
 }

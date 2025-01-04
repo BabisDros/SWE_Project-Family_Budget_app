@@ -114,7 +114,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     @Override
     public void exitApp()
     {
-        finish();
+        finishAffinity();
     }
 
     @Override

@@ -37,5 +37,5 @@ public interface RegisterView extends BaseView
 
     void goToMemberManagement();
 
-    void setupToAddMemberMode();
+    void setupUIToAddMemberMode(String familyName);
 }

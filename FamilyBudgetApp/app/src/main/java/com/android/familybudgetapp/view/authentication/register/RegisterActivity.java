@@ -20,15 +20,16 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        viewModel.getPresenter().setView(this);
 
         Intent intent = getIntent();
         String mode = intent.getStringExtra(MODE_EXTRA);
 
         if (mode != null && mode.equals(ADD_MEMBER_EXTRA))
         {
-            setupToAddMemberMode();
+            viewModel.getPresenter().enableAddMemberMode();
         }
-        viewModel.getPresenter().setView(this);
+
         setupAddMemberDialog();
     }
 
@@ -69,8 +70,9 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     }
 
     @Override
-    public void setupToAddMemberMode()
+    public void setupUIToAddMemberMode(String familyName)
     {
+        familyNameField.setText(familyName);
         familyNameField.setEnabled(false);
         btnAction.setText(R.string.add_member);
         clearFields();

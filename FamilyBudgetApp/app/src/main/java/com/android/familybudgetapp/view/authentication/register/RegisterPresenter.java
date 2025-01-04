@@ -10,6 +10,7 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
 {
     /**
      * Validates input data and saves the user and family.
+     *
      * @param username    the entered username.
      * @param password    the entered password.
      * @param displayName the entered display name.
@@ -30,7 +31,7 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
             newUser = new User(displayName, username, password, FamPos.Protector, family);
             protector = newUser;
 
-            //when registering the currentUserID should be the protector's
+            //when registering, the currentUserID should be the protector's
             Initializer.currentUserID = newUser.getID();
         }
         else
@@ -60,7 +61,10 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
 
     public void enableAddMemberMode()
     {
-        view.setupToAddMemberMode();
+        protector = userDAO.findByID(Initializer.currentUserID);
+        family = protector.getFamily();
+        String familyName = protector.getFamily().getName();
+        view.setupUIToAddMemberMode(familyName);
     }
 }
 
