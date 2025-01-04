@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.utilities;
 
+import java.util.Objects;
+
 /** Group 4 generic variables
  * @param <T1>
  * @param <T2>
@@ -58,5 +60,16 @@ public class Quadruples<T1,T2,T3,T4> {
     public T4 getFourth()
     {
         return val4;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quadruples<T1, T2, T3, T4> other = (Quadruples<T1, T2, T3, T4>) o;
+        return Objects.equals(getFirst(), other.getFirst()) &&
+                Objects.equals(getSecond(), other.getSecond()) &&
+                Objects.equals(getThird(), other.getThird()) &&
+                Objects.equals(getFourth(), other.getFourth());
     }
 }
