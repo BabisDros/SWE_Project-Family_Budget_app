@@ -1,7 +1,5 @@
 package com.android.familybudgetapp.view.authentication.login;
 
-import androidx.lifecycle.ViewModel;
-
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
 import com.android.familybudgetapp.view.base.BaseViewModel;

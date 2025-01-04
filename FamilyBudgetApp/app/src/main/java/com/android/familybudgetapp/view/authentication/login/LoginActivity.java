@@ -64,9 +64,11 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     @Override
-    public void goToHomepage()
+    public void goToHomepage(String famPos)
     {
         Intent intent = new Intent(this, HomePageActivity.class);
+        intent.putExtra(HomePageActivity.MODE_EXTRA, famPos);
+
         startActivity(intent);
         finish();
     }

@@ -3,8 +3,6 @@ package com.android.familybudgetapp.memorydao;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
-
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,9 +10,10 @@ public class UserDAOMemory implements UserDAO
 {
     protected static Set<User> users = new HashSet<>();
     @Override
-    public void delete(User entity)
+    public void delete(User user)
     {
-        users.remove(entity);
+        user.getFamily().removeMember(user);
+        users.remove(user);
     }
 
     @Override
@@ -26,9 +25,9 @@ public class UserDAOMemory implements UserDAO
     @Override
     public void save(Family family,  User user)
     {
+        family.addMember(user);
         user.setFamily(family);
         users.add(user);
-        family.addMember(user);
     }
 
     @Override
@@ -55,5 +54,4 @@ public class UserDAOMemory implements UserDAO
         }
         return null;
     }
-
 }

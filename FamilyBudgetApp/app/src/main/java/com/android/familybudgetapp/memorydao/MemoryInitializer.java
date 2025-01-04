@@ -16,7 +16,6 @@ public class MemoryInitializer extends Initializer {
             getFamilyDAO().delete(family);
     }
 
-
     public UserDAO getUserDAO()
     {
         return new UserDAOMemory();

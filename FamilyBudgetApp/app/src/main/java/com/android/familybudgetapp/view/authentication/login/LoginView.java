@@ -19,5 +19,5 @@ public interface LoginView extends BaseView
     /**
      * Changes Activity to Homepage.
      */
-    void goToHomepage();
+    void goToHomepage(String famPos);
 }
