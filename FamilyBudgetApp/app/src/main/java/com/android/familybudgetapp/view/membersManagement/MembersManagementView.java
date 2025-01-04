@@ -14,4 +14,8 @@ public interface MembersManagementView extends BaseView
     void showDeleteAccountMessage(String title, String message);
 
     void exitApp();
+
+    void goToHomepageActivity();
+
+    void goToRegisterActivity();
 }

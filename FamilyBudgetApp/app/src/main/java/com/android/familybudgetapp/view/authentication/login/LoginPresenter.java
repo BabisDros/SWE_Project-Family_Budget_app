@@ -9,10 +9,8 @@ public class LoginPresenter extends BasePresenter<LoginView>
 {
     UserDAO userDAO;
 
-
     /**
      * Sets the User DAO.
-     *
      * @param userDAO the {@link UserDAO} instance.
      */
     public void setUserDAO(UserDAO userDAO)
@@ -22,7 +20,6 @@ public class LoginPresenter extends BasePresenter<LoginView>
 
     /**
      * Checks the user's credentials and logs them in if valid.
-     *
      * @param username the entered username.
      * @param password the entered password.
      */

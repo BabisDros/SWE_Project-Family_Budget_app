@@ -14,7 +14,7 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
 {
     AlertDialog.Builder addMemberDialog;
     public static final String MODE_EXTRA = "mode";
-    public static final String ADD_MEMBER_EXTRA = "mode";
+    public static final String ADD_MEMBER_EXTRA = "add_member";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +26,7 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
 
         if (mode != null && mode.equals(ADD_MEMBER_EXTRA))
         {
-            addMemberMode();
+            setupToAddMemberMode();
         }
         viewModel.getPresenter().setView(this);
         setupAddMemberDialog();
@@ -38,33 +38,11 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
         return new ViewModelProvider(this).get(RegisterViewModel.class);
     }
 
-    @Override
-    protected void validateUsername()
-    {
-        viewModel.getPresenter().validateUsername(getUsername());
-    }
-
-    @Override
-    protected void validatePassword()
-    {
-        viewModel.getPresenter().validatePassword(getPassword());
-    }
-
-    @Override
-    protected void validateDisplayName()
-    {
-        viewModel.getPresenter().validateDisplayName(getDisplayName());
-    }
-
+    //region $UI elements setup
     @Override
     protected void setupActionBtn()
     {
-        btnAction.setOnClickListener(v -> register());
-    }
-
-    private void register()
-    {
-        viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
+        btnAction.setOnClickListener(v -> registerClicked());
     }
 
     @Override
@@ -79,15 +57,8 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     {
         addMemberDialog = new AlertDialog.Builder(RegisterActivity.this)
                 .setCancelable(true)
-                .setNegativeButton(R.string.no, (dialog, which) -> viewModel.getPresenter().onNoClicked())
-                .setPositiveButton(R.string.yes, (dialog, which) -> addMemberMode());
-    }
-
-    private void addMemberMode()
-    {
-        familyNameField.setEnabled(false);
-        btnAction.setText(R.string.add_member);
-        clearFields();
+                .setNegativeButton(R.string.no, (dialog, which) -> addMemberDialogNoClicked())
+                .setPositiveButton(R.string.yes, (dialog, which) -> addMemberDialogYesClicked());
     }
 
     private void clearFields()
@@ -98,10 +69,56 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     }
 
     @Override
+    public void setupToAddMemberMode()
+    {
+        familyNameField.setEnabled(false);
+        btnAction.setText(R.string.add_member);
+        clearFields();
+    }
+    //region
+
+    //region $Local listeners that call presenter
+    private void addMemberDialogNoClicked()
+    {
+        viewModel.getPresenter().goToMemberManagement();
+    }
+
+    private void addMemberDialogYesClicked()
+    {
+        viewModel.getPresenter().enableAddMemberMode();
+    }
+
+    @Override
+    protected void usernameEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validateUsername(getUsername());
+    }
+
+    @Override
+    protected void passwordEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validatePassword(getPassword());
+    }
+
+    @Override
+    protected void displayNameEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validateDisplayName(getDisplayName());
+    }
+
+    private void registerClicked()
+    {
+        viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
+    }
+    //endregion
+
+    //region $Navigation to other activities
+    @Override
     public void goToMemberManagement()
     {
         Intent intent = new Intent(this, MembersManagementActivity.class);
         startActivity(intent);
         finish();
     }
+    //endregion
 }

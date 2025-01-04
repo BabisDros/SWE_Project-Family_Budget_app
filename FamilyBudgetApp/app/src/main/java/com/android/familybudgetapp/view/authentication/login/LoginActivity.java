@@ -35,22 +35,23 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     /**
-     * Sets up the login button and its onClick listener.
+     * Sets up the loginClicked button and its onClick listener.
      */
     private void setupLoginBtn()
     {
         Button actionButton = findViewById(R.id.btn_register);
-        actionButton.setOnClickListener(v -> login());
+        actionButton.setOnClickListener(v -> loginClicked());
     }
 
     /**
-     * Calls presenter's login method.
+     * Calls presenter's login method when .
      */
-    private void login()
+    private void loginClicked()
     {
         viewModel.getPresenter().login(getUsername(), getPassword());
     }
 
+    //region $Get values from UI elements
     @Override
     public String getUsername()
     {
@@ -62,7 +63,9 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     {
         return passwordField.getText().toString().trim();
     }
+    //endregion
 
+    //region $Navigation
     @Override
     public void goToHomepage(String famPos)
     {
@@ -72,4 +75,5 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
         startActivity(intent);
         finish();
     }
+    //endregion
 }

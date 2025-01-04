@@ -7,7 +7,7 @@ public class AuthOptionsPresenter extends BasePresenter<AuthOptionsView>
     /**
      * Called when the login button is clicked.
      */
-    public void onLoginButtonClicked()
+    public void navigateToLogin()
     {
         view.goToLogin();
     }
@@ -15,8 +15,9 @@ public class AuthOptionsPresenter extends BasePresenter<AuthOptionsView>
     /**
      * Called when the register button is clicked.
      */
-    public void onRegisterButtonClicked()
+    public void navigateToRegister()
     {
         view.goToRegister();
     }
+
 }

@@ -22,7 +22,6 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     /**
      * Sets the Family DAO.
-     *
      * @param familyDAO the {@link FamilyDAO} instance.
      */
     public void setFamilyDAO(FamilyDAO familyDAO)
@@ -32,7 +31,6 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     /**
      * Sets the User DAO.
-     *
      * @param userDAO the {@link UserDAO} instance.
      */
     public void setUserDAO(UserDAO userDAO)
@@ -40,7 +38,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
         this.userDAO = userDAO;
     }
 
-    public void onDeleteMember(User user)
+    public void deleteMember(User user)
     {
         this.userToDelete = user;
         if (user.getFamilyPosition().equals(FamPos.Protector))
@@ -75,7 +73,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
         }
     }
 
-    public void onDeleteAccount()
+    public void deleteAccount()
     {
         if (userToDelete != null)
         {
@@ -88,5 +86,15 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
             view.exitApp();
         }
+    }
+
+    public void navigateToRegister()
+    {
+        view.goToHomepageActivity();
+    }
+
+    public void navigateToHomepage()
+    {
+        view.goToRegisterActivity();
     }
 }

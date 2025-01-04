@@ -10,7 +10,6 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
 {
     /**
      * Validates input data and saves the user and family.
-     *
      * @param username    the entered username.
      * @param password    the entered password.
      * @param displayName the entered display name.
@@ -43,7 +42,7 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
         view.showAddMemberMessage("user: " + username + " added!", "Do you want to add a member?");
     }
 
-    public void onNoClicked()
+    public void goToMemberManagement()
     {
         view.goToMemberManagement();
     }
@@ -57,6 +56,11 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
             return false;
         }
         return true;
+    }
+
+    public void enableAddMemberMode()
+    {
+        view.setupToAddMemberMode();
     }
 }
 

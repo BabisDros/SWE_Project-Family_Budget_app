@@ -15,9 +15,10 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     protected User protector;
 
     protected Family family;
+
+    //region $DAO setup
     /**
      * Sets the User DAO.
-     *
      * @param userDAO the {@link UserDAO} instance.
      */
     public void setUserDAO(UserDAO userDAO)
@@ -27,18 +28,19 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Sets the Family DAO.
-     *
      * @param familyDAO the {@link FamilyDAO} instance.
      */
     public void setFamilyDAO(FamilyDAO familyDAO)
     {
         this.familyDAO = familyDAO;
     }
+    //endregion
+
+    //region $Validations
     /**
      * Validates the entered username.
-     *
      * @param input the username to be validated.
-     * @return {@code true} if the username is valid, otherwise {@code false}.
+     * @return {@code true} if the username characters are valid and the name is unique, otherwise {@code false}.
      */
     public boolean validateUsername(String input)
     {
@@ -51,14 +53,17 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
         return validateUsernameUniqueness(input);
     }
 
-
+    /**
+     * Validates username's uniqueness.
+     * @param input the username to be validated.
+     * @return {@code true} if the username is unique, otherwise {@code false}.
+     */
     public abstract boolean validateUsernameUniqueness(String input);
 
     /**
      * Validates the entered password.
-     *
      * @param input the password to be validated.
-     * @return {@code true} if the password is valid, otherwise {@code false}.
+     * @return {@code true} if the password characters are valid, otherwise {@code false}.
      */
     public boolean validatePassword(String input)
     {
@@ -72,9 +77,8 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates the entered display name.
-     *
      * @param input the display name to be validated.
-     * @return {@code true} if the display name is valid, otherwise {@code false}.
+     * @return {@code true} if the display name characters are valid, otherwise {@code false}.
      */
     public boolean validateDisplayName(String input)
     {
@@ -90,7 +94,6 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates the entered family name.
-     *
      * @param input the family name to be validated.
      * @return {@code true} if the family name is valid, otherwise {@code false}.
      */
@@ -104,6 +107,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
         }
         return true;
     }
+    //endregion
 }
 
 

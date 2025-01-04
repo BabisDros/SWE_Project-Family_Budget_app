@@ -43,16 +43,23 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         setupFloatBtnAddMember();
     }
 
+    @Override
+    protected MembersManagementViewModel createViewModel()
+    {
+        return new ViewModelProvider(this).get(MembersManagementViewModel.class);
+    }
+
+    //region $UI elements setup
     private void setupHomepageBtn()
     {
         Button btnHomepage = findViewById(R.id.btn_homepage);
-        btnHomepage.setOnClickListener(v-> goToHomepage());
+        btnHomepage.setOnClickListener(v-> homepageClicked());
     }
 
     private void setupFloatBtnAddMember()
     {
         FloatingActionButton btnAddMember = findViewById(R.id.float_btn_addMember);
-        btnAddMember.setOnClickListener(v-> goToAddMember());
+        btnAddMember.setOnClickListener(v-> addMemberClicked());
     }
 
     @Override
@@ -70,20 +77,31 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         recyclerViewAdapter.updateMembers(removedIndex);
     }
 
-    @Override
-    protected MembersManagementViewModel createViewModel()
-    {
-        return new ViewModelProvider(this).get(MembersManagementViewModel.class);
-    }
-
-
     private void setupDeleteAccountDialog()
     {
         deleteAccountDialog = new AlertDialog.Builder(this)
                 .setCancelable(true)
                 .setNegativeButton(R.string.no, null)
-                .setPositiveButton(R.string.yes, (dialog, which) -> viewModel.getPresenter().onDeleteAccount());
+                .setPositiveButton(R.string.yes, (dialog, which) -> deleteDialogYesClicked());
     }
+    //endregion
+
+    //region $Local listeners that call the presenter
+    private void addMemberClicked()
+    {
+        viewModel.getPresenter().navigateToRegister();
+    }
+
+    private void homepageClicked()
+    {
+        viewModel.getPresenter().navigateToHomepage();
+    }
+
+    private void deleteDialogYesClicked()
+    {
+        viewModel.getPresenter().deleteAccount();
+    }
+    //endregion
 
     @Override
     public void showDeleteAccountMessage(String title, String message)
@@ -116,24 +134,28 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
                     }
                     else
                     {
-                        viewModel.getPresenter().onDeleteMember(user);
+                        viewModel.getPresenter().deleteMember(user);
                     }
                 })
                 .show();
     }
 
-    private void goToHomepage()
+    //region $Navigation to other Activities
+    @Override
+    public void goToHomepageActivity()
     {
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void goToAddMember()
+    @Override
+    public void goToRegisterActivity()
     {
         Intent intent = new Intent(this, RegisterActivity.class);
         intent.putExtra(RegisterActivity.MODE_EXTRA,RegisterActivity.ADD_MEMBER_EXTRA);
         startActivity(intent);
         finish();
     }
+    //endregion
 }

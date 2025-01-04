@@ -27,34 +27,12 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         return new EditUserViewModel();
     }
 
-    @Override
-    protected void validateUsername()
-    {
-        viewModel.getPresenter().validateUsername(getUsername());
-    }
-
-    @Override
-    protected void validatePassword()
-    {
-        viewModel.getPresenter().validatePassword(getPassword());
-    }
-
-    @Override
-    protected void validateDisplayName()
-    {
-        viewModel.getPresenter().validateDisplayName(getDisplayName());
-    }
-
+    //region $UI Setups
     @Override
     protected void setupActionBtn()
     {
         btnAction.setText(R.string.save);
-        btnAction.setOnClickListener(v ->  onSave());
-    }
-
-    private void onSave()
-    {
-        viewModel.getPresenter().onSave(getUsername(),getPassword(),getUsername(),getFamilyName());
+        btnAction.setOnClickListener(v ->  saveClicked());
     }
 
     @Override
@@ -77,6 +55,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     {
         familyNameField.setText(familyName);
     }
+    //endregion
 
     @Override
     public void disableFamilyField()
@@ -84,6 +63,32 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         familyNameField.setEnabled(false);
     }
 
+    //region Calls to presenter
+    @Override
+    protected void usernameEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validateUsername(getUsername());
+    }
+
+    @Override
+    protected void passwordEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validatePassword(getPassword());
+    }
+
+    @Override
+    protected void displayNameEditTxtUnfocused()
+    {
+        viewModel.getPresenter().validateDisplayName(getDisplayName());
+    }
+
+    private void saveClicked()
+    {
+        viewModel.getPresenter().save(getUsername(),getPassword(),getUsername(),getFamilyName());
+    }
+    //endregion
+
+    //region $Navigation
     @Override
     public void goToMemberManagementActivity()
     {
@@ -91,4 +96,5 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         startActivity(intent);
         finish();
     }
+    //endregion
 }

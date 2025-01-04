@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.lifecycle.ViewModel;
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 
 public abstract class BaseUserManagementActivity<V extends ViewModel> extends BaseActivity<V>
@@ -26,13 +27,14 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         setupActionBtn();
     }
 
+    //region $UI setups
     protected void setEditTextsFocusListeners()
     {
         usernameField.setOnFocusChangeListener((v, hasFocus) ->
         {
             if (!hasFocus)
             {
-                validateUsername();
+                usernameEditTxtUnfocused();
             }
         });
 
@@ -40,7 +42,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         {
             if (!hasFocus)
             {
-                validatePassword();
+                passwordEditTxtUnfocused();
             }
         });
 
@@ -48,16 +50,14 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         {
             if (!hasFocus)
             {
-                validateDisplayName();
+                displayNameEditTxtUnfocused();
             }
         });
     }
 
-    protected abstract void validateUsername();
-    protected abstract void validatePassword();
-    protected abstract void validateDisplayName();
-    protected abstract void setupActionBtn();
-
+    /**
+     * Sets UI elements references
+     */
     protected void setUIReferences()
     {
         usernameField = findViewById(R.id.username_field);
@@ -66,7 +66,32 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         familyNameField = findViewById(R.id.familyName_field);
         btnAction = findViewById(R.id.btn_register);
     }
+    //endregion
 
+    //region $Calls to presenter
+    /**
+     * Called when username {@link EditText} loses focus.
+     */
+    protected abstract void usernameEditTxtUnfocused();
+
+    /**
+     * Called when password {@link EditText} loses focus.
+     */
+    protected abstract void passwordEditTxtUnfocused();
+
+    /**
+     * Called when display name {@link EditText} loses focus.
+     */
+    protected abstract void displayNameEditTxtUnfocused();
+
+    /**
+     * Sets up an action button according to {@link RegisterActivity}
+     * mode (e.g.,save in edit mode, addMember in register mode).
+     */
+    protected abstract void setupActionBtn();
+    //endregion
+
+    //region $Get values from UI elements
     public String getUsername()
     {
         return usernameField.getText().toString().trim();
@@ -86,4 +111,5 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     {
         return familyNameField.getText().toString().trim();
     }
+    //endregion
 }

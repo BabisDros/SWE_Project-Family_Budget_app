@@ -23,7 +23,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         }
     }
 
-    public void onSave(String username, String password, String displayName, String familyName)
+    public void save(String username, String password, String displayName, String familyName)
     {
         if (!validateUsername(username)) return;
         if (!validatePassword(password)) return;
@@ -56,6 +56,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         User userWithSameName = userDAO.findByUsername(input);
         if (userWithSameName != null && !userWithSameName.equals(userToEdit))
         {
+            view.showErrorMessage("Username already exists", "Please choose a different username.");
             return false;
         }
         return true;
