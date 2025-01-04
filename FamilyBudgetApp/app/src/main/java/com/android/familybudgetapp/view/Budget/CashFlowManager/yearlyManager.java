@@ -10,18 +10,6 @@ import java.time.YearMonth;
 import java.util.List;
 
 public class yearlyManager extends CashFlowManager {
-    List<User> users;
-
-    @Override
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    @Override
-    protected List<User> getUsers()
-    {
-        return users;
-    }
 
     @Override
     public List<Tuples<String, Integer>> CalculateAmountPerCategory(cashFlowType type) {

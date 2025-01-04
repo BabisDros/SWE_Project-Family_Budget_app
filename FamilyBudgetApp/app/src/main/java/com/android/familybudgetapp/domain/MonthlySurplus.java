@@ -12,6 +12,12 @@ public class MonthlySurplus
         setDate(date);
     }
 
+    public MonthlySurplus(YearMonth date, int surplus)
+    {
+        setDate(date);
+        setSurplus(surplus);
+    }
+
     public LocalDateTime getDate()
     {
         return date;
@@ -20,6 +26,10 @@ public class MonthlySurplus
     public int getSurplus()
     {
         return surplus;
+    }
+
+    public void setSurplus(int amount) {
+        this.surplus = amount;
     }
 
     public void setDate(YearMonth yearMonth)

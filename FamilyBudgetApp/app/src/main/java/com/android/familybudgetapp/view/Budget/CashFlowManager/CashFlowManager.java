@@ -17,14 +17,28 @@ import java.util.Map;
  */
 public abstract class CashFlowManager implements CashFlowManagerInterface {
 
+    protected UserRetrievalStrategy userRetrievalStrategy;
+
     protected abstract boolean inDateRange(CashFlow cashFlow);
 
-    protected abstract List<User> getUsers();
+    protected List<User> getUsers() {
+        return userRetrievalStrategy.getUsers();
+    }
 
     protected abstract int getAmountForRange(CashFlow cashFlow);
 
+    public void setUserRetrievalStrategy(UserRetrievalStrategy strategy)
+    {
+        userRetrievalStrategy = strategy;
+    }
+
+    public UserRetrievalStrategy getUserRetrievalStrategy()
+    {
+        return userRetrievalStrategy;
+    }
+
     /**
-     * @return Current surplus of CashFlows of range inDateRange
+     * @return Current surplus of CashFlows of range inDateRange from users in CashFlowManager's strategy.
      */
     public int CalculateSurplus() {
         int total = 0;
@@ -42,7 +56,6 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
         }
         return total;
     }
-
 
     /**
      * @param type enumeration of Income or Expense
