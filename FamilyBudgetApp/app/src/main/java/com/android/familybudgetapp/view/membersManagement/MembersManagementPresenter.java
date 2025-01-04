@@ -22,6 +22,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     /**
      * Sets the Family DAO.
+     *
      * @param familyDAO the {@link FamilyDAO} instance.
      */
     public void setFamilyDAO(FamilyDAO familyDAO)
@@ -31,6 +32,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 
     /**
      * Sets the User DAO.
+     *
      * @param userDAO the {@link UserDAO} instance.
      */
     public void setUserDAO(UserDAO userDAO)

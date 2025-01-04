@@ -3,7 +3,9 @@ package com.android.familybudgetapp.view.authentication;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.lifecycle.ViewModel;
+
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
@@ -69,6 +71,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     //endregion
 
     //region $Calls to presenter
+
     /**
      * Called when username {@link EditText} loses focus.
      */

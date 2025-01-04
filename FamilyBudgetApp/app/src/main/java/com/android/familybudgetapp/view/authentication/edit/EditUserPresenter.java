@@ -30,7 +30,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         if (!validateDisplayName(displayName)) return;
         if (!validateFamilyName(familyName)) return;
 
-        if(!familyName.equals(userToEdit.getFamily().getName()))
+        if (!familyName.equals(userToEdit.getFamily().getName()))
         {
             updateMembersFamilyName(familyName);
         }
@@ -45,11 +45,12 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 
     private void updateMembersFamilyName(String newFamilyName)
     {
-        for(User user: userToEdit.getFamily().getMembers().values())
+        for (User user : userToEdit.getFamily().getMembers().values())
         {
             user.getFamily().setName(newFamilyName);
         }
     }
+
     @Override
     public boolean validateUsernameUniqueness(String input)
     {

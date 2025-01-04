@@ -11,6 +11,7 @@ public interface MembersManagementView extends BaseView
     void populateMembersRecyclerView(List<User> members);
 
     void updateMembersRecyclerView(int removedIndex);
+
     void showDeleteAccountMessage(String title, String message);
 
     void exitApp();

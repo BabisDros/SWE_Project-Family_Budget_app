@@ -53,13 +53,13 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     private void setupHomepageBtn()
     {
         Button btnHomepage = findViewById(R.id.btn_homepage);
-        btnHomepage.setOnClickListener(v-> homepageClicked());
+        btnHomepage.setOnClickListener(v -> homepageClicked());
     }
 
     private void setupFloatBtnAddMember()
     {
         FloatingActionButton btnAddMember = findViewById(R.id.float_btn_addMember);
-        btnAddMember.setOnClickListener(v-> addMemberClicked());
+        btnAddMember.setOnClickListener(v -> addMemberClicked());
     }
 
     @Override
@@ -153,7 +153,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     public void goToRegisterActivity()
     {
         Intent intent = new Intent(this, RegisterActivity.class);
-        intent.putExtra(RegisterActivity.MODE_EXTRA,RegisterActivity.ADD_MEMBER_EXTRA);
+        intent.putExtra(RegisterActivity.MODE_EXTRA, RegisterActivity.ADD_MEMBER_EXTRA);
         startActivity(intent);
         finish();
     }

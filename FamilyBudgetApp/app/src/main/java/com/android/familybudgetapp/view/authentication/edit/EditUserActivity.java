@@ -1,8 +1,10 @@
 package com.android.familybudgetapp.view.authentication.edit;
 
 import static com.android.familybudgetapp.view.membersManagement.MembersManagementActivity.USER_ID_EXTRA;
+
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.authentication.BaseUserManagementActivity;
 import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
@@ -32,7 +34,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     protected void setupActionBtn()
     {
         btnAction.setText(R.string.save);
-        btnAction.setOnClickListener(v ->  saveClicked());
+        btnAction.setOnClickListener(v -> saveClicked());
     }
 
     @Override
@@ -40,16 +42,19 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     {
         usernameField.setText(username);
     }
+
     @Override
     public void setPasswordField(String password)
     {
         passwordField.setText(password);
     }
+
     @Override
     public void setDisplayNameField(String displayName)
     {
         displayNameField.setText(displayName);
     }
+
     @Override
     public void setFamilyNameField(String familyName)
     {
@@ -84,7 +89,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
 
     private void saveClicked()
     {
-        viewModel.getPresenter().save(getUsername(),getPassword(),getUsername(),getFamilyName());
+        viewModel.getPresenter().save(getUsername(), getPassword(), getUsername(), getFamilyName());
     }
     //endregion
 

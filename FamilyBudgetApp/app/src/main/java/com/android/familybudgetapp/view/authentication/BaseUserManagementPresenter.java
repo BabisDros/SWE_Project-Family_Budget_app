@@ -17,8 +17,10 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     protected Family family;
 
     //region $DAO setup
+
     /**
      * Sets the User DAO.
+     *
      * @param userDAO the {@link UserDAO} instance.
      */
     public void setUserDAO(UserDAO userDAO)
@@ -28,6 +30,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Sets the Family DAO.
+     *
      * @param familyDAO the {@link FamilyDAO} instance.
      */
     public void setFamilyDAO(FamilyDAO familyDAO)
@@ -37,8 +40,10 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     //endregion
 
     //region $Validations
+
     /**
      * Validates the entered username.
+     *
      * @param input the username to be validated.
      * @return {@code true} if the username characters are valid and the name is unique, otherwise {@code false}.
      */
@@ -55,6 +60,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates username's uniqueness.
+     *
      * @param input the username to be validated.
      * @return {@code true} if the username is unique, otherwise {@code false}.
      */
@@ -62,6 +68,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates the entered password.
+     *
      * @param input the password to be validated.
      * @return {@code true} if the password characters are valid, otherwise {@code false}.
      */
@@ -77,6 +84,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates the entered display name.
+     *
      * @param input the display name to be validated.
      * @return {@code true} if the display name characters are valid, otherwise {@code false}.
      */
@@ -94,6 +102,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     /**
      * Validates the entered family name.
+     *
      * @param input the family name to be validated.
      * @return {@code true} if the family name is valid, otherwise {@code false}.
      */

@@ -56,6 +56,7 @@ public class MemberRecyclerViewAdapter extends RecyclerView.Adapter<MemberRecycl
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         public final TextView txtMember;
+
         /**
          * Constructor of ViewHolder
          *

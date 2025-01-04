@@ -77,7 +77,7 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
         btnAction.setText(R.string.add_member);
         clearFields();
     }
-    //region
+    //endregion
 
     //region $Local listeners that call presenter
     private void addMemberDialogNoClicked()

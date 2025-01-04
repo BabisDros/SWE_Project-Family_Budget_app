@@ -69,6 +69,7 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
 
     /**
      * Helper method that starts the provided activity.
+     *
      * @param cls The class of the activity.
      */
     private void goToActivity(Class<?> cls)
