@@ -33,7 +33,7 @@ public interface RegisterView extends BaseView
      * @param title the title of the message.
      * @param message the content of the message.
      */
-    void addMemberMessage(String title,String message);
+    void showAddMemberMessage(String title, String message);
 
     void goToMemberManagement(long familyId);
 }

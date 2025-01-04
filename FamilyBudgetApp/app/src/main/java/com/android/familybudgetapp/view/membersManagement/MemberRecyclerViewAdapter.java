@@ -43,7 +43,7 @@ public class MemberRecyclerViewAdapter extends RecyclerView.Adapter<MemberRecycl
     public void onBindViewHolder(@NonNull MemberRecyclerViewAdapter.ViewHolder holder, int position)
     {
         final User currentUser = members.get(position);
-        holder.txtMember.setText(currentUser.getName());
+        holder.txtMember.setText(currentUser.getUsername());
         holder.txtMember.setOnClickListener((User) -> listener.selectMember(currentUser));
     }
 

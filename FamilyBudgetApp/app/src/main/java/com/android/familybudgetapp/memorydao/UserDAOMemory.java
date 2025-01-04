@@ -13,7 +13,6 @@ public class UserDAOMemory implements UserDAO
     public void delete(User user)
     {
         users.remove(user);
-        user.getFamily().removeMember(user);
     }
 
     @Override
@@ -54,5 +53,4 @@ public class UserDAOMemory implements UserDAO
         }
         return null;
     }
-
 }

@@ -1,9 +1,5 @@
 package com.android.familybudgetapp.view.membersManagement;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.FamPos;
@@ -18,7 +14,9 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
 {
     FamilyDAO familyDAO;
     UserDAO userDAO;
+    User user;
 
+    //cache members list because map does not guaranty order
     List<User> members;
     /**
      * Sets the Family DAO.
@@ -39,16 +37,15 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
     {
         this.userDAO = userDAO;
     }
-    public void deleteMember(User user)
+
+    public void onDeleteMember(User user)
     {
+        this.user=user;
         if (user.getFamilyPosition().equals(FamPos.Protector))
         {
-            Family family = user.getFamily();
-            for (User member : family.getMembers().values())
-            {
-                userDAO.delete(member);
-            }
-            familyDAO.delete(family);
+            view.showDeleteAccountMessage("Caution", "Deleting Protector User:"
+                    + user.getName() + " will delete the account and wipe all the data." +
+                    "\n\nDo you want to delete it?");
         }
         else
         {
@@ -57,12 +54,13 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
         }
     }
 
+
     public void searchFamilyMembers(long familyId)
     {
-        if(familyId!=-1)
+        if (familyId != -1)
         {
             members = new ArrayList<>(familyDAO.findByID(familyId).getMembers().values());
-            if(!members.isEmpty())
+            if (!members.isEmpty())
             {
                 view.populateMembersRecyclerView(members);
             }
@@ -70,6 +68,21 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
         else
         {
             view.showErrorMessage("An error occurred", "Try again later");
+        }
+    }
+
+    public void onDeleteAccount()
+    {
+        if(user!=null)
+        {
+            Family family = user.getFamily();
+            for (User member : family.getMembers().values())
+            {
+                userDAO.delete(member);
+            }
+            familyDAO.delete(family);
+
+            view.exitApp();
         }
     }
 }

@@ -56,15 +56,13 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
         viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
     }
 
-
     @Override
-    public void addMemberMessage(String title, String message)
+    public void showAddMemberMessage(String title, String message)
     {
         addMemberDialog.setTitle(title);
         addMemberDialog.setMessage(message);
         addMemberDialog.show();
     }
-
 
     private void setupAddMemberDialog()
     {

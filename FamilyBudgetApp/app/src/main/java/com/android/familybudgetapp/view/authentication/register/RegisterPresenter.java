@@ -8,7 +8,6 @@ import com.android.familybudgetapp.view.authentication.BaseUserManagementPresent
 
 public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
 {
-
     /**
      * Validates input data and saves the user and family.
      *
@@ -39,16 +38,13 @@ public class RegisterPresenter extends BaseUserManagementPresenter<RegisterView>
 
         Initializer.currentUserID = newUser.getID();
         userDAO.save(family, newUser);
-        view.addMemberMessage("user: " + username + " added!", "Do you want to add a member?");
+        view.showAddMemberMessage("user: " + username + " added!", "Do you want to add a member?");
     }
-
 
     public void onNoClicked()
     {
         view.goToMemberManagement(protector.getFamily().getID());
     }
-
-
 }
 
 

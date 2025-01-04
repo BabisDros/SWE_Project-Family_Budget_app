@@ -48,12 +48,12 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     protected void setupActionBtn()
     {
         btnAction.setText(R.string.save);
-        btnAction.setOnClickListener(v -> save());
+        btnAction.setOnClickListener(v ->  onSave());
     }
 
-    private void save()
+    private void onSave()
     {
-        viewModel.getPresenter().save();
+        viewModel.getPresenter().onSave(getUsername(),getPassword(),getUsername(),getFamilyName());
     }
 
     @Override
@@ -72,8 +72,14 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         displayNameField.setText(displayName);
     }
     @Override
-    public void setfamilyNameField(String familyName)
+    public void setFamilyNameField(String familyName)
     {
         familyNameField.setText(familyName);
+    }
+
+    @Override
+    public void disableFamilyField()
+    {
+        familyNameField.setEnabled(false);
     }
 }

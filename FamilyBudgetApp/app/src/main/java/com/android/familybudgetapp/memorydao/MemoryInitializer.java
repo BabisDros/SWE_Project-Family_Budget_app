@@ -11,7 +11,6 @@ public class MemoryInitializer extends Initializer {
 
     }
 
-
     public UserDAO getUserDAO()
     {
         return new UserDAOMemory();

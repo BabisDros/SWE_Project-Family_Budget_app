@@ -72,18 +72,15 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         return usernameField.getText().toString().trim();
     }
 
-
     public String getPassword()
     {
         return passwordField.getText().toString().trim();
     }
 
-
     public String getDisplayName()
     {
         return displayNameField.getText().toString().trim();
     }
-
 
     public String getFamilyName()
     {
