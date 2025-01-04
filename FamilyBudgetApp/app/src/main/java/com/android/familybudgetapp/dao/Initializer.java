@@ -45,6 +45,9 @@ public abstract class Initializer {
         Family family = new Family("Family surname test");
         familyDAO.save(family);
 
+        Family family2 = new Family("Family surname test2");
+        familyDAO.save(family2);
+
         //categories
         Expense categoryExpense1 = new Expense("Food", 200);
         family.addCashFlowCategory(categoryExpense1);
@@ -57,12 +60,18 @@ public abstract class Initializer {
         Income categoryIncome2 = new Income("Casino");
         family.addCashFlowCategory(categoryIncome2);
 
+        Income categoryIncome2_1 = new Income("Job");
+        family2.addCashFlowCategory(categoryIncome2_1);
+
         //users
         UserDAO userDAO = getUserDAO();
         User user1 = new User("displayNameTest", "usernameTest", "passwordTest", FamPos.Protector, family);
         User user2 = new User("displayNameTest2", "usernameTest2", "passwordTest2", FamPos.Member, family);
         userDAO.save(family, user1);
         userDAO.save(family, user2);
+
+        User user2_1 = new User("displayNameTest2 1", "Test", "passwordTest", FamPos.Protector, family);
+        userDAO.save(family2, user2_1);
 
         currentUserID = user1.getID();
 
@@ -117,6 +126,11 @@ public abstract class Initializer {
         oneOff = new OneOff(600000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2023, 5, 20, 0, 0));
         user1.addCashFlow(oneOff);
+
+        repeating = new Repeating(100000, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating.DebugSetDateStart(LocalDateTime.of(2023, 10, 20, 0, 0));
+        repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
+        user2_1.addCashFlow(repeating);
 
         //moneyboxes
         MoneyBox moneyBox1 = new MoneyBox("Laptop", 500);
