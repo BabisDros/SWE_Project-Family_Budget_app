@@ -23,4 +23,6 @@ public interface HomePageView {
      * user is moved there from Home page
      */
     void stats();
+
+    void goToMemberManagement();
 }
