@@ -41,6 +41,11 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     //region $Validations
 
+    protected boolean validateAllFields(String username, String password, String displayName, String familyName)
+    {
+        return validateUsername(username) && validatePassword(password) && validateDisplayName(displayName) && validateFamilyName(familyName);
+    }
+
     /**
      * Validates the entered username.
      *

@@ -33,7 +33,7 @@
             android:name=".view.HomePage.HomePageActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.authentication.register.RegisterActivity"
+            android:name=".view.authentication.registerCreate.RegisterCreateActivity"
             android:exported="true"/>
         <activity
             android:name=".view.MoneyBox.AddMoneyBox.AddMoneyBoxActivity"

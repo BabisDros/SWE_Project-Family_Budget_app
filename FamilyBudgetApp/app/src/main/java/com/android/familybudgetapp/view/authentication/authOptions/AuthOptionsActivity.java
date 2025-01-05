@@ -2,7 +2,7 @@ package com.android.familybudgetapp.view.authentication.authOptions;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.memorydao.MemoryInitializer;
-import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
+import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.authentication.login.LoginActivity;
 
@@ -64,7 +64,7 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
     @Override
     public void goToRegister()
     {
-        goToActivity(RegisterActivity.class);
+        goToActivity(RegisterCreateActivity.class);
     }
 
     /**
@@ -78,5 +78,4 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
         startActivity(intent);
     }
     //endregion
-
 }

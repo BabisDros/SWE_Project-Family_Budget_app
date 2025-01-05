@@ -7,7 +7,7 @@ import android.widget.EditText;
 import androidx.lifecycle.ViewModel;
 
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
+import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 
 public abstract class BaseUserManagementActivity<V extends ViewModel> extends BaseActivity<V>
@@ -88,10 +88,15 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     protected abstract void displayNameEditTxtUnfocused();
 
     /**
-     * Sets up an action button according to {@link RegisterActivity}
+     * Sets up an action button according to {@link RegisterCreateActivity}
      * mode (e.g.,save in edit mode, addMember in register mode).
      */
     protected abstract void setupActionBtn();
+
+    public void setFamilyNameField(String familyName)
+    {
+        familyNameField.setText(familyName);
+    }
     //endregion
 
     //region $Get values from UI elements

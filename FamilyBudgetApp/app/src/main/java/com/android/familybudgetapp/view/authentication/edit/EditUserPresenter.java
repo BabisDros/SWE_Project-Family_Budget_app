@@ -6,7 +6,6 @@ import com.android.familybudgetapp.view.authentication.BaseUserManagementPresent
 
 public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {
-
     User userToEdit;
 
     public void setUserData(long userId)
@@ -25,10 +24,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 
     public void save(String username, String password, String displayName, String familyName)
     {
-        if (!validateUsername(username)) return;
-        if (!validatePassword(password)) return;
-        if (!validateDisplayName(displayName)) return;
-        if (!validateFamilyName(familyName)) return;
+        if (!validateAllFields(username, password, displayName, familyName)) return;
 
         if (!familyName.equals(userToEdit.getFamily().getName()))
         {

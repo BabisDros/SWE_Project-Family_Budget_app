@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication.register;
+package com.android.familybudgetapp.view.authentication.registerCreate;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.authentication.BaseUserManagementActivity;
 import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
 
-public class RegisterActivity extends BaseUserManagementActivity<RegisterViewModel> implements RegisterView
+public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterCreateViewModel> implements RegisterCreateView
 {
     AlertDialog.Builder addMemberDialog;
     public static final String MODE_EXTRA = "mode";
@@ -34,9 +34,9 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     }
 
     @Override
-    protected RegisterViewModel createViewModel()
+    protected RegisterCreateViewModel createViewModel()
     {
-        return new ViewModelProvider(this).get(RegisterViewModel.class);
+        return new ViewModelProvider(this).get(RegisterCreateViewModel.class);
     }
 
     //region $UI elements setup
@@ -56,13 +56,14 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
 
     private void setupAddMemberDialog()
     {
-        addMemberDialog = new AlertDialog.Builder(RegisterActivity.this)
+        addMemberDialog = new AlertDialog.Builder(RegisterCreateActivity.this)
                 .setCancelable(true)
                 .setNegativeButton(R.string.no, (dialog, which) -> addMemberDialogNoClicked())
                 .setPositiveButton(R.string.yes, (dialog, which) -> addMemberDialogYesClicked());
     }
 
-    private void clearFields()
+    @Override
+    public void clearFields()
     {
         usernameField.setText("");
         passwordField.setText("");
@@ -70,12 +71,16 @@ public class RegisterActivity extends BaseUserManagementActivity<RegisterViewMod
     }
 
     @Override
-    public void setupUIToAddMemberMode(String familyName)
+    public void setupUIToAddMemberMode()
     {
-        familyNameField.setText(familyName);
         familyNameField.setEnabled(false);
         btnAction.setText(R.string.add_member);
-        clearFields();
+        btnAction.setOnClickListener(v-> addMemberClicked());
+    }
+
+    private void addMemberClicked()
+    {
+        viewModel.getPresenter().addMember(getUsername(), getPassword(), getDisplayName(), getFamilyName());
     }
     //endregion
 
