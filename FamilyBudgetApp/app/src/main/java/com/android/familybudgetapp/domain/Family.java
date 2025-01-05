@@ -190,4 +190,25 @@ public class Family
     {
         yearlySavings = 0;
     }
+
+    @Override
+    public boolean equals(Object other)
+    {
+        if (this == other)
+        {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass())
+        {
+            return false;
+        }
+        Family family = (Family) other;
+        return id == family.id;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Long.hashCode(id);
+    }
 }

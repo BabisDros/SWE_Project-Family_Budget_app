@@ -52,9 +52,10 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
     @Override
     public boolean validateUsernameUniqueness(String input)
     {
+
         if (userDAO.findByUsername(input) != null)
         {
-            view.showErrorMessage("Username already exists", "Please choose a different username.");
+            showUserExistsMsg();
             return false;
         }
         return true;

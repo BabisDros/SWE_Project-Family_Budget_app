@@ -20,6 +20,8 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
     //cache membersList at every session, because MAP does not guaranty order
     List<User> members;
 
+    //region $DAO setup
+
     /**
      * Sets the Family DAO.
      *
@@ -39,6 +41,7 @@ public class MembersManagementPresenter extends BasePresenter<MembersManagementV
     {
         this.userDAO = userDAO;
     }
+    //endregion
 
     public void deleteMember(User user)
     {

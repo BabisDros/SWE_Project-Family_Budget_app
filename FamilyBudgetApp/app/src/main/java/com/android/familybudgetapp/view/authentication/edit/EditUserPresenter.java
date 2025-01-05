@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.view.authentication.edit;
 
 import com.android.familybudgetapp.domain.FamPos;
+import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.authentication.BaseUserManagementPresenter;
 
@@ -26,8 +27,11 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
     {
         if (!validateAllFields(username, password, displayName, familyName)) return;
 
-        if (!familyName.equals(userToEdit.getFamily().getName()))
+        Family familyToUpdate = userToEdit.getFamily();
+        if (!familyName.equals(familyToUpdate.getName()))
         {
+            familyToUpdate.setName(familyName);
+            familyDAO.save(familyToUpdate);// DAO's hashSet add, will replace the family
             updateMembersFamilyName(familyName);
         }
 
@@ -50,10 +54,12 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
     @Override
     public boolean validateUsernameUniqueness(String input)
     {
+
         User userWithSameName = userDAO.findByUsername(input);
+
         if (userWithSameName != null && !userWithSameName.equals(userToEdit))
         {
-            view.showErrorMessage("Username already exists", "Please choose a different username.");
+            showUserExistsMsg();
             return false;
         }
         return true;

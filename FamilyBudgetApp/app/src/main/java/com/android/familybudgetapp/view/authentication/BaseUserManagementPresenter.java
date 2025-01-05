@@ -16,6 +16,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     protected Family family;
 
+    final String USER_EXISTS = "User: %s added!";
     //region $DAO setup
 
     /**
@@ -122,6 +123,11 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
         return true;
     }
     //endregion
+
+    protected void showUserExistsMsg()
+    {
+        view.showErrorMessage("Username already exists", "Please choose a different username.");
+    }
 }
 
 
