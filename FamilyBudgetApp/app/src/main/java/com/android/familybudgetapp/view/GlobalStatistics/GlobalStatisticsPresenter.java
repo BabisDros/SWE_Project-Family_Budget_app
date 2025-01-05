@@ -46,7 +46,7 @@ public class GlobalStatisticsPresenter {
         }
         YearMonth currentDate = minDate.get();
 
-        while (!currentDate.equals(YearMonth.now()))
+        while (currentDate.isBefore(YearMonth.now().minusMonths(1)))
         {
             double avg;
             int count = 0;
@@ -113,7 +113,8 @@ public class GlobalStatisticsPresenter {
             }
             currentDate = currentDate.plusMonths(1);
         }
-
+        if (currentDate.getMonth().equals(Month.JANUARY) && !myList.isEmpty())
+            myList.remove(myList.size() - 1);
         return myList;
     }
 }
