@@ -45,6 +45,14 @@ public class DetailedBudgetPresenter {
         this.type = type;
     }
 
+    public DetailedBudgetView getView(){
+        return view;
+    }
+
+    public UserDAO getUserDAO() {
+        return userDAO;
+    }
+
     public CashFlowManagerInterface getCashFlowManager(){
         return cashFlowManager;
     }
@@ -65,9 +73,9 @@ public class DetailedBudgetPresenter {
                 return cashFlowManager.getIncome();
             case Both:
                 return cashFlowManager.getExpenseAndIncome();
-
+            default:
+                return new HashMap<>();
         }
-        return new HashMap<>();
     }
 
 
