@@ -47,7 +47,7 @@ public class UserDAOMemory implements UserDAO
     {
         for (User user : users)
         {
-            if (user.getUsername().equals(username))
+            if (user.getUsername().equalsIgnoreCase(username))
             {
                 return user;
             }

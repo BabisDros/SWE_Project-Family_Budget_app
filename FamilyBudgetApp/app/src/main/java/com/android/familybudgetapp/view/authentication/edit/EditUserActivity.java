@@ -56,17 +56,11 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     }
 
     @Override
-    public void setFamilyNameField(String familyName)
-    {
-        familyNameField.setText(familyName);
-    }
-    //endregion
-
-    @Override
     public void disableFamilyField()
     {
         familyNameField.setEnabled(false);
     }
+    //endregion
 
     //region Calls to presenter
     @Override
@@ -89,7 +83,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
 
     private void saveClicked()
     {
-        viewModel.getPresenter().save(getUsername(), getPassword(), getUsername(), getFamilyName());
+        viewModel.getPresenter().save(getUsername(), getPassword(), getDisplayName(), getFamilyName());
     }
     //endregion
 

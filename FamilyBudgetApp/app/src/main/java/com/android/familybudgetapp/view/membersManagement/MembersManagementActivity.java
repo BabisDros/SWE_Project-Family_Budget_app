@@ -14,7 +14,7 @@ import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 import com.android.familybudgetapp.view.authentication.edit.EditUserActivity;
-import com.android.familybudgetapp.view.authentication.register.RegisterActivity;
+import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -152,8 +152,8 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     @Override
     public void goToRegisterActivity()
     {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        intent.putExtra(RegisterActivity.MODE_EXTRA, RegisterActivity.ADD_MEMBER_EXTRA);
+        Intent intent = new Intent(this, RegisterCreateActivity.class);
+        intent.putExtra(RegisterCreateActivity.MODE_EXTRA, RegisterCreateActivity.ADD_MEMBER_EXTRA);
         startActivity(intent);
         finish();
     }
