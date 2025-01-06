@@ -41,6 +41,7 @@
     <string name="title_activity_member_management">activity_member_management</string>
     <string name="family_members">Family Members</string>
     <string name="homepage">Homepage</string>
+    <string name="cashFlowCategories">Cash Flow Categories</string>
 
     <string name="global_stats">Global Statistics</string>
     <string name="stat_title_monthly">Percentage of families with positive surplus per month</string>

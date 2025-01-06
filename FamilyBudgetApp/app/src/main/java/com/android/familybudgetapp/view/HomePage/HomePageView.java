@@ -25,4 +25,6 @@ public interface HomePageView {
     void stats();
 
     void goToMemberManagement();
+
+    void goToCashFlowCategories();
 }
