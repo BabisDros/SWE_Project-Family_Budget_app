@@ -24,8 +24,7 @@ public class MoneyBox {
         if(reason == null)
             throw new IllegalArgumentException("Reason shouldn't be null");
         else if (!CommonStringValidations.isAlphanumericWithSpaces(reason))
-            throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters" +
-                    " and spaces ONLY between them");
+            throw new IllegalArgumentException(CommonStringValidations.INVALID_ALPHANUMERICAL);
         this.reason = reason;
     }
 

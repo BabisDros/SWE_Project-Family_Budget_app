@@ -103,7 +103,7 @@ public class User {
         }
         else if (!CommonStringValidations.isAlphanumericWithSpaces(name))
         {
-            throw new IllegalArgumentException("Name should only consist of: Numbers, letters and spaces.");
+            throw new IllegalArgumentException(CommonStringValidations.INVALID_ALPHANUMERICAL);
         }
         this.name = name;
     }

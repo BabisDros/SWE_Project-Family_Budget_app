@@ -2,6 +2,8 @@ package com.android.familybudgetapp.utilities;
 
 public class CommonStringValidations
 {
+    public static final String INVALID_ALPHANUMERICAL="Characters >= 3. First and last character alphanumerical. " +
+            "Between them, alphanumerical or space.";
     /**
      * @param name Characters >= 2. First character alphanumerical and others alphanumerical or underscore.
      */
