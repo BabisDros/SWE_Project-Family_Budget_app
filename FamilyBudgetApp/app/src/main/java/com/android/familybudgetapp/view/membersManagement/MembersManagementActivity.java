@@ -12,19 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
+import com.android.familybudgetapp.view.GenericRecyclerViewAdapter;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 import com.android.familybudgetapp.view.authentication.edit.EditUserActivity;
 import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
+import com.android.familybudgetapp.view.viewHolders.ViewHolderSingleTextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MembersManagementActivity extends BaseActivity<MembersManagementViewModel>
-        implements MembersManagementView, GenericRecyclerViewAdapter.SelectionListener<User>
+        implements MembersManagementView
 {
     public static final String USER_ID_EXTRA = "user_id";
-    GenericRecyclerViewAdapter<User> recyclerViewAdapter;
+    GenericRecyclerViewAdapter<User, ViewHolderSingleTextView> recyclerViewAdapter;
     AlertDialog.Builder deleteAccountDialog;
 
 
@@ -62,7 +64,6 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         btnAddMember.setOnClickListener(v -> addMemberClicked());
     }
 
-    @Override
     public void populateMembersRecyclerView(List<User> members)
     {
         RecyclerView recyclerViewMembers = findViewById(R.id.recyclerView_members);
@@ -71,13 +72,18 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         recyclerViewAdapter = new GenericRecyclerViewAdapter<>
                 (
                         members,
-                        this,
-                        user -> user.getUsername(),
+                        (user, viewHolder) ->
+                        {
+                            viewHolder.txtItem.setText(user.getUsername());
+                            viewHolder.txtItem.setOnClickListener(v -> selectItem(user));
+                        },
+                        (view) -> new ViewHolderSingleTextView(view),
                         R.layout.list_item_single_textview
                 );
 
         recyclerViewMembers.setAdapter(recyclerViewAdapter);
     }
+
 
     @Override
     public void updateMembersRecyclerView(int removedIndex)
@@ -125,7 +131,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         finishAffinity();
     }
 
-    @Override
+
     public void selectItem(User user)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -147,6 +153,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
                 })
                 .show();
     }
+
 
     //region $Navigation to other Activities
     @Override
