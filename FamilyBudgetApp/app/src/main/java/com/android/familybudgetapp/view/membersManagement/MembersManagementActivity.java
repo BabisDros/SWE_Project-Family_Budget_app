@@ -21,10 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class MembersManagementActivity extends BaseActivity<MembersManagementViewModel>
-        implements MembersManagementView, MemberRecyclerViewAdapter.MemberSelectionListener
+        implements MembersManagementView, GenericRecyclerViewAdapter.SelectionListener<User>
 {
     public static final String USER_ID_EXTRA = "user_id";
-    MemberRecyclerViewAdapter recyclerViewAdapter;
+    GenericRecyclerViewAdapter<User> recyclerViewAdapter;
     AlertDialog.Builder deleteAccountDialog;
 
 
@@ -33,7 +33,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_member_management);
+        setContentView(R.layout.activity_list_with_add_option);
         viewModel.getPresenter().setView(this);
 
         setupHomepageBtn();
@@ -67,14 +67,22 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     {
         RecyclerView recyclerViewMembers = findViewById(R.id.recyclerView_members);
         recyclerViewMembers.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAdapter = new MemberRecyclerViewAdapter(members, this);
+
+        recyclerViewAdapter = new GenericRecyclerViewAdapter<>
+                (
+                        members,
+                        this,
+                        user -> user.getUsername(),
+                        R.layout.list_item_single_textview
+                );
+
         recyclerViewMembers.setAdapter(recyclerViewAdapter);
     }
 
     @Override
     public void updateMembersRecyclerView(int removedIndex)
     {
-        recyclerViewAdapter.updateMembers(removedIndex);
+        recyclerViewAdapter.updateList(removedIndex);
     }
 
     private void setupDeleteAccountDialog()
@@ -118,7 +126,7 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     }
 
     @Override
-    public void selectMember(User user)
+    public void selectItem(User user)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(user.getName())
@@ -157,5 +165,6 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
         startActivity(intent);
         finish();
     }
+
     //endregion
 }
