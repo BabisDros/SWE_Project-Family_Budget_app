@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication.registerCreate;
+package com.android.familybudgetapp.view.membersManagement.registerCreate;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.authentication.BaseUserManagementActivity;
-import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
+import com.android.familybudgetapp.view.membersManagement.BaseUserManagementActivity;
+import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterCreateViewModel> implements RegisterCreateView
 {
@@ -123,7 +123,7 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     @Override
     public void goToMemberManagement()
     {
-        Intent intent = new Intent(this, MembersManagementActivity.class);
+        Intent intent = new Intent(this, MembersOverviewActivity.class);
         startActivity(intent);
         finish();
     }

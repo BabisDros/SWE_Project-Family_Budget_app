@@ -14,8 +14,8 @@ import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.view.Budget.ShowBudget.BudgetActivity;
 import com.android.familybudgetapp.view.GlobalStatistics.GlobalStatisticsActivity;
 import com.android.familybudgetapp.view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity;
-import com.android.familybudgetapp.view.cashFlowCategoryManagement.CashFlowCategoryActivity;
-import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
+import com.android.familybudgetapp.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity;
+import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 import java.util.Objects;
 
@@ -97,14 +97,14 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
     @Override
     public void goToMemberManagement()
     {
-        Intent intent = new Intent(HomePageActivity.this, MembersManagementActivity.class);
+        Intent intent = new Intent(HomePageActivity.this, MembersOverviewActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void goToCashFlowCategories()
     {
-        Intent intent = new Intent(HomePageActivity.this, CashFlowCategoryActivity.class);
+        Intent intent = new Intent(HomePageActivity.this, CashFlowCategoryCreateActivity.class);
         startActivity(intent);
     }
 }

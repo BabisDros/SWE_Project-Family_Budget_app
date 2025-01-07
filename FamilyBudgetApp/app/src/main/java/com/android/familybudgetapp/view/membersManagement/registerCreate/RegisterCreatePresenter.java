@@ -1,10 +1,10 @@
-package com.android.familybudgetapp.view.authentication.registerCreate;
+package com.android.familybudgetapp.view.membersManagement.registerCreate;
 
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
-import com.android.familybudgetapp.view.authentication.BaseUserManagementPresenter;
+import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPresenter;
 
 public class RegisterCreatePresenter extends BaseUserManagementPresenter<RegisterCreateView>
 {

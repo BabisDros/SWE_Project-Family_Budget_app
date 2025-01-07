@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication;
+package com.android.familybudgetapp.view.membersManagement;
 
 import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.UserDAO;

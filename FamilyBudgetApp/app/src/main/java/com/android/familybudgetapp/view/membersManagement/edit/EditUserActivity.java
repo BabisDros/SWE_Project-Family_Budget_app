@@ -1,13 +1,13 @@
-package com.android.familybudgetapp.view.authentication.edit;
+package com.android.familybudgetapp.view.membersManagement.edit;
 
-import static com.android.familybudgetapp.view.membersManagement.MembersManagementActivity.USER_ID_EXTRA;
+import static com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity.USER_ID_EXTRA;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.authentication.BaseUserManagementActivity;
-import com.android.familybudgetapp.view.membersManagement.MembersManagementActivity;
+import com.android.familybudgetapp.view.membersManagement.BaseUserManagementActivity;
+import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 public class EditUserActivity extends BaseUserManagementActivity<EditUserViewModel> implements EditUserView
 {
@@ -18,9 +18,12 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
 
         viewModel.getPresenter().setView(this);
 
-        Intent intent = getIntent();
-        long userId = intent.getLongExtra(USER_ID_EXTRA, -1);
-        viewModel.getPresenter().setUserData(userId);
+        if (savedInstanceState == null)
+        {
+            Intent intent = getIntent();
+            long userId = intent.getLongExtra(USER_ID_EXTRA, -1);
+            viewModel.getPresenter().setUserData(userId);
+        }
     }
 
     @Override
@@ -91,7 +94,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     @Override
     public void goToMemberManagementActivity()
     {
-        Intent intent = new Intent(this, MembersManagementActivity.class);
+        Intent intent = new Intent(this, MembersOverviewActivity.class);
         startActivity(intent);
         finish();
     }

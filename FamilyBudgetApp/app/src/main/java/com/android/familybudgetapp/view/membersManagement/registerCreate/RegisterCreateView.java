@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication.registerCreate;
+package com.android.familybudgetapp.view.membersManagement.registerCreate;
 
 import com.android.familybudgetapp.view.base.BaseView;
 

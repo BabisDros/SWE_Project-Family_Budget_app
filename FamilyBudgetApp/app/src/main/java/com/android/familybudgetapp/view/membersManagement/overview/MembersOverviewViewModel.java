@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication.registerCreate;
+package com.android.familybudgetapp.view.membersManagement.overview;
 
 import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.UserDAO;
@@ -6,18 +6,17 @@ import com.android.familybudgetapp.memorydao.FamilyDAOMemory;
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
 import com.android.familybudgetapp.view.base.BaseViewModel;
 
-public class RegisterCreateViewModel extends BaseViewModel<RegisterCreatePresenter>
+public class MembersOverviewViewModel extends BaseViewModel<MembersOverviewPresenter>
 {
     @Override
-    protected RegisterCreatePresenter createPresenter()
+    protected MembersOverviewPresenter createPresenter()
     {
-        presenter = new RegisterCreatePresenter();
-
+        presenter = new MembersOverviewPresenter();
         UserDAO userDAO = new UserDAOMemory();
         FamilyDAO familyDAO = new FamilyDAOMemory();
-
         presenter.setUserDAO(userDAO);
         presenter.setFamilyDAO(familyDAO);
+
         return presenter;
     }
 }

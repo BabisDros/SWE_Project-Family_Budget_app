@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
      */
     private void setupLoginBtn()
     {
-        Button actionButton = findViewById(R.id.btn_register);
+        Button actionButton = findViewById(R.id.btn_saveCategory);
         actionButton.setOnClickListener(v -> loginClicked());
     }
 

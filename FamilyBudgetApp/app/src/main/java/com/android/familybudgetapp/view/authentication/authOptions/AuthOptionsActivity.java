@@ -2,7 +2,7 @@ package com.android.familybudgetapp.view.authentication.authOptions;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.memorydao.MemoryInitializer;
-import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
+import com.android.familybudgetapp.view.membersManagement.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.authentication.login.LoginActivity;
 

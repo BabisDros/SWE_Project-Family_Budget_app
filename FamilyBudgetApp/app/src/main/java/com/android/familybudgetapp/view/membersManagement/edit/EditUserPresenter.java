@@ -1,9 +1,9 @@
-package com.android.familybudgetapp.view.authentication.edit;
+package com.android.familybudgetapp.view.membersManagement.edit;
 
 import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
-import com.android.familybudgetapp.view.authentication.BaseUserManagementPresenter;
+import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPresenter;
 
 public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {

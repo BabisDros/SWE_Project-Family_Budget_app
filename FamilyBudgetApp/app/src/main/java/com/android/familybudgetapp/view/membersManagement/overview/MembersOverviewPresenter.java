@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.membersManagement;
+package com.android.familybudgetapp.view.membersManagement.overview;
 
 import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.Initializer;
@@ -11,7 +11,7 @@ import com.android.familybudgetapp.view.base.BasePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MembersManagementPresenter extends BasePresenter<MembersManagementView>
+public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
 {
     FamilyDAO familyDAO;
     UserDAO userDAO;

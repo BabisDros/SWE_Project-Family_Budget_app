@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.membersManagement;
+package com.android.familybudgetapp.view.membersManagement.overview;
 
 
 import android.app.AlertDialog;
@@ -9,21 +9,20 @@ import android.widget.Button;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.GenericRecyclerViewAdapter;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
-import com.android.familybudgetapp.view.authentication.edit.EditUserActivity;
-import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
+import com.android.familybudgetapp.view.membersManagement.edit.EditUserActivity;
+import com.android.familybudgetapp.view.membersManagement.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.viewHolders.ViewHolderSingleTextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MembersManagementActivity extends BaseActivity<MembersManagementViewModel>
-        implements MembersManagementView
+public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewModel>
+        implements MembersOverviewView
 {
     public static final String USER_ID_EXTRA = "user_id";
     GenericRecyclerViewAdapter<User, ViewHolderSingleTextView> recyclerViewAdapter;
@@ -46,9 +45,9 @@ public class MembersManagementActivity extends BaseActivity<MembersManagementVie
     }
 
     @Override
-    protected MembersManagementViewModel createViewModel()
+    protected MembersOverviewViewModel createViewModel()
     {
-        return new ViewModelProvider(this).get(MembersManagementViewModel.class);
+        return new ViewModelProvider(this).get(MembersOverviewViewModel.class);
     }
 
     //region $UI elements setup

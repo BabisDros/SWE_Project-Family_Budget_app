@@ -1,7 +1,5 @@
 package com.android.familybudgetapp.domain;
 
-import androidx.annotation.IntRange;
-
 public class Expense extends CashFlowCategory
 {
     private int limit;

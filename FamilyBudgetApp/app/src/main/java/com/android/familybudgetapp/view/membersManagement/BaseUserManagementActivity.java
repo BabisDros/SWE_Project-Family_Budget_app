@@ -1,4 +1,4 @@
-package com.android.familybudgetapp.view.authentication;
+package com.android.familybudgetapp.view.membersManagement;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,7 +7,7 @@ import android.widget.EditText;
 import androidx.lifecycle.ViewModel;
 
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.authentication.registerCreate.RegisterCreateActivity;
+import com.android.familybudgetapp.view.membersManagement.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 
 public abstract class BaseUserManagementActivity<V extends ViewModel> extends BaseActivity<V>
@@ -66,7 +66,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         passwordField = findViewById(R.id.password_field);
         displayNameField = findViewById(R.id.displayName_field);
         familyNameField = findViewById(R.id.familyName_field);
-        btnAction = findViewById(R.id.btn_register);
+        btnAction = findViewById(R.id.btn_saveCategory);
     }
     //endregion
 
