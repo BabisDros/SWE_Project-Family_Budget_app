@@ -66,7 +66,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         passwordField = findViewById(R.id.password_field);
         displayNameField = findViewById(R.id.displayName_field);
         familyNameField = findViewById(R.id.familyName_field);
-        btnAction = findViewById(R.id.btn_saveCategory);
+        btnAction = findViewById(R.id.btn_action);
     }
     //endregion
 

@@ -43,6 +43,7 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     @Override
     protected void setupActionBtn()
     {
+        btnAction.setText(R.string.register);
         btnAction.setOnClickListener(v -> registerClicked());
     }
 
