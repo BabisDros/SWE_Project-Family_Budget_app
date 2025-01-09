@@ -1,38 +1,26 @@
 package com.android.familybudgetapp.view.cashFlowCategoryManagement.create;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.base.BaseActivity;
+import com.android.familybudgetapp.view.cashFlowCategoryManagement.BaseCashFlowManagementActivity;
 
-public class CashFlowCategoryCreateActivity extends BaseActivity<CashFlowCategoryCreateViewModel>
-        implements CashFlowCategoryCreateView, AdapterView.OnItemSelectedListener
+public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivity<CashFlowCategoryCreateViewModel>
+        implements CashFlowCategoryCreateView
 {
-    final String INCOME = "Income";
-    final String EXPENSE = "Expense";
-    String[] cashFlowCategories = {INCOME, EXPENSE};
-    Button btnSave;
-    EditText limitField, nameField;
+    AlertDialog.Builder addExtraCategoryDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cashflow_category_management);
         viewModel.getPresenter().setView(this);
+        viewModel.getPresenter().setType(cashFlowCategories[0]);
 
-        limitField = findViewById(R.id.limit_field);
-        nameField = findViewById(R.id.name_field);
-        setUpSpinner();
-        setupBtnSave();
+        setupAddMemberDialog();
     }
 
     @Override
@@ -41,54 +29,48 @@ public class CashFlowCategoryCreateActivity extends BaseActivity<CashFlowCategor
         return new ViewModelProvider(this).get(CashFlowCategoryCreateViewModel.class);
     }
 
-    private String getLimit()
+    @Override
+    protected void buttonSaveClicked(String name, String limit)
     {
-        return limitField.getText().toString();
+        btnSave.setOnClickListener(v -> viewModel.getPresenter().save(getName(), getLimit()));
     }
 
-    private String getName()
+    public void setType(String type)
     {
-        return nameField.getText().toString().trim();
+        viewModel.getPresenter().setType(type);
     }
 
-    private void setupBtnSave()
+    private void setupAddMemberDialog()
     {
-        btnSave = findViewById(R.id.btn_save);
-
+        addExtraCategoryDialog = new AlertDialog.Builder(CashFlowCategoryCreateActivity.this)
+                .setCancelable(true)
+                .setNegativeButton(R.string.no, (dialog, which) -> categoryDialogNoClicked())
+                .setPositiveButton(R.string.yes, (dialog, which) -> categoryDialogYesClicked());
     }
 
-    private void setUpSpinner()
+    private void categoryDialogNoClicked()
     {
-        Spinner categorySpinner = findViewById(R.id.spinner_categories);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>
-                (
-                        this,
-                        android.R.layout.simple_spinner_item,
-                        cashFlowCategories
-                );
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(adapter);
-        categorySpinner.setOnItemSelectedListener(this);
+        goToOverview();
     }
 
+    private void categoryDialogYesClicked()
+    {
+        viewModel.getPresenter().resetFields();
+    }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    public void clearFields()
     {
-        if (cashFlowCategories[position].equals(EXPENSE))
-        {
-            limitField.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            limitField.setVisibility(View.GONE);
-        }
+        viewModel.getPresenter().setType(cashFlowCategories[0]);
+        nameField.setText("");
+        limitField.setText("");
     }
 
-
     @Override
-    public void onNothingSelected(AdapterView<?> parent)
+    public void showAddCategoryMsg(String title, String message)
     {
+        addExtraCategoryDialog.setTitle(title);
+        addExtraCategoryDialog.setMessage(message);
+        addExtraCategoryDialog.show();
     }
 }

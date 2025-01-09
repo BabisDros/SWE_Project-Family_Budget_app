@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FamilyBudgetApp"
         >
         <activity
-            android:name='.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity'
+            android:name='.view.authentication.authOptions.AuthOptionsActivity'
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -49,6 +49,15 @@
             android:exported="true"/>
         <activity
             android:name=".view.membersManagement.edit.EditUserActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.edit.CashFlowCategoryEditActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.overview.CashFlowCategoryOverviewActivity"
             android:exported="true"/>
     </application>
 

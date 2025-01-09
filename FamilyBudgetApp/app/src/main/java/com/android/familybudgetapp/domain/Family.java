@@ -165,7 +165,7 @@ public class Family
         {
             throw new IllegalArgumentException("There is already a category with this name.");
         }
-        cashFlowCategories.put(category.getName(), category);
+        cashFlowCategories.put(category.getName().toLowerCase(), category);
     }
 
     /**
@@ -173,7 +173,7 @@ public class Family
      */
     public boolean validateCashFlowCategory(CashFlowCategory category)
     {
-        return !cashFlowCategories.containsKey(category.getName());
+        return !cashFlowCategories.containsKey(category.getName().toLowerCase());
     }
 
     public void removeCashFlowCategory(CashFlowCategory category)
@@ -182,7 +182,7 @@ public class Family
         {
             throw new IllegalArgumentException("Category shouldn't be null");
         }
-        cashFlowCategories.remove(category.getName(), category);
+        cashFlowCategories.remove(category.getName().toLowerCase(), category);
     }
 
     public void resetYearSavings()

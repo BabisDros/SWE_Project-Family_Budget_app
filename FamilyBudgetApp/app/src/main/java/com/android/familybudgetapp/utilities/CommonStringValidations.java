@@ -2,14 +2,17 @@ package com.android.familybudgetapp.utilities;
 
 public class CommonStringValidations
 {
-    public static final String INVALID_ALPHANUMERICAL="Characters >= 3. First and last character alphanumerical. " +
-            "Between them, alphanumerical or space.";
+    public static final String INVALID_ALPHANUMERICAL = "Characters should be at least three." +
+            "\nThe first and last characters must be a letter or a number. " +
+            "\nBetween the first and last characters, there can be letters, numbers, or spaces.";
+
+
     /**
      * @param name Characters >= 2. First character alphanumerical and others alphanumerical or underscore.
      */
     public static boolean isUsernameValid(String name)
     {
-       return  name.matches("[a-zA-Z0-9][a-zA-Z0-9_]+");
+        return name.matches("[a-zA-Z0-9][a-zA-Z0-9_]+");
     }
 
 
@@ -18,17 +21,15 @@ public class CommonStringValidations
      */
     public static boolean isPasswordValid(String password)
     {
-        return  password.matches("[a-zA-Z0-9]{4,}");
+        return password.matches("[a-zA-Z0-9]{4,}");
     }
 
     /**
      * @param name Characters >= 3. First and last character alphanumerical. Between them,
-     *   alphanumerical or space.
+     *             alphanumerical or space.
      */
     public static boolean isAlphanumericWithSpaces(String name)
     {
-        return  name.matches("[a-zA-Z0-9][a-zA-Z0-9 ]+[a-zA-Z0-9]");
+        return name.matches("[a-zA-Z0-9][a-zA-Z0-9 ]+[a-zA-Z0-9]");
     }
-
-
 }

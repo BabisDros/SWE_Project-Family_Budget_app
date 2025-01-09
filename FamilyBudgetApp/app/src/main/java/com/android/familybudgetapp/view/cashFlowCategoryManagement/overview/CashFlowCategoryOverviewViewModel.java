@@ -1,17 +1,15 @@
-package com.android.familybudgetapp.view.cashFlowCategoryManagement.create;
-
+package com.android.familybudgetapp.view.cashFlowCategoryManagement.overview;
 
 import com.android.familybudgetapp.dao.UserDAO;
-
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
 import com.android.familybudgetapp.view.base.BaseViewModel;
 
-public class CashFlowCategoryCreateViewModel extends BaseViewModel<CashFlowCategoryCreatePresenter>
+public class CashFlowCategoryOverviewViewModel extends BaseViewModel<CashFlowCategoryOverviewPresenter>
 {
     @Override
-    protected CashFlowCategoryCreatePresenter createPresenter()
+    protected CashFlowCategoryOverviewPresenter createPresenter()
     {
-        presenter = new CashFlowCategoryCreatePresenter();
+        presenter = new CashFlowCategoryOverviewPresenter() ;
 
         UserDAO userDAO = new UserDAOMemory();
         presenter.setUserDAO(userDAO);

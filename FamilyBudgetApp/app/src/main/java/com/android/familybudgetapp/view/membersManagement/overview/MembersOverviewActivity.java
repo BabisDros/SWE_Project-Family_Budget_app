@@ -5,10 +5,12 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.GenericRecyclerViewAdapter;
@@ -27,7 +29,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
     public static final String USER_ID_EXTRA = "user_id";
     GenericRecyclerViewAdapter<User, ViewHolderSingleTextView> recyclerViewAdapter;
     AlertDialog.Builder deleteAccountDialog;
-
+    AlertDialog.Builder optionsDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,13 +38,19 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
         setContentView(R.layout.activity_list_with_add_option);
         viewModel.getPresenter().setView(this);
+        TextView listTitle = findViewById(R.id.list_title);
+        listTitle.setText(R.string.family_members);
 
         setupHomepageBtn();
 
         viewModel.getPresenter().searchFamilyMembers();
         setupDeleteAccountDialog();
+
+        optionsDialog = new AlertDialog.Builder(this);
+
         setupFloatBtnAddMember();
     }
+
 
     @Override
     protected MembersOverviewViewModel createViewModel()
@@ -59,13 +67,13 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
     private void setupFloatBtnAddMember()
     {
-        FloatingActionButton btnAddMember = findViewById(R.id.float_btn_addMember);
+        FloatingActionButton btnAddMember = findViewById(R.id.float_btn_add);
         btnAddMember.setOnClickListener(v -> addMemberClicked());
     }
 
     public void populateMembersRecyclerView(List<User> members)
     {
-        RecyclerView recyclerViewMembers = findViewById(R.id.recyclerView_members);
+        RecyclerView recyclerViewMembers = findViewById(R.id.recyclerView_List);
         recyclerViewMembers.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerViewAdapter = new GenericRecyclerViewAdapter<>
@@ -76,13 +84,12 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
                             viewHolder.txtItem.setText(user.getUsername());
                             viewHolder.txtItem.setOnClickListener(v -> selectItem(user));
                         },
-                        (view) -> new ViewHolderSingleTextView(view),
+                        (view) -> new ViewHolderSingleTextView(view, R.id.txt_item),
                         R.layout.list_item_single_textview
                 );
 
         recyclerViewMembers.setAdapter(recyclerViewAdapter);
     }
-
 
     @Override
     public void updateMembersRecyclerView(int removedIndex)
@@ -133,8 +140,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
     public void selectItem(User user)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(user.getName())
+        optionsDialog.setTitle(user.getName())
                 .setNegativeButton("Cancel", null)
                 .setItems(new String[]{"Edit", "Delete"}, (dialog, which) ->
                 {

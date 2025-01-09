@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.familybudgetapp.R;
 
 import com.android.familybudgetapp.domain.FamPos;
+import com.android.familybudgetapp.memorydao.MemoryInitializer;
 import com.android.familybudgetapp.view.Budget.ShowBudget.BudgetActivity;
 import com.android.familybudgetapp.view.GlobalStatistics.GlobalStatisticsActivity;
 import com.android.familybudgetapp.view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity;
+import com.android.familybudgetapp.view.cashFlowCategoryManagement.overview.CashFlowCategoryOverviewActivity;
 import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 import java.util.Objects;
@@ -42,7 +44,6 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
         setContentView(R.layout.activity_temp_home);
 
         final HomePagePresenter presenter = new HomePagePresenter(this);
-
         findViewById(R.id.btn_detailed_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
         findViewById(R.id.btn_moneyboxes).setOnClickListener(v -> presenter.onMoneyBoxes());
         findViewById(R.id.btn_stats).setOnClickListener(v -> presenter.onStats());
@@ -104,7 +105,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
     @Override
     public void goToCashFlowCategories()
     {
-        Intent intent = new Intent(HomePageActivity.this, CashFlowCategoryCreateActivity.class);
+        Intent intent = new Intent(HomePageActivity.this, CashFlowCategoryOverviewActivity.class);
         startActivity(intent);
     }
 }

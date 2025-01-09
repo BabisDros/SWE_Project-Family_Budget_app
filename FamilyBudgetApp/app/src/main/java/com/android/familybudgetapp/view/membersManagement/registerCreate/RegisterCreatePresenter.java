@@ -9,8 +9,8 @@ import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPres
 public class RegisterCreatePresenter extends BaseUserManagementPresenter<RegisterCreateView>
 {
     boolean addMemberModeEnabled = false;
-    final String SUCCESSFUL_MESSAGE = "User: %s added!";
-    final String ADD_MEMBER_PROMPT = "Do you want to add a member?";
+    final String SUCCESSFUL_ADD_MEMBER_MSG = "User: %s added!";
+    final String ADD_MEMBER_PROMPT = "Do you want to add a new member?";
 
     /**
      * Validates input data and saves the user and family.
@@ -46,7 +46,7 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
 
     private void showSuccessfulMessage(String username)
     {
-        view.showAddMemberMessage(String.format(SUCCESSFUL_MESSAGE, username), ADD_MEMBER_PROMPT);
+        view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_MSG, username), ADD_MEMBER_PROMPT);
     }
 
     @Override
