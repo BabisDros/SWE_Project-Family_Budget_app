@@ -8,12 +8,14 @@ import com.android.familybudgetapp.utilities.CommonStringValidations;
 
 public class AddMoneyBoxPresenter {
     private AddMoneyBoxView view;
-    private User user;
+    private User currentUser;
+    private UserDAO users;
 
     public AddMoneyBoxPresenter(AddMoneyBoxView view, UserDAO users)
     {
         this.view = view;
-        user = users.findByID(Initializer.currentUserID);
+        this.users = users;
+        currentUser = users.findByID(Initializer.currentUserID);
     }
 
     /**
@@ -29,13 +31,14 @@ public class AddMoneyBoxPresenter {
                     " and can only be alphanumerical");
         else if (!MoneyBox.validateTarget(target))
             view.showErrorMessage("Error", "Target should be a positive number");
-        else if (!user.validateMoneyBox(new MoneyBox(reason, target)))
+        else if (!currentUser.validateMoneyBox(new MoneyBox(reason, target)))
         {
             view.showErrorMessage("Error", "You already have a moneyBox for that reason");
         }
         else
         {
-            user.addMoneyBox(new MoneyBox(reason, target));
+            currentUser.addMoneyBox(new MoneyBox(reason, target));
+            users.save(currentUser);
             view.succesfullyFinish();
         }
 
