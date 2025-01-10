@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModel;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.overview.CashFlowCategoryOverviewActivity;
-import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extends BaseActivity<V>
         implements AdapterView.OnItemSelectedListener
@@ -58,7 +57,7 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     void setUpCancelBtn()
     {
         btnCancel = findViewById(R.id.btn_cancel_edit);
-        btnCancel.setOnClickListener(v->goToMemberManagementActivity());
+        btnCancel.setOnClickListener(v-> goToCashFlowCategoryOverview());
     }
 
     protected abstract void buttonSaveClicked(String name, String limit);
@@ -106,9 +105,9 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         finish();
     }
 
-    public void goToMemberManagementActivity()
+    public void goToCashFlowCategoryOverview()
     {
-        Intent intent = new Intent(this, MembersOverviewActivity.class);
+        Intent intent = new Intent(this, CashFlowCategoryOverviewActivity.class);
         startActivity(intent);
         finish();
     }
