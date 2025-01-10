@@ -14,4 +14,6 @@ public interface CashFlowCategoryOverviewView extends BaseView
     void updateCategoriesRecyclerView(int i);
 
     void goToCreateCashFlowCategoryActivity();
+
+    void showDeleteCategory(String title, String message);
 }

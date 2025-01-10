@@ -4,6 +4,7 @@ import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.CashFlowCategory;
+import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.base.BasePresenter;
@@ -17,6 +18,7 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
     UserDAO userDAO;
     Family currentFamily;
 
+    CashFlowCategory currentCashFlowCategory;
     //cache categories at every session, because MAP does not guaranty order
     List<CashFlowCategory> categories;
 
@@ -47,12 +49,21 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
         }
     }
 
-    public void deleteCategory(CashFlowCategory category)
+    public void showVerification(CashFlowCategory category)
     {
-        if (category != null)
+        this.currentCashFlowCategory = category;
+
+        view.showDeleteCategory("Delete Verification", "Cash flow category: "
+                + category.getName() +
+                "\n\nDo you want to delete it?");
+    }
+
+    public void deleteCategory()
+    {
+        if (currentCashFlowCategory != null)
         {
-            currentFamily.removeCashFlowCategory(category);
-            view.updateCategoriesRecyclerView(categories.indexOf(category));
+            currentFamily.removeCashFlowCategory(currentCashFlowCategory);
+            view.updateCategoriesRecyclerView(categories.indexOf(currentCashFlowCategory));
             familyDAO.save(currentFamily);
         }
     }

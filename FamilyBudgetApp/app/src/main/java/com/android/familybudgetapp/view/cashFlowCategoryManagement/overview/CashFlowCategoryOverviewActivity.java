@@ -32,6 +32,7 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
     GenericRecyclerViewAdapter<CashFlowCategory, ViewHolderSingleTextView> recyclerViewAdapter;
     AlertDialog.Builder optionsDialog;
     Locale currentLocale;
+    private AlertDialog.Builder deleteCategoryDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,6 +51,7 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
 
         setupHomepageBtn();
         setupFloatBtnAdd();
+        setupDeleteAccountDialog();
     }
 
 
@@ -70,6 +72,18 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         viewModel.getPresenter().navigateToCreateCashFlowCategory();
     }
 
+    private void setupDeleteAccountDialog()
+    {
+        deleteCategoryDialog = new AlertDialog.Builder(this)
+                .setCancelable(true)
+                .setNegativeButton(R.string.no, null)
+                .setPositiveButton(R.string.yes, (dialog, which) -> deleteDialogYesClicked());
+    }
+
+    private void deleteDialogYesClicked()
+    {
+        viewModel.getPresenter().deleteCategory();
+    }
 
     private void homepageClicked()
     {
@@ -87,7 +101,6 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                         categories,
                         (cashFlowCategory, viewHolder) ->
                         {
-
                             viewHolder.txtItem.setText(createItemName(cashFlowCategory));
                             viewHolder.txtItem.setOnClickListener(v -> selectItem(cashFlowCategory));
                         },
@@ -129,9 +142,9 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                         startActivity(intent);
                         finish();
                     }
-                    else
+                    else//show Verification
                     {
-                        viewModel.getPresenter().deleteCategory(cashFlowCategory);
+                        viewModel.getPresenter().showVerification(cashFlowCategory);
                     }
                 })
                 .show();
@@ -157,5 +170,13 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         Intent intent = new Intent(this, CashFlowCategoryCreateActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void showDeleteCategory(String title, String message)
+    {
+        deleteCategoryDialog.setTitle(title);
+        deleteCategoryDialog.setMessage(message);
+        deleteCategoryDialog.show();
     }
 }
