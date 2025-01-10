@@ -22,7 +22,7 @@ public class GlobalStatisticsPresenter {
     private int yearlyStat2 = 5000;
     private int yearlyStat3 = 10000;
 
-    GlobalStatisticsPresenter(FamilyDAO familyDAO)
+    public GlobalStatisticsPresenter(FamilyDAO familyDAO)
     {
         this.familyDAO = familyDAO;
     }

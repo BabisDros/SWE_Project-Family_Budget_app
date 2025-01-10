@@ -26,7 +26,7 @@ public class ShowMoneyBoxesActivity extends AppCompatActivity implements ShowMon
     {
         super.onCreate(savedInstanceSate);
         setContentView(R.layout.activity_show_moneyboxes);
-        presenter = new ShowMoneyBoxesPresenter(this, new UserDAOMemory());
+        presenter = new ShowMoneyBoxesPresenter(new UserDAOMemory());
         findViewById(R.id.btn_back).setOnClickListener(v -> goBack());
         findViewById(R.id.btn_add).setOnClickListener(v -> addMoneyBox());
 

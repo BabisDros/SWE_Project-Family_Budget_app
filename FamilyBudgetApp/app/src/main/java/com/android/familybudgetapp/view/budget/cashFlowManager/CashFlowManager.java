@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Abstract class used by *Date*Calculator
+ * Abstract class used by *Date*Manager
  */
 public abstract class CashFlowManager implements CashFlowManagerInterface {
 

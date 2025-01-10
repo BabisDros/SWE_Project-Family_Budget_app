@@ -283,12 +283,4 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         setSurplus();
     }
 
-    /**
-     * Default action for onClick listener
-     */
-    public void DefaultAction_ReturnToHome()
-    {
-        Intent intent = new Intent(BudgetActivity.this, HomePageActivity.class);
-        startActivity(intent);
-    }
 }

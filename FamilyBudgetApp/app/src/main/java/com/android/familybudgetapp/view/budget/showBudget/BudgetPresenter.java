@@ -130,5 +130,6 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         }
         currentUser.addCashFlow(newCashFlow);
         updateFamilySurplus(familyMonthlySurplusManager.CalculateSurplus());
+        userDAO.save(currentUser);
     }
 }

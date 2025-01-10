@@ -31,7 +31,7 @@ public class ShowMoneyBoxesPresenterTest {
         dataHelper.prepareData();
         families = dataHelper.getFamilyDAO().findAll();
         stub = new ShowMoneyBoxesStub();
-        stub.setPresenter(new ShowMoneyBoxesPresenter(stub, new UserDAOMemory()));
+        stub.setPresenter(new ShowMoneyBoxesPresenter(new UserDAOMemory()));
     }
 
     @Test
