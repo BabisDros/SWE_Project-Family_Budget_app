@@ -3,6 +3,7 @@ package com.android.familybudgetapp.view.authentication.login;
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.User;
+import com.android.familybudgetapp.utilities.PBKDF2Hashing;
 import com.android.familybudgetapp.view.base.BasePresenter;
 
 public class LoginPresenter extends BasePresenter<LoginView>
@@ -28,7 +29,17 @@ public class LoginPresenter extends BasePresenter<LoginView>
     public void login(String username, String password)
     {
         User user = userDAO.findByUsername(username);
-        if (user != null && user.getPassword().equals(password))
+
+        boolean correctPassword = false;
+        try
+        {
+            correctPassword = PBKDF2Hashing.verifyPassword(password, user.getPassword());
+        }
+        catch (Exception e)
+        {
+            view.showErrorMessage("Login error", "Try again");
+        }
+        if (user != null && correctPassword)
         {
             Initializer.currentUserID = user.getID();
             view.goToHomepage(user.getFamilyPosition().name());

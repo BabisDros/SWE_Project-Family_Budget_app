@@ -6,6 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.android.familybudgetapp.utilities.PBKDF2Hashing;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +28,11 @@ public class UserTest {
     }
 
     @Test
-    public void testUserCreation() {
+    public void testUserCreation() throws Exception
+    {
         assertEquals("John Doe", user.getName());
         assertEquals("john_doe", user.getUsername());
-        assertEquals("password123", user.getPassword());
+        assertTrue(PBKDF2Hashing.verifyPassword("password123",user.getPassword()) );
         assertEquals(currentId, user.getID());
         assertEquals(familyPosition, user.getFamilyPosition());
         assertEquals(family, user.getFamily());
@@ -56,7 +59,8 @@ public class UserTest {
 
 
     @Test
-    public void testSettersAndGetters() {
+    public void testSettersAndGetters() throws Exception
+    {
         user.setName("Jane Doe");
         assertEquals("Jane Doe", user.getName());
         assertThrows(IllegalArgumentException.class, () -> {user.setName(null);});
@@ -67,8 +71,8 @@ public class UserTest {
         assertThrows(IllegalArgumentException.class, () -> {user.setUsername(null);});
         assertThrows(IllegalArgumentException.class, () -> {user.setUsername("%$");});
 
-        user.setPassword("newpassword");
-        assertEquals("newpassword", user.getPassword());
+        user.setPassword("passwordTest");
+        assertTrue(PBKDF2Hashing.verifyPassword("passwordTest",user.getPassword()) );
         assertThrows(IllegalArgumentException.class, () -> {user.setPassword(null);});
 
 

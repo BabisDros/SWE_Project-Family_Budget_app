@@ -1,10 +1,11 @@
 package com.android.familybudgetapp.domain;
 
 import com.android.familybudgetapp.utilities.CommonStringValidations;
-import com.android.familybudgetapp.utilities.Quadruples;
+import com.android.familybudgetapp.utilities.PBKDF2Hashing;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -93,7 +94,14 @@ public class User {
         if (!CommonStringValidations.isPasswordValid(password)) {
             throw new IllegalArgumentException("Password should only consist of:At least 4 numbers or letters");
         }
-        this.password = password;
+        try
+        {
+            this.password = PBKDF2Hashing.hashPassword(password);
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Failed Password Hashing.", e);
+        }
     }
 
     public void setName(String name) {
