@@ -43,6 +43,11 @@ public class GlobalStatisticsActivity extends AppCompatActivity implements Globa
         this.finish();
     }
 
+    protected void onPause()
+    {
+        super.onPause();
+    }
+
     public List<Tuples<YearMonth, Double>> getMonthlyStat()
     {
         return presenter.getMonthlyStat();

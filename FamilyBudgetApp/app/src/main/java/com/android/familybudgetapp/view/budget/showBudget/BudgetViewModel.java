@@ -73,6 +73,10 @@ public class BudgetViewModel extends ViewModel {
         state.set("dateRange", getNextDateRange());
     }
 
+    /**
+     * Result is either "Monthly" or "Yearly"
+     * @return String of the next date Range
+     */
     public String getNextDateRange()
     {
         switch ((String) Objects.requireNonNull(state.get("dateRange")))
@@ -93,6 +97,10 @@ public class BudgetViewModel extends ViewModel {
         state.set("viewGroup", getNextViewGroup());
     }
 
+    /**
+     * Result is either "Personal" or "Family"
+     * @return String of the next View Group
+     */
     public String getNextViewGroup()
     {
         switch ((String) Objects.requireNonNull(state.get("viewGroup")))

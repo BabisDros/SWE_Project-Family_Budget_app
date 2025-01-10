@@ -18,7 +18,6 @@ import java.util.List;
 
 public class DetailedBudgetActivity extends AppCompatActivity implements DetailedBudgetView{
     private DetailedBudgetViewModel vm;
-    private RecyclerView recyclerView;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -49,13 +48,18 @@ public class DetailedBudgetActivity extends AppCompatActivity implements Detaile
         ((TextView)findViewById(R.id.text_title)).setText(title);
 
         List<Quadruples<String, String, Integer, List<LocalDateTime>>> cashFlows = getCashFlows();
-        recyclerView = findViewById(R.id.recyclerView_items);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView_items);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new DetailedBudgetRecyclerViewAdapter(cashFlows));
     }
 
     private void goBack() {
         this.finish();
+    }
+
+    protected void onPause()
+    {
+        super.onPause();
     }
 
     private List<Quadruples<String, String, Integer, List<LocalDateTime>>> getCashFlows()

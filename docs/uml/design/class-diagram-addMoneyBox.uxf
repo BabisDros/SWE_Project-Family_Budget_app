@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>248</y>
+      <w>272</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>AddMoneyBoxActivity
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
+# OnPause()
+
++ showErrorMessage(title: String, message: String)
++ succesfullyFinish
+
++ getReason(): String
++ getTarget(): Integer
+
+- goBack()
+- save()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>272</y>
+      <w>360</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddMoneyBoxPresenter
+--
+- currentUser: User
+--
++ AddMoneyBoxPresenter(view: AddMoneyBoxView, users UserDAO)
++ validateSave()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>368</x>
+      <y>488</y>
+      <w>272</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+AddMoneyBoxView
+--
++ showErrorMessage(title: String, message: String)
++ succesfullyFinish
+
++ getReason(): String
++ getTarget(): Integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>432</y>
+      <w>104</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>480</y>
+      <w>224</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
++ findByID(userID: Long): User
++ findByUsername(username: String): User
++ save(user: User)
++ delete(entity: User)
++ findAll(): Set&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>344</y>
+      <w>72</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- userDAO
+m1=1</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>552</x>
+      <y>344</y>
+      <w>112</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;180.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>304</y>
+      <w>224</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- presenter
+m1=1</panel_attributes>
+    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

@@ -12,14 +12,11 @@ import java.util.List;
 
 public class ShowMoneyBoxesPresenter {
 
-    private ShowMoneyBoxesView view;
     private Family family;
 
-    public ShowMoneyBoxesPresenter(ShowMoneyBoxesView view, UserDAO user)
+    public ShowMoneyBoxesPresenter(UserDAO user)
     {
-        this.view = view;
         family = user.findByID(Initializer.currentUserID).getFamily();
-
     }
 
     /**

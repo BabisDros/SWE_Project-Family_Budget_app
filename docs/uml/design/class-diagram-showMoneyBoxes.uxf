@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>240</y>
+      <w>368</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>ShowMoneyBoxesActivity
+--
+recyclerView: RecyclerView
+addMoneyBoxLauncher: ActivityResultLauncher&lt;Intent&gt;
+--
+# onCreate(savedInstanceSate: Bundle)
+# οnPause()
+
+- goBack()
++ addMoneyBox()
++ getMoneyBoxes():List&lt;Quadruples&lt;String, String, Integer, Integer\&gt;&gt;
++ loadData()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>288</y>
+      <w>360</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ShowMoneyBoxesPresenter
+--
+- family: Family
+--
++ ShowMoneyBoxesPresenter(user: UserDAO)
++ getMoneyBoxes(): List&lt;Quadruples&lt;String, String, Integer, Integer\&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>272</x>
+      <y>496</y>
+      <w>152</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ShowMoneyBoxesView
+--
++ loadData()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>400</y>
+      <w>24</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>320</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- presenter
+m1=1</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>
