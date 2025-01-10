@@ -3,6 +3,7 @@ package com.android.familybudgetapp.view.membersManagement.registerCreate;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -28,6 +29,10 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         if (mode != null && mode.equals(ADD_MEMBER_EXTRA))
         {
             viewModel.getPresenter().enableAddMemberMode();
+        }
+        else
+        {
+            btnCancel.setVisibility(View.GONE);
         }
 
         setupAddMemberDialog();
@@ -55,6 +60,12 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         addMemberDialog.show();
     }
 
+    @Override
+    public void goToMemberManagement()
+    {
+        super.goToMemberManagementActivity();
+    }
+
     private void setupAddMemberDialog()
     {
         addMemberDialog = new AlertDialog.Builder(RegisterCreateActivity.this)
@@ -74,6 +85,7 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     @Override
     public void setupUIToAddMemberMode()
     {
+        btnCancel.setVisibility(View.VISIBLE);
         familyNameField.setEnabled(false);
         btnAction.setText(R.string.add_member);
         btnAction.setOnClickListener(v-> addMemberClicked());
@@ -120,13 +132,5 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     }
     //endregion
 
-    //region $Navigation to other activities
-    @Override
-    public void goToMemberManagement()
-    {
-        Intent intent = new Intent(this, MembersOverviewActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    //endregion
+
 }

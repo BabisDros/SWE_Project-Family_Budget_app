@@ -1,5 +1,6 @@
 package com.android.familybudgetapp.view.membersManagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -7,6 +8,7 @@ import android.widget.EditText;
 import androidx.lifecycle.ViewModel;
 
 import com.android.familybudgetapp.R;
+import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 import com.android.familybudgetapp.view.membersManagement.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 
@@ -18,15 +20,18 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     protected EditText familyNameField;
     protected Button btnAction;
 
+    protected Button btnCancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_member_management);
         setUIReferences();
         setEditTextsFocusListeners();
         setupActionBtn();
+        setUpCancelBtn();
     }
 
     //region $UI setups
@@ -57,6 +62,11 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         });
     }
 
+    void setUpCancelBtn()
+    {
+        btnCancel = findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(v->goToMemberManagementActivity());
+    }
     /**
      * Sets UI elements references
      */
@@ -120,4 +130,11 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         return familyNameField.getText().toString().trim();
     }
     //endregion
+
+    public void goToMemberManagementActivity()
+    {
+        Intent intent = new Intent(this, MembersOverviewActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

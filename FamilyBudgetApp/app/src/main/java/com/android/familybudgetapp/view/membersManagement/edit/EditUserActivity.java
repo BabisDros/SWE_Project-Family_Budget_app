@@ -90,13 +90,5 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     }
     //endregion
 
-    //region $Navigation
-    @Override
-    public void goToMemberManagementActivity()
-    {
-        Intent intent = new Intent(this, MembersOverviewActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    //endregion
+
 }

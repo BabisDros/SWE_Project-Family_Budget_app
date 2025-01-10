@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModel;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.overview.CashFlowCategoryOverviewActivity;
+import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extends BaseActivity<V>
         implements AdapterView.OnItemSelectedListener
@@ -24,7 +25,7 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     protected Button btnSave;
     protected EditText limitField, nameField;
     protected Spinner categorySpinner;
-
+    protected Button btnCancel;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +36,7 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         nameField = findViewById(R.id.name_field);
         setupSpinner();
         setupBtnSave();
+        setUpCancelBtn();
     }
 
     protected String getLimit()
@@ -51,6 +53,12 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     {
         btnSave = findViewById(R.id.btn_saveCategory);
         btnSave.setOnClickListener(v -> buttonSaveClicked(getName(), getLimit()));
+    }
+
+    void setUpCancelBtn()
+    {
+        btnCancel = findViewById(R.id.btn_cancel_edit);
+        btnCancel.setOnClickListener(v->goToMemberManagementActivity());
     }
 
     protected abstract void buttonSaveClicked(String name, String limit);
@@ -91,10 +99,16 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     {
     }
 
-
     public void goToOverview()
     {
         Intent intent = new Intent(this, CashFlowCategoryOverviewActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToMemberManagementActivity()
+    {
+        Intent intent = new Intent(this, MembersOverviewActivity.class);
         startActivity(intent);
         finish();
     }
