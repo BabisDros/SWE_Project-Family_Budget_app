@@ -1,5 +1,6 @@
 package com.android.familybudgetapp.view.cashFlowCategoryManagement;
 
+import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.Family;
@@ -12,8 +13,9 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
 {
     protected UserDAO userDAO;
 
+    protected FamilyDAO familyDAO;
     protected User currentUser;
-    protected Family family;
+    protected Family currentFamily;
     protected String currentType;
     protected String inputLowerCase;
 
@@ -27,6 +29,15 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
         this.userDAO = userDAO;
     }
 
+    /**
+     * Sets the Family DAO.
+     *
+     * @param familyDAO the {@link FamilyDAO} instance.
+     */
+    public void setFamilyDAO(FamilyDAO familyDAO)
+    {
+        this.familyDAO = familyDAO;
+    }
     public boolean validateName(String input)
     {
         inputLowerCase = input.toLowerCase();

@@ -15,8 +15,8 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
 {
     FamilyDAO familyDAO;
     UserDAO userDAO;
-    CashFlowCategory categoryToDelete;
     Family currentFamily;
+
     //cache categories at every session, because MAP does not guaranty order
     List<CashFlowCategory> categories;
 
@@ -53,6 +53,7 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
         {
             currentFamily.removeCashFlowCategory(category);
             view.updateCategoriesRecyclerView(categories.indexOf(category));
+            familyDAO.save(currentFamily);
         }
     }
 

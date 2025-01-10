@@ -20,7 +20,11 @@ public class CashFlowCategoryEditActivity extends BaseCashFlowManagementActivity
         viewModel.getPresenter().setView(this);
 
         Intent intent = getIntent();
-        viewModel.getPresenter().setCashFlowCategoryData(intent.getStringExtra(CASHFLOW_CATEGORY_NAME_EXTRA));
+        String cashFlowExtra=intent.getStringExtra(CASHFLOW_CATEGORY_NAME_EXTRA);
+        if (cashFlowExtra!=null)
+        {
+            viewModel.getPresenter().setCashFlowCategoryData(cashFlowExtra);
+        }
     }
 
     @Override

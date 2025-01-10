@@ -28,10 +28,10 @@ public class CashFlowCategoryCreatePresenter extends BaseCashFlowManagementPrese
         {
             newCategory = new Income(name);
         }
-
-
-        currentUser.getFamily().addCashFlowCategory(newCategory);
-        view.showAddCategoryMsg(String.format(SUCCESSFUL_ADDED_CATEGORY_MSG, name) ,ADD_EXTRA_CATEGORY_PROMPT);
+        currentFamily = currentUser.getFamily();
+        currentFamily.addCashFlowCategory(newCategory);
+        familyDAO.save(currentFamily);
+        view.showAddCategoryMsg(String.format(SUCCESSFUL_ADDED_CATEGORY_MSG, name), ADD_EXTRA_CATEGORY_PROMPT);
     }
 
     public void resetFields()

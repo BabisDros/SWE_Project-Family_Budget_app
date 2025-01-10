@@ -15,7 +15,8 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
     {
         currentUser = userDAO.findByID(Initializer.currentUserID);
         initialName = name.toLowerCase();
-        CashFlowCategory categoryToEdit = currentUser.getFamily().getCashFlowCategories().get(initialName);
+        currentFamily = currentUser.getFamily();
+        CashFlowCategory categoryToEdit = currentFamily.getCashFlowCategories().get(initialName);
         view.setNameField(name);
 
         if (categoryToEdit.getClass() == Expense.class)
@@ -29,7 +30,7 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
     public void save(String name, String limit)
     {
         if (!validateName(name)) return;
-        currentUser = userDAO.findByID(Initializer.currentUserID);
+
         CashFlowCategory newCategory;
         if (currentType.equals(CashFlowCategoryCreateActivity.EXPENSE))
         {
@@ -42,9 +43,11 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
             newCategory = new Income(name);
         }
 
-        CashFlowCategory existing = currentUser.getFamily().getCashFlowCategories().get(initialName);
-        currentUser.getFamily().removeCashFlowCategory(existing);
-        currentUser.getFamily().addCashFlowCategory(newCategory);
+        CashFlowCategory existing = currentFamily.getCashFlowCategories().get(initialName);
+        currentFamily.removeCashFlowCategory(existing);
+        currentFamily.addCashFlowCategory(newCategory);
+
+        familyDAO.save(currentFamily);
         view.goToOverview();
     }
 
