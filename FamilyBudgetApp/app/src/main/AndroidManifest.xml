@@ -21,28 +21,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Budget.ShowBudget.BudgetActivity"
+            android:name=".view.budget.showBudget.BudgetActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity"
+            android:name=".view.moneyBox.showMoneyBoxes.ShowMoneyBoxesActivity"
             android:exported="true"/>
         <activity
             android:name=".view.authentication.login.LoginActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.HomePage.HomePageActivity"
+            android:name=".view.homePage.HomePageActivity"
             android:exported="true"/>
         <activity
             android:name=".view.membersManagement.registerCreate.RegisterCreateActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.MoneyBox.AddMoneyBox.AddMoneyBoxActivity"
+            android:name=".view.moneyBox.addMoneyBox.AddMoneyBoxActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.Budget.DetailedBudget.DetailedBudgetActivity"
+            android:name=".view.budget.detailedBudget.DetailedBudgetActivity"
             android:exported="true"/>
         <activity
-            android:name=".view.GlobalStatistics.GlobalStatisticsActivity"
+            android:name=".view.globalStatistics.GlobalStatisticsActivity"
             android:exported="true"/>
         <activity
             android:name=".view.membersManagement.overview.MembersOverviewActivity"

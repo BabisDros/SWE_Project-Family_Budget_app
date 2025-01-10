@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.GenericRecyclerViewAdapter;
-import com.android.familybudgetapp.view.HomePage.HomePageActivity;
+import com.android.familybudgetapp.view.homePage.HomePageActivity;
 import com.android.familybudgetapp.view.membersManagement.edit.EditUserActivity;
 import com.android.familybudgetapp.view.membersManagement.registerCreate.RegisterCreateActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;

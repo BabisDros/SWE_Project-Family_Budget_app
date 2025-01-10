@@ -14,7 +14,7 @@ import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.CashFlowCategory;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.view.GenericRecyclerViewAdapter;
-import com.android.familybudgetapp.view.HomePage.HomePageActivity;
+import com.android.familybudgetapp.view.homePage.HomePageActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.edit.CashFlowCategoryEditActivity;
