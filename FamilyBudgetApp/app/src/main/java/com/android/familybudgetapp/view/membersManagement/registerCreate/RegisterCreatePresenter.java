@@ -25,13 +25,13 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         if (!validateAllFields(username, password, displayName, familyName)) return;
 
         family = new Family(familyName);
-        familyDAO.save(family);
         User newUser = new User(displayName, username, password, FamPos.Protector, family);
         protector = newUser;
-
         Initializer.currentUserID = newUser.getID();
 
-        userDAO.save(family, newUser);
+        family.addMember(newUser);
+        familyDAO.save(family);
+        userDAO.save(newUser);
         showSuccessfulMessage(username);
     }
 
@@ -40,7 +40,10 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         if (!validateAllFields(username, password, displayName, familyName)) return;
 
         User newUser = new User(displayName, username, password, FamPos.Member, family);
-        userDAO.save(family, newUser);
+
+        family.addMember(newUser);
+        familyDAO.save(family);
+        userDAO.save(newUser);
         showSuccessfulMessage(username);
     }
 
@@ -52,7 +55,6 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
     @Override
     public boolean validateUsernameUniqueness(String input)
     {
-
         if (userDAO.findByUsername(input) != null)
         {
             showUserExistsMsg();

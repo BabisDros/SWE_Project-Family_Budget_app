@@ -67,11 +67,14 @@ public abstract class Initializer {
         UserDAO userDAO = getUserDAO();
         User user1 = new User("displayNameTest", "usernameTest", "passwordTest", FamPos.Protector, family);
         User user2 = new User("displayNameTest2", "usernameTest2", "passwordTest2", FamPos.Member, family);
-        userDAO.save(family, user1);
-        userDAO.save(family, user2);
+        family.addMember(user1);
+        family.addMember(user2);
+        userDAO.save(user1);
+        userDAO.save(user2);
 
         User user2_1 = new User("displayNameTest2 1", "Test", "passwordTest", FamPos.Protector, family);
-        userDAO.save(family2, user2_1);
+        family2.addMember(user2_1);
+        userDAO.save(user2_1);
 
         currentUserID = user1.getID();
 

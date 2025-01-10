@@ -28,27 +28,17 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         if (!validateAllFields(username, password, displayName, familyName)) return;
 
         Family familyToUpdate = userToEdit.getFamily();
-        if (!familyName.equals(familyToUpdate.getName()))
-        {
-            familyToUpdate.setName(familyName);
-            familyDAO.save(familyToUpdate);// DAO's hashSet add, will replace the family
-            updateMembersFamilyName(familyName);
-        }
 
         userToEdit.setUsername(username);
         userToEdit.setPassword(password);
         userToEdit.setName(displayName);
         userToEdit.getFamily().setName(familyName);
 
-        view.goToMemberManagementActivity();
-    }
+        userDAO.save(userToEdit);
+        // DAO's hashSet add method, will replace the family with edited user
+        familyDAO.save(familyToUpdate);
 
-    private void updateMembersFamilyName(String newFamilyName)
-    {
-        for (User user : userToEdit.getFamily().getMembers().values())
-        {
-            user.getFamily().setName(newFamilyName);
-        }
+        view.goToMemberManagementActivity();
     }
 
     @Override

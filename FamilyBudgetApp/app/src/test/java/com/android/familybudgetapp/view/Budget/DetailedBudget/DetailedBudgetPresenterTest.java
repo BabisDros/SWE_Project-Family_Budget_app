@@ -113,7 +113,8 @@ public class DetailedBudgetPresenterTest {
         user.addCashFlow(new OneOff(50, income, LocalDateTime.now()));
         user.addCashFlow(new Repeating(80, expense, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly));
         UserDAO userDAO = new UserDAOMemory();
-        userDAO.save(family, user);
+        family.addMember(user);
+        userDAO.save(user);
         presenter.setUserDao(userDAO);
 
         presenter.setType(cashFlowType.Income);

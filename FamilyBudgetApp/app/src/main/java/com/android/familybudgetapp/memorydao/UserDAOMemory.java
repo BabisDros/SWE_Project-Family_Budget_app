@@ -23,10 +23,8 @@ public class UserDAOMemory implements UserDAO
     }
 
     @Override
-    public void save(Family family,  User user)
+    public void save(User user)
     {
-        family.addMember(user);
-        user.setFamily(family);
         users.add(user);
     }
 
