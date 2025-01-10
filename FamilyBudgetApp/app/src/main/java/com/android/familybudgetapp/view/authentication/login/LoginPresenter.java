@@ -9,6 +9,8 @@ import com.android.familybudgetapp.view.base.BasePresenter;
 public class LoginPresenter extends BasePresenter<LoginView>
 {
     UserDAO userDAO;
+    final String WRONG_CREDENTIALS_TITLE = "Wrong user credentials";
+    final String WRONG_CREDENTIALS_MSG = "Username or password is wrong or user does not exist.";
 
     /**
      * Sets the User DAO.
@@ -30,24 +32,28 @@ public class LoginPresenter extends BasePresenter<LoginView>
     {
         User user = userDAO.findByUsername(username);
 
-        boolean correctPassword = false;
+        if (user == null)
+        {
+            view.showErrorMessage(WRONG_CREDENTIALS_TITLE, WRONG_CREDENTIALS_MSG);
+            return;
+        }
+
         try
         {
-            correctPassword = PBKDF2Hashing.verifyPassword(password, user.getPassword());
+            boolean correctPassword = PBKDF2Hashing.verifyPassword(password, user.getPassword());
+            if (correctPassword)
+            {
+                Initializer.currentUserID = user.getID();
+                view.goToHomepage(user.getFamilyPosition().name());
+            }
+            else
+            {
+                view.showErrorMessage(WRONG_CREDENTIALS_TITLE, WRONG_CREDENTIALS_MSG);
+            }
         }
         catch (Exception e)
         {
-            view.showErrorMessage("Login error", "Try again");
-        }
-        if (user != null && correctPassword)
-        {
-            Initializer.currentUserID = user.getID();
-            view.goToHomepage(user.getFamilyPosition().name());
-        }
-        else
-        {
-            view.showErrorMessage("Wrong user credentials", "Username or password is wrong" +
-                    " or user does not exist.");
+            view.showErrorMessage(WRONG_CREDENTIALS_TITLE, WRONG_CREDENTIALS_MSG);
         }
     }
 }
