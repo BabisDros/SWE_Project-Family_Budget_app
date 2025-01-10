@@ -16,6 +16,7 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
     FamilyDAO familyDAO;
     UserDAO userDAO;
     User userToDelete;
+    Family currentFamily;
 
     //cache membersList at every session, because MAP does not guaranty order
     List<User> members;
@@ -43,39 +44,48 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
     }
     //endregion
 
-    public void deleteMember(User user)
+    public void showVerification(User user)
     {
         this.userToDelete = user;
         if (user.getFamilyPosition().equals(FamPos.Protector))
         {
             view.showDeleteAccountMessage("Caution", "Deleting Protector User:"
-                    + user.getName() + " will delete the account and wipe all the data." +
+                    + user.getName() + " will delete the account, all member accounts and wipe all the data." +
                     "\n\nDo you want to delete it?");
         }
         else
         {
-            userDAO.delete(user);
-            view.updateMembersRecyclerView(members.indexOf(user));
+            view.showDeleteAccountMessage("Delete Verification", "User: "
+                    + user.getName() +
+                    "\n\nDo you want to delete it?");
         }
     }
 
     public void searchFamilyMembers()
     {
         User currentUser = userDAO.findByID(Initializer.currentUserID);
-        Family currentFamily = familyDAO.findByID(currentUser.getFamily().getID());
+        currentFamily = currentUser.getFamily();
 
-        if (currentFamily != null)
+        members = new ArrayList<>(currentFamily.getMembers().values());
+        view.populateMembersRecyclerView(members);
+    }
+
+    void delete()
+    {
+        if (userToDelete.getFamilyPosition() == FamPos.Protector)
         {
-            members = new ArrayList<>(currentFamily.getMembers().values());
-            if (!members.isEmpty())
-            {
-                view.populateMembersRecyclerView(members);
-            }
+            deleteAccount();
         }
-        else
-        {
-            view.showErrorMessage("An error occurred", "Try again later");
-        }
+
+        else deleteMember();
+    }
+
+    public void deleteMember()
+    {
+        userDAO.delete(userToDelete);
+        familyDAO.save(currentFamily);
+        view.updateMembersRecyclerView(members.indexOf(userToDelete));
+
     }
 
     public void deleteAccount()
@@ -92,6 +102,7 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
             view.exitApp();
         }
     }
+
 
     public void navigateToRegister()
     {

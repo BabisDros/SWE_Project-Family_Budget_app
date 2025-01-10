@@ -119,7 +119,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
     private void deleteDialogYesClicked()
     {
-        viewModel.getPresenter().deleteAccount();
+        viewModel.getPresenter().delete();
     }
     //endregion
 
@@ -144,16 +144,16 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
                 .setNegativeButton("Cancel", null)
                 .setItems(new String[]{"Edit", "Delete"}, (dialog, which) ->
                 {
-                    if (which == 0)
+                    if (which == 0)//edit
                     {
                         Intent intent = new Intent(this, EditUserActivity.class);
                         intent.putExtra(USER_ID_EXTRA, user.getID());
                         startActivity(intent);
                         finish();
                     }
-                    else
+                    else//showVerification
                     {
-                        viewModel.getPresenter().deleteMember(user);
+                        viewModel.getPresenter().showVerification(user);
                     }
                 })
                 .show();
