@@ -1,11 +1,15 @@
 package com.android.familybudgetapp.domain;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.ArrayList;
+import android.util.Pair;
 
 public class MonthlySurplus
 {
     private LocalDateTime date;
     private int surplus;
+
+    private ArrayList<Pair<Allowance, String>> allowanceMoneyBoxReasonPairs = new ArrayList<>();
 
     public MonthlySurplus(YearMonth date)
     {
@@ -40,18 +44,26 @@ public class MonthlySurplus
         }
         this.date = yearMonth.atEndOfMonth().atStartOfDay();
     }
+    public void addAllowanceMoneyBoxPair(Allowance allowance, String reason)
+    {
+        if(allowance==null)
+        {
+            throw new IllegalArgumentException("Allowance shouldn't be null");
+        }
+        if(reason==null)
+        {
+            throw new IllegalArgumentException("Reason shouldn't be null");
+        }
+        Pair<Allowance, String> pair = new Pair<>(allowance, reason);
+        this.allowanceMoneyBoxReasonPairs.add(pair);
+    }
 
-    //Remove check, redundant and problematic since CashFlow refactoring
     public void addCashFlowToSurplus(CashFlow cashFlow)
     {
         if(cashFlow==null)
         {
             throw new IllegalArgumentException("CashFlow shouldn't be null");
         }
-//        else if (!validateCashFlow(cashFlow))
-//        {
- //           throw new IllegalArgumentException("CashFlow date is less than current MonthlySurplus date");
- //       }
         this.surplus+=cashFlow.getMonthlyAmount(YearMonth.from(date));
     }
 
