@@ -1,6 +1,10 @@
 package com.android.familybudgetapp.view.Budget.CashFlowManager;
 
+import android.util.Log;
+
 import com.android.familybudgetapp.domain.CashFlow;
+import com.android.familybudgetapp.domain.Family;
+import com.android.familybudgetapp.domain.MonthlySurplus;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.InDateRange;
 import com.android.familybudgetapp.utilities.Tuples;
@@ -25,6 +29,22 @@ public class monthlyManager extends CashFlowManager {
     @Override
     protected int getAmountForRange(CashFlow cashFlow) {
         return cashFlow.getMonthlyAmount(YearMonth.now());
+    }
+    public void moveUnallocatedSurplusToSavings(Family family) {
+        // Users are only allowed to allocate the previous month's surplus
+        // If it's not allocated by start of the next month, it will be automatically allocated to savings
+        YearMonth expiredSurplusMonth = YearMonth.now().minusMonths(2);
+        if (!family.getMonthlySurpluses().containsKey(expiredSurplusMonth))
+            return;
+
+        MonthlySurplus expiredSurplus = family.getMonthlySurpluses().get(expiredSurplusMonth);
+        int expiredSurplusAmount = expiredSurplus.getSurplus();
+        if (expiredSurplusAmount <= 0) {
+            return;
+        }
+
+        expiredSurplus.setSurplus(0);
+        family.addToSavings(expiredSurplusAmount);
     }
 
 }

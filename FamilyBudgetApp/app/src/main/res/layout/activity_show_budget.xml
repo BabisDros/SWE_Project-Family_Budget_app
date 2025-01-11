@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:text="@string/expenses"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +89,12 @@
         android:id="@+id/budget_title_personal_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="36dp"
         android:text="@string/income"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.614"
         app:layout_constraintStart_toEndOf="@+id/budget_title_personal_expenses"
         app:layout_constraintTop_toBottomOf="@+id/txt_personal_monthly_surplus" />
 
@@ -123,14 +123,26 @@
         android:id="@+id/txt_personal_monthly_surplus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
         android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
         android:text="@string/placeholder"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_detailed_expenses" />
+
+    <Button
+        android:id="@+id/btn_allocate_previous_surplus"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:text="@string/surplus_allocate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_detailed_surplus"

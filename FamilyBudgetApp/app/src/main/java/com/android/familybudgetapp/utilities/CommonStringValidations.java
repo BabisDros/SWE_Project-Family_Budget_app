@@ -28,5 +28,15 @@ public class CommonStringValidations
         return  name.matches("[a-zA-Z0-9][a-zA-Z0-9 ]+[a-zA-Z0-9]");
     }
 
+    /**
+     * @param amount Validate amount entered by android:inputType="numberDecimal"
+     */
+    public static boolean isAmountValid(String amount) {
+        return !amount.isEmpty() &&
+                !amount.endsWith(".") &&
+                !amount.equals("0");
+
+    }
+
 
 }

@@ -38,4 +38,5 @@
     <string name="global_stats">Global Statistics</string>
     <string name="stat_title_monthly">Percentage of families with positive surplus per month</string>
     <string name="stat_title_yearly">Percentage of families with at least a set amount of yearly saving per year</string>
+    <string name="surplus_allocate">Allocate previous surplus</string>
 </resources>

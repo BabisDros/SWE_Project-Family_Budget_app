@@ -10,10 +10,10 @@ import com.android.familybudgetapp.domain.OneOff;
 import com.android.familybudgetapp.domain.Repeating;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.domain.recurPeriod;
+import com.android.familybudgetapp.utilities.CommonStringValidations;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.CashFlowManagerInterface;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.FamilyUserStrategy;
-import com.android.familybudgetapp.view.Budget.CashFlowManager.UserRetrievalStrategy;
 import com.android.familybudgetapp.view.Budget.CashFlowManager.monthlyManager;
 import com.android.familybudgetapp.view.base.BasePresenter;
 import java.time.LocalDateTime;
@@ -100,8 +100,7 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         CashFlowCategory category = getCurrentUser().getFamily().getCashFlowCategories().get(categoryName);
 
         // amount
-        if (cashFlowValue.isEmpty() || cashFlowValue.startsWith(".") ||
-                cashFlowValue.endsWith(".") || cashFlowValue.equals("0")) {
+        if (CommonStringValidations.isAmountValid(cashFlowValue)) {
             view.showErrorMessage("Error", "Please enter a valid amount.");
             return;
         }
@@ -131,5 +130,17 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         }
         currentUser.addCashFlow(newCashFlow);
         updateFamilySurplus(familyMonthlySurplusManager.CalculateSurplus());
+    }
+    public int getPreviousSurplusLeft() {
+        Family family = getCurrentUser().getFamily();
+        YearMonth previousMonth = YearMonth.now().minusMonths(1);
+        if (!family.getMonthlySurpluses().containsKey(previousMonth)) {
+            return 0;
+        }
+        return family.getMonthlySurpluses().get(previousMonth).calculateSurplusLeft();
+    }
+
+    public void moveUnallocatedSurplusToSavings() {
+        familyMonthlySurplusManager.moveUnallocatedSurplusToSavings(getCurrentUser().getFamily());
     }
 }

@@ -22,27 +22,39 @@
         </activity>
         <activity
             android:name=".view.Budget.ShowBudget.BudgetActivity"
+            android:label="Budget"
+            android:exported="true"/>
+        <activity
+            android:name=".view.Budget.AllocateSurplus.AllocateSurplusActivity"
+            android:label="Allocate Surplus"
             android:exported="true"/>
         <activity
             android:name=".view.MoneyBox.ShowMoneyBoxes.ShowMoneyBoxesActivity"
+            android:label="Money Boxes"
             android:exported="true"/>
         <activity
             android:name=".view.authentication.login.LoginActivity"
+            android:label="Login"
             android:exported="true"/>
         <activity
             android:name=".view.HomePage.HomePageActivity"
+            android:label="Home"
             android:exported="true"/>
         <activity
             android:name=".view.authentication.register.RegisterActivity"
+            android:label="Register"
             android:exported="true"/>
         <activity
             android:name=".view.MoneyBox.AddMoneyBox.AddMoneyBoxActivity"
+            android:label="Add Money Box"
             android:exported="true"/>
         <activity
             android:name=".view.Budget.DetailedBudget.DetailedBudgetActivity"
+            android:label="Detailed Budget"
             android:exported="true"/>
         <activity
             android:name=".view.GlobalStatistics.GlobalStatisticsActivity"
+            android:label="Global Statistics"
             android:exported="true"/>
     </application>
 

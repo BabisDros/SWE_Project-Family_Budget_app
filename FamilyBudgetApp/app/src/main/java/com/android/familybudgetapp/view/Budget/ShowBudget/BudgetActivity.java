@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.CashFlowCategory;
+import com.android.familybudgetapp.domain.FamPos;
 import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Tuples;
+import com.android.familybudgetapp.view.Budget.AllocateSurplus.AllocateSurplusActivity;
 import com.android.familybudgetapp.view.Budget.DetailedBudget.DetailedBudgetActivity;
 import com.android.familybudgetapp.view.HomePage.HomePageActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
@@ -52,6 +54,7 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         findViewById(R.id.btn_view_group).setOnClickListener(v  -> changeBudgetViewGroup());
         findViewById(R.id.btn_back).setOnClickListener(v -> goBack());
         findViewById(R.id.add_cashflow).setOnClickListener(v -> addNewCashFlow());
+        findViewById(R.id.btn_allocate_previous_surplus).setOnClickListener(v -> onAllocateSurplus());
         vm = new ViewModelProvider(this).get(BudgetViewModel.class);
         vm.getPresenter().setView(this);
 
@@ -87,6 +90,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         //surplus
         setSurplus();
 
+        // Handle previous surplus
+        allocatePreviousSurplusOption(); // last month
+        vm.getPresenter().moveUnallocatedSurplusToSavings(); // 2 months ago, expired
     }
 
     protected void onPause()
@@ -281,6 +287,26 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
 
         // Update surplus
         setSurplus();
+    }
+    private void allocatePreviousSurplusOption() {
+        int previousMonthSurplusLeft = vm.getPresenter().getPreviousSurplusLeft();
+
+        if (previousMonthSurplusLeft <= 0)
+            return;
+        if (vm.getPresenter().getCurrentUser().getFamilyPosition() != FamPos.Protector)
+            return;
+        if (!vm.getState().get("viewGroup").equals("Family"))
+            return;
+
+        findViewById(R.id.btn_allocate_previous_surplus).setVisibility(View.VISIBLE);
+        ((Button) findViewById(R.id.btn_allocate_previous_surplus)).setText(
+                "Allocate previous surplus: " + AmountConversion.toEuro(previousMonthSurplusLeft));
+    }
+
+    private void onAllocateSurplus() {
+        Intent intent = new Intent(BudgetActivity.this, AllocateSurplusActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
     /**
