@@ -1,6 +1,7 @@
 package com.android.familybudgetapp.domain;
 
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,14 +26,17 @@ public class FamilyTest
     @Test
     public void instantiateObjectWithInvalidArguments()
     {
-        assertThrows(IllegalArgumentException.class, ()-> {
+        assertThrows(IllegalArgumentException.class, () ->
+        {
             new Family(" test ");
         });
 
-        assertThrows(IllegalArgumentException.class, ()-> {
+        assertThrows(IllegalArgumentException.class, () ->
+        {
             new Family(" ");
         });
-        assertThrows(IllegalArgumentException.class, ()-> {
+        assertThrows(IllegalArgumentException.class, () ->
+        {
             new Family(null);
         });
 
@@ -120,8 +124,8 @@ public class FamilyTest
         CashFlowCategory category2 = new Expense("test2", 20);
 
         Map<String, CashFlowCategory> testSet = new HashMap<>();
-        testSet.put(category1.getName(),category1);
-        testSet.put(category2.getName(),category2);
+        testSet.put(category1.getName(), category1);
+        testSet.put(category2.getName(), category2);
 
         family.addCashFlowCategory(category1);
         family.addCashFlowCategory(category2);
@@ -213,7 +217,7 @@ public class FamilyTest
     @Test
     public void removeFromSavingsValidAmount()
     {
-        int amount=10;
+        int amount = 10;
         family.addToSavings(amount);
         family.removeFromSavings(amount);
         assertEquals(0, family.getSavings());
@@ -258,7 +262,7 @@ public class FamilyTest
     @Test
     public void addValidMember()
     {
-        User member=new User("john","1234","12345",FamPos.Member, family );
+        User member = new User("john", "1234", "12345", FamPos.Member, family);
         family.addMember(member);
         assertTrue(family.getMembers().containsKey(member.getID()));
     }
@@ -271,7 +275,7 @@ public class FamilyTest
             family.addMember(null);
         });
 
-        User member=new User("john","1234","12345",FamPos.Member, family );
+        User member = new User("john", "1234", "12345", FamPos.Member, family);
         family.addMember(member);
         //try to add already existing member
         assertThrows(IllegalArgumentException.class, () ->
@@ -281,18 +285,37 @@ public class FamilyTest
     }
 
     @Test
+    public void removeExistingMember()
+    {
+        User member = new User("john", "1234", "12345", FamPos.Member, family);
+        family.addMember(member);
+        family.removeMember(member);
+        assertFalse(family.getMembers().containsKey(member.getID()));
+    }
+
+    @Test
+    public void removeNullMember()
+    {
+        assertThrows(IllegalArgumentException.class, () ->
+        {
+            family.removeMember(null);
+        });
+    }
+
+    @Test
     public void validateValidMember()
     {
-        User member1=new User("john","1234","12345",FamPos.Member, family );
-        User member2=new User("jane","1234","12345",FamPos.Member, family );
+        User member1 = new User("john", "1234", "12345", FamPos.Member, family);
+        User member2 = new User("jane", "1234", "12345", FamPos.Member, family);
         //try to add already existing member
         assertTrue(family.validateMember(member1));
         assertTrue(family.validateMember(member2));
     }
+
     @Test
     public void validateInvalidMember()
     {
-        User member=new User("john","1234","12345",FamPos.Member, family );
+        User member = new User("john", "1234", "12345", FamPos.Member, family);
         family.addMember(member);
 
         //try to add already existing member
@@ -302,10 +325,10 @@ public class FamilyTest
     @Test
     public void addValidSurplus()
     {
-        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus = new MonthlySurplus(YearMonth.now());
 
         family.addSurplus(surplus);
-        assertTrue(family.getMonthlySurpluses().containsKey(YearMonth.of(surplus.getDate().getYear(),surplus.getDate().getMonth()) ));
+        assertTrue(family.getMonthlySurpluses().containsKey(YearMonth.of(surplus.getDate().getYear(), surplus.getDate().getMonth())));
     }
 
     @Test
@@ -316,7 +339,7 @@ public class FamilyTest
             family.addSurplus(null);
         });
 
-        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus = new MonthlySurplus(YearMonth.now());
         family.addSurplus(surplus);
         assertThrows(IllegalArgumentException.class, () ->
         {
@@ -327,8 +350,8 @@ public class FamilyTest
     @Test
     public void validateValidSurplus()
     {
-        MonthlySurplus surplus1=new MonthlySurplus(YearMonth.now());
-        MonthlySurplus surplus2=new MonthlySurplus(YearMonth.now().plusMonths(1));
+        MonthlySurplus surplus1 = new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus2 = new MonthlySurplus(YearMonth.now().plusMonths(1));
 
         family.addSurplus(surplus1);
 
@@ -339,7 +362,7 @@ public class FamilyTest
     @Test
     public void validateInvalidSurplus()
     {
-        MonthlySurplus surplus=new MonthlySurplus(YearMonth.now());
+        MonthlySurplus surplus = new MonthlySurplus(YearMonth.now());
         family.addSurplus(surplus);
 
         //add same date surplus
@@ -349,9 +372,9 @@ public class FamilyTest
     @Test
     public void addValidCashFlowCategory()
     {
-        CashFlowCategory category1=new Expense("test",10);
-        CashFlowCategory category2=new Expense("test2",10);
-        CashFlowCategory category3=new Income("test3");//
+        CashFlowCategory category1 = new Expense("test", 10);
+        CashFlowCategory category2 = new Expense("test2", 10);
+        CashFlowCategory category3 = new Income("test3");//
         family.addCashFlowCategory(category1);
         family.addCashFlowCategory(category2);
         family.addCashFlowCategory(category3);
@@ -368,10 +391,10 @@ public class FamilyTest
             family.addCashFlowCategory(null);
         });
 
-        CashFlowCategory expense1=new Expense("test",10);
-        CashFlowCategory expense2=new Expense("test",10);
-        CashFlowCategory income1 =new Income("test1");
-        CashFlowCategory income2 =new Income("test1");
+        CashFlowCategory expense1 = new Expense("test", 10);
+        CashFlowCategory expense2 = new Expense("test", 10);
+        CashFlowCategory income1 = new Income("test1");
+        CashFlowCategory income2 = new Income("test1");
 
         family.addCashFlowCategory(expense1);
         family.addCashFlowCategory(income1);
@@ -389,10 +412,10 @@ public class FamilyTest
     @Test
     public void validatedValidCashFlowCategory()
     {
-        CashFlowCategory expense1=new Expense("test",10);
-        CashFlowCategory expense2=new Expense("test2",10);
-        CashFlowCategory income1 =new Income("test3");
-        CashFlowCategory income2 =new Income("test4");
+        CashFlowCategory expense1 = new Expense("test", 10);
+        CashFlowCategory expense2 = new Expense("test2", 10);
+        CashFlowCategory income1 = new Income("test3");
+        CashFlowCategory income2 = new Income("test4");
 
         family.addCashFlowCategory(expense1);
         family.addCashFlowCategory(income1);
@@ -404,10 +427,10 @@ public class FamilyTest
     @Test
     public void validatedInvalidCashFlowCategory()
     {
-        CashFlowCategory expense1=new Expense("test",10);
-        CashFlowCategory expense2=new Expense("test",10);
-        CashFlowCategory income1 =new Income("test1");
-        CashFlowCategory income2 =new Income("test1");
+        CashFlowCategory expense1 = new Expense("test", 10);
+        CashFlowCategory expense2 = new Expense("test", 10);
+        CashFlowCategory income1 = new Income("test1");
+        CashFlowCategory income2 = new Income("test1");
 
         family.addCashFlowCategory(expense1);
         family.addCashFlowCategory(income1);
@@ -428,7 +451,7 @@ public class FamilyTest
     @Test
     public void removeValidCashFlowCategory()
     {
-        CashFlowCategory expense1=new Expense("test",10);
+        CashFlowCategory expense1 = new Expense("test", 10);
         family.addCashFlowCategory(expense1);
         family.removeCashFlowCategory(expense1);
         assertFalse(family.getCashFlowCategories().containsKey(expense1.getName()));
@@ -440,5 +463,80 @@ public class FamilyTest
         family.addToSavings(100);
         family.resetYearSavings();
         assertEquals(0, family.getYearlySavings());
+    }
+
+    @Test
+    public void equalsSameObject()
+    {
+        assertEquals(family, family);
+    }
+
+    @Test
+    public void equalsDifferentObject()
+    {
+        Family family2 = new Family("test2");
+        assertFalse(family.equals(family2));
+    }
+
+    @Test
+    public void equalsNull()
+    {
+        assertFalse(family.equals(null));
+    }
+
+    @Test
+    public void equalsDifferentClass()
+    {
+        Integer i = 10;
+        assertNotEquals(family, i);
+    }
+
+    @Test
+    public void equalsSameId() throws NoSuchFieldException, IllegalAccessException
+    {
+        // Temporary get access to private field to reset it,
+        // instead of creating a method in the Class specifically for the test.
+        Field field = Family.class.getDeclaredField("nextId");
+        field.setAccessible(true);
+        field.set(null, 1);
+
+        Family family1 = new Family("test2");
+        field.setAccessible(true);
+        field.set(null, 1);
+
+        Family family2 = new Family("test2");
+        field.setAccessible(true);
+        field.set(null, 1);
+        assertEquals(family1, family2);
+    }
+
+
+
+    @Test
+    public void hashCodeSameId() throws NoSuchFieldException, IllegalAccessException
+    {
+        // Temporary get access to private field to reset it,
+        // instead of creating a method in the Class specifically for the test.
+        Field field = Family.class.getDeclaredField("nextId");
+        field.setAccessible(true);
+        field.set(null, 1);
+
+        Family family1 = new Family("test");
+        field.setAccessible(true);
+        field.set(null, 1);
+
+        Family family2 = new Family("test2");
+        field.setAccessible(true);
+        field.set(null, 1);
+
+        assertEquals(family1.hashCode(), family2.hashCode());
+    }
+
+    @Test
+    public void hashCodeDifferentId()
+    {
+        Family family1 = new Family("test");
+        Family family2 = new Family("test");
+        assertNotEquals(family1.hashCode(), family2.hashCode());
     }
 }

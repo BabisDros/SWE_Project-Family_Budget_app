@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.lifecycle.ViewModelProvider;
+
 import com.android.familybudgetapp.R;
-import com.android.familybudgetapp.view.HomePage.HomePageActivity;
+import com.android.familybudgetapp.view.homePage.HomePageActivity;
 import com.android.familybudgetapp.view.base.BaseActivity;
 
 
@@ -35,22 +37,23 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     /**
-     * Sets up the login button and its onClick listener.
+     * Sets up the loginClicked button and its onClick listener.
      */
     private void setupLoginBtn()
     {
-        Button actionButton = findViewById(R.id.btn_register);
-        actionButton.setOnClickListener(v -> login());
+        Button actionButton = findViewById(R.id.btn_login);
+        actionButton.setOnClickListener(v -> loginClicked());
     }
 
     /**
-     * Calls presenter's login method.
+     * Calls presenter's login method when .
      */
-    private void login()
+    private void loginClicked()
     {
         viewModel.getPresenter().login(getUsername(), getPassword());
     }
 
+    //region $Get values from UI elements
     @Override
     public String getUsername()
     {
@@ -62,12 +65,17 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     {
         return passwordField.getText().toString().trim();
     }
+    //endregion
 
+    //region $Navigation
     @Override
-    public void goToHomepage()
+    public void goToHomepage(String famPos)
     {
         Intent intent = new Intent(this, HomePageActivity.class);
+        intent.putExtra(HomePageActivity.MODE_EXTRA, famPos);
+
         startActivity(intent);
         finish();
     }
+    //endregion
 }

@@ -28,7 +28,7 @@ public interface UserDAO
      * @param user The object whose state is being saved
      * to the external data source.
      */
-    void save(Family family, User user);
+    void save(User user);
 
     /**
      * Deletes the User object from the external data source.

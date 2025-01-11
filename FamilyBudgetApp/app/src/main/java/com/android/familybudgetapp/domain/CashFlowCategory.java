@@ -25,8 +25,7 @@ public abstract class CashFlowCategory
         }
         else if(!CommonStringValidations.isAlphanumericWithSpaces(name))
         {
-            throw new IllegalArgumentException("Name should be consisted only by: Numbers, letters" +
-                    " and spaces ONLY between them");
+            throw new IllegalArgumentException(CommonStringValidations.INVALID_ALPHANUMERICAL);
         }
         this.name=name;
     }
