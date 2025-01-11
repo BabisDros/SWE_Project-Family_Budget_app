@@ -46,11 +46,11 @@ public abstract class Initializer {
         familyDAO.save(family);
 
         //categories
-        Expense categoryExpense1 = new Expense("Food", 200);
+        Expense categoryExpense1 = new Expense("Food", 20000);
         family.addCashFlowCategory(categoryExpense1);
-        Expense categoryExpense2 = new Expense("Clothes", 500);
+        Expense categoryExpense2 = new Expense("Clothes", 5000);
         family.addCashFlowCategory(categoryExpense2);
-        Expense categoryExpense3 = new Expense("Gift", 800);
+        Expense categoryExpense3 = new Expense("Gift", 80000);
         family.addCashFlowCategory(categoryExpense3);
         Income categoryIncome1 = new Income("Job");
         family.addCashFlowCategory(categoryIncome1);
@@ -59,8 +59,8 @@ public abstract class Initializer {
 
         //users
         UserDAO userDAO = getUserDAO();
-        User user1 = new User("displayNameTest", "usernameTest", "passwordTest", FamPos.Protector, family);
-        User user2 = new User("displayNameTest2", "usernameTest2", "passwordTest2", FamPos.Member, family);
+        User user1 = new User("name1", "usernameTest", "passwordTest", FamPos.Protector, family);
+        User user2 = new User("name2", "usernameTest2", "passwordTest2", FamPos.Member, family);
         userDAO.save(family, user1);
         userDAO.save(family, user2);
 
@@ -71,38 +71,38 @@ public abstract class Initializer {
         OneOff oneOff;
 
         //expenses
-        repeating = new Repeating(150, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating = new Repeating(15000, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user1.addCashFlow(repeating);
 
-        repeating = new Repeating(20, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating = new Repeating(2000, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2025, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user1.addCashFlow(repeating);
 
-        repeating = new Repeating(80, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Weekly);
+        repeating = new Repeating(8000, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Weekly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user1.addCashFlow(repeating);
 
-        repeating = new Repeating(110, categoryExpense3, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating = new Repeating(11000, categoryExpense3, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2024, 11, 20, 0, 0));
         user1.addCashFlow(repeating);
 
-        repeating = new Repeating(500, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating = new Repeating(5000, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user2.addCashFlow(repeating);
 
         //income
-        repeating = new Repeating(600, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
+        repeating = new Repeating(60000, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
         user1.addCashFlow(repeating);
 
-        oneOff = new OneOff(1000, categoryIncome2, LocalDateTime.now());
+        oneOff = new OneOff(10000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         user1.addCashFlow(oneOff);
 
@@ -119,16 +119,16 @@ public abstract class Initializer {
         user1.addCashFlow(oneOff);
 
         //moneyboxes
-        MoneyBox moneyBox1 = new MoneyBox("Laptop", 500);
-        MoneyBox moneyBox2 = new MoneyBox("Drawing board", 200);
+        MoneyBox moneyBox1 = new MoneyBox("Laptop", 50000);
+        MoneyBox moneyBox2 = new MoneyBox("Drawing board", 2000);
         user1.addMoneyBox(moneyBox1);
         user1.addMoneyBox(moneyBox2);
 
-        MoneyBox moneyBox3 = new MoneyBox("Laptop", 2500);
+        MoneyBox moneyBox3 = new MoneyBox("Laptop", 150000);
         user2.addMoneyBox(moneyBox3);
 
-        moneyBox1.addMoney(new Allowance(100, LocalDateTime.now()));
-        moneyBox3.addMoney(new Allowance(800, LocalDateTime.now()));
+        moneyBox1.addMoney(new Allowance(10000, LocalDateTime.now()));
+        moneyBox3.addMoney(new Allowance(80000, LocalDateTime.now()));
 
         calculateMonthlySurpluses();
 
@@ -174,7 +174,8 @@ public abstract class Initializer {
                         monthlySurplus.removeCashFlowFromSurplus(cashFlow);
                 }
                 family.addSurplus(monthlySurplus);
-                if (!currentDate.equals(YearMonth.now())) // do not add to savings for current month
+                // do not add to savings for current month or previous month, so there's surplus left to allocate
+                if (!currentDate.equals(YearMonth.now()) && !currentDate.equals(YearMonth.now().minusMonths(1)))
                 {
                     if (monthlySurplus.getSurplus() >= 0)
                         family.addToSavings(monthlySurplus.getSurplus());
