@@ -19,5 +19,4 @@ public class AuthOptionsPresenter extends BasePresenter<AuthOptionsView>
     {
         view.goToRegister();
     }
-
 }
