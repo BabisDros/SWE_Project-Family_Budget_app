@@ -7,7 +7,7 @@ import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPres
 
 public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {
-    User userToEdit;
+    private User userToEdit;
 
     public void setUserData(long userId)
     {

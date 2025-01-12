@@ -2,12 +2,15 @@ package com.android.familybudgetapp.view.cashFlowCategoryManagement;
 
 import com.android.familybudgetapp.dao.FamilyDAO;
 import com.android.familybudgetapp.dao.UserDAO;
+import com.android.familybudgetapp.domain.CashFlowCategory;
 import com.android.familybudgetapp.domain.Expense;
 import com.android.familybudgetapp.domain.Family;
+import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.CommonStringValidations;
 import com.android.familybudgetapp.view.base.BasePresenter;
 import com.android.familybudgetapp.view.base.BaseView;
+import com.android.familybudgetapp.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity;
 
 public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extends BasePresenter<V>
 {
@@ -38,6 +41,7 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
     {
         this.familyDAO = familyDAO;
     }
+
     public boolean validateName(String input)
     {
         inputLowerCase = input.toLowerCase();
@@ -67,6 +71,23 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
             return -1;
         }
         return parsedLimit;
+    }
+
+    public CashFlowCategory createCashFlow(String name, String limit)
+    {
+        CashFlowCategory newCategory;
+        if (currentType.equals(CashFlowCategoryCreateActivity.EXPENSE))
+        {
+            int parsedLimit = validateLimit(limit);
+            if (parsedLimit == -1) return null;
+            newCategory = new Expense(name, parsedLimit);
+        }
+        else
+        {
+            newCategory = new Income(name);
+        }
+
+        return newCategory;
     }
 
     public void setType(String cashFlowCategory)

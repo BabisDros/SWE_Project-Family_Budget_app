@@ -14,13 +14,15 @@ import java.util.List;
 
 public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCategoryOverviewView>
 {
-    FamilyDAO familyDAO;
-    UserDAO userDAO;
-    Family currentFamily;
+    private FamilyDAO familyDAO;
+    private UserDAO userDAO;
+    private Family currentFamily;
 
-    CashFlowCategory currentCashFlowCategory;
+    public final String DELETE_TITLE="Cash flow category: %s \n\nDo you want to delete it?";
+    public final String DELETE_MSG="Cash flow category: %s \n\nDo you want to delete it?";
+    private CashFlowCategory currentCashFlowCategory;
     //cache categories at every session, because MAP does not guaranty order
-    List<CashFlowCategory> categories;
+    private List<CashFlowCategory> categories;
 
     public void setUserDAO(UserDAO userDAO)
     {
@@ -52,20 +54,14 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
     public void showVerification(CashFlowCategory category)
     {
         this.currentCashFlowCategory = category;
-
-        view.showDeleteCategory("Delete Verification", "Cash flow category: "
-                + category.getName() +
-                "\n\nDo you want to delete it?");
+        view.showDeleteCategory(DELETE_TITLE,String.format(DELETE_MSG, category.getName()) );
     }
 
     public void deleteCategory()
     {
-        if (currentCashFlowCategory != null)
-        {
-            currentFamily.removeCashFlowCategory(currentCashFlowCategory);
-            view.updateCategoriesRecyclerView(categories.indexOf(currentCashFlowCategory));
-            familyDAO.save(currentFamily);
-        }
+        currentFamily.removeCashFlowCategory(currentCashFlowCategory);
+        view.updateCategoriesRecyclerView(categories.indexOf(currentCashFlowCategory));
+        familyDAO.save(currentFamily);
     }
 
     public void navigateToHomepage()

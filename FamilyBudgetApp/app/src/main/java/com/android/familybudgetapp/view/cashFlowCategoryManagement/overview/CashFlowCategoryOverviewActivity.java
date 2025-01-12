@@ -123,9 +123,9 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
     }
 
     @Override
-    public void updateCategoriesRecyclerView(int removedIndex)
+    public void updateCategoriesRecyclerView(int indexToDelete)
     {
-        recyclerViewAdapter.updateList(removedIndex);
+        recyclerViewAdapter.updateList(indexToDelete);
     }
 
 

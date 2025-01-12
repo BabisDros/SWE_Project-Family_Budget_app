@@ -3,9 +3,8 @@ package com.android.familybudgetapp.view.cashFlowCategoryManagement.edit;
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.domain.CashFlowCategory;
 import com.android.familybudgetapp.domain.Expense;
-import com.android.familybudgetapp.domain.Income;
 import com.android.familybudgetapp.view.cashFlowCategoryManagement.BaseCashFlowManagementPresenter;
-import com.android.familybudgetapp.view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity;
+
 
 public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresenter<CashFlowCategoryEditView>
 {
@@ -19,7 +18,7 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
         CashFlowCategory categoryToEdit = currentFamily.getCashFlowCategories().get(initialName);
         view.setNameField(name);
 
-        if (categoryToEdit.getClass() == Expense.class)
+        if (categoryToEdit != null && categoryToEdit.getClass() == Expense.class)
         {
             Expense expense = (Expense) categoryToEdit;
             view.setLimitField(String.valueOf(expense.getLimit()));
@@ -31,17 +30,8 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
     {
         if (!validateName(name)) return;
 
-        CashFlowCategory newCategory;
-        if (currentType.equals(CashFlowCategoryCreateActivity.EXPENSE))
-        {
-            int parsedLimit = validateLimit(limit);
-            if (parsedLimit == -1) return;
-            newCategory = new Expense(name, parsedLimit);
-        }
-        else
-        {
-            newCategory = new Income(name);
-        }
+        CashFlowCategory newCategory = createCashFlow(name, limit);
+        if (newCategory == null) return;
 
         CashFlowCategory existing = currentFamily.getCashFlowCategories().get(initialName);
         currentFamily.removeCashFlowCategory(existing);
@@ -50,7 +40,6 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
         familyDAO.save(currentFamily);
         view.goToOverview();
     }
-
 
     @Override
     public boolean validateNameUniqueness(String input)
