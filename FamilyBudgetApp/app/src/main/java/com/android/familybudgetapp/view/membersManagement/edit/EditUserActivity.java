@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.membersManagement.BaseUserManagementActivity;
-import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
+
 
 public class EditUserActivity extends BaseUserManagementActivity<EditUserViewModel> implements EditUserView
 {
@@ -17,7 +17,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         super.onCreate(savedInstanceState);
 
         viewModel.getPresenter().setView(this);
-
+        setPasswordHint();
         if (savedInstanceState == null)
         {
             Intent intent = getIntent();
@@ -46,10 +46,11 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         usernameField.setText(username);
     }
 
-    @Override
-    public void setPasswordField(String password)
+
+    public void setPasswordHint()
     {
-        passwordField.setText(password);
+        passwordField.setHint("Password: Leave empty to keep current");
+        passwordField.setEms(16);
     }
 
     @Override

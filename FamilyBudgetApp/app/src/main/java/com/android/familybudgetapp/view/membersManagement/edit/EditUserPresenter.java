@@ -5,6 +5,8 @@ import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPresenter;
 
+import java.util.Objects;
+
 public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {
     private User userToEdit;
@@ -13,7 +15,6 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
     {
         userToEdit = userDAO.findByID(userId);
         view.setUsernameField(userToEdit.getUsername());
-        view.setPasswordField(userToEdit.getPassword());
         view.setDisplayNameField(userToEdit.getName());
         view.setFamilyNameField(userToEdit.getFamily().getName());
 
@@ -30,7 +31,11 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         Family familyToUpdate = userToEdit.getFamily();
 
         userToEdit.setUsername(username);
-        userToEdit.setPassword(password);
+        //replace only when a new password is entered
+        if (!password.isEmpty())
+        {
+            userToEdit.setPassword(password);
+        }
         userToEdit.setName(displayName);
         userToEdit.getFamily().setName(familyName);
 
@@ -39,6 +44,17 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         familyDAO.save(familyToUpdate);
 
         view.goToMemberManagementActivity();
+    }
+
+    @Override
+    public boolean validatePassword(String input)
+    {
+        //unchanged password is valid
+        if (Objects.equals(input, ""))
+        {
+            return true;
+        }
+        else return super.validatePassword(input);
     }
 
     @Override
