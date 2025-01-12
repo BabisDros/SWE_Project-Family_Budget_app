@@ -18,8 +18,8 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
     private UserDAO userDAO;
     private Family currentFamily;
 
-    public final String DELETE_TITLE="Cash flow category: %s \n\nDo you want to delete it?";
-    public final String DELETE_MSG="Cash flow category: %s \n\nDo you want to delete it?";
+    public final String DELETE_TITLE = "Delete Verification";
+    public final String DELETE_MSG = "Cash flow category: %s \n\nDo you want to delete it?";
     private CashFlowCategory currentCashFlowCategory;
     //cache categories at every session, because MAP does not guaranty order
     private List<CashFlowCategory> categories;
@@ -54,7 +54,7 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
     public void showVerification(CashFlowCategory category)
     {
         this.currentCashFlowCategory = category;
-        view.showDeleteCategory(DELETE_TITLE,String.format(DELETE_MSG, category.getName()) );
+        view.showDeleteCategory(DELETE_TITLE,String.format(DELETE_MSG, category.getName()));
     }
 
     public void deleteCategory()
