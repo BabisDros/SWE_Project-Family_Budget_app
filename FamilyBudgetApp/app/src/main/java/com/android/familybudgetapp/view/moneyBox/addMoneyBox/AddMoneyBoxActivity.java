@@ -57,7 +57,8 @@ public class AddMoneyBoxActivity extends AppCompatActivity implements AddMoneyBo
     }
 
     public Integer getTarget(){
-        Double inDecimal = Double.parseDouble(((EditText)findViewById(R.id.edit_text_target)).getText().toString());
+        String input = ((EditText)findViewById(R.id.edit_text_target)).getText().toString();
+        Double inDecimal = Double.parseDouble((input.isEmpty()) ? "0": input);
         return (int)(inDecimal * 100);
     }
 
