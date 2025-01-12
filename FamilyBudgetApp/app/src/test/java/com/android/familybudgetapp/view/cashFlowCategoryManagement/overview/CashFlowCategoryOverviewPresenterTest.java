@@ -74,7 +74,7 @@ public class CashFlowCategoryOverviewPresenterTest
     public void searchNotEmptyCashFlowCategories()
     {
         presenter.searchCashFlowCategories();
-        assertEquals(viewStub.getCashFlowCategories(), new ArrayList<>(currentFamily.getCashFlowCategories().values()));
+        assertEquals(new ArrayList<>(currentFamily.getCashFlowCategories().values()), viewStub.getCashFlowCategories());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class CashFlowCategoryOverviewPresenterTest
         currentFamily = currentUser.getFamily();
 
         presenter.searchCashFlowCategories();
-        assertEquals(viewStub.getCashFlowCategories(), new ArrayList<>(currentFamily.getCashFlowCategories().values()));
+        assertEquals(new ArrayList<>(currentFamily.getCashFlowCategories().values()), viewStub.getCashFlowCategories());
     }
 
     @Test
@@ -97,8 +97,9 @@ public class CashFlowCategoryOverviewPresenterTest
 
         assertNotNull(currentCategory);
         presenter.showVerification(currentCategory);
-        assertEquals(viewStub.getMsg(), String.format(presenter.DELETE_MSG, currentCategory.getName()));
-        assertEquals(viewStub.getTitle(), presenter.DELETE_TITLE);
+
+        assertEquals(String.format(presenter.DELETE_MSG, currentCategory.getName()), viewStub.getMsg());
+        assertEquals(presenter.DELETE_TITLE, viewStub.getTitle());
     }
 
     @Test
@@ -113,8 +114,9 @@ public class CashFlowCategoryOverviewPresenterTest
 
         presenter.showVerification(currentCategory);
         presenter.deleteCategory();
+
         assertNull(currentFamily.getCashFlowCategories().get(currentCategoryName));
-        assertEquals(viewStub.getIndexToDelete(), currentIndexToDelete);
+        assertEquals(currentIndexToDelete, viewStub.getIndexToDelete());
     }
 
 
@@ -122,13 +124,13 @@ public class CashFlowCategoryOverviewPresenterTest
     public void navigateToHomepage()
     {
         presenter.navigateToHomepage();
-        assertEquals(viewStub.getHomepageActivityCounter(), 1);
+        assertEquals(1, viewStub.getHomepageActivityCounter());
     }
 
     @Test
     public void navigateToCreateCashFlowCategory()
     {
         presenter.navigateToCreateCashFlowCategory();
-        assertEquals(viewStub.getCashFlowActivityCounter(), 1);
+        assertEquals(1, viewStub.getCashFlowActivityCounter());
     }
 }

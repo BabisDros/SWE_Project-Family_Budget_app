@@ -38,30 +38,31 @@ public class LoginPresenterTest
     @Test
     public void loginInvalidUsername()
     {
-        presenter.login("invalid","1234");
+        presenter.login("invalid", "1234");
         assertEquals(1, viewStub.getErrorCount());
     }
 
     @Test
     public void loginValidUsernameNullPassword()
     {
-        presenter.login("Test",null);
+        presenter.login("Test", null);
         assertEquals(1, viewStub.getErrorCount());
     }
 
     @Test
     public void loginValidUsernameInvalidPassword()
     {
-        presenter.login("Test","1234");
+        presenter.login("Test", "1234");
         assertEquals(1, viewStub.getErrorCount());
     }
+
     @Test
     public void loginValidUsernameValidPassword()
     {
-        String username="Test";
-        presenter.login(username,"passwordTest");
+        String username = "Test";
+        presenter.login(username, "passwordTest");
 
-        assertEquals(Initializer.currentUserID, userDAO.findByUsername(username).getID());
+        assertEquals(userDAO.findByUsername(username).getID(), Initializer.currentUserID);
         assertEquals(1, viewStub.getHomepageCounter());
     }
 }

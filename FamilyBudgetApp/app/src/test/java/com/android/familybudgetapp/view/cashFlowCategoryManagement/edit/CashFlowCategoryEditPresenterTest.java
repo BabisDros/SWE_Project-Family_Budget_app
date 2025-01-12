@@ -48,8 +48,8 @@ public class CashFlowCategoryEditPresenterTest
     {
         String categoryName = "Food";
         presenter.setCashFlowCategoryData(categoryName);
-        assertEquals(viewStub.getName(), categoryName);
-        assertEquals(viewStub.getLimit(), "20000");
+        assertEquals(categoryName, viewStub.getName());
+        assertEquals("20000", viewStub.getLimit());
         assertTrue(viewStub.isSpinnerSet());
     }
 
@@ -58,7 +58,7 @@ public class CashFlowCategoryEditPresenterTest
     {
         String categoryName = "ood";
         presenter.setCashFlowCategoryData(categoryName);
-        assertEquals(viewStub.getName(), categoryName);
+        assertEquals(categoryName, viewStub.getName());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class CashFlowCategoryEditPresenterTest
     {
         String categoryName = "Job";
         presenter.setCashFlowCategoryData(categoryName);
-        assertEquals(viewStub.getName(), categoryName);
+        assertEquals(categoryName, viewStub.getName());
     }
 
     @Test
@@ -86,8 +86,9 @@ public class CashFlowCategoryEditPresenterTest
         presenter.setCashFlowCategoryData(categoryName);
         presenter.save(categoryName, String.valueOf(newLimit));
         Expense changedCategory = (Expense) currentFamily.getCashFlowCategories().get(categoryName.toLowerCase());
+
         assertNotNull(changedCategory);
-        assertEquals(changedCategory.getLimit(), newLimit);
+        assertEquals(newLimit, changedCategory.getLimit());
     }
 
     @Test
@@ -100,7 +101,6 @@ public class CashFlowCategoryEditPresenterTest
         presenter.setType(CashFlowCategoryCreateActivity.EXPENSE);
         presenter.setCashFlowCategoryData(categoryNameToEdit);
         presenter.save(newExistingName, String.valueOf(newLimit));
-
 
         Expense categoryToEdit = (Expense) currentFamily.getCashFlowCategories().get(categoryNameToEdit.toLowerCase());
         assertNotNull(categoryToEdit);
@@ -117,9 +117,10 @@ public class CashFlowCategoryEditPresenterTest
         presenter.save(newName, String.valueOf(newLimit));
         Expense initialCategory = (Expense) currentFamily.getCashFlowCategories().get(categoryNameToEdit.toLowerCase());
         Expense changedCategory = (Expense) currentFamily.getCashFlowCategories().get(newName.toLowerCase());
+
         assertNull(initialCategory);
         assertNotNull(changedCategory);
-        assertEquals(changedCategory.getLimit(), newLimit);
+        assertEquals(newLimit, changedCategory.getLimit());
         assertEquals(1, viewStub.getOverviewCounter());
     }
 
@@ -133,7 +134,8 @@ public class CashFlowCategoryEditPresenterTest
         presenter.setCashFlowCategoryData(categoryName);
         presenter.save(categoryName, String.valueOf(newLimit));
         Expense changedCategory = (Expense) currentFamily.getCashFlowCategories().get(categoryName.toLowerCase());
+
         assertNotNull(changedCategory);
-        assertNotEquals(changedCategory.getLimit(), newLimit);
+        assertNotEquals(newLimit, changedCategory.getLimit());
     }
 }
