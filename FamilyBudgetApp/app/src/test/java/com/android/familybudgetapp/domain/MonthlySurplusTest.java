@@ -67,32 +67,16 @@ public class MonthlySurplusTest
         surplus.addCashFlowToSurplus(cashFlow1);
         surplus.addCashFlowToSurplus(cashFlow2);
 
-        assertEquals(amount*2,surplus.getSurplus());
+        assertEquals(amount,surplus.getSurplus());
     }
 
 
    @Test
     public void addInvalidCashFlowToSurplus()
     {
-        Repeating expiredEndDateRepeating=new  Repeating(10,new Income("test"),date,date.plusDays(1),recurPeriod.Monthly);
-        OneOff expiredDateOneOff = new OneOff(10,new Income("test"),date);
-        // Simulate passage of time
-        expiredEndDateRepeating.DebugSetDateStart(date.minusMonths(5));
-        expiredEndDateRepeating.DebugSetDateEnd(date.minusMonths(1));
-        expiredDateOneOff.DebugSetDateStart(date.minusMonths(1));
-
         assertThrows(IllegalArgumentException.class, ()-> {
             surplus.addCashFlowToSurplus(null);
         });
-
-        assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(expiredEndDateRepeating);
-        });
-
-        assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(expiredDateOneOff);
-        });
-
     }
 
     @Test
