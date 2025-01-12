@@ -48,6 +48,9 @@ public abstract class Initializer {
         Family family2 = new Family("Family surname test2");
         familyDAO.save(family2);
 
+        Family family3EmptyCategories = new Family("Family surname test3");
+        familyDAO.save(family3EmptyCategories);
+
         //categories
         Expense categoryExpense1 = new Expense("Food", 20000);
         family.addCashFlowCategory(categoryExpense1);
@@ -75,6 +78,10 @@ public abstract class Initializer {
         User user2_1 = new User("displayNameTest2 1", "Test", "passwordTest", FamPos.Protector, family);
         family2.addMember(user2_1);
         userDAO.save(user2_1);
+
+        User user4= new User("displayNameTest4", "Test4", "passwordTest", FamPos.Protector, family3EmptyCategories);
+        family3EmptyCategories.addMember(user4);
+        userDAO.save(user4);
 
         currentUserID = user1.getID();
 
