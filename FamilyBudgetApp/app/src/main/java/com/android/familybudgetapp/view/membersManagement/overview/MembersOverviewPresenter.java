@@ -13,13 +13,18 @@ import java.util.List;
 
 public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
 {
-    FamilyDAO familyDAO;
-    UserDAO userDAO;
-    User userToDelete;
-    Family currentFamily;
+    public static final String CAUTION_TITLE = "Caution";
+    public static final String CAUTION_MESSAGE = "Deleting Protector User: %s will delete the account, " +
+            "all member accounts and wipe all the data." + "\n\nDo you want to delete it?";
+    public static final String VERIFICATION_TITLE = "Delete Verification";
+    public static final String VERIFICATION_MESSAGE = "User: %s\n\nDo you want to delete it?";
+    private FamilyDAO familyDAO;
+    private UserDAO userDAO;
+    private User userToDelete;
+    private Family currentFamily;
 
     //cache membersList at every session, because MAP does not guaranty order
-    List<User> members;
+    private List<User> members;
 
     //region $DAO setup
 
@@ -49,15 +54,19 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         this.userToDelete = user;
         if (user.getFamilyPosition().equals(FamPos.Protector))
         {
-            view.showDeleteAccountMessage("Caution", "Deleting Protector User:"
-                    + user.getName() + " will delete the account, all member accounts and wipe all the data." +
-                    "\n\nDo you want to delete it?");
+            view.showDeleteAccountMessage
+                    (
+                            CAUTION_TITLE,
+                            String.format(CAUTION_MESSAGE, user.getName())
+                    );
         }
         else
         {
-            view.showDeleteAccountMessage("Delete Verification", "User: "
-                    + user.getName() +
-                    "\n\nDo you want to delete it?");
+            view.showDeleteAccountMessage
+                    (
+                            VERIFICATION_TITLE,
+                            String.format(VERIFICATION_MESSAGE, user.getName())
+                    );
         }
     }
 
@@ -70,7 +79,7 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         view.populateMembersRecyclerView(members);
     }
 
-    void delete()
+    public void deleteBasedOnFamilyPosition()
     {
         if (userToDelete.getFamilyPosition() == FamPos.Protector)
         {
@@ -80,27 +89,23 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         else deleteMember();
     }
 
-    public void deleteMember()
+    private void deleteMember()
     {
         userDAO.delete(userToDelete);
         familyDAO.save(currentFamily);
         view.updateMembersRecyclerView(members.indexOf(userToDelete));
-
     }
 
-    public void deleteAccount()
+    private void deleteAccount()
     {
-        if (userToDelete != null)
+        Family family = userToDelete.getFamily();
+        for (User member : family.getMembers().values())
         {
-            Family family = userToDelete.getFamily();
-            for (User member : family.getMembers().values())
-            {
-                userDAO.delete(member);
-            }
-            familyDAO.delete(family);
-
-            view.exitApp();
+            userDAO.delete(member);
         }
+        familyDAO.delete(family);
+
+        view.exitApp();
     }
 
 

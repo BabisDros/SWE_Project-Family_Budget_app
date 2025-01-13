@@ -119,7 +119,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
     private void deleteDialogYesClicked()
     {
-        viewModel.getPresenter().delete();
+        viewModel.getPresenter().deleteBasedOnFamilyPosition();
     }
     //endregion
 
