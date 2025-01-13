@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
+      <x>14</x>
       <y>63</y>
       <w>280</w>
       <h>133</h>
@@ -22,7 +22,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>854</x>
+      <x>784</x>
       <y>98</y>
       <w>119</w>
       <h>91</h>
@@ -39,7 +39,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
+      <x>476</x>
       <y>189</y>
       <w>231</w>
       <h>49</h>
@@ -53,7 +53,7 @@ BaseView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>434</x>
+      <x>364</x>
       <y>77</y>
       <w>161</w>
       <h>84</h>
@@ -71,7 +71,7 @@ BaseView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>357</x>
+      <x>287</x>
       <y>77</y>
       <w>91</w>
       <h>35</h>
@@ -84,7 +84,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>588</x>
+      <x>518</x>
       <y>98</y>
       <w>280</w>
       <h>35</h>
@@ -97,7 +97,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>357</x>
+      <x>287</x>
       <y>182</y>
       <w>203</w>
       <h>21</h>
@@ -108,7 +108,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>700</x>
       <y>175</y>
       <w>98</w>
       <h>35</h>
@@ -121,7 +121,7 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
+      <x>0</x>
       <y>308</y>
       <w>280</w>
       <h>133</h>
@@ -137,14 +137,14 @@ m1=1</panel_attributes>
 - registerClicked()
 + goToLogin()
 + goToRegister()
-+ goToActivity(cls: Class)
+- goToActivity(cls: Class)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>203</x>
+      <x>119</x>
       <y>189</y>
       <w>21</w>
       <h>133</h>
@@ -155,9 +155,9 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>371</x>
+      <x>301</x>
       <y>308</y>
-      <w>168</w>
+      <w>196</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>AuthOptionsViewModel
@@ -170,7 +170,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
+      <x>364</x>
       <y>154</y>
       <w>21</w>
       <h>168</h>
@@ -181,7 +181,7 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>805</x>
+      <x>749</x>
       <y>308</y>
       <w>210</w>
       <h>63</h>
@@ -197,7 +197,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>826</x>
       <y>182</y>
       <w>21</w>
       <h>140</h>
@@ -208,7 +208,7 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
+      <x>504</x>
       <y>308</y>
       <w>231</w>
       <h>84</h>
@@ -224,7 +224,7 @@ AuthOptionsView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
+      <x>616</x>
       <y>231</y>
       <w>21</w>
       <h>91</h>
@@ -235,12 +235,12 @@ AuthOptionsView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>357</x>
+      <x>273</x>
       <y>378</y>
-      <w>217</w>
+      <w>245</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>330.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
