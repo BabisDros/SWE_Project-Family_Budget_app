@@ -140,7 +140,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
 
     private void selectItem(User user)
     {
-        optionsDialog.setTitle(user.getName())
+        optionsDialog.setTitle(user.getUsername())
                 .setNegativeButton("Cancel", null)
                 .setItems(new String[]{"Edit", "Delete"}, (dialog, which) ->
                 {

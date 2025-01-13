@@ -57,7 +57,7 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
             view.showDeleteAccountMessage
                     (
                             CAUTION_TITLE,
-                            String.format(CAUTION_MESSAGE, user.getName())
+                            String.format(CAUTION_MESSAGE, user.getUsername())
                     );
         }
         else
@@ -65,7 +65,7 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
             view.showDeleteAccountMessage
                     (
                             VERIFICATION_TITLE,
-                            String.format(VERIFICATION_MESSAGE, user.getName())
+                            String.format(VERIFICATION_MESSAGE, user.getUsername())
                     );
         }
     }
