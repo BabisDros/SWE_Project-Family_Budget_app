@@ -42,7 +42,6 @@ public class MonthlyManager extends CashFlowManager {
             return;
         }
 
-        expiredSurplus.setSurplus(0);
         family.addToSavings(expiredSurplusAmount);
     }
 
