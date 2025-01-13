@@ -38,7 +38,6 @@ public class CommonStringValidations
      */
     public static boolean isAmountValid(String amount) {
         return !amount.isEmpty() &&
-                !amount.endsWith(".") &&
                 !amount.equals("0");
 
     }
