@@ -30,7 +30,7 @@ public class CashFlowCategoryCreatePresenter extends BaseCashFlowManagementPrese
     }
 
     @Override
-    public boolean validateNameUniqueness(String input)
+    protected boolean validateNameUniqueness(String input)
     {
         if (currentUser.getFamily().getCashFlowCategories().get(inputLowerCase) != null)
         {

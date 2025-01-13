@@ -56,7 +56,7 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
         return validateNameUniqueness(inputLowerCase);
     }
 
-    public abstract boolean validateNameUniqueness(String input);
+    protected abstract boolean validateNameUniqueness(String input);
 
     public int validateLimit(String limit)
     {

@@ -27,9 +27,9 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
         implements MembersOverviewView
 {
     public static final String USER_ID_EXTRA = "user_id";
-    GenericRecyclerViewAdapter<User, ViewHolderSingleTextView> recyclerViewAdapter;
-    AlertDialog.Builder deleteAccountDialog;
-    AlertDialog.Builder optionsDialog;
+    private GenericRecyclerViewAdapter<User, ViewHolderSingleTextView> recyclerViewAdapter;
+    private AlertDialog.Builder deleteAccountDialog;
+    private AlertDialog.Builder optionsDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +70,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
         FloatingActionButton btnAddMember = findViewById(R.id.float_btn_add);
         btnAddMember.setOnClickListener(v -> addMemberClicked());
     }
-
+    @Override
     public void populateMembersRecyclerView(List<User> members)
     {
         RecyclerView recyclerViewMembers = findViewById(R.id.recyclerView_List);
@@ -138,7 +138,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
     }
 
 
-    public void selectItem(User user)
+    private void selectItem(User user)
     {
         optionsDialog.setTitle(user.getName())
                 .setNegativeButton("Cancel", null)

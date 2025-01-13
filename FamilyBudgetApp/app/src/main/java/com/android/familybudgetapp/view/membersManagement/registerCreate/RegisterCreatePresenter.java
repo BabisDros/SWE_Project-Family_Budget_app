@@ -8,9 +8,9 @@ import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPres
 
 public class RegisterCreatePresenter extends BaseUserManagementPresenter<RegisterCreateView>
 {
-    boolean addMemberModeEnabled = false;
     public static final String SUCCESSFUL_ADD_MEMBER_TITLE = "User: %s added!";
     public static final String ADD_MEMBER_PROMPT = "Do you want to add a new member?";
+    private boolean addMemberModeEnabled;
 
     /**
      * Validates input data and saves the user and family.
@@ -46,13 +46,14 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         userDAO.save(user);
         showSuccessfulMessage(user.getUsername());
     }
+
     private void showSuccessfulMessage(String username)
     {
         view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_TITLE, username), ADD_MEMBER_PROMPT);
     }
 
     @Override
-    public boolean validateUsernameUniqueness(String input)
+    protected boolean validateUsernameUniqueness(String input)
     {
         if (userDAO.findByUsername(input) != null)
         {

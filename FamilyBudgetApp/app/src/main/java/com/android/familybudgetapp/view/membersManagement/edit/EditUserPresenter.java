@@ -58,7 +58,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
     }
 
     @Override
-    public boolean validateUsernameUniqueness(String input)
+    protected boolean validateUsernameUniqueness(String input)
     {
         User userWithSameName = userDAO.findByUsername(input);
 

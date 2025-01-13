@@ -47,7 +47,7 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     }
 
 
-    public void setPasswordHint()
+    private void setPasswordHint()
     {
         passwordField.setHint("Password: Leave empty to keep current");
         passwordField.setEms(16);
@@ -90,6 +90,4 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         viewModel.getPresenter().save(getUsername(), getPassword(), getDisplayName(), getFamilyName());
     }
     //endregion
-
-
 }

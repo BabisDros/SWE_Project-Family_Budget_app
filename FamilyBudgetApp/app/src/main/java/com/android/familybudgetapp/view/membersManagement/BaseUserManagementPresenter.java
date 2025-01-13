@@ -10,17 +10,16 @@ import com.android.familybudgetapp.view.base.BaseView;
 
 public abstract class BaseUserManagementPresenter<V extends BaseView> extends BasePresenter<V>
 {
-    protected UserDAO userDAO;
-    protected FamilyDAO familyDAO;
-    protected User protector;
-
-    protected Family family;
-
     public static final String USER_EXISTS_TITLE = "Username already exists";
     public static final String WRONG_USERNAME_TITLE = "Wrong username format";
     public static final String WRONG_PASSWORD_TITLE = "Wrong password format";
     public static final String WRONG_DISPLAY_NAME_TITLE = "Invalid display name";
     public static final String WRONG_FAMILY_NAME_TITLE = "Invalid family name";
+
+    protected UserDAO userDAO;
+    protected FamilyDAO familyDAO;
+    protected User protector;
+    protected Family family;
     //region $DAO setup
 
     /**
@@ -74,7 +73,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
      * @param input the username to be validated.
      * @return {@code true} if the username is unique, otherwise {@code false}.
      */
-    public abstract boolean validateUsernameUniqueness(String input);
+    protected abstract boolean validateUsernameUniqueness(String input);
 
     /**
      * Validates the entered password.

@@ -13,9 +13,9 @@ import com.android.familybudgetapp.view.membersManagement.overview.MembersOvervi
 
 public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterCreateViewModel> implements RegisterCreateView
 {
-    AlertDialog.Builder addMemberDialog;
     public static final String MODE_EXTRA = "mode";
     public static final String ADD_MEMBER_EXTRA = "add_member";
+    private AlertDialog.Builder addMemberDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -88,7 +88,7 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         btnCancel.setVisibility(View.VISIBLE);
         familyNameField.setEnabled(false);
         btnAction.setText(R.string.add_member);
-        btnAction.setOnClickListener(v-> addMemberClicked());
+        btnAction.setOnClickListener(v -> addMemberClicked());
     }
 
     private void addMemberClicked()
@@ -108,6 +108,11 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         viewModel.getPresenter().enableAddMemberMode();
     }
 
+    private void registerClicked()
+    {
+        viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
+    }
+
     @Override
     protected void usernameEditTxtUnfocused()
     {
@@ -125,12 +130,5 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     {
         viewModel.getPresenter().validateDisplayName(getDisplayName());
     }
-
-    private void registerClicked()
-    {
-        viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
-    }
     //endregion
-
-
 }

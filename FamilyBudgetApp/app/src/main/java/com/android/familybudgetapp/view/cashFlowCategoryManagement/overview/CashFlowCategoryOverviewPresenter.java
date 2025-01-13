@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCategoryOverviewView>
 {
-    public final String DELETE_TITLE = "Delete Verification";
-    public final String DELETE_MSG = "Cash flow category: %s \n\nDo you want to delete it?";
+    public static final String DELETE_TITLE = "Delete Verification";
+    public static final String DELETE_MSG = "Cash flow category: %s \n\nDo you want to delete it?";
     private FamilyDAO familyDAO;
     private UserDAO userDAO;
     private Family currentFamily;

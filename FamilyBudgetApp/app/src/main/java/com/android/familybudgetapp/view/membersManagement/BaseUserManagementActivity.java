@@ -19,7 +19,6 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     protected EditText displayNameField;
     protected EditText familyNameField;
     protected Button btnAction;
-
     protected Button btnCancel;
 
     @Override
@@ -62,7 +61,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         });
     }
 
-    void setUpCancelBtn()
+    protected void setUpCancelBtn()
     {
         btnCancel = findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v->goToMemberManagementActivity());
