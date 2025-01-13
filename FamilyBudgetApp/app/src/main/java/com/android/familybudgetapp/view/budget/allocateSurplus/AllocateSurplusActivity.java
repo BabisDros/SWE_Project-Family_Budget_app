@@ -19,6 +19,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * This activity allows the user to allocate the previous month's surplus to the available money boxes.
+ * It provides the user interface for selecting a money box and entering the amount to allocate.
+ * The activity interacts with the `AllocateSurplusPresenter` to perform the allocation logic and
+ * updates the UI accordingly.
+ */
 public class AllocateSurplusActivity extends BaseActivity<AllocateSurplusViewModel> implements AllocateSurplusView {
     private AllocateSurplusViewModel vm;
 

@@ -14,6 +14,12 @@ import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
 
+/**
+ * Presenter for the AllocateSurplusActivity.
+ * This class handles the logic for allocating the previous month's surplus to various money boxes.
+ * It interacts with the view to display error messages
+ * and updates the necessary monthlySurplus and MoneyBox objects accordingly.
+ */
 public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView> {
     private Family currentFamily;
 
