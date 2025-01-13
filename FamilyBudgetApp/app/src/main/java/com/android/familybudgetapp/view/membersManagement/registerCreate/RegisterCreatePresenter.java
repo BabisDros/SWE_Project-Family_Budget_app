@@ -9,8 +9,8 @@ import com.android.familybudgetapp.view.membersManagement.BaseUserManagementPres
 public class RegisterCreatePresenter extends BaseUserManagementPresenter<RegisterCreateView>
 {
     boolean addMemberModeEnabled = false;
-    final String SUCCESSFUL_ADD_MEMBER_MSG = "User: %s added!";
-    final String ADD_MEMBER_PROMPT = "Do you want to add a new member?";
+    public static final String SUCCESSFUL_ADD_MEMBER_TITLE = "User: %s added!";
+    public static final String ADD_MEMBER_PROMPT = "Do you want to add a new member?";
 
     /**
      * Validates input data and saves the user and family.
@@ -27,29 +27,28 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         family = new Family(familyName);
         User newUser = new User(displayName, username, password, FamPos.Protector, family);
         protector = newUser;
-        Initializer.currentUserID = newUser.getID();
 
-        family.addMember(newUser);
-        familyDAO.save(family);
-        userDAO.save(newUser);
-        showSuccessfulMessage(username);
+        Initializer.currentUserID = newUser.getID();
+        completeUserAddition(newUser);
     }
 
     public void addMember(String username, String password, String displayName, String familyName)
     {
         if (!validateAllFields(username, password, displayName, familyName)) return;
-
         User newUser = new User(displayName, username, password, FamPos.Member, family);
-
-        family.addMember(newUser);
-        familyDAO.save(family);
-        userDAO.save(newUser);
-        showSuccessfulMessage(username);
+        completeUserAddition(newUser);
     }
 
+    private void completeUserAddition(User user)
+    {
+        family.addMember(user);
+        familyDAO.save(family);
+        userDAO.save(user);
+        showSuccessfulMessage(user.getUsername());
+    }
     private void showSuccessfulMessage(String username)
     {
-        view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_MSG, username), ADD_MEMBER_PROMPT);
+        view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_TITLE, username), ADD_MEMBER_PROMPT);
     }
 
     @Override
