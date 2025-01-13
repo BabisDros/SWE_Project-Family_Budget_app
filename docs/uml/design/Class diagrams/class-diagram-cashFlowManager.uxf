@@ -91,7 +91,7 @@ CashFlowManagerInterface
       <h>91</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
-UserDAO
+FamilyDAO
 --
 + findByID(familyID: Long): Family
 + save(user: Family)
