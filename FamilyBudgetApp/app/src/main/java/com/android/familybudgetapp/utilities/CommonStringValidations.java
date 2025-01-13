@@ -36,9 +36,9 @@ public class CommonStringValidations
     /**
      * @param amount Validate amount entered by android:inputType="numberDecimal"
      */
-    public static boolean isAmountValid(String amount) {
-        return !amount.isEmpty() &&
-                !amount.equals("0");
+    public static boolean isAmountInvalid(String amount) {
+        return amount.isEmpty() ||
+                amount.equals("0");
 
     }
 

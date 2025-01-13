@@ -2,7 +2,6 @@ package com.android.familybudgetapp.view.budget.allocateSurplus;
 
 import android.util.Pair;
 
-import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.Allowance;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.MoneyBox;
@@ -40,7 +39,7 @@ public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView>
     }
 
     public void addToMoneyBox(String amountInput, MoneyBox moneyBox){
-        if (!CommonStringValidations.isAmountValid(amountInput)) {
+        if (CommonStringValidations.isAmountInvalid(amountInput)) {
             view.showErrorMessage("Error", "Please enter a valid amount");
             return;
         }
