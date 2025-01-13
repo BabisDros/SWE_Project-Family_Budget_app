@@ -1,5 +1,7 @@
 package com.android.familybudgetapp.view.authentication.login;
 
+import android.util.Log;
+
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.User;
@@ -8,7 +10,7 @@ import com.android.familybudgetapp.view.base.BasePresenter;
 
 public class LoginPresenter extends BasePresenter<LoginView>
 {
-    UserDAO userDAO;
+    private UserDAO userDAO;
     public static final String WRONG_CREDENTIALS_TITLE = "Wrong user credentials";
     public static final String WRONG_CREDENTIALS_MSG = "Username or password is wrong or user does not exist.";
 

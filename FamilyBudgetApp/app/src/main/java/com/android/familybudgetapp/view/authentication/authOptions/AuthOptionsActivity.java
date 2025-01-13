@@ -14,9 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> implements AuthOptionsView
 {
-    Button loginButton;
-    Button registerButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -24,8 +21,8 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
         setContentView(R.layout.activity_auth_options);
         viewModel.getPresenter().setView(this);
 
-        loginButton = findViewById(R.id.btn_loginOption);
-        registerButton = findViewById(R.id.btn_registerOption);
+        Button loginButton = findViewById(R.id.btn_loginOption);
+        Button registerButton = findViewById(R.id.btn_registerOption);
 
         loginButton.setOnClickListener(v -> loginClicked());
         registerButton.setOnClickListener(v -> registerClicked());
