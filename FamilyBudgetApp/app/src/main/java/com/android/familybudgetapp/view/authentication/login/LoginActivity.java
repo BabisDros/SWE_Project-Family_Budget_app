@@ -54,12 +54,12 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     //region $Get values from UI elements
-    public String getUsername()
+    private String getUsername()
     {
         return usernameField.getText().toString().trim();
     }
 
-    public String getPassword()
+    private String getPassword()
     {
         return passwordField.getText().toString().trim();
     }
