@@ -32,9 +32,7 @@ public class AddMoneyBoxPresenter {
         else if (!MoneyBox.validateTarget(target))
             view.showErrorMessage("Error", "Target should be a positive number");
         else if (!currentUser.validateMoneyBox(new MoneyBox(reason, target)))
-        {
             view.showErrorMessage("Error", "You already have a moneyBox for that reason");
-        }
         else
         {
             currentUser.addMoneyBox(new MoneyBox(reason, target));

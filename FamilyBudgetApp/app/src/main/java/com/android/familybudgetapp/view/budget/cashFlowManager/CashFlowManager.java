@@ -57,8 +57,9 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
         return total;
     }
 
+
     /**
-     * @param type enumeration of Income or Expense
+     * @param type enumeration of Income or Expense or Both
      * @return list of cashFlows per user corresponding to the current month
      */
     protected Map<Long, List<CashFlow>> getCashFlowOfType(cashFlowType type)

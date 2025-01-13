@@ -27,7 +27,6 @@ public class GlobalStatisticsPresenter {
         this.familyDAO = familyDAO;
     }
 
-
     public List<Tuples<YearMonth, Double>> getMonthlyStat() {
         Set<Family> families = familyDAO.findAll();
         List<Tuples<YearMonth, Double>> myList = new ArrayList<>();
