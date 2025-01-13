@@ -2,7 +2,6 @@ package com.android.familybudgetapp.view.budget.allocateSurplus;
 
 import android.util.Pair;
 
-import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.domain.Allowance;
 import com.android.familybudgetapp.domain.Family;
 import com.android.familybudgetapp.domain.MoneyBox;
@@ -16,7 +15,6 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 
 public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView> {
-    private UserDAO userDAO;
     private Family currentFamily;
 
     public Family getFamily() {
@@ -25,10 +23,6 @@ public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView>
 
     public void setFamily(Family family) {
         this.currentFamily = family;
-    }
-
-    public void setUserDao(UserDAO userDAO) {
-        this.userDAO = userDAO;
     }
 
     public void setView(AllocateSurplusView view) {
@@ -45,7 +39,7 @@ public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView>
     }
 
     public void addToMoneyBox(String amountInput, MoneyBox moneyBox){
-        if (!CommonStringValidations.isAmountValid(amountInput)) {
+        if (CommonStringValidations.isAmountInvalid(amountInput)) {
             view.showErrorMessage("Error", "Please enter a valid amount");
             return;
         }

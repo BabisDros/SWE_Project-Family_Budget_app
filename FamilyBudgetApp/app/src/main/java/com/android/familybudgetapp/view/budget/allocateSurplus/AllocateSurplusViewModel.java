@@ -11,14 +11,6 @@ import java.util.Objects;
 
 public class AllocateSurplusViewModel extends ViewModel {
     private AllocateSurplusPresenter presenter;
-    public AllocateSurplusViewModel()
-    {
-        presenter = new AllocateSurplusPresenter();
-        UserDAO userDAO = new UserDAOMemory();
-        presenter.setUserDao(userDAO);
-        presenter.setFamily(userDAO.findByID(Initializer.currentUserID).getFamily());
-    }
-
     public AllocateSurplusPresenter getPresenter() {
         return presenter;
     }

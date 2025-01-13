@@ -100,7 +100,7 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         CashFlowCategory category = getCurrentUser().getFamily().getCashFlowCategories().get(categoryName);
 
         // amount
-        if (CommonStringValidations.isAmountValid(cashFlowValue)) {
+        if (CommonStringValidations.isAmountInvalid(cashFlowValue)) {
             view.showErrorMessage("Error", "Please enter a valid amount.");
             return;
         }
