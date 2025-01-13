@@ -38,7 +38,7 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
         currentFamily.addCashFlowCategory(newCategory);
 
         familyDAO.save(currentFamily);
-        view.goToOverview();
+        view.goToCashFlowCategoryOverview();
     }
 
     @Override

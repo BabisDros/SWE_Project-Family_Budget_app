@@ -22,9 +22,10 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     public static final String EXPENSE = "Expense";
     protected String[] cashFlowCategories = {INCOME, EXPENSE};
     protected Button btnSave;
+    protected Button btnCancel;
     protected EditText limitField, nameField;
     protected Spinner categorySpinner;
-    protected Button btnCancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,13 +55,13 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         btnSave.setOnClickListener(v -> buttonSaveClicked(getName(), getLimit()));
     }
 
-    void setUpCancelBtn()
+    protected void setUpCancelBtn()
     {
         btnCancel = findViewById(R.id.btn_cancel_edit);
         btnCancel.setOnClickListener(v-> goToCashFlowCategoryOverview());
     }
 
-    protected abstract void buttonSaveClicked(String name, String limit);
+    protected abstract void setType(String type);
 
     protected void setupSpinner()
     {
@@ -77,6 +78,8 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         categorySpinner.setOnItemSelectedListener(this);
     }
 
+    protected abstract void buttonSaveClicked(String name, String limit);
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
@@ -91,18 +94,9 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         setType(cashFlowCategories[position]);
     }
 
-    protected abstract void setType(String type);
-
     @Override
     public void onNothingSelected(AdapterView<?> parent)
     {
-    }
-
-    public void goToOverview()
-    {
-        Intent intent = new Intent(this, CashFlowCategoryOverviewActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     public void goToCashFlowCategoryOverview()

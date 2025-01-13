@@ -22,7 +22,7 @@ public class CashFlowCategoryEditViewStub extends ViewStub implements CashFlowCa
     }
 
     @Override
-    public void goToOverview()
+    public void goToCashFlowCategoryOverview()
     {
         overviewCounter++;
     }

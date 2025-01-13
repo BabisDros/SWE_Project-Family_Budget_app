@@ -8,7 +8,7 @@ public interface CashFlowCategoryEditView extends BaseView
 
     void setLimitField(String limit);
 
-    void goToOverview();
+    void goToCashFlowCategoryOverview();
 
     void setSpinnerToExpense();
 }

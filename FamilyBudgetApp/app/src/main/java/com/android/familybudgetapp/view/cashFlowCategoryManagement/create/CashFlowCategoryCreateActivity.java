@@ -50,7 +50,7 @@ public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivi
 
     private void categoryDialogNoClicked()
     {
-        goToOverview();
+        goToCashFlowCategoryOverview();
     }
 
     private void categoryDialogYesClicked()
