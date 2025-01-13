@@ -138,7 +138,7 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         if (!family.getMonthlySurpluses().containsKey(previousMonth)) {
             return 0;
         }
-        return family.getMonthlySurpluses().get(previousMonth).calculateSurplusLeft();
+        return family.getMonthlySurpluses().get(previousMonth).getSurplus();
     }
 
     public void moveUnallocatedSurplusToSavings() {
