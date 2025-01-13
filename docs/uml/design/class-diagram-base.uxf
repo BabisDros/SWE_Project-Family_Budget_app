@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>35</x>
+      <y>112</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>BaseActivity
+{abstract}
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
++ showErrorMessage(title: String, message: String)
+# createViewModel(): V {abstract}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>147</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>BasePresenter
+{abstract}
+--
+
+--
++ setView(view: V)
++ clearView()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>455</x>
+      <y>322</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+BaseView
+--
++ showErrorMessage(title: String, message: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>427</x>
+      <y>49</y>
+      <w>280</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>BaseViewModel
+{abstract}
+--
+
+--
+# createPresenter(): P {abstract}
++ getPresenter(): P {query}
+# onCleared()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>308</x>
+      <y>56</y>
+      <w>133</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# viewModel
+m1=1</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>77</y>
+      <w>119</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# presenter
+m1=1</panel_attributes>
+    <additional_attributes>150.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>308</x>
+      <y>217</y>
+      <w>161</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>210.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>679</x>
+      <y>224</y>
+      <w>175</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;140.0;230.0;10.0</additional_attributes>
+  </element>
+</diagram>
