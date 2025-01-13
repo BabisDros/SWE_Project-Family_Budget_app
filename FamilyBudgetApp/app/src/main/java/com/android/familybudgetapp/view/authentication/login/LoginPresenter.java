@@ -9,8 +9,8 @@ import com.android.familybudgetapp.view.base.BasePresenter;
 public class LoginPresenter extends BasePresenter<LoginView>
 {
     UserDAO userDAO;
-    final String WRONG_CREDENTIALS_TITLE = "Wrong user credentials";
-    final String WRONG_CREDENTIALS_MSG = "Username or password is wrong or user does not exist.";
+    public static final String WRONG_CREDENTIALS_TITLE = "Wrong user credentials";
+    public static final String WRONG_CREDENTIALS_MSG = "Username or password is wrong or user does not exist.";
 
     /**
      * Sets the User DAO.

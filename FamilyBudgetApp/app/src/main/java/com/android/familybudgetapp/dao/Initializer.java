@@ -23,6 +23,11 @@ import java.util.Optional;
 
 public abstract class Initializer {
 
+    public static String protector1Username ="usernameTest";
+    public static String protector1Password ="passwordTest";
+
+    public static String member1Username ="usernameTest2";
+
     /**
      * The ID of the logged on user
      */
@@ -68,22 +73,22 @@ public abstract class Initializer {
 
         //users
         UserDAO userDAO = getUserDAO();
-        User user1 = new User("name1", "usernameTest", "passwordTest", FamPos.Protector, family);
-        User user2 = new User("name2", "usernameTest2", "passwordTest2", FamPos.Member, family);
-        family.addMember(user1);
-        family.addMember(user2);
-        userDAO.save(user1);
-        userDAO.save(user2);
+        User protector1 = new User("name1", protector1Username, protector1Password, FamPos.Protector, family);
+        User member1 = new User("name2", member1Username, "passwordTest2", FamPos.Member, family);
+        family.addMember(protector1);
+        family.addMember(member1);
+        userDAO.save(protector1);
+        userDAO.save(member1);
 
-        User user2_1 = new User("displayNameTest2 1", "Test", "passwordTest", FamPos.Protector, family);
-        family2.addMember(user2_1);
-        userDAO.save(user2_1);
+        User protector2 = new User("displayNameTest2 1", "Test", "passwordTest", FamPos.Protector, family);
+        family2.addMember(protector2);
+        userDAO.save(protector2);
 
-        User user4= new User("displayNameTest4", "Test4", "passwordTest", FamPos.Protector, family3EmptyCategories);
-        family3EmptyCategories.addMember(user4);
-        userDAO.save(user4);
+        User protector3= new User("displayNameTest4", "Test4", "passwordTest", FamPos.Protector, family3EmptyCategories);
+        family3EmptyCategories.addMember(protector3);
+        userDAO.save(protector3);
 
-        currentUserID = user1.getID();
+        currentUserID = protector1.getID();
 
         // Requires DebugSet, since we are re-adding old cashFlows
         Repeating repeating;
@@ -93,63 +98,63 @@ public abstract class Initializer {
         repeating = new Repeating(15000, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user1.addCashFlow(repeating);
+        protector1.addCashFlow(repeating);
 
         repeating = new Repeating(2000, categoryExpense1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2025, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user1.addCashFlow(repeating);
+        protector1.addCashFlow(repeating);
 
         repeating = new Repeating(8000, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Weekly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user1.addCashFlow(repeating);
+        protector1.addCashFlow(repeating);
 
         repeating = new Repeating(11000, categoryExpense3, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2024, 11, 20, 0, 0));
-        user1.addCashFlow(repeating);
+        protector1.addCashFlow(repeating);
 
         repeating = new Repeating(5000, categoryExpense2, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user2.addCashFlow(repeating);
+        member1.addCashFlow(repeating);
 
         //income
         repeating = new Repeating(60000, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user1.addCashFlow(repeating);
+        protector1.addCashFlow(repeating);
 
         oneOff = new OneOff(10000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2024, 12, 20, 0, 0));
-        user1.addCashFlow(oneOff);
+        protector1.addCashFlow(oneOff);
 
         oneOff = new OneOff(3000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2025, 1, 20, 0, 0));
-        user1.addCashFlow(oneOff);
+        protector1.addCashFlow(oneOff);
 
         oneOff = new OneOff(10000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2024, 5, 20, 0, 0));
-        user1.addCashFlow(oneOff);
+        protector1.addCashFlow(oneOff);
 
         oneOff = new OneOff(600000, categoryIncome2, LocalDateTime.now());
         oneOff.DebugSetDateStart(LocalDateTime.of(2023, 5, 20, 0, 0));
-        user1.addCashFlow(oneOff);
+        protector1.addCashFlow(oneOff);
 
         repeating = new Repeating(100000, categoryIncome1, LocalDateTime.now(), LocalDateTime.now().plusMonths(1), recurPeriod.Monthly);
         repeating.DebugSetDateStart(LocalDateTime.of(2023, 10, 20, 0, 0));
         repeating.DebugSetDateEnd(LocalDateTime.of(2026, 12, 20, 0, 0));
-        user2_1.addCashFlow(repeating);
+        protector2.addCashFlow(repeating);
 
         //moneyboxes
         MoneyBox moneyBox1 = new MoneyBox("Laptop", 50000);
         MoneyBox moneyBox2 = new MoneyBox("Drawing board", 2000);
-        user1.addMoneyBox(moneyBox1);
-        user1.addMoneyBox(moneyBox2);
+        protector1.addMoneyBox(moneyBox1);
+        protector1.addMoneyBox(moneyBox2);
 
         MoneyBox moneyBox3 = new MoneyBox("Laptop", 150000);
-        user2.addMoneyBox(moneyBox3);
+        member1.addMoneyBox(moneyBox3);
 
         moneyBox1.addMoney(new Allowance(10000, LocalDateTime.now()));
         moneyBox3.addMoney(new Allowance(80000, LocalDateTime.now()));

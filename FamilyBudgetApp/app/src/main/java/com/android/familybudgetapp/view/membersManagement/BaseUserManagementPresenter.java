@@ -16,7 +16,11 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     protected Family family;
 
-    final String USER_EXISTS = "User: %s added!";
+    public static final String USER_EXISTS_TITLE = "Username already exists";
+    public static final String WRONG_USERNAME_TITLE = "Wrong username format";
+    public static final String WRONG_PASSWORD_TITLE = "Wrong password format";
+    public static final String WRONG_DISPLAY_NAME_TITLE = "Invalid display name";
+    public static final String WRONG_FAMILY_NAME_TITLE = "Invalid family name";
     //region $DAO setup
 
     /**
@@ -57,7 +61,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     {
         if (!CommonStringValidations.isUsernameValid(input))
         {
-            view.showErrorMessage("Wrong username format", "Characters should be at least two." +
+            view.showErrorMessage(WRONG_USERNAME_TITLE, "Characters should be at least two." +
                     " First character letter or number. Others letter, number or underscore");
             return false;
         }
@@ -82,7 +86,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     {
         if (!CommonStringValidations.isPasswordValid(input))
         {
-            view.showErrorMessage("Wrong password format", "Password should be at least four numbers or letters without spaces.");
+            view.showErrorMessage(WRONG_PASSWORD_TITLE, "Password should be at least four numbers or letters without spaces.");
             return false;
         }
         return true;
@@ -98,7 +102,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     {
         if (!CommonStringValidations.isAlphanumericWithSpaces(input))
         {
-            view.showErrorMessage("Invalid display name", "Name should be at least three characters." +
+            view.showErrorMessage(WRONG_DISPLAY_NAME_TITLE, "Name should be at least three characters." +
                     " First and last character letter or number. Between them, letter, number or space.");
             return false;
         }
@@ -116,7 +120,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     {
         if (!CommonStringValidations.isAlphanumericWithSpaces(input))
         {
-            view.showErrorMessage("Invalid family name", "Name should be at least three characters." +
+            view.showErrorMessage(WRONG_FAMILY_NAME_TITLE, "Name should be at least three characters." +
                     " First and last character letter or number. Between them, letter, number or space.");
             return false;
         }
@@ -126,7 +130,7 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     protected void showUserExistsMsg()
     {
-        view.showErrorMessage("Username already exists", "Please choose a different username.");
+        view.showErrorMessage(USER_EXISTS_TITLE, "Please choose a different username.");
     }
 }
 
