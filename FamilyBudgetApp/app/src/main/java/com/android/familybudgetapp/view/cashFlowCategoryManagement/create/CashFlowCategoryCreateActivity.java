@@ -11,7 +11,7 @@ import com.android.familybudgetapp.view.cashFlowCategoryManagement.BaseCashFlowM
 public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivity<CashFlowCategoryCreateViewModel>
         implements CashFlowCategoryCreateView
 {
-    AlertDialog.Builder addExtraCategoryDialog;
+    private AlertDialog.Builder addExtraCategoryDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

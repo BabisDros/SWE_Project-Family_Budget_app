@@ -17,6 +17,7 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
     protected UserDAO userDAO;
 
     protected FamilyDAO familyDAO;
+
     protected User currentUser;
     protected Family currentFamily;
     protected String currentType;

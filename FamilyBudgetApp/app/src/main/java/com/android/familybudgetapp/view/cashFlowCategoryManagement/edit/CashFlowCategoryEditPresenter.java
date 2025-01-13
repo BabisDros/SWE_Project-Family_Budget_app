@@ -8,7 +8,7 @@ import com.android.familybudgetapp.view.cashFlowCategoryManagement.BaseCashFlowM
 
 public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresenter<CashFlowCategoryEditView>
 {
-    String initialName;
+    private String initialName;
 
     public void setCashFlowCategoryData(String name)
     {

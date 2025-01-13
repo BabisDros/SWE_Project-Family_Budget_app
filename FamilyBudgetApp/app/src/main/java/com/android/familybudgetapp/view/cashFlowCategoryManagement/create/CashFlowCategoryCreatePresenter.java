@@ -10,7 +10,6 @@ public class CashFlowCategoryCreatePresenter extends BaseCashFlowManagementPrese
     public static final String SUCCESSFUL_ADDED_CATEGORY_TITLE = "Category: %s added!";
     public static final String ADD_EXTRA_CATEGORY_PROMPT = "Do you want to add a new category?";
 
-
     public void save(String name, String limit)
     {
         currentUser = userDAO.findByID(Initializer.currentUserID);

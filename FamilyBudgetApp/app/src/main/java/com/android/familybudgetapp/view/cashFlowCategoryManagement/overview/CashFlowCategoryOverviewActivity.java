@@ -29,9 +29,9 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
 {
     public static final String CASHFLOW_CATEGORY_NAME_EXTRA = "CashFlow Category Name";
 
-    GenericRecyclerViewAdapter<CashFlowCategory, ViewHolderSingleTextView> recyclerViewAdapter;
-    AlertDialog.Builder optionsDialog;
-    Locale currentLocale;
+    private GenericRecyclerViewAdapter<CashFlowCategory, ViewHolderSingleTextView> recyclerViewAdapter;
+    private AlertDialog.Builder optionsDialog;
+    private Locale currentLocale;
     private AlertDialog.Builder deleteCategoryDialog;
 
     @Override
@@ -54,6 +54,11 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         setupDeleteAccountDialog();
     }
 
+    @Override
+    protected CashFlowCategoryOverviewViewModel createViewModel()
+    {
+        return new ViewModelProvider(this).get(CashFlowCategoryOverviewViewModel.class);
+    }
 
     private void setupHomepageBtn()
     {
@@ -67,17 +72,17 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         btnAddMember.setOnClickListener(v -> addCategoryClicked());
     }
 
-    private void addCategoryClicked()
-    {
-        viewModel.getPresenter().navigateToCreateCashFlowCategory();
-    }
-
     private void setupDeleteAccountDialog()
     {
         deleteCategoryDialog = new AlertDialog.Builder(this)
                 .setCancelable(true)
                 .setNegativeButton(R.string.no, null)
                 .setPositiveButton(R.string.yes, (dialog, which) -> deleteDialogYesClicked());
+    }
+
+    private void addCategoryClicked()
+    {
+        viewModel.getPresenter().navigateToCreateCashFlowCategory();
     }
 
     private void deleteDialogYesClicked()
@@ -111,23 +116,11 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         recyclerViewCategories.setAdapter(recyclerViewAdapter);
     }
 
-    private String createItemName(CashFlowCategory category)
-    {
-        Object currentClass = category.getClass();
-        if (currentClass == Expense.class)
-        {
-            return String.format(currentLocale, "Expense: %s. Limit: %d ", category.getName(), ((Expense) category).getLimit());
-        }
-        else
-            return String.format("Income: %s ", category.getName());
-    }
-
     @Override
     public void updateCategoriesRecyclerView(int indexToDelete)
     {
         recyclerViewAdapter.updateList(indexToDelete);
     }
-
 
     private void selectItem(CashFlowCategory cashFlowCategory)
     {
@@ -150,10 +143,15 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                 .show();
     }
 
-    @Override
-    protected CashFlowCategoryOverviewViewModel createViewModel()
+    private String createItemName(CashFlowCategory category)
     {
-        return new ViewModelProvider(this).get(CashFlowCategoryOverviewViewModel.class);
+        Object currentClass = category.getClass();
+        if (currentClass == Expense.class)
+        {
+            return String.format(currentLocale, "Expense: %s. Limit: %d ", category.getName(), ((Expense) category).getLimit());
+        }
+        else
+            return String.format("Income: %s ", category.getName());
     }
 
     @Override
