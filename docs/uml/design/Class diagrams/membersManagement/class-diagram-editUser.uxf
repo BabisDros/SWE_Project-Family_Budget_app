@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>21</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>BaseActivity
+{abstract}
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
++ showErrorMessage(title: String, message: String)
+# createViewModel(): V {abstract}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>959</x>
+      <y>56</y>
+      <w>119</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>BasePresenter
+{abstract}
+--
+
+--
++ setView(view: V)
++ clearView()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>651</x>
+      <y>147</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+BaseView
+--
++ showErrorMessage(title: String, message: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>539</x>
+      <y>35</y>
+      <w>161</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>BaseViewModel
+{abstract}
+--
+
+--
+# createPresenter(): P {abstract}
++ getPresenter(): P {query}
+# onCleared()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>35</y>
+      <w>91</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# viewModel
+m1=1</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>56</y>
+      <w>280</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# presenter
+m1=1</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>140</y>
+      <w>203</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>875</x>
+      <y>133</y>
+      <w>98</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>126</x>
+      <y>294</y>
+      <w>336</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>BaseUserManagementActivity
+{abstract}
+--
+# usernameField: EditText
+# passwordField: EditText
+# displayNameField: EditText
+# familyNameField: EditText
+# btnAction: Button
+# btnCancel: Button
+--
+# onCreate(savedInstanceState: Bundle)
+
+# setEditTextsFocusListeners()
+# setUpCancelBtn()
+# setUIReferences()
+
+# usernameEditTxtUnfocused(){abstract}
+# passwordEditTxtUnfocused() {abstract}
+# displayNameEditTxtUnfocused() {abstract}
+# setupActionBtn() {abstract}
++ setFamilyNameField(familyName: String)
++ getUsername(): String {query}
++ getPassword(): String {query}
++ getDisplayName(): String {query}
++ getFamilyName(): String {query}
++ goToMemberManagementActivity()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>154</y>
+      <w>21</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>623</y>
+      <w>259</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>EditUserViewModel
+
+--
+# createPresenter(): EditUserPresenter
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>112</y>
+      <w>21</w>
+      <h>525</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;730.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>721</x>
+      <y>294</y>
+      <w>469</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>BaseUserManagementPresenter
+{abstract}
+--
+_+ USER_EXISTS_TITLE: String {readOnly}_
+_+ WRONG_USERNAME_TITLE: String {readOnly}_
+_+ WRONG_PASSWORD_TITLE: String {readOnly}_
+_+ WRONG_DISPLAY_NAME_TITLE: String {readOnly}_
+_+ WRONG_FAMILY_NAME_TITLE: String {readOnly}_
+
+# protector: User
+# family: Family
+--
++ setUserDAO(userDAO: UserDAO)
++ setFamilyDAO(familyDAO: FamilyDAO)
++ validateAllFields(username: String, password: String, displayName: String, familyName: String): boolean
++ validateUsername(input: String): boolean
+# validateUsernameUniqueness(input: String): boolean {abstract}
++ validatePassword(input: String): boolean
++ validateDisplayName(input: String): boolean
++ validateFamilyName(input: String): boolean
+# showUserExistsMsg()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>140</y>
+      <w>21</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>189</y>
+      <w>21</w>
+      <h>448</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>385</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
++ findByID(userID: Long): User
++ findByUsername(username: String): User
++ save(user: User)
++ delete(entity: User)
++ findAll(): Set&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1183</x>
+      <y>413</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- userDAO
+m1=1</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>126</x>
+      <y>623</y>
+      <w>280</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>EditUserActivity
+--
+# onCreate(savedInstanceState: Bundle)
+# createViewModel(): EditUserViewModel
+# setupActionBtn()
++ setUsernameField(username: String)
+- setPasswordHint()
++ setDisplayNameField(displayName: String)
++ disableFamilyField()
+# usernameEditTxtUnfocused()
+# passwordEditTxtUnfocused()
+# displayNameEditTxtUnfocused()
+- saveClicked()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>196</y>
+      <w>231</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+OnItemSelectedListener
+--
++ goToHomepage(famPos: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>196</x>
+      <y>245</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>294</y>
+      <w>196</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+FamilyDAO
+--
++ findByID(familyID: Long): Family
++ save(user: Family)
++ delete(entity: Family)
++ findAll(): Set&lt;Family&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1183</x>
+      <y>329</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- familyDAO
+m1=1</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>581</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>959</x>
+      <y>623</y>
+      <w>406</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>EditUserPresenter
+--
+- userToEdit: User
+--
++ setUserData(userId: long)
++ save(username: String, password: String, displayName: String, familyName: String)
++ validatePassword(input: String): boolean
+# validateUsernameUniqueness(input: String): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>525</y>
+      <w>21</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>623</y>
+      <w>259</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+EditUserView
+--
++ setUsernameField(username: String)
++ setDisplayNameField(displayName: String)
++ setFamilyNameField(familyName: String)
++ disableFamilyField()
++ goToMemberManagementActivity()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>693</y>
+      <w>301</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>410.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
