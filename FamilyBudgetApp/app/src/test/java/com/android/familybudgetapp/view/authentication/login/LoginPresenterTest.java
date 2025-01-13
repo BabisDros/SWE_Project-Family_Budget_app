@@ -32,12 +32,6 @@ public class LoginPresenterTest
     }
 
     @Test
-    public void correctSetOfUserDao()
-    {
-        assertEquals(presenter.userDAO, userDAO);
-    }
-
-    @Test
     public void loginInvalidUsername()
     {
         presenter.login("invalid", "1234");
