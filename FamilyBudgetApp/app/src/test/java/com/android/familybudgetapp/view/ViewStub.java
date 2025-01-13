@@ -4,16 +4,24 @@ import com.android.familybudgetapp.view.base.BaseView;
 
 public abstract class ViewStub implements BaseView
 {
-    private int errorCount;
+    private String title;
+    private String msg;
+
 
     @Override
     public void showErrorMessage(String title, String message)
     {
-        errorCount++;
+        this.title = title;
+        this.msg = message;
     }
 
-    public int getErrorCount()
+    public String getErrorTitle()
     {
-       return errorCount;
+        return title;
+    }
+
+    public String getErrorMsg()
+    {
+        return msg;
     }
 }

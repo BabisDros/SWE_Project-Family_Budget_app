@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import android.util.Log;
+
 import com.android.familybudgetapp.dao.Initializer;
 import com.android.familybudgetapp.dao.UserDAO;
 import com.android.familybudgetapp.memorydao.MemoryInitializer;
@@ -39,21 +41,24 @@ public class LoginPresenterTest
     public void loginInvalidUsername()
     {
         presenter.login("invalid", "1234");
-        assertEquals(1, viewStub.getErrorCount());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_TITLE, viewStub.getErrorTitle());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
     @Test
     public void loginValidUsernameNullPassword()
     {
         presenter.login("Test", null);
-        assertEquals(1, viewStub.getErrorCount());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_TITLE, viewStub.getErrorTitle());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
     @Test
     public void loginValidUsernameInvalidPassword()
     {
         presenter.login("Test", "1234");
-        assertEquals(1, viewStub.getErrorCount());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_TITLE, viewStub.getErrorTitle());
+        assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
     @Test
