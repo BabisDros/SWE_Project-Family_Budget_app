@@ -244,6 +244,8 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
             int recurPeriodIdx = recurrenceSpinner.getSelectedItemPosition();
             String categoryName = (String) categorySpinner.getSelectedItem();
 
+            if(categoryName==null)
+                categoryName="";
             // Validate and add cash flow with presenter
             vm.getPresenter().addCashFlow(categoryName, cashFlowAmount,
                     isRecurring.isChecked(), dateStart, dateEnd, recurPeriodIdx);
