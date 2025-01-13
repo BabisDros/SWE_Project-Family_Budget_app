@@ -41,7 +41,7 @@ public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView>
     }
 
     public int getSurplusToAllocateAmount() {
-        return this.getPreviousSurplusObj().calculateSurplusLeft();
+        return this.getPreviousSurplusObj().getSurplus();
     }
 
     public void addToMoneyBox(String amountInput, MoneyBox moneyBox){
@@ -70,6 +70,7 @@ public class AllocateSurplusPresenter extends BasePresenter<AllocateSurplusView>
         // Create new allowance and add to moneybox
         Allowance allowance= new Allowance(amount, LocalDateTime.now());
         moneyBox.addMoney(allowance);
+        surplusToAllocate.setSurplus(surplusToAllocate.getSurplus() - amount);
         surplusToAllocate.addAllowanceMoneyBoxPair(allowance, moneyBox.getReason());
     }
 

@@ -58,14 +58,6 @@ public class MonthlySurplus
         this.allowanceMoneyBoxReasonPairs.add(pair);
     }
 
-    public int calculateSurplusLeft() {
-        int total = 0;
-        for (Pair<Allowance, String> pair : allowanceMoneyBoxReasonPairs) {
-            total += pair.first.getAmount();
-        }
-        return surplus - total;
-    }
-
     public void addCashFlowToSurplus(CashFlow cashFlow)
     {
         if(cashFlow==null)

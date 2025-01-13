@@ -203,8 +203,14 @@ public abstract class Initializer {
                         monthlySurplus.removeCashFlowFromSurplus(cashFlow);
                 }
                 family.addSurplus(monthlySurplus);
-                // do not add to savings for current month or previous month, so there's surplus left to allocate
-                if (currentDate.isBefore(YearMonth.now().minusMonths(1))) // do not add to savings for current month οr previous month
+
+                // Do not add MonthlySurplus to Savings if currentDate is:
+                // Current Month: The month has to end before the monthlySurplus can be allocated to savings.
+                // Previous Month: Will be allocated during the current month.
+                // 2 Months Ago: If the previous MonthlySurplus has not been allocated
+                // by the end of the month it's automatically allocated to savings.
+                // This is handled by MonthlyManager.moveUnallocatedSurplusToSavings
+                if (currentDate.isBefore(YearMonth.now().minusMonths(2)))
                 {
                     if (monthlySurplus.getSurplus() >= 0)
                         family.addToSavings(monthlySurplus.getSurplus());
