@@ -128,14 +128,11 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                 .setNegativeButton("Cancel", null)
                 .setItems(new String[]{"Edit", "Delete"}, (dialog, which) ->
                 {
-                    if (which == 0)
+                    if (which == 0)//Edit
                     {
-                        Intent intent = new Intent(this, CashFlowCategoryEditActivity.class);
-                        intent.putExtra(CASHFLOW_CATEGORY_NAME_EXTRA, cashFlowCategory.getName());
-                        startActivity(intent);
-                        finish();
+                        goToCashFlowCategoryEdit(cashFlowCategory.getName());
                     }
-                    else//show Verification
+                    else//Delete. Show Verification
                     {
                         viewModel.getPresenter().showVerification(cashFlowCategory);
                     }
@@ -154,6 +151,13 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
             return String.format("Income: %s ", category.getName());
     }
 
+    private void goToCashFlowCategoryEdit(String cashFlowCategoryName)
+    {
+        Intent intent = new Intent(this, CashFlowCategoryEditActivity.class);
+        intent.putExtra(CASHFLOW_CATEGORY_NAME_EXTRA, cashFlowCategoryName);
+        startActivity(intent);
+        finish();
+    }
     @Override
     public void goToHomepageActivity()
     {

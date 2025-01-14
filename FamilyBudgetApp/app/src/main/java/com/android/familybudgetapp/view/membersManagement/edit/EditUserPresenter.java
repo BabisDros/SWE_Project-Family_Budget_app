@@ -37,7 +37,7 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
             userToEdit.setPassword(password);
         }
         userToEdit.setName(displayName);
-        userToEdit.getFamily().setName(familyName);
+        familyToUpdate.setName(familyName);
 
         userDAO.save(userToEdit);
         // DAO's hashSet add method, will replace the family with edited user

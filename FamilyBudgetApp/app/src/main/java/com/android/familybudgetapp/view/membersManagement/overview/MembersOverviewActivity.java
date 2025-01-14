@@ -146,10 +146,7 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
                 {
                     if (which == 0)//edit
                     {
-                        Intent intent = new Intent(this, EditUserActivity.class);
-                        intent.putExtra(USER_ID_EXTRA, user.getID());
-                        startActivity(intent);
-                        finish();
+                        goToEditUserActivity(user.getID());
                     }
                     else//showVerification
                     {
@@ -159,8 +156,14 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
                 .show();
     }
 
-
     //region $Navigation to other Activities
+    private void goToEditUserActivity(Long userID)
+    {
+        Intent intent = new Intent(this, EditUserActivity.class);
+        intent.putExtra(USER_ID_EXTRA, userID);
+        startActivity(intent);
+        finish();
+    }
     @Override
     public void goToHomepageActivity()
     {
