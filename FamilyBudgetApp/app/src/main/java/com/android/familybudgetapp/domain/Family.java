@@ -119,7 +119,6 @@ public class Family
             throw new IllegalArgumentException(String.format("User %s already exists.", user.getName()));
         }
         members.put(user.getID(), user);
-        user.setFamily(this);
     }
 
     public void removeMember(User user)
