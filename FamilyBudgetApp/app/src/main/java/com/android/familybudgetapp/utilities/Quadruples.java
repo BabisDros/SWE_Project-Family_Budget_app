@@ -62,6 +62,13 @@ public class Quadruples<T1,T2,T3,T4> {
         return val4;
     }
 
+    /**
+     * Compares this object with the specified object for equality. Returns true if and only if
+     * the given object is of the same class and all corresponding fields of the two objects are equal.
+     *
+     * @param o the object to be compared for equality with this object
+     * @return {@code true} if the specified object is equal to this object; {@code false} otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

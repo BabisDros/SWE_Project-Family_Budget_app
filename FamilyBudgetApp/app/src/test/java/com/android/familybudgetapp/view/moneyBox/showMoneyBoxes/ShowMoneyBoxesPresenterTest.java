@@ -34,6 +34,10 @@ public class ShowMoneyBoxesPresenterTest {
         stub.setPresenter(new ShowMoneyBoxesPresenter(new UserDAOMemory()));
     }
 
+    /**
+     * Test that ensures that all the {@link Family}'s {@link MoneyBox} are returned in the correct
+     * {@link Quadruples} format
+     */
     @Test
     public void getMoneyBoxes() {
         Family family = dataHelper.getUserDAO().findByID(Initializer.currentUserID).getFamily();

@@ -22,6 +22,7 @@ public class ShowMoneyBoxesPresenter {
     /**
      * Find all the moneyBoxes of the logged in family
      * @return list of moneyboxes is {@link com.android.familybudgetapp.utilities.Quadruples} format
+     *  going as reason, owner, target amount, current amount
      */
     public List<Quadruples<String, String, Integer, Integer>> getMoneyBoxes()
     {

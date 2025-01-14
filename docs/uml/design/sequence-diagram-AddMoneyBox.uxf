@@ -15,18 +15,6 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>72</x>
-      <y>32</y>
-      <w>112</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-save()</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>168</x>
       <y>16</y>
       <w>24</w>
@@ -553,5 +541,17 @@ save(currentUser)</panel_attributes>
     <panel_attributes>lt=&lt;&lt;&lt;-
 succesfullyFinish()</panel_attributes>
     <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>32</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+save()</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

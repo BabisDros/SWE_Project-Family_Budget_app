@@ -54,6 +54,12 @@ public class ShowMoneyBoxesActivity extends AppCompatActivity implements ShowMon
         super.onPause();
     }
 
+    /**
+     * Retrieves a list of money boxes.
+     *
+     * @return a list of {@link Quadruples} containing information about money boxes,
+     *         where each {@link Quadruples} includes data such as reason, owner, target amount, and current amount.
+     */
     public List<Quadruples<String, String, Integer, Integer>> getMoneyBoxes()
     {
         return presenter.getMoneyBoxes();

@@ -37,6 +37,9 @@ public class DetailedBudgetPresenterTest {
         presenter = new DetailedBudgetPresenter();
     }
 
+    /**
+     * Tests the getter and setter methods for the view in the presenter..
+     */
     @Test
     public void setGetView() {
         assertNull(presenter.getView());
@@ -45,6 +48,9 @@ public class DetailedBudgetPresenterTest {
         assertEquals(view, presenter.getView());
     }
 
+    /**
+     * Verifies the getter and setter methods for the property {@link UserDAO} in the presenter.
+     */
     @Test
     public void setGetUserDao() {
         assertNull(presenter.getUserDAO());
@@ -53,6 +59,9 @@ public class DetailedBudgetPresenterTest {
         assertEquals(dao, presenter.getUserDAO());
     }
 
+    /**
+     * Tests the getter and setter methods for the {@link CashFlowManagerInterface} property in the presenter.
+     */
     @Test
     public void setGetCashFlowManager() {
         assertNull(presenter.getCashFlowManager());
@@ -62,6 +71,9 @@ public class DetailedBudgetPresenterTest {
 
     }
 
+    /**
+     * Tests the getter and setter methods for the `currentUser` property in the presenter.
+     */
     @Test
     public void setGetCurrentUser() {
         assertNull(presenter.getCurrentUser());
@@ -70,6 +82,9 @@ public class DetailedBudgetPresenterTest {
         assertEquals(user, presenter.getCurrentUser());
     }
 
+    /**
+     * Tests the getter and setter methods for the {@link cashFlowType} property in the presenter.
+     */
     @Test
     public void setGetType() {
         assertNull(presenter.getType());
@@ -77,6 +92,10 @@ public class DetailedBudgetPresenterTest {
         assertEquals(cashFlowType.Expense, presenter.getType());
     }
 
+    /**
+     * Tests the `getCashFlows` method of the presenter to ensure that it correctly
+     * retrieves cash flows based on the specified type: income, expense, or both..
+     */
     @Test
     public void getCashFlows() {
         CashFlowManagerInterface manager = new MonthlyManager();
@@ -97,6 +116,12 @@ public class DetailedBudgetPresenterTest {
         assertEquals(manager.getExpenseAndIncome(), presenter.getCashFlows());
     }
 
+    /**
+     * Tests the functionality of the `getFormattedCashFlows` method in the presenter to ensure
+     * that it accurately retrieves and formats cash flows based on the current state and type.
+     * uses {@link DetailedBudgetPresenterTest#formatCashFlow(boolean)} to make sure changes to
+     * its own code would have the same result
+     */
     @Test
     public void TestFormattedCashFlowChangesToCode(){
         CashFlowManagerInterface manager = new MonthlyManager();
@@ -132,6 +157,7 @@ public class DetailedBudgetPresenterTest {
         assertEquals(myList.size(), result.size());
         for (var obj: result)
             assertTrue(myList.contains(obj));
+
 
         presenter.setType(cashFlowType.Expense);
         ((DetailedBudgetStub) presenter.getView()).setType("Surplus");

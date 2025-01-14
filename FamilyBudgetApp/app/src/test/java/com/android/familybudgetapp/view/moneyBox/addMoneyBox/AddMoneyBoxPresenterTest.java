@@ -27,6 +27,11 @@ public class AddMoneyBoxPresenterTest {
         presenter = new AddMoneyBoxPresenter(stub, new UserDAOMemory());
     }
 
+    /**
+     * Tests the {@code validateSave()} method of the presenter
+     * The test ensures the presenter correctly handles both valid and invalid inputs by verifying
+     * the error titles and messages generated in different scenarios.
+     */
     @Test
     public void validateSave(){
         stub.setReason("1");

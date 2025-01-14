@@ -34,6 +34,13 @@ public class Tuples<T1,T2> {
         return val2;
     }
 
+    /**
+     * Compares this object with the specified object for equality. This method checks if the current
+     * object and the specified object are of the same class and have equal first and second generic values.
+     *
+     * @param o the object to compare with this instance
+     * @return {@code true} if the specified object is equal to this instance; {@code false} otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

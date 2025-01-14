@@ -19,26 +19,58 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
 
     protected UserRetrievalStrategy userRetrievalStrategy;
 
+    /**
+     * Determines if the given {@link CashFlow} is within the specified date range of current strategy.
+     *
+     * @param cashFlow the {@link CashFlow} instance to evaluate
+     * @return true if the {@link CashFlow} falls within the specified date range, false otherwise
+     */
     protected abstract boolean inDateRange(CashFlow cashFlow);
 
+    /**
+     * Retrieves a list of users based on the configured {@link UserRetrievalStrategy}.
+     *
+     * @return A list of {@link User} objects as determined by the user retrieval strategy.
+     */
     protected List<User> getUsers() {
         return userRetrievalStrategy.getUsers();
     }
 
+    /**
+     * Retrieves the monthly amount for the specified {@link CashFlow} based on the current date range strategy.
+     *
+     * @param cashFlow the {@link CashFlow} instance from which the monthly amount is to be calculated
+     * @return the monthly amount for the specified {@link CashFlow}
+     */
     protected abstract int getAmountForRange(CashFlow cashFlow);
 
+    /**
+     * Sets the strategy to be used for retrieving users.
+     *
+     * @param strategy The {@link UserRetrievalStrategy} to be configured for retrieving users.
+     */
     public void setUserRetrievalStrategy(UserRetrievalStrategy strategy)
     {
         userRetrievalStrategy = strategy;
     }
 
+    /**
+     * Retrieves the current {@link UserRetrievalStrategy} being used
+     *
+     * @return The {@link UserRetrievalStrategy} currently configured in the system.
+     */
     public UserRetrievalStrategy getUserRetrievalStrategy()
     {
         return userRetrievalStrategy;
     }
 
     /**
-     * @return Current surplus of CashFlows of range inDateRange from users in CashFlowManager's strategy.
+     * Calculates the total surplus by iterating through all users and their respective {@link CashFlow}s.
+     * The method determines whether each {@link CashFlow} is within the specified date range and performs
+     * either addition or subtraction to the total based on its category ({@link Income} or {@link Expense}).
+     *
+     * @return The calculated surplus as an integer, representing the total aggregated difference
+     *         between {@link Income} and {@link Expense}s for all users within the specified date range.
      */
     public int CalculateSurplus() {
         int total = 0;
@@ -59,8 +91,14 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
 
 
     /**
-     * @param type enumeration of Income or Expense or Both
-     * @return list of cashFlows per user corresponding to the current month
+     * Retrieves a map of cashFlows of the specified type (e.g., income, expense, or both)
+     * for each user. The method filters and groups {@link CashFlow}s based on their type,
+     * the configured user retrieval strategy, and whether they fall within a defined date range.
+     *
+     * @param type The type of {@link CashFlow} to retrieve. Possible values include
+     *             {@link cashFlowType#Income}, {@link cashFlowType#Expense}, or {@link cashFlowType#Both}.
+     * @return A map where the key is the user ID and the value is a list of {@link CashFlow}s
+     *         of the specified type that belong to that user.
      */
     protected Map<Long, List<CashFlow>> getCashFlowOfType(cashFlowType type)
     {
@@ -98,7 +136,12 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return Map of list of {@link Expense} per user in the object's date range
+     * Retrieves a map of {@link CashFlow} lists categorized as expenses for each user.
+     * The method filters and groups expenses from the {@link CashFlow}s of all users
+     * based on the configured user retrieval strategy and the defined date range.
+     *
+     * @return A map where the key is the user ID and the value is a list of
+     *         {@link Expense} objects categorized as expenses for that user.
      */
     public Map<Long, List<CashFlow>> getExpense()
     {
@@ -106,7 +149,12 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return Map of list of {@link Income} per user in the object's date range
+     * Retrieves a map of {@link CashFlow} lists categorized as income for each user.
+     * This method filters and groups income {@link CashFlow}s for all users based on
+     * the configured user retrieval strategy and the defined date range.
+     *
+     * @return A map where the key is the user ID and the value is a list of
+     *         {@link Income} objects categorized as income for that user.
      */
     public Map<Long, List<CashFlow>> getIncome()
     {
@@ -114,7 +162,12 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @return Map of list of every {@link CashFlow} per user in the object's date range
+     * Retrieves a map of {@link CashFlow}s categorized as both expenses and income for each user.
+     * This method utilizes the user retrieval strategy and filters the {@link CashFlow}s
+     * based on the defined date range, aggregating both income and expenses.
+     *
+     * @return A map where the key is the user ID and the value is a list of {@link CashFlow}
+     *         objects categorized as both expenses and income for that user.
      */
     public Map<Long, List<CashFlow>> getExpenseAndIncome()
     {
@@ -122,8 +175,14 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @param type enumeration of Income or Expense
-     * @return list of pairs containing the category name and the amount corresponding to it
+     * Aggregates {@link CashFlow}s of a given type (e.g., income or expense) into a list of categories
+     * and their corresponding total amounts. The categories are derived from each {@link CashFlow}'s category
+     * name, and the total amounts are computed based on the {@link CashFlow}s within the specified range.
+     *
+     * @param type The type of {@link CashFlow} to process (e.g., {@link cashFlowType#Income},
+     *         {@link cashFlowType#Expense}, or {@link cashFlowType#Both}).
+     * @return A list of tuples, where each tuple contains a category name (String) and the total
+     *         aggregated amount (Integer) for that category.
      */
     protected List<Tuples<String, Integer>> getCashFlowPerCategoryOfType(cashFlowType type)
     {
@@ -148,8 +207,10 @@ public abstract class CashFlowManager implements CashFlowManagerInterface {
     }
 
     /**
-     * @param cashFlow CashFlow for which you want the amount of the object's date range
-     * @return Amount
+     * Retrieves the amount associated with a given CashFlow for the strategy's range.
+     *
+     * @param cashFlow The CashFlow object for which the amount is being retrieved.
+     * @return The amount related to the specified CashFlow.
      */
     public int getAmount(CashFlow cashFlow)
     {

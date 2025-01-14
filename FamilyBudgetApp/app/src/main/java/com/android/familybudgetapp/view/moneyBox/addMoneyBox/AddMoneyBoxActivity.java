@@ -52,10 +52,21 @@ public class AddMoneyBoxActivity extends AppCompatActivity implements AddMoneyBo
         super.onPause();
     }
 
+    /**
+     * Retrieves the trimmed text entered in the "reason" input field.
+     *
+     * @return The trimmed string value of the text entered in the "reason" EditText view.
+     */
     public String getReason(){
         return ((EditText)findViewById(R.id.edit_text_reason)).getText().toString().trim();
     }
 
+    /**
+     * Retrieves the target value entered in the corresponding input field, processes the input,
+     * and converts it to an integer value in cent units.
+     *
+     * @return The target value as an integer in cents. If the input is empty, it defaults to 0.
+     */
     public Integer getTarget(){
         String input = ((EditText)findViewById(R.id.edit_text_target)).getText().toString();
         Double inDecimal = Double.parseDouble((input.isEmpty()) ? "0": input);

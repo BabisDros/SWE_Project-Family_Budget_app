@@ -20,6 +20,7 @@ public class MonthlyManager extends CashFlowManager {
         return getCashFlowPerCategoryOfType(type);
     }
 
+    @Override
     protected boolean inDateRange(CashFlow cashFlow)
     {
         return InDateRange.cashFlowInMonthlyRange(cashFlow);
@@ -29,6 +30,7 @@ public class MonthlyManager extends CashFlowManager {
     protected int getAmountForRange(CashFlow cashFlow) {
         return cashFlow.getMonthlyAmount(YearMonth.now());
     }
+
     public void moveUnallocatedSurplusToSavings(Family family) {
         // Users are only allowed to allocate the previous month's surplus
         // If it's not allocated by start of the next month, it will be automatically allocated to savings

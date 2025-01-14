@@ -8,6 +8,15 @@ import java.time.Year;
 import java.time.YearMonth;
 
 public class InDateRange {
+    /**
+     * Determines whether a given {@link CashFlow} object falls within the current month.
+     * For a OneOff {@link CashFlow}, it checks if the start date's month is the current month.
+     * For a Repeating {@link CashFlow}, it checks if the current month lies within the range
+     * from the start date to the end date.
+     *
+     * @param cashFlow the {@link CashFlow} object to evaluate. It can be of type OneOff or Repeating.
+     * @return true if the {@link CashFlow} falls within the current month; false otherwise.
+     */
     public static boolean cashFlowInMonthlyRange(CashFlow cashFlow)
     {
         if (cashFlow.getClass() == OneOff.class)
@@ -20,6 +29,15 @@ public class InDateRange {
         }
     }
 
+    /**
+     * Determines whether a given {@link CashFlow} object falls within the current year.
+     * For a OneOff {@link CashFlow}, it checks if the start date's year is the current year.
+     * For a Repeating {@link CashFlow}, it checks if the current year lies within the range
+     * from the start year to the end year.
+     *
+     * @param cashFlow the {@link CashFlow} object to evaluate. It can be of type OneOff or Repeating.
+     * @return true if the {@link CashFlow} falls within the current year; false otherwise.
+     */
     public static boolean cashFlowInYearlyRange(CashFlow cashFlow)
     {
         if (cashFlow.getClass() == OneOff.class)

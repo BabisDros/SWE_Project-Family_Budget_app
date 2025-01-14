@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>88</x>
-      <y>0</y>
-      <w>144</w>
-      <h>24</h>
+      <x>77</x>
+      <y>66</y>
+      <w>198</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:DetailedBudgetActivity_</panel_attributes>
     <additional_attributes/>
@@ -15,21 +15,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>16</y>
-      <w>24</w>
-      <h>1408</h>
+      <x>154</x>
+      <y>88</y>
+      <w>33</w>
+      <h>1969</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1740.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1770.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>312</x>
-      <y>0</y>
-      <w>160</w>
-      <h>24</h>
+      <x>385</x>
+      <y>66</y>
+      <w>220</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:DetailedBudgetPresenter_</panel_attributes>
     <additional_attributes/>
@@ -37,21 +37,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>384</x>
-      <y>16</y>
-      <w>24</w>
-      <h>1376</h>
+      <x>484</x>
+      <y>88</y>
+      <w>33</w>
+      <h>1925</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1700.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1730.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>144</x>
-      <y>32</y>
-      <w>16</w>
-      <h>1368</h>
+      <x>154</x>
+      <y>121</y>
+      <w>22</w>
+      <h>1903</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -59,10 +59,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>384</x>
-      <y>32</y>
-      <w>16</w>
-      <h>1344</h>
+      <x>484</x>
+      <y>121</y>
+      <w>22</w>
+      <h>1870</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -70,10 +70,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>152</x>
-      <y>40</y>
-      <w>248</w>
-      <h>32</h>
+      <x>165</x>
+      <y>110</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getFormatedCashFlows()</panel_attributes>
@@ -82,10 +82,10 @@ getFormatedCashFlows()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>368</x>
-      <y>88</y>
-      <w>344</w>
-      <h>224</h>
+      <x>451</x>
+      <y>176</y>
+      <w>550</w>
+      <h>363</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -94,8 +94,10 @@ getFormatedCashFlows()</panel_attributes>
 
 
 
+
 --
 [type == Income]
+
 
 
 
@@ -111,10 +113,10 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>296</x>
-      <y>376</y>
-      <w>824</w>
-      <h>984</h>
+      <x>363</x>
+      <y>616</y>
+      <w>1133</w>
+      <h>1353</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -127,34 +129,22 @@ layer=-4
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>336</y>
-      <w>288</w>
-      <h>40</h>
+      <x>506</x>
+      <y>572</y>
+      <w>396</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 stateSurplus = state.get("type").equals("Surplus")</panel_attributes>
     <additional_attributes>10.0;30.0;40.0;30.0;40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>32</x>
-      <y>32</y>
-      <w>128</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getCashFlows()</panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>584</x>
-      <y>136</y>
-      <w>88</w>
-      <h>40</h>
+      <x>825</x>
+      <y>253</y>
+      <w>121</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -164,10 +154,10 @@ getExpense</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>584</x>
-      <y>200</y>
-      <w>88</w>
-      <h>40</h>
+      <x>825</x>
+      <y>363</y>
+      <w>121</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -177,10 +167,10 @@ getIncome</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>584</x>
-      <y>264</y>
-      <w>120</w>
-      <h>40</h>
+      <x>825</x>
+      <y>473</y>
+      <w>165</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -190,82 +180,82 @@ getExpenseAndIncome</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>256</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>440</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-cashFlowManager.getExpense()</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+getExpenseAndIncome()</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>280</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>495</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+cashFlows = Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>192</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>330</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-cashFlowManager.getExpense()</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+getIncome()</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>216</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>385</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+cashFlows = Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>128</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>220</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-cashFlowManager.getExpense()</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+getExpense()</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>152</y>
-      <w>200</w>
-      <h>32</h>
+      <x>506</x>
+      <y>286</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+cashFlows = Map&lt;Long, List&lt;CashFlow\&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>152</x>
-      <y>304</y>
-      <w>248</w>
-      <h>32</h>
+      <x>165</x>
+      <y>528</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getState()</panel_attributes>
@@ -274,10 +264,10 @@ getState()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>152</x>
-      <y>320</y>
-      <w>248</w>
-      <h>32</h>
+      <x>165</x>
+      <y>550</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 state</panel_attributes>
@@ -286,10 +276,10 @@ state</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>336</y>
-      <w>16</w>
-      <h>32</h>
+      <x>495</x>
+      <y>583</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -297,10 +287,10 @@ state</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>304</x>
-      <y>416</y>
-      <w>792</w>
-      <h>728</h>
+      <x>374</x>
+      <y>671</y>
+      <w>1089</w>
+      <h>1001</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -313,10 +303,10 @@ layer=-3
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>312</x>
-      <y>456</y>
-      <w>632</w>
-      <h>680</h>
+      <x>385</x>
+      <y>726</y>
+      <w>869</w>
+      <h>935</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -344,10 +334,10 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>320</x>
-      <y>496</y>
-      <w>576</w>
-      <h>168</h>
+      <x>396</x>
+      <y>781</y>
+      <w>792</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -366,10 +356,10 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>624</x>
-      <y>544</y>
-      <w>120</w>
-      <h>40</h>
+      <x>814</x>
+      <y>847</y>
+      <w>165</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -379,10 +369,10 @@ getAmount</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>624</x>
-      <y>608</y>
-      <w>120</w>
-      <h>40</h>
+      <x>814</x>
+      <y>935</y>
+      <w>165</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -392,10 +382,10 @@ getAmount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>536</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>836</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 cashFlowManager.getAmount(cashFlow)</panel_attributes>
@@ -404,10 +394,10 @@ cashFlowManager.getAmount(cashFlow)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>600</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>924</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 cashFlowManager.getAmount(cashFlow)</panel_attributes>
@@ -416,10 +406,10 @@ cashFlowManager.getAmount(cashFlow)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>560</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>869</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 userSurplus += amount</panel_attributes>
@@ -428,10 +418,10 @@ userSurplus += amount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>624</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>957</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 userSurplus -= amount</panel_attributes>
@@ -440,10 +430,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>528</x>
-      <y>424</y>
-      <w>80</w>
-      <h>24</h>
+      <x>682</x>
+      <y>682</y>
+      <w>110</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:CashFlow_</panel_attributes>
     <additional_attributes/>
@@ -451,10 +441,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>440</y>
-      <w>24</w>
-      <h>640</h>
+      <x>726</x>
+      <y>704</y>
+      <w>33</w>
+      <h>880</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;780.0</additional_attributes>
@@ -462,10 +452,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>696</y>
-      <w>16</w>
-      <h>56</h>
+      <x>726</x>
+      <y>1056</y>
+      <w>22</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -473,10 +463,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>752</x>
-      <y>680</y>
-      <w>112</w>
-      <h>24</h>
+      <x>990</x>
+      <y>1034</y>
+      <w>154</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:CashFlowCategory_</panel_attributes>
     <additional_attributes/>
@@ -484,10 +474,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>696</y>
-      <w>24</w>
-      <h>72</h>
+      <x>1056</x>
+      <y>1056</y>
+      <w>33</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -495,10 +485,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>800</x>
-      <y>712</y>
-      <w>16</w>
-      <h>40</h>
+      <x>1056</x>
+      <y>1078</y>
+      <w>22</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -506,10 +496,10 @@ userSurplus -= amount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>696</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1056</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getCategory().getName()</panel_attributes>
@@ -518,10 +508,10 @@ getCategory().getName()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>704</y>
-      <w>248</w>
-      <h>32</h>
+      <x>737</x>
+      <y>1067</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getName()</panel_attributes>
@@ -530,10 +520,10 @@ getName()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>720</y>
-      <w>248</w>
-      <h>32</h>
+      <x>737</x>
+      <y>1089</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 category</panel_attributes>
@@ -542,10 +532,10 @@ category</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>728</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1100</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 category</panel_attributes>
@@ -554,10 +544,10 @@ category</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>728</x>
-      <y>784</y>
-      <w>80</w>
-      <h>24</h>
+      <x>957</x>
+      <y>1177</y>
+      <w>110</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:User_</panel_attributes>
     <additional_attributes/>
@@ -565,10 +555,10 @@ category</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>800</y>
-      <w>24</w>
-      <h>480</h>
+      <x>1001</x>
+      <y>1199</y>
+      <w>33</w>
+      <h>660</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
@@ -576,10 +566,10 @@ category</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>760</x>
-      <y>832</y>
-      <w>16</w>
-      <h>24</h>
+      <x>1001</x>
+      <y>1243</y>
+      <w>22</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -587,10 +577,10 @@ category</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>776</y>
-      <w>296</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1166</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 findByID(item.getKey())</panel_attributes>
@@ -599,10 +589,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>640</x>
-      <y>752</y>
-      <w>80</w>
-      <h>24</h>
+      <x>836</x>
+      <y>1133</y>
+      <w>110</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_:UserDAO_</panel_attributes>
     <additional_attributes/>
@@ -610,10 +600,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>768</y>
-      <w>24</w>
-      <h>464</h>
+      <x>880</x>
+      <y>1155</y>
+      <w>33</w>
+      <h>638</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;560.0</additional_attributes>
@@ -621,10 +611,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>672</x>
-      <y>784</y>
-      <w>16</w>
-      <h>24</h>
+      <x>880</x>
+      <y>1177</y>
+      <w>22</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -632,10 +622,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>792</y>
-      <w>296</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1188</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 user</panel_attributes>
@@ -644,10 +634,10 @@ user</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>824</y>
-      <w>384</w>
-      <h>40</h>
+      <x>495</x>
+      <y>1232</y>
+      <w>528</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getName()
@@ -657,10 +647,10 @@ getName()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>840</y>
-      <w>384</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1254</y>
+      <w>528</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 owner</panel_attributes>
@@ -669,10 +659,10 @@ owner</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>624</x>
-      <y>880</y>
-      <w>120</w>
-      <h>40</h>
+      <x>814</x>
+      <y>1309</y>
+      <w>165</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -682,10 +672,10 @@ getAmount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>872</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1298</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 cashFlowManager.getAmount(cashFlow)</panel_attributes>
@@ -694,10 +684,10 @@ cashFlowManager.getAmount(cashFlow)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>896</y>
-      <w>248</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1331</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 amount</panel_attributes>
@@ -706,10 +696,10 @@ amount</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>936</y>
-      <w>16</w>
-      <h>40</h>
+      <x>726</x>
+      <y>1386</y>
+      <w>22</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -717,10 +707,10 @@ amount</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>928</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1375</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getDateStart()</panel_attributes>
@@ -729,10 +719,10 @@ getDateStart()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>952</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1408</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 dateTimeList.add(dateStart)</panel_attributes>
@@ -741,10 +731,10 @@ dateTimeList.add(dateStart)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>320</x>
-      <y>976</y>
-      <w>416</w>
-      <h>96</h>
+      <x>396</x>
+      <y>1441</y>
+      <w>572</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>opt
 --
@@ -754,10 +744,10 @@ dateTimeList.add(dateStart)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>1024</y>
-      <w>16</w>
-      <h>40</h>
+      <x>726</x>
+      <y>1507</y>
+      <w>22</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -765,10 +755,10 @@ dateTimeList.add(dateStart)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1016</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1496</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getDateEnd()</panel_attributes>
@@ -777,10 +767,10 @@ getDateEnd()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1040</y>
-      <w>184</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1529</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 dateTimeList.add(End)</panel_attributes>
@@ -789,10 +779,10 @@ dateTimeList.add(End)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>1080</y>
-      <w>16</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1584</y>
+      <w>22</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>
 layer=1</panel_attributes>
@@ -801,10 +791,10 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>1080</y>
-      <w>408</w>
-      <h>40</h>
+      <x>506</x>
+      <y>1584</y>
+      <w>561</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 myList.add(new Quadruples&lt;&gt;(category, owner, amount, dateTimeList))</panel_attributes>
@@ -813,10 +803,10 @@ myList.add(new Quadruples&lt;&gt;(category, owner, amount, dateTimeList))</panel
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>312</x>
-      <y>1152</y>
-      <w>520</w>
-      <h>184</h>
+      <x>385</x>
+      <y>1683</y>
+      <w>715</w>
+      <h>253</h>
     </coordinates>
     <panel_attributes>opt
 --
@@ -827,10 +817,10 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>760</x>
-      <y>1240</y>
-      <w>16</w>
-      <h>24</h>
+      <x>1001</x>
+      <y>1804</y>
+      <w>22</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -838,10 +828,10 @@ bg=PINK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1184</y>
-      <w>296</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1727</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 findByID(item.getKey())</panel_attributes>
@@ -850,10 +840,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>672</x>
-      <y>1192</y>
-      <w>16</w>
-      <h>24</h>
+      <x>880</x>
+      <y>1738</y>
+      <w>22</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -861,10 +851,10 @@ findByID(item.getKey())</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1200</y>
-      <w>296</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1749</y>
+      <w>407</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 user</panel_attributes>
@@ -873,10 +863,10 @@ user</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1232</y>
-      <w>384</w>
-      <h>40</h>
+      <x>495</x>
+      <y>1793</y>
+      <w>528</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getName()
@@ -886,10 +876,10 @@ getName()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>1248</y>
-      <w>384</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1815</y>
+      <w>528</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 owner</panel_attributes>
@@ -898,10 +888,10 @@ owner</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>1280</y>
-      <w>16</w>
-      <h>32</h>
+      <x>495</x>
+      <y>1859</y>
+      <w>22</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>
 layer=1</panel_attributes>
@@ -910,10 +900,10 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>1280</y>
-      <w>416</w>
-      <h>40</h>
+      <x>506</x>
+      <y>1859</y>
+      <w>572</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 myList.add(new Quadruples&lt;&gt;(owner, "", userSurplus, new ArrayList&lt;&gt;()))</panel_attributes>
@@ -922,10 +912,10 @@ myList.add(new Quadruples&lt;&gt;(owner, "", userSurplus, new ArrayList&lt;&gt;(
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>152</x>
-      <y>1360</y>
-      <w>248</w>
-      <h>32</h>
+      <x>165</x>
+      <y>1969</y>
+      <w>341</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 myList</panel_attributes>
@@ -934,10 +924,10 @@ myList</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>64</y>
-      <w>16</w>
-      <h>240</h>
+      <x>495</x>
+      <y>143</y>
+      <w>22</w>
+      <h>385</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -945,13 +935,80 @@ myList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>56</y>
-      <w>128</w>
-      <h>40</h>
+      <x>506</x>
+      <y>132</y>
+      <w>176</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getCashFlows()</panel_attributes>
     <additional_attributes>10.0;30.0;40.0;30.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>803</x>
+      <y>121</y>
+      <w>209</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>_:CashFlowManagerInterface_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>143</y>
+      <w>33</w>
+      <h>407</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>891</x>
+      <y>451</y>
+      <w>22</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>891</x>
+      <y>231</y>
+      <w>22</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>891</x>
+      <y>341</y>
+      <w>22</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>99</y>
+      <w>176</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+getCashFlows()</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
