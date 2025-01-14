@@ -4,7 +4,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>686</x>
+      <x>630</x>
       <y>14</y>
       <w>119</w>
       <h>21</h>
@@ -15,7 +15,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>651</x>
+      <x>595</x>
       <y>42</y>
       <w>98</w>
       <h>28</h>
@@ -27,29 +27,7 @@ stats()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>735</x>
-      <y>28</y>
-      <w>21</w>
-      <h>301</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1008</x>
-      <y>14</y>
-      <w>119</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>_:GlobalStatisticsPresenter_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1057</x>
+      <x>679</x>
       <y>28</y>
       <w>21</w>
       <h>280</h>
@@ -60,44 +38,43 @@ stats()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>735</x>
-      <y>42</y>
-      <w>14</w>
-      <h>266</h>
+      <x>798</x>
+      <y>14</y>
+      <w>119</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1057</x>
-      <y>42</y>
-      <w>14</w>
-      <h>245</h>
-    </coordinates>
-    <panel_attributes/>
+    <panel_attributes>_:GlobalStatisticsPresenter_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>749</x>
-      <y>91</y>
-      <w>350</w>
-      <h>28</h>
+      <x>847</x>
+      <y>28</y>
+      <w>21</w>
+      <h>280</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getMonthlyStat()</panel_attributes>
-    <additional_attributes>480.0;20.0;10.0;20.0</additional_attributes>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;380.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>742</x>
+      <x>679</x>
+      <y>42</y>
+      <w>14</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>686</x>
       <y>70</y>
       <w>14</w>
-      <h>63</h>
+      <h>28</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -105,7 +82,7 @@ getMonthlyStat()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>749</x>
+      <x>693</x>
       <y>70</y>
       <w>112</w>
       <h>35</h>
@@ -115,21 +92,9 @@ getMonthlyStat()</panel_attributes>
     <additional_attributes>10.0;30.0;40.0;30.0;40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>749</x>
-      <y>105</y>
-      <w>350</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-List&lt;Tuples&lt;YearMonth, Double\&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;480.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>707</x>
+      <x>651</x>
       <y>343</y>
       <w>119</w>
       <h>21</h>
@@ -140,7 +105,7 @@ List&lt;Tuples&lt;YearMonth, Double\&gt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
+      <x>700</x>
       <y>357</y>
       <w>21</w>
       <h>910</h>
@@ -153,7 +118,7 @@ layer=6
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>756</x>
+      <x>700</x>
       <y>371</y>
       <w>14</w>
       <h>882</h>
@@ -164,24 +129,12 @@ layer=6
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>749</x>
-      <y>217</y>
-      <w>350</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getYearlyStat()</panel_attributes>
-    <additional_attributes>480.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>742</x>
+      <x>686</x>
       <y>196</y>
       <w>14</w>
-      <h>63</h>
+      <h>28</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -189,7 +142,7 @@ getYearlyStat()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>749</x>
+      <x>693</x>
       <y>196</y>
       <w>112</w>
       <h>35</h>
@@ -199,23 +152,11 @@ getYearlyyStat()</panel_attributes>
     <additional_attributes>10.0;30.0;40.0;30.0;40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>749</x>
-      <y>231</y>
-      <w>350</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-List&lt;Quadruples&lt;YearMonth, Double, Double, Double\&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;480.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>1085</x>
+      <x>651</x>
       <y>98</y>
-      <w>77</w>
+      <w>224</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>ref
@@ -226,9 +167,9 @@ MonthlyStats</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>1085</x>
-      <y>217</y>
-      <w>77</w>
+      <x>644</x>
+      <y>224</y>
+      <w>231</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>ref
@@ -239,7 +180,7 @@ YearlyStats</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>651</x>
+      <x>595</x>
       <y>322</y>
       <w>595</w>
       <h>938</h>
@@ -252,7 +193,7 @@ layer=-3</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>406</y>
       <w>14</w>
       <h>42</h>
@@ -263,7 +204,7 @@ layer=-3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>406</y>
       <w>217</w>
       <h>35</h>
@@ -275,7 +216,7 @@ minDate = Optional.of(YearMonth.now())</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>693</x>
+      <x>637</x>
       <y>455</y>
       <w>504</w>
       <h>231</h>
@@ -290,7 +231,7 @@ layer=-2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>364</y>
       <w>231</w>
       <h>28</h>
@@ -302,7 +243,7 @@ findAll()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>924</x>
+      <x>868</x>
       <y>343</y>
       <w>119</w>
       <h>21</h>
@@ -313,7 +254,7 @@ findAll()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>980</x>
+      <x>924</x>
       <y>371</y>
       <w>14</w>
       <h>35</h>
@@ -324,18 +265,19 @@ findAll()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
+      <x>924</x>
       <y>357</y>
       <w>21</w>
-      <h>70</h>
+      <h>910</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <panel_attributes>lt=.
+layer=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1280.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>378</y>
       <w>231</w>
       <h>28</h>
@@ -347,7 +289,7 @@ Set&lt;Family&gt; families</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>707</x>
+      <x>651</x>
       <y>539</y>
       <w>336</w>
       <h>133</h>
@@ -362,7 +304,7 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>728</x>
+      <x>672</x>
       <y>574</y>
       <w>280</w>
       <h>84</h>
@@ -377,7 +319,7 @@ layer=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>609</y>
       <w>14</w>
       <h>42</h>
@@ -389,7 +331,7 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>609</y>
       <w>140</w>
       <h>35</h>
@@ -401,7 +343,7 @@ minDate = newMinDate</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>679</x>
+      <x>623</x>
       <y>742</y>
       <w>553</w>
       <h>469</h>
@@ -415,7 +357,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>700</y>
       <w>14</w>
       <h>35</h>
@@ -426,7 +368,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>700</y>
       <w>161</w>
       <h>35</h>
@@ -438,7 +380,7 @@ currentDate = minDate.get()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>700</x>
+      <x>644</x>
       <y>777</y>
       <w>483</w>
       <h>294</h>
@@ -453,7 +395,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>805</y>
       <w>385</w>
       <h>28</h>
@@ -466,7 +408,7 @@ layer=3</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>714</x>
+      <x>658</x>
       <y>854</y>
       <w>343</w>
       <h>203</h>
@@ -481,7 +423,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>721</x>
+      <x>665</x>
       <y>889</y>
       <w>315</w>
       <h>119</h>
@@ -496,7 +438,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>931</y>
       <w>14</w>
       <h>35</h>
@@ -508,7 +450,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>931</y>
       <w>119</w>
       <h>35</h>
@@ -521,7 +463,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>1015</y>
       <w>14</w>
       <h>35</h>
@@ -533,7 +475,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>1015</y>
       <w>105</w>
       <h>35</h>
@@ -546,7 +488,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>1078</y>
       <w>14</w>
       <h>35</h>
@@ -558,7 +500,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>1078</y>
       <w>175</w>
       <h>35</h>
@@ -571,7 +513,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>1120</y>
       <w>14</w>
       <h>35</h>
@@ -583,7 +525,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>1120</y>
       <w>238</w>
       <h>35</h>
@@ -596,7 +538,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>1162</y>
       <w>14</w>
       <h>35</h>
@@ -608,7 +550,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>714</x>
       <y>1162</y>
       <w>217</w>
       <h>35</h>
@@ -621,19 +563,19 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
+      <x>693</x>
       <y>1225</y>
-      <w>98</w>
+      <w>245</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 myList</panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>112</x>
+      <x>56</x>
       <y>21</y>
       <w>119</w>
       <h>21</h>
@@ -644,7 +586,7 @@ myList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>161</x>
+      <x>105</x>
       <y>35</y>
       <w>21</w>
       <h>1498</h>
@@ -657,7 +599,7 @@ layer=6
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>161</x>
+      <x>105</x>
       <y>49</y>
       <w>14</w>
       <h>1470</h>
@@ -670,7 +612,7 @@ layer=6
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>56</x>
+      <x>0</x>
       <y>0</y>
       <w>581</w>
       <h>1533</h>
@@ -683,7 +625,7 @@ layer=-3</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>84</y>
       <w>14</w>
       <h>35</h>
@@ -694,7 +636,7 @@ layer=-3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>84</y>
       <w>217</w>
       <h>35</h>
@@ -706,7 +648,7 @@ minDate = Optional.of(YearMonth.now())</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>42</y>
       <w>357</w>
       <h>28</h>
@@ -718,7 +660,7 @@ findAll()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>455</x>
+      <x>399</x>
       <y>21</y>
       <w>119</w>
       <h>21</h>
@@ -729,7 +671,7 @@ findAll()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>511</x>
+      <x>455</x>
       <y>49</y>
       <w>14</w>
       <h>35</h>
@@ -740,18 +682,18 @@ findAll()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>511</x>
+      <x>455</x>
       <y>35</y>
       <w>21</w>
-      <h>70</h>
+      <h>1491</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;2110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>56</y>
       <w>357</w>
       <h>28</h>
@@ -763,7 +705,7 @@ Set&lt;Family&gt; families</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>84</x>
+      <x>28</x>
       <y>462</y>
       <w>532</w>
       <h>910</h>
@@ -777,7 +719,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>364</y>
       <w>14</w>
       <h>35</h>
@@ -788,7 +730,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>364</y>
       <w>161</w>
       <h>35</h>
@@ -800,7 +742,7 @@ currentDate = minDate.get()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>105</x>
+      <x>49</x>
       <y>504</y>
       <w>476</w>
       <h>357</h>
@@ -815,7 +757,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>539</y>
       <w>14</w>
       <h>35</h>
@@ -827,7 +769,7 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>539</y>
       <w>217</w>
       <h>35</h>
@@ -840,7 +782,7 @@ layer=3</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>119</x>
+      <x>63</x>
       <y>588</y>
       <w>441</w>
       <h>252</h>
@@ -855,7 +797,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>784</y>
       <w>14</w>
       <h>35</h>
@@ -867,7 +809,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>784</y>
       <w>322</w>
       <h>35</h>
@@ -880,7 +822,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1330</y>
       <w>14</w>
       <h>35</h>
@@ -892,7 +834,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1330</y>
       <w>217</w>
       <h>35</h>
@@ -905,19 +847,19 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>77</x>
-      <y>1498</y>
-      <w>98</w>
+      <x>112</x>
+      <y>1477</y>
+      <w>357</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 myList</panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+    <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>105</x>
+      <x>49</x>
       <y>882</y>
       <w>427</w>
       <h>441</h>
@@ -932,7 +874,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>112</x>
+      <x>56</x>
       <y>917</y>
       <w>350</w>
       <h>315</h>
@@ -947,7 +889,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>126</x>
+      <x>70</x>
       <y>952</y>
       <w>266</w>
       <h>84</h>
@@ -962,7 +904,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>987</y>
       <w>14</w>
       <h>35</h>
@@ -974,7 +916,7 @@ layer=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>987</y>
       <w>203</w>
       <h>35</h>
@@ -987,7 +929,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>126</x>
+      <x>70</x>
       <y>1043</y>
       <w>266</w>
       <h>84</h>
@@ -1002,7 +944,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1078</y>
       <w>14</w>
       <h>35</h>
@@ -1014,7 +956,7 @@ layer=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1078</y>
       <w>203</w>
       <h>35</h>
@@ -1027,7 +969,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>126</x>
+      <x>70</x>
       <y>1134</y>
       <w>266</w>
       <h>84</h>
@@ -1042,7 +984,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1169</y>
       <w>14</w>
       <h>35</h>
@@ -1054,7 +996,7 @@ layer=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1169</y>
       <w>203</w>
       <h>35</h>
@@ -1067,7 +1009,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1232</y>
       <w>14</w>
       <h>35</h>
@@ -1079,7 +1021,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1232</y>
       <w>154</w>
       <h>35</h>
@@ -1092,7 +1034,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1274</y>
       <w>14</w>
       <h>35</h>
@@ -1104,7 +1046,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1274</y>
       <w>357</w>
       <h>35</h>
@@ -1118,7 +1060,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>91</x>
+      <x>35</x>
       <y>1386</y>
       <w>518</w>
       <h>70</h>
@@ -1132,7 +1074,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>1414</y>
       <w>14</w>
       <h>35</h>
@@ -1144,7 +1086,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>1414</y>
       <w>182</w>
       <h>35</h>
@@ -1157,7 +1099,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1078</x>
+      <x>1022</x>
       <y>427</y>
       <w>119</w>
       <h>21</h>
@@ -1168,7 +1110,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1134</x>
+      <x>1078</x>
       <y>483</y>
       <w>14</w>
       <h>35</h>
@@ -1179,7 +1121,7 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
+      <x>1078</x>
       <y>441</y>
       <w>21</w>
       <h>420</h>
@@ -1191,7 +1133,7 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>483</y>
       <w>385</w>
       <h>28</h>
@@ -1203,7 +1145,7 @@ getMonthlySurpluses</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>504</y>
       <w>385</w>
       <h>28</h>
@@ -1215,7 +1157,7 @@ newMinDate = MonthlySurpluses.keySet().stream().min(YearMonth::compareTo)</panel
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>98</x>
+      <x>42</x>
       <y>126</y>
       <w>504</w>
       <h>231</h>
@@ -1230,7 +1172,7 @@ layer=-2</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>112</x>
+      <x>56</x>
       <y>210</y>
       <w>336</w>
       <h>133</h>
@@ -1245,7 +1187,7 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>133</x>
+      <x>77</x>
       <y>245</y>
       <w>280</w>
       <h>84</h>
@@ -1260,7 +1202,7 @@ layer=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>280</y>
       <w>14</w>
       <h>42</h>
@@ -1272,7 +1214,7 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>280</y>
       <w>140</w>
       <h>35</h>
@@ -1284,7 +1226,7 @@ minDate = newMinDate</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>483</x>
+      <x>427</x>
       <y>133</y>
       <w>119</w>
       <h>21</h>
@@ -1295,7 +1237,7 @@ minDate = newMinDate</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
+      <x>483</x>
       <y>154</y>
       <w>14</w>
       <h>35</h>
@@ -1306,7 +1248,7 @@ minDate = newMinDate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
+      <x>483</x>
       <y>147</y>
       <w>21</w>
       <h>546</h>
@@ -1318,7 +1260,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>154</y>
       <w>385</w>
       <h>28</h>
@@ -1330,7 +1272,7 @@ getMonthlySurpluses</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>175</y>
       <w>385</w>
       <h>28</h>
@@ -1342,7 +1284,7 @@ newMinDate = MonthlySurpluses.keySet().stream().min(YearMonth::compareTo)</panel
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1134</x>
+      <x>1078</x>
       <y>805</y>
       <w>14</w>
       <h>42</h>
@@ -1354,7 +1296,7 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>707</x>
       <y>826</y>
       <w>385</w>
       <h>28</h>
@@ -1367,7 +1309,7 @@ layer=2</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
+      <x>483</x>
       <y>644</y>
       <w>14</w>
       <h>35</h>
@@ -1379,7 +1321,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>637</y>
       <w>385</w>
       <h>28</h>
@@ -1392,7 +1334,7 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>658</y>
       <w>385</w>
       <h>28</h>
@@ -1405,7 +1347,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>413</x>
+      <x>357</x>
       <y>679</y>
       <w>119</w>
       <h>21</h>
@@ -1417,7 +1359,7 @@ layer=3</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>469</x>
+      <x>413</x>
       <y>707</y>
       <w>14</w>
       <h>35</h>
@@ -1429,7 +1371,7 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>469</x>
+      <x>413</x>
       <y>693</y>
       <w>21</w>
       <h>70</h>
@@ -1441,7 +1383,7 @@ layer=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>700</y>
       <w>315</w>
       <h>28</h>
@@ -1454,7 +1396,7 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>721</y>
       <w>315</w>
       <h>28</h>
@@ -1467,7 +1409,7 @@ layer=5</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>168</x>
+      <x>112</x>
       <y>413</y>
       <w>14</w>
       <h>35</h>
@@ -1478,7 +1420,7 @@ layer=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
+      <x>119</x>
       <y>413</y>
       <w>245</w>
       <h>35</h>
@@ -1486,5 +1428,38 @@ layer=5</panel_attributes>
     <panel_attributes>lt=&lt;&lt;&lt;-
 yearlySavings = new HashMap&lt;Long, Integer&gt;</panel_attributes>
     <additional_attributes>10.0;30.0;40.0;30.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>924</x>
+      <y>1225</y>
+      <w>14</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>455</x>
+      <y>1484</y>
+      <w>14</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>679</x>
+      <y>182</y>
+      <w>14</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
 </diagram>
