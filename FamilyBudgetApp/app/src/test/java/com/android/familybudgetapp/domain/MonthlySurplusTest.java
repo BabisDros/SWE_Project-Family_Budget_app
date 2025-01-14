@@ -2,6 +2,8 @@ package com.android.familybudgetapp.domain;
 
 import static org.junit.Assert.*;
 
+import android.util.Pair;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -68,6 +70,19 @@ public class MonthlySurplusTest
         surplus.addCashFlowToSurplus(cashFlow2);
 
         assertEquals(amount,surplus.getSurplus());
+    }
+
+    @Test
+    public void addAllowanceMoneyBoxPairNullTest()
+    {
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.addAllowanceMoneyBoxPair(null, "reason");
+        });
+
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.addAllowanceMoneyBoxPair(new Allowance(15, date), null);
+        });
+
     }
 
 
