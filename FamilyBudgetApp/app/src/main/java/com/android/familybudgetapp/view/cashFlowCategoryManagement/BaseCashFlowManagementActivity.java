@@ -52,7 +52,7 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
     protected void setupBtnSave()
     {
         btnSave = findViewById(R.id.btn_saveCategory);
-        btnSave.setOnClickListener(v -> buttonSaveClicked(getName(), getLimit()));
+        btnSave.setOnClickListener(v -> saveClicked(getName(), getLimit()));
     }
 
     protected void setUpCancelBtn()
@@ -78,7 +78,7 @@ public abstract class BaseCashFlowManagementActivity<V extends ViewModel> extend
         categorySpinner.setOnItemSelectedListener(this);
     }
 
-    protected abstract void buttonSaveClicked(String name, String limit);
+    protected abstract void saveClicked(String name, String limit);
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)

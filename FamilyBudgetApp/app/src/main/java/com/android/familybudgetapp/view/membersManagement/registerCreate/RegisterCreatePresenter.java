@@ -32,7 +32,7 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         completeUserAddition(newUser);
     }
 
-    public void addMember(String username, String password, String displayName, String familyName)
+    public void saveMember(String username, String password, String displayName, String familyName)
     {
         if (!validateAllFields(username, password, displayName, familyName)) return;
         User newUser = new User(displayName, username, password, FamPos.Member, family);
@@ -44,10 +44,10 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         family.addMember(user);
         familyDAO.save(family);
         userDAO.save(user);
-        showSuccessfulMessage(user.getUsername());
+        showAddMemberMessage(user.getUsername());
     }
 
-    private void showSuccessfulMessage(String username)
+    private void showAddMemberMessage(String username)
     {
         view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_TITLE, username), ADD_MEMBER_PROMPT);
     }

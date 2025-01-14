@@ -121,7 +121,7 @@ public class RegisterCreatePresenterTest
     }
 
     @Test
-    public void registerAndAddMemberValidData() throws Exception
+    public void registerAndSaveMemberValidData() throws Exception
     {
         String familyName = "mark Family";
         presenter.register("mark", "mark", "mark", familyName);
@@ -130,7 +130,7 @@ public class RegisterCreatePresenterTest
         String password = "123456";
         String displayName = "Jane";
 
-        presenter.addMember(username, password, displayName, familyName);
+        presenter.saveMember(username, password, displayName, familyName);
 
         User protector = userDAO.findByUsername("mark");
         User member = protector.getFamily().getMembers().get(protector.getID() + 1);
@@ -143,7 +143,7 @@ public class RegisterCreatePresenterTest
     }
 
     @Test
-    public void registerAndAddMemberWrongUsername() throws Exception
+    public void registerAndSaveMemberWrongUsername() throws Exception
     {
         String familyName = "mark Family";
         presenter.register("mark", "mark", "mark", familyName);
@@ -152,7 +152,7 @@ public class RegisterCreatePresenterTest
         String password = "123456";
         String displayName = "Jane";
 
-        presenter.addMember(username, password, displayName, familyName);
+        presenter.saveMember(username, password, displayName, familyName);
 
         User protector = userDAO.findByUsername("mark");
         User member = protector.getFamily().getMembers().get(protector.getID() + 1);

@@ -30,7 +30,7 @@ public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivi
     }
 
     @Override
-    protected void buttonSaveClicked(String name, String limit)
+    protected void saveClicked(String name, String limit)
     {
         btnSave.setOnClickListener(v -> viewModel.getPresenter().save(getName(), getLimit()));
     }

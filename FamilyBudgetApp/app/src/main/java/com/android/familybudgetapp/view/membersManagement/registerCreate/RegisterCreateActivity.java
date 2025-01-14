@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.view.membersManagement.BaseUserManagementActivity;
-import com.android.familybudgetapp.view.membersManagement.overview.MembersOverviewActivity;
 
 public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterCreateViewModel> implements RegisterCreateView
 {
@@ -88,12 +87,12 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         btnCancel.setVisibility(View.VISIBLE);
         familyNameField.setEnabled(false);
         btnAction.setText(R.string.add_member);
-        btnAction.setOnClickListener(v -> addMemberClicked());
+        btnAction.setOnClickListener(v -> saveMemberClicked());
     }
 
-    private void addMemberClicked()
+    private void saveMemberClicked()
     {
-        viewModel.getPresenter().addMember(getUsername(), getPassword(), getDisplayName(), getFamilyName());
+        viewModel.getPresenter().saveMember(getUsername(), getPassword(), getDisplayName(), getFamilyName());
     }
     //endregion
 

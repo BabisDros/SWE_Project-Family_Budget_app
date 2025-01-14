@@ -98,7 +98,7 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
 
     /**
      * Sets up an action button according to {@link RegisterCreateActivity}
-     * mode (e.g.,save in edit mode, addMember in register mode).
+     * mode (e.g.,save in edit mode, saveMember in register mode).
      */
     protected abstract void setupActionBtn();
 
