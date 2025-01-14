@@ -47,7 +47,7 @@ public class MembersOverviewPresenterTest
     {
         presenter.showVerification(currentUser);
         assertEquals(MembersOverviewPresenter.CAUTION_TITLE, viewStub.getTitle());
-        assertEquals(String.format(MembersOverviewPresenter.CAUTION_MESSAGE, currentUser.getName()), viewStub.getMsg());
+        assertEquals(String.format(MembersOverviewPresenter.CAUTION_MESSAGE, currentUser.getUsername()), viewStub.getMsg());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class MembersOverviewPresenterTest
 
         presenter.showVerification(currentUser);
         assertEquals(MembersOverviewPresenter.VERIFICATION_TITLE, viewStub.getTitle());
-        assertEquals(String.format(MembersOverviewPresenter.VERIFICATION_MESSAGE, currentUser.getName()), viewStub.getMsg());
+        assertEquals(String.format(MembersOverviewPresenter.VERIFICATION_MESSAGE, currentUser.getUsername()), viewStub.getMsg());
     }
 
     @Test
