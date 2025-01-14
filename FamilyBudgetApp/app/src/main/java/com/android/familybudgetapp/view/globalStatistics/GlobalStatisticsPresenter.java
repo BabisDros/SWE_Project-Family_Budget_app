@@ -27,6 +27,13 @@ public class GlobalStatisticsPresenter {
         this.familyDAO = familyDAO;
     }
 
+    /**
+     * Retrieves a list of statistical data on a monthly basis.
+     * Each entry in the list contains a YearMonth instance and a corresponding statistic value.
+     *
+     * @return a list of tuples where each tuple consists of a YearMonth object and a Double
+     *         representing the statistic for that month.
+     */
     public List<Tuples<YearMonth, Double>> getMonthlyStat() {
         Set<Family> families = familyDAO.findAll();
         List<Tuples<YearMonth, Double>> myList = new ArrayList<>();
@@ -66,6 +73,13 @@ public class GlobalStatisticsPresenter {
         return myList;
     }
 
+    /**
+     * Retrieves a list of statistical data on a yearly basis.
+     * Each entry in the list contains a YearMonth instance and three corresponding statistical values.
+     *
+     * @return a list of quadruples where each quadruple consists of a YearMonth object and three Double
+     *         values representing different statistics for the given year and month.
+     */
     public List<Quadruples<YearMonth, Double, Double, Double>> getYearlyStat() {
         Set<Family> families = familyDAO.findAll();
         List<Quadruples<YearMonth, Double, Double, Double>> myList = new ArrayList<>();

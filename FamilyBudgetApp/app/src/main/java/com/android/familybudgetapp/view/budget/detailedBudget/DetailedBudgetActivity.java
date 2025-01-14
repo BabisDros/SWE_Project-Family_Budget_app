@@ -62,11 +62,26 @@ public class DetailedBudgetActivity extends AppCompatActivity implements Detaile
         super.onPause();
     }
 
+    /**
+     * <pre>
+     * List of {@link Quadruples} which correspond to:
+     * Category of CashFlow
+     * Name of user who added it
+     * Amount of CashFlow for the wanted range
+     * DateStart and DateEnd (if it exists)</pre>
+     * @return CashFlow and owner data in a format the Recycler can make use of
+     */
     private List<Quadruples<String, String, Integer, List<LocalDateTime>>> getCashFlows()
     {
         return vm.getPresenter().getFormatedCashFlows();
     }
 
+    /**
+     * Retrieves the current {@link SavedStateHandle} from the associated ViewModel.
+     *
+     * @return the SavedStateHandle instance managed by the DetailedBudgetViewModel,
+     *         allowing access to saved state and inter-component data sharing.
+     */
     @Override
     public SavedStateHandle getState() {
         return vm.getState();
