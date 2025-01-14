@@ -301,7 +301,7 @@ _+ ADD_MEMBER_EXTRA: String {readOnly}_
 - setupAddMemberDialog()
 + clearFields()
 + setupUIToAddMemberMode()
-- addMemberClicked()
+- saveMemberClicked()
 - addMemberDialogNoClicked()
 - addMemberDialogYesClicked()
 - registerClicked()
@@ -395,9 +395,9 @@ _+ ADD_MEMBER_PROMPT: String {readOnly}_
 
 --
 + register(username: String, password: String, displayName: String, familyName: String)
-+ addMember(username: String, password: String, displayName: String, familyName: String)
++ saveMember(username: String, password: String, displayName: String, familyName: String)
 - completeUserAddition(user: User)
-- showSuccessfulMessage(username: String)
+- showAddMemberMessage(username: String)
 # validateUsernameUniqueness(input: String): boolean
 + enableAddMemberMode()
 + goToMemberManagement()

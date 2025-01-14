@@ -147,6 +147,7 @@ _+ USER_ID_EXTRA: String {readOnly}_
 + showDeleteAccountMessage(title: String, message: String)
 + exitApp()
 - selectItem(user: User)
+- goToEditUserActivity(userID: Long)
 + goToHomepageActivity()
 + goToRegisterActivity()
 </panel_attributes>

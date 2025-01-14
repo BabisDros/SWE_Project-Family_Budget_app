@@ -124,7 +124,7 @@ m1=1</panel_attributes>
       <x>0</x>
       <y>378</y>
       <w>462</w>
-      <h>322</h>
+      <h>336</h>
     </coordinates>
     <panel_attributes>CashFlowCategoryOverviewActivity
 
@@ -151,6 +151,7 @@ _+ CASHFLOW_CATEGORY_NAME_EXTRA: String {readOnly}_
 - selectItem(cashFlowCategory: CashFlowCategory)
 - createItemName(category: CashFlowCategory): String
 
+goToCashFlowCategoryEdit(cashFlowCategoryName: String)
 + goToHomepageActivity()
 + goToCreateCashFlowCategoryActivity()
 
