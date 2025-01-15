@@ -33,7 +33,7 @@ fontsize=10
       <w>171</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>_:CashFlowCategoryCreateActivity_</panel_attributes>
+    <panel_attributes>_:CashFlowCategoryEditActivity_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -125,7 +125,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>153</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>_:CashFlowCategoryCreatePresenter_</panel_attributes>
+    <panel_attributes>_:CashFlowCategoryEditPresenter_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

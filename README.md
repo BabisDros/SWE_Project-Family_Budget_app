@@ -28,7 +28,7 @@ The result of the project is the existance of an app to help families organize a
 
   [Coverage Report](/docs/coverage-reports/domain-coverage.png)
 
-* R4 (Design and implementation of system)
+* R4 (Design and implementation of system)\
   [Class diagrams of Activities](/docs/markdown/r4-class-diagrams.md)
 
   [Sequence diagrams of Activities](/docs/markdown/r4-sequence-diagrams.md)
