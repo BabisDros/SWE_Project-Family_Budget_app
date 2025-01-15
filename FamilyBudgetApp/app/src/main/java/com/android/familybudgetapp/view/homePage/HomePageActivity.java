@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,8 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
     Button btn_usersManagement;
     Button btn_cashFlowCategories;
 
+    private HomePagePresenter presenter;
+
     /**
      * Current app homepage
      * will be used as the starting point after login/register to go from activity to activity.
@@ -47,11 +50,13 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp_home);
+        presenter = new HomePagePresenter(this);
 
         final HomePagePresenter presenter = new HomePagePresenter(this);
         findViewById(R.id.btn_detailed_expenses).setOnClickListener(v -> presenter.onPersonalBudget());
         findViewById(R.id.btn_moneyboxes).setOnClickListener(v -> presenter.onMoneyBoxes());
         findViewById(R.id.btn_stats).setOnClickListener(v -> presenter.onStats());
+        ((TextView)findViewById(R.id.budget_title_savings)).setText(getSavingsText());
 
         setupProtectorMode();
     }
@@ -75,6 +80,10 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView
             btn_cashFlowCategories.setVisibility(View.VISIBLE);
             btn_cashFlowCategories.setOnClickListener(v -> goToCashFlowCategories());
         }
+    }
+
+    public String getSavingsText(){
+        return "Savings: " + presenter.getSavings();
     }
 
     @Override

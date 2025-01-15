@@ -1,7 +1,13 @@
 package com.android.familybudgetapp.view.homePage;
 
+import com.android.familybudgetapp.dao.Initializer;
+import com.android.familybudgetapp.dao.UserDAO;
+import com.android.familybudgetapp.memorydao.UserDAOMemory;
+import com.android.familybudgetapp.utilities.AmountConversion;
+
 public class HomePagePresenter {
     private HomePageView view;
+    private UserDAO userDAO;
 
     /**
      * Initialize Presenter
@@ -10,6 +16,7 @@ public class HomePagePresenter {
     public HomePagePresenter(HomePageView view)
     {
         this.view = view;
+        userDAO = new UserDAOMemory();
     }
 
     /**
@@ -35,5 +42,14 @@ public class HomePagePresenter {
      */
     public void onStats(){
         view.stats();
+    }
+
+    /**
+     * Retrieves the savings of the current {@link com.android.familybudgetapp.domain.Family Family} in euros.
+     *
+     * @return A string representing the savings of the user's family, converted to euros.
+     */
+    public String getSavings() {
+        return AmountConversion.toEuro(userDAO.findByID(Initializer.currentUserID).getFamily().getSavings());
     }
 }

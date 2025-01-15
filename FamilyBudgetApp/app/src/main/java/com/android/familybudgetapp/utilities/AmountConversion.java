@@ -8,7 +8,7 @@ public class AmountConversion {
      * @param amount the amount in cents to be converted
      * @return a string representation of the amount in euros
      */
-    public static String toEuro(int amount)
+    public static String toEuro(long amount)
     {
         return amount / 100 + "," + Math.abs(amount) % 100 + "€";
     }
