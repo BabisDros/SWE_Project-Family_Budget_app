@@ -14,6 +14,10 @@ import com.android.familybudgetapp.utilities.Tuples;
 import java.time.YearMonth;
 import java.util.List;
 
+/**
+ * {@link GlobalStatisticsActivity} is a class used for displaying global statistics,
+ * including {@code Monthly} and {@code Yearly} data analysis.
+ */
 public class GlobalStatisticsActivity extends AppCompatActivity implements GlobalStatisticsView {
 
     private GlobalStatisticsPresenter presenter;

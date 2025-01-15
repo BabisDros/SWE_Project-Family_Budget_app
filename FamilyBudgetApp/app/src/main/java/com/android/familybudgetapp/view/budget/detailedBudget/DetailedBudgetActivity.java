@@ -16,6 +16,14 @@ import com.android.familybudgetapp.utilities.Quadruples;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The {@link DetailedBudgetActivity} class shows more details (e.g the dates for each
+ * {@link com.android.familybudgetapp.domain.CashFlow CashFlow}) for the specified category
+ * (either {@link com.android.familybudgetapp.domain.Expense Expense} or {@link com.android.familybudgetapp.domain.Income Income})
+ * for the given date range (either {@code Monthly} or {@code Yearly}.
+ * On detailed Surplus, it shows the contribution of each {@link com.android.familybudgetapp.domain.User User}
+ * on the current viewpage.
+ */
 public class DetailedBudgetActivity extends AppCompatActivity implements DetailedBudgetView{
     private DetailedBudgetViewModel vm;
 

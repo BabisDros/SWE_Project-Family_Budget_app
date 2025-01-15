@@ -17,6 +17,12 @@ import com.android.familybudgetapp.view.moneyBox.addMoneyBox.AddMoneyBoxActivity
 
 import java.util.List;
 
+/**
+ * The {@link ShowMoneyBoxesActivity} class is responsible for displaying a list of {@link com.android.familybudgetapp.domain.MoneyBox Moneyboxes}
+ * to the {@link com.android.familybudgetapp.domain.User User}. Users can add a new
+ * {@link com.android.familybudgetapp.domain.MoneyBox Moneybox} with the help of
+ * {@link AddMoneyBoxActivity}
+ */
 public class ShowMoneyBoxesActivity extends AppCompatActivity implements ShowMoneyBoxesView {
     private ShowMoneyBoxesPresenter presenter;
     private RecyclerView recyclerView;
