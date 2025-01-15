@@ -60,18 +60,28 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         return new ViewModelProvider(this).get(CashFlowCategoryOverviewViewModel.class);
     }
 
+    /**
+     * Sets up the btnHomepage button and its onClick listener.
+     */
     private void setupHomepageBtn()
     {
         Button btnHomepage = findViewById(R.id.btn_homepage);
         btnHomepage.setOnClickListener(v -> homepageClicked());
     }
 
+    /**
+     * Sets up the btnAddMember FloatingActionButton and its onClick listener.
+     */
     private void setupFloatBtnAdd()
     {
         FloatingActionButton btnAddMember = findViewById(R.id.float_btn_add);
         btnAddMember.setOnClickListener(v -> addCategoryClicked());
     }
 
+    /**
+     * Sets up the dialog for deleting a category
+     * and the appropriate listeners and names to NegativeButton and PositiveButton.
+     */
     private void setupDeleteAccountDialog()
     {
         deleteCategoryDialog = new AlertDialog.Builder(this)
@@ -80,16 +90,28 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                 .setPositiveButton(R.string.yes, (dialog, which) -> deleteDialogYesClicked());
     }
 
+    /**
+     * Listener to the btnAddMember FloatingActionButton click event of Delete Dialog.
+     * Calls the presenter to navigate to the CreateCashFlowCategory.
+     */
     private void addCategoryClicked()
     {
         viewModel.getPresenter().navigateToCreateCashFlowCategory();
     }
 
+    /**
+     * Listener to the PositiveButton click event of Delete Dialog.
+     * Calls the presenter to handle the delete.
+     */
     private void deleteDialogYesClicked()
     {
         viewModel.getPresenter().deleteCategory();
     }
 
+    /**
+     * Listener to the NegativeButton click event of Category Dialog.
+     * Calls the presenter to navigate to the HomepageActivity.
+     */
     private void homepageClicked()
     {
         viewModel.getPresenter().navigateToHomepage();
@@ -122,6 +144,11 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         recyclerViewAdapter.updateList(indexToDelete);
     }
 
+    /**
+     * Displays a dialog with options to edit or delete the selected CashFlowCategory.
+     * Sets the listeners to the options.
+     * @param cashFlowCategory The CashFlowCategory that was selected.
+     */
     private void selectItem(CashFlowCategory cashFlowCategory)
     {
         optionsDialog.setTitle(cashFlowCategory.getName())
@@ -140,6 +167,12 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
                 .show();
     }
 
+    /**
+     * Creates a formatted name for the CashFlowCategory.     *
+     *
+     * @param category The CashFlowCategory object .
+     * @return A formatted string with the type (Expense, Income), name and limit (if it is Expense).
+     */
     private String createItemName(CashFlowCategory category)
     {
         Object currentClass = category.getClass();
@@ -151,6 +184,9 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
             return String.format("Income: %s ", category.getName());
     }
 
+    /**
+     * Changes the Activity to CashFlowCategoryEditActivity.
+     */
     private void goToCashFlowCategoryEdit(String cashFlowCategoryName)
     {
         Intent intent = new Intent(this, CashFlowCategoryEditActivity.class);
@@ -158,6 +194,7 @@ public class CashFlowCategoryOverviewActivity extends BaseActivity<CashFlowCateg
         startActivity(intent);
         finish();
     }
+
     @Override
     public void goToHomepageActivity()
     {

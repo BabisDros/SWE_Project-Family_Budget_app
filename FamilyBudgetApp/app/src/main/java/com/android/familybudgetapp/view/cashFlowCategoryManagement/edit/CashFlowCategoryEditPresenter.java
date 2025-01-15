@@ -10,6 +10,12 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
 {
     private String initialName;
 
+    /**
+     * Gets the CashFlowFategory from the current user's family and populates
+     * the view fields with the category data, including the limit if it's an Expense type.
+     *
+     * @param name The name of the CashFlowFategory.
+     */
     public void setCashFlowCategoryData(String name)
     {
         currentUser = userDAO.findByID(Initializer.currentUserID);
@@ -26,6 +32,15 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
         }
     }
 
+    /**
+     * Saves the edited CashFlowFategory with the provided name and limit.
+     * Validates the name, creates the new category, removes the existing category,
+     * and adds the new one. Saves the updated family data and calls the Activity
+     * to change to the CashFlowCategoryOverview.
+     *
+     * @param name The name of the CashFlowFategory.
+     * @param limit The limit for the CashFlowFategory (used for EXPENSE type).
+     */
     public void save(String name, String limit)
     {
         if (!validateName(name)) return;
@@ -41,6 +56,14 @@ public class CashFlowCategoryEditPresenter extends BaseCashFlowManagementPresent
         view.goToCashFlowCategoryOverview();
     }
 
+    /**
+     * Validates the uniqueness of the provided name.
+     * Checks if a CashFlowFategory with the same name already exists but its
+     * not the same as it's initial name. That allows to save with the same name.
+     *
+     * @param input The name to be checked for uniqueness.
+     * @return true if the name exists but does not matches the initial name, false otherwise.
+     */
     @Override
     protected boolean validateNameUniqueness(String input)
     {

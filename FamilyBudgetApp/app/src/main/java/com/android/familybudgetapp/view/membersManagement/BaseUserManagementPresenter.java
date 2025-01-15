@@ -45,6 +45,15 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
 
     //region $Validations
 
+    /**
+     * Validates all the required fields for user registration.
+     *
+     * @param username    The username to be validated.
+     * @param password    The password to be validated.
+     * @param displayName The display name to be validated.
+     * @param familyName  The family name to be validated.
+     * @return true if all fields are valid, false otherwise.
+     */
     protected boolean validateAllFields(String username, String password, String displayName, String familyName)
     {
         return validateUsername(username) && validatePassword(password) && validateDisplayName(displayName) && validateFamilyName(familyName);
@@ -127,6 +136,10 @@ public abstract class BaseUserManagementPresenter<V extends BaseView> extends Ba
     }
     //endregion
 
+    /**
+     * Shows an error message when the username already exists.
+     * Prompts the user to choose a different username.
+     */
     protected void showUserExistsMsg()
     {
         view.showErrorMessage(USER_EXISTS_TITLE, "Please choose a different username.");

@@ -34,6 +34,11 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     }
 
     //region $UI setups
+
+    /**
+     * Sets focus change listeners for the username, password, and display name fields.
+     * When the focus is lost from any of these fields, the proper method is called.
+     */
     protected void setEditTextsFocusListeners()
     {
         usernameField.setOnFocusChangeListener((v, hasFocus) ->
@@ -61,6 +66,9 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
         });
     }
 
+    /**
+     * Sets up the cancel button and its onClick listener..
+     */
     protected void setUpCancelBtn()
     {
         btnCancel = findViewById(R.id.btn_cancel);
@@ -102,6 +110,11 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
      */
     protected abstract void setupActionBtn();
 
+    /**
+     * Sets the familyName field with the provided name.
+     *
+     * @param familyName The name to be displayed.
+     */
     public void setFamilyNameField(String familyName)
     {
         familyNameField.setText(familyName);
@@ -109,27 +122,50 @@ public abstract class BaseUserManagementActivity<V extends ViewModel> extends Ba
     //endregion
 
     //region $Get values from UI elements
+    /**
+     * Retrieves the username entered by the user.
+     *
+     * @return A trimmed string of the text in the username field.
+     */
     public String getUsername()
     {
         return usernameField.getText().toString().trim();
     }
 
+    /**
+     * Retrieves the password entered by the user.
+     *
+     * @return A trimmed string of the text in the password field.
+     */
     public String getPassword()
     {
         return passwordField.getText().toString().trim();
     }
 
+    /**
+     * Retrieves the displayName entered by the user.
+     *
+     * @return A trimmed string of the text in the displayName field.
+     */
     public String getDisplayName()
     {
         return displayNameField.getText().toString().trim();
     }
 
+    /**
+     * Retrieves the familyName entered by the user.
+     *
+     * @return A trimmed string of the text in the familyName field.
+     */
     public String getFamilyName()
     {
         return familyNameField.getText().toString().trim();
     }
     //endregion
 
+    /**
+     * Changes Activity to MembersOverviewActivity
+     */
     public void goToMemberManagementActivity()
     {
         Intent intent = new Intent(this, MembersOverviewActivity.class);

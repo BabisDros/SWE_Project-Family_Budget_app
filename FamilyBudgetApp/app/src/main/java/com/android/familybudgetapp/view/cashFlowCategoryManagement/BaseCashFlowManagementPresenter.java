@@ -43,6 +43,13 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
         this.familyDAO = familyDAO;
     }
 
+    /**
+     * Validates the provided name input.
+     * Checks if the input is alphanumeric and contains spaces, then validates its uniqueness.
+     *
+     * @param input The name input to be validated.
+     * @return true if the name is valid and unique, false otherwise.
+     */
     public boolean validateName(String input)
     {
         inputLowerCase = input.toLowerCase();
@@ -56,8 +63,22 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
         return validateNameUniqueness(inputLowerCase);
     }
 
+    /**
+     * Abstract method to validate the uniqueness of the provided name input.
+     * Subclasses must implement this method to define how the uniqueness is checked.
+     *
+     * @param input The name input to be checked for uniqueness.
+     * @return true if the name is unique, false otherwise.
+     */
     protected abstract boolean validateNameUniqueness(String input);
 
+    /**
+     * Validates the provided limit input.
+     * Checks if the input is empty and if the parsed integer is greater than zero.
+     *
+     * @param limit The limit input to be validated.
+     * @return The parsed limit if valid, -1 if invalid.
+     */
     public int validateLimit(String limit)
     {
         if (limit.isEmpty())
@@ -74,6 +95,15 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
         return parsedLimit;
     }
 
+    /**
+     * Creates a new CashFlowCategory with the provided name and limit.
+     * If the type is EXPENSE, it validates the limit and creates an Expense object.
+     * Else it creates an Income object.
+     *
+     * @param name The name of the new cash flow category.
+     * @param limit The limit for the category (only used for EXPENSE type).
+     * @return A new CashFlowCategory object, or null if the type is Expense and limit is invalid.
+     */
     public CashFlowCategory createCashFlow(String name, String limit)
     {
         CashFlowCategory newCategory;
@@ -90,7 +120,11 @@ public abstract class BaseCashFlowManagementPresenter<V extends BaseView> extend
 
         return newCategory;
     }
-
+    /**
+     * Sets the type of the cash flow category.Expense or Income.
+     *
+     * @param cashFlowCategory The type of the cash flow category.
+     */
     public void setType(String cashFlowCategory)
     {
         currentType = cashFlowCategory;

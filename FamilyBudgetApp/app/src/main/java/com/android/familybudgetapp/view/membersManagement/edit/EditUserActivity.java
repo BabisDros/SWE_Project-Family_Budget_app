@@ -47,6 +47,11 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
     }
 
 
+    /**
+     * Sets the hint for the password field.
+     * Updates the hint text to inform the user that leaving the
+     * password field empty will keep the current password unchanged.
+     */
     private void setPasswordHint()
     {
         passwordField.setHint("Password: Leave empty to keep current");
@@ -85,6 +90,10 @@ public class EditUserActivity extends BaseUserManagementActivity<EditUserViewMod
         viewModel.getPresenter().validateDisplayName(getDisplayName());
     }
 
+    /**
+     * Listener to the action Button click event.
+     * Calls presenter's save method with username, password, displayName and familyName as arguments.
+     */
     private void saveClicked()
     {
         viewModel.getPresenter().save(getUsername(), getPassword(), getDisplayName(), getFamilyName());

@@ -13,7 +13,7 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
     private boolean addMemberModeEnabled;
 
     /**
-     * Validates input data and saves the user and family.
+     * Validates input data and creates a new family and user.
      *
      * @param username    the entered username.
      * @param password    the entered password.
@@ -32,6 +32,14 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         completeUserAddition(newUser);
     }
 
+    /**
+     * Validates input data and creates a new user.
+     *
+     * @param username    the entered username.
+     * @param password    the entered password.
+     * @param displayName the entered display name.
+     * @param familyName  the entered family name.
+     */
     public void saveMember(String username, String password, String displayName, String familyName)
     {
         if (!validateAllFields(username, password, displayName, familyName)) return;
@@ -39,6 +47,13 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         completeUserAddition(newUser);
     }
 
+    /**
+     * Completes the addition of a new user to the family.
+     * Adds the user to the family, saves the updated family and user data to the DAO,
+     * and displays a message confirming the addition.
+     *
+     * @param user The user to be added.
+     */
     private void completeUserAddition(User user)
     {
         family.addMember(user);
@@ -47,6 +62,12 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         showAddMemberMessage(user.getUsername());
     }
 
+    /**
+     * Shows a message confirming the addition of a new User.
+     * The message includes a prompt to add a new member.
+     *
+     * @param username The username of the member that was added.
+     */
     private void showAddMemberMessage(String username)
     {
         view.showAddMemberMessage(String.format(SUCCESSFUL_ADD_MEMBER_TITLE, username), ADD_MEMBER_PROMPT);
@@ -63,6 +84,11 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         return true;
     }
 
+    /**
+     * Changes the UI to add a new member.
+     * Initializes the user and family caches if not already enabled,
+     * sets up the UI for adding a new member, and clears the input fields.
+     */
     public void enableAddMemberMode()
     {
         if (!addMemberModeEnabled)
@@ -76,6 +102,9 @@ public class RegisterCreatePresenter extends BaseUserManagementPresenter<Registe
         view.clearFields();
     }
 
+    /**
+     * Called when the NegativeButton of AddMemberDialog is clicked.
+     */
     public void goToMemberManagement()
     {
         view.goToMemberManagement();

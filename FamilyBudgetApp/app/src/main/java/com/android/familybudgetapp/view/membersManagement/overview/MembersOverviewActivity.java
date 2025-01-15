@@ -59,12 +59,18 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
     }
 
     //region $UI elements setup
+    /**
+     * Sets up the btnHomepage Button and its onClick listener.
+     */
     private void setupHomepageBtn()
     {
         Button btnHomepage = findViewById(R.id.btn_homepage);
         btnHomepage.setOnClickListener(v -> homepageClicked());
     }
 
+    /**
+     * Sets up the btnAddMember FloatingActionButton and its onClick listener.
+     */
     private void setupFloatBtnAddMember()
     {
         FloatingActionButton btnAddMember = findViewById(R.id.float_btn_add);
@@ -97,6 +103,9 @@ public class MembersOverviewActivity extends BaseActivity<MembersOverviewViewMod
         recyclerViewAdapter.updateList(removedIndex);
     }
 
+    /**
+     * Sets up the dialog for deleting an account and its onClick listeners.
+     */
     private void setupDeleteAccountDialog()
     {
         deleteAccountDialog = new AlertDialog.Builder(this)

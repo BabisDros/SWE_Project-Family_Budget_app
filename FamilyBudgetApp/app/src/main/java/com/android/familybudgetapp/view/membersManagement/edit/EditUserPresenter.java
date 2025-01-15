@@ -11,6 +11,12 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
 {
     private User userToEdit;
 
+    /**
+     * Sets the user data for editing.
+     * If the user is a member, the family field is disabled so that it cannot be edited.
+     *
+     * @param userId The ID of the user.
+     */
     public void setUserData(long userId)
     {
         userToEdit = userDAO.findByID(userId);
@@ -24,6 +30,17 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         }
     }
 
+    /**
+     * Saves the edited user data.
+     * Validates the input fields and updates the user and family DAO.
+     * If the password is not empty, it updates the user's password.
+     * At the end, it calls view to change to MembersOverviewActivity.
+     *
+     * @param username The new username for the user.
+     * @param password The new password for the user.
+     * @param displayName The new display name for the user.
+     * @param familyName The new family name for the user's family.
+     */
     public void save(String username, String password, String displayName, String familyName)
     {
         if (!validateAllFields(username, password, displayName, familyName)) return;
@@ -46,6 +63,15 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         view.goToMemberManagementActivity();
     }
 
+
+    /**
+     * Validates the provided password.
+     * If the password is unchanged (empty input), it is considered valid.
+     * Else, it calls the super method validation to continue validation.
+     *
+     * @param input The password to be validated.
+     * @return True if the password is valid, false otherwise.
+     */
     @Override
     public boolean validatePassword(String input)
     {

@@ -40,11 +40,20 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
     }
 
     //region $Local methods that call presenter
+
+    /**
+     * Listener to the login button click event.
+     * Calls the presenter to navigate to the login screen.
+     */
     private void loginClicked()
     {
         viewModel.getPresenter().navigateToLogin();
     }
 
+    /**
+     * Listener to the register button click event.
+     * Calls the presenter to navigate to the register screen.
+     */
     private void registerClicked()
     {
         viewModel.getPresenter().navigateToRegister();
@@ -52,6 +61,7 @@ public class AuthOptionsActivity extends BaseActivity<AuthOptionsViewModel> impl
     //endregion
 
     //region $Navigation
+
     @Override
     public void goToLogin()
     {

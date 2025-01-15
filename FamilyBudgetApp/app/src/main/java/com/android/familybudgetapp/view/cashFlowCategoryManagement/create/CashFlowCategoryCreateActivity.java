@@ -20,7 +20,7 @@ public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivi
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().setType(cashFlowCategories[0]);
 
-        setupAddMemberDialog();
+        setupAddCategoryDialog();
     }
 
     @Override
@@ -35,12 +35,21 @@ public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivi
         btnSave.setOnClickListener(v -> viewModel.getPresenter().save(getName(), getLimit()));
     }
 
+    /**
+     * Calls the presenter to set the type of the cash flow category.
+     *
+     * @param type The type of the cash flow category to be set.
+     */
     public void setType(String type)
     {
         viewModel.getPresenter().setType(type);
     }
 
-    private void setupAddMemberDialog()
+    /**
+     * Sets up the dialog for adding a new category,
+     * the appropriate listeners and names to NegativeButton and setPositiveButton.
+     */
+    private void setupAddCategoryDialog()
     {
         addExtraCategoryDialog = new AlertDialog.Builder(CashFlowCategoryCreateActivity.this)
                 .setCancelable(true)
@@ -48,11 +57,19 @@ public class CashFlowCategoryCreateActivity extends BaseCashFlowManagementActivi
                 .setPositiveButton(R.string.yes, (dialog, which) -> categoryDialogYesClicked());
     }
 
+    /**
+     * Listener to the NegativeButton click event of Category Dialog.
+     * Calls the presenter to navigate to the CashFlowCategoryOverview.
+     */
     private void categoryDialogNoClicked()
     {
         goToCashFlowCategoryOverview();
     }
 
+    /**
+     * Listener to the PositiveButton click event of Category Dialog.
+     * Calls the presenter to reset the input fields.
+     */
     private void categoryDialogYesClicked()
     {
         viewModel.getPresenter().resetFields();

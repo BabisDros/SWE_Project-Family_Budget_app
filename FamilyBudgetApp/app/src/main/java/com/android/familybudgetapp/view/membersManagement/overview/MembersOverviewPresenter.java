@@ -49,6 +49,13 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
     }
     //endregion
 
+    /**
+     * Shows a verification message before deleting a user.
+     * If the user is a family protector, a caution message is shown,
+     * else, a verification message is displayed.
+     *
+     * @param user The user to delete.
+     */
     public void showVerification(User user)
     {
         this.userToDelete = user;
@@ -70,6 +77,9 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         }
     }
 
+    /**
+     * Retrieves the family members from the current user's family and populates the UI with the members list.
+     */
     public void searchFamilyMembers()
     {
         User currentUser = userDAO.findByID(Initializer.currentUserID);
@@ -79,6 +89,11 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         view.populateMembersRecyclerView(members);
     }
 
+    /**
+     * Deletes a user based on their family position.
+     * If the user is the family protector, the account is deleted.
+     * Else, the user is removed as a family member.
+     */
     public void deleteBasedOnFamilyPosition()
     {
         if (userToDelete.getFamilyPosition() == FamPos.Protector)
@@ -89,6 +104,10 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         else deleteMember();
     }
 
+    /**
+     * Deletes a member and saves the updated family.
+     * Updates the UI without the removed user.
+     */
     private void deleteMember()
     {
         userDAO.delete(userToDelete);
@@ -96,6 +115,11 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         view.updateMembersRecyclerView(members.indexOf(userToDelete));
     }
 
+    /**
+     * Deletes the account of Protector and all members of their family from the DAO.
+     * Deletes the family from the DAO.
+     * Exits the application.
+     */
     private void deleteAccount()
     {
         Family family = userToDelete.getFamily();
@@ -108,12 +132,16 @@ public class MembersOverviewPresenter extends BasePresenter<MembersOverviewView>
         view.exitApp();
     }
 
-
+    /**
+     * Called when the btnAddMember FloatingActionButton is clicked.
+     */
     public void navigateToRegister()
     {
         view.goToRegisterActivity();
     }
-
+    /**
+     * Called when the Homepage button is clicked.
+     */
     public void navigateToHomepage()
     {
         view.goToHomepageActivity();

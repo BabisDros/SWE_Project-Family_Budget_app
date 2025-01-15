@@ -22,6 +22,11 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
     //cache categories at every session, because MAP does not guaranty order
     private List<CashFlowCategory> categories;
 
+    /**
+     * Sets the Family DAO.
+     *
+     * @param userDAO the {@link UserDAO} instance.
+     */
     public void setUserDAO(UserDAO userDAO)
     {
         this.userDAO = userDAO;
@@ -37,6 +42,10 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
         this.familyDAO = familyDAO;
     }
 
+    /**
+     * Retrieves the CashFlowCategory List for the current's user family.
+     * if there are categories available, populates the RecyclerView .
+     */
     public void searchCashFlowCategories()
     {
         User currentUser = userDAO.findByID(Initializer.currentUserID);
@@ -49,12 +58,22 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
         }
     }
 
+    /**
+     * Show a verification message to confirm the deletion of a CashFlowCategory.
+     *
+     * @param category The CashFlowCategory to be deleted.
+     */
     public void showVerification(CashFlowCategory category)
     {
         this.currentCashFlowCategory = category;
         view.showDeleteCategory(DELETE_TITLE, String.format(DELETE_MSG, category.getName()));
     }
 
+    /**
+     * Deletes the selected CashFlowCategory from the current family.
+     * Updates the RecyclerView to reflect the change,
+     * and saves the updated family data.
+     */
     public void deleteCategory()
     {
         currentFamily.removeCashFlowCategory(currentCashFlowCategory);
@@ -62,11 +81,17 @@ public class CashFlowCategoryOverviewPresenter extends BasePresenter<CashFlowCat
         familyDAO.save(currentFamily);
     }
 
+    /**
+     * Called when the homepage button is clicked.
+     */
     public void navigateToHomepage()
     {
         view.goToHomepageActivity();
     }
 
+    /**
+     * Called when the AddMember FloatingActionButton is clicked.
+     */
     public void navigateToCreateCashFlowCategory()
     {
         view.goToCreateCashFlowCategoryActivity();

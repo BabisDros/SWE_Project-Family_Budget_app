@@ -46,7 +46,8 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     /**
-     * Calls presenter's login method when .
+     * Listener to the action Button click event.
+     * Calls presenter's login method with username and password as arguments.
      */
     private void loginClicked()
     {
@@ -54,11 +55,22 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     }
 
     //region $Get values from UI elements
+
+    /**
+     * Retrieves the username entered by the user.
+     *
+     * @return A trimmed string of the text in the username field.
+     */
     private String getUsername()
     {
         return usernameField.getText().toString().trim();
     }
 
+    /**
+     * Retrieves the password entered by the user.
+     *
+     * @return A trimmed string of the text in the password field.
+     */
     private String getPassword()
     {
         return passwordField.getText().toString().trim();

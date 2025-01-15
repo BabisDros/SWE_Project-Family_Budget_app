@@ -12,11 +12,25 @@ public interface RegisterCreateView extends BaseView
      */
     void showAddMemberMessage(String title, String message);
 
+    /**
+     * Changes Activity to MembersOverviewActivity.
+     */
     void goToMemberManagement();
 
+    /**
+     * Changes UI to add a new member.
+     */
     void setupUIToAddMemberMode();
 
+    /**
+     * Sets the familyName field with the provided name.
+     *
+     * @param familyName The name to be displayed.
+     */
     void setFamilyNameField(String familyName);
 
+    /**
+     * Clears the fields to add a new member.
+     */
     void clearFields();
 }

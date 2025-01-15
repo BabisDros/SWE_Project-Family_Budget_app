@@ -11,11 +11,6 @@ public abstract class BaseActivity<V extends ViewModel> extends AppCompatActivit
 {
     protected V viewModel;
 
-    /**
-     * Creates and initializes the activity.
-     *
-     * @param savedInstanceState The activity's saved instance.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,12 +18,6 @@ public abstract class BaseActivity<V extends ViewModel> extends AppCompatActivit
         viewModel =  createViewModel();
     }
 
-    /**
-     * Displays an error message.
-     *
-     * @param title The title of the error.
-     * @param message The message of the error.
-     */
     @Override
     public void showErrorMessage(String title, String message)
     {

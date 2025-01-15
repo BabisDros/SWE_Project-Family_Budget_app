@@ -65,6 +65,10 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         super.goToMemberManagementActivity();
     }
 
+    /**
+     * Caches the dialog for adding a new member and sets its onClick listener.
+
+     */
     private void setupAddMemberDialog()
     {
         addMemberDialog = new AlertDialog.Builder(RegisterCreateActivity.this)
@@ -90,6 +94,11 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
         btnAction.setOnClickListener(v -> saveMemberClicked());
     }
 
+    /**
+     * Listener to the action Button click event.
+     * Calls presenter's saveMember with the values of
+     * username, password, displayName, and familyName as arguments.
+     */
     private void saveMemberClicked()
     {
         viewModel.getPresenter().saveMember(getUsername(), getPassword(), getDisplayName(), getFamilyName());
@@ -97,16 +106,27 @@ public class RegisterCreateActivity extends BaseUserManagementActivity<RegisterC
     //endregion
 
     //region $Local listeners that call presenter
+    /**
+     * Listener to the NegativeButton of AddMemberDialog click event.
+     */
     private void addMemberDialogNoClicked()
     {
         viewModel.getPresenter().goToMemberManagement();
     }
 
+    /**
+     * Listener to the PositiveButton of AddMemberDialog click event.
+     */
     private void addMemberDialogYesClicked()
     {
         viewModel.getPresenter().enableAddMemberMode();
     }
 
+    /**
+     * Listener to the btnAction Button.
+     * Calls presenter's register method with the values of
+     * username, password, displayName, and familyName as arguments.
+     */
     private void registerClicked()
     {
         viewModel.getPresenter().register(getUsername(), getPassword(), getDisplayName(), getFamilyName());
