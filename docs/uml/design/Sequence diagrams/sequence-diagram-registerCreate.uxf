@@ -357,18 +357,6 @@ bg=LIGHT_GRAY</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>200</x>
-      <y>560</y>
-      <w>16</w>
-      <h>472</h>
-    </coordinates>
-    <panel_attributes>bg=WHITE
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>96</x>
@@ -961,5 +949,38 @@ bg=LIGHT_GRAY</panel_attributes>
     <panel_attributes>findByID(userID)
 lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>680.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>200</x>
+      <y>576</y>
+      <w>16</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>200</x>
+      <y>840</y>
+      <w>16</w>
+      <h>344</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>200</x>
+      <y>336</y>
+      <w>16</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
