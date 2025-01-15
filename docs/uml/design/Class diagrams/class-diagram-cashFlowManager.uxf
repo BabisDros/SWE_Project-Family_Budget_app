@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>280</y>
+      <w>392</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+CashFlowManager
+--
+
+--
+&lt;&lt;abstract&gt;&gt; # inDateRange(cashFlow: CashFlow): Boolean
+# getUsers(): List&lt;User&gt;
+&lt;&lt;abstract&gt;&gt; # getAmountForRange(cashFlow: CashFlow): Int
++ setUserRetrievalStrategy(strategy: UserRetrievalStrategy)
++ getUserRetrievalStrategy(): UserRetrievalStrategy
++ CalculateSurplus()
+# getCashFlowOfType(cashFlow: CashFlow): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getExpense(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getIncome(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getExpenseAndIncome(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
+# getCashFlowPerCategoryOfType(type: cashFlowType): List&lt;Tuples&lt;String, Integer\&gt;&gt;
++ getAmount(cashFlow: CashFlow): Int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>931</x>
+      <y>301</y>
+      <w>336</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>GlobalStatisticsPresenter
+--
+- yearlyStat1: Int
+- yearlyStat2: Int
+- yearlyStat3: Int
+--
++ GlobalStatisticsPresenter(familyDAO: FamilyDAO)
++ getMonthlyStat(): List&lt;Tuples&lt;YearMonth, Double\&gt;&gt;
++ getYearlyStat(): List&lt;Quadruples&lt;YearMonth, Double, Double, Double\&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>0</y>
+      <w>392</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+CashFlowManagerInterface
+--
++ CalculateSurplus()
++ setUserRetrievalStrategy(strategy: UserRetrievalStrategy)
++ getUserRetrievalStrategy(): UserRetrievalStrategy
++ CalculateAmountPerCategory(type: cashFlowType): List&lt;Tuples&lt;String, Integer\&gt;&gt;
+
++ getExpense(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getIncome(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getExpenseAndIncome(): Map&lt;Long, List&lt;CashFlow\&gt;&gt;
++ getAmount(cashFlow: CashFlow): Int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>154</y>
+      <w>21</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>994</x>
+      <y>490</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+FamilyDAO
+--
++ findByID(familyID: Long): Family
++ save(user: Family)
++ delete(entity: Family)
++ findAll(): Set&lt;Family&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>350</y>
+      <w>126</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- presenter
+m1=1</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1092</x>
+      <y>406</y>
+      <w>70</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- familyDAO
+m1=1</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>462</y>
+      <w>161</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>462</y>
+      <w>203</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>595</y>
+      <w>392</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>MonthlyManager
+--
+
+--
++ CalculateAmountPerCategory(type: cashFlowType): List&lt;Tuples&lt;String, Integer\&gt;&gt;
++ inDateRange(cashFlow: Cashflow): Boolean
++ getAmountForRange(cashFlow: Cashflow): Int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>679</x>
+      <y>595</y>
+      <w>392</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>YearlyManager
+--
+
+--
++ CalculateAmountPerCategory(type: cashFlowType): List&lt;Tuples&lt;String, Integer\&gt;&gt;
++ inDateRange(cashFlow: Cashflow): Boolean
++ getAmountForRange(cashFlow: Cashflow): Int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>357</y>
+      <w>196</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# userRetrievalStrategy
+m1=1</panel_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>455</y>
+      <w>189</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>FamilyUserStrategy
+--
+- family: Family
+--
++ FamilyUserStrategy(family: Family)
++ getFamily(): Family
++ getUsers(): List&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>119</x>
+      <y>343</y>
+      <w>140</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserRetrievalStrategy
+--
++ getUsers(): List&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>98</x>
+      <y>392</y>
+      <w>91</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>189</x>
+      <y>392</y>
+      <w>140</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>455</y>
+      <w>203</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>PersonalUserStrategy
+--
+- currentUser: User
+--
++ PersonalUserStrategy(currentUser: User)
++ getUsers(): List&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

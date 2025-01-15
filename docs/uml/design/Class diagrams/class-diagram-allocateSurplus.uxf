@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>959</x>
+      <y>609</y>
+      <w>343</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>AllocateSurplusPresenter
+--
+- Family currentFamily
+--
++ Family getFamily()
++ void setFamily(Family family)
++ void setView(AllocateSurplusView view)
++ MonthlySurplus getPreviousSurplusObj()
++ int getSurplusToAllocateAmount()
++ void addToMoneyBox(String amountInput, MoneyBox moneyBox)
++ void allocateSurplus(int amount, MoneyBox moneyBox)
++ ArrayList&lt;Pair&lt;User, MoneyBox&gt;&gt; getUserMoneyBoxes()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1358</x>
+      <y>735</y>
+      <w>217</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BasePresenter&lt;AllocateSurplusView&gt;
+--
++ void setView(AllocateSurplusView view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>623</y>
+      <w>252</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>AllocateSurplusActivity
+--
+- AllocateSurplusViewModel vm
+--
++ AllocateSurplusViewModel createViewModel()
++ void displayPreviousMonthName()
++ void displaySurplusAmount(int amount)
++ void populateMoneyBoxOptions()
++ void addToMoneyBox()
++ void refreshData()
++ void allocateDone()
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>350</y>
+      <w>231</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>AllocateSurplusViewModel
+--
+- AllocateSurplusPresenter presenter
+--
++ AllocateSurplusPresenter getPresenter()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>987</y>
+      <w>203</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+AllocateSurplusView
+--
+void displaySurplusAmount(int amount)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>847</y>
+      <w>231</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>310.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>875</x>
+      <y>861</y>
+      <w>259</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>-view</panel_attributes>
+    <additional_attributes>10.0;180.0;350.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1295</x>
+      <y>749</y>
+      <w>77</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>231</x>
+      <y>721</y>
+      <w>217</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BaseActivity&lt;AllocateSurplusViewModel&gt;
+--
++ void setView(AllocateSurplusView view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>735</y>
+      <w>119</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>455</y>
+      <w>217</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>-vm</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>861</x>
+      <y>455</y>
+      <w>280</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>-presenter</panel_attributes>
+    <additional_attributes>380.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

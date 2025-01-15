@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>14</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>BaseActivity
+{abstract}
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
++ showErrorMessage(title: String, message: String)
+# createViewModel(): V {abstract}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>784</x>
+      <y>49</y>
+      <w>119</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>BasePresenter
+{abstract}
+--
+
+--
++ setView(view: V)
++ clearView()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>476</x>
+      <y>140</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+BaseView
+--
++ showErrorMessage(title: String, message: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>28</y>
+      <w>161</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>BaseViewModel
+{abstract}
+--
+
+--
+# createPresenter(): P {abstract}
++ getPresenter(): P {query}
+# onCleared()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>28</y>
+      <w>91</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# viewModel
+m1=1</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>49</y>
+      <w>280</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# presenter
+m1=1</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>133</y>
+      <w>203</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>126</y>
+      <w>98</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>378</y>
+      <w>462</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryOverviewActivity
+
+--
+_+ CASHFLOW_CATEGORY_NAME_EXTRA: String {readOnly}_
+- recyclerViewAdapter: GenericRecyclerViewAdapter&lt;CashFlowCategory, ViewHolderSingleTextView&gt;
+- optionsDialog: AlertDialog.Builder
+- currentLocale: Locale
+- deleteCategoryDialog: AlertDialog.Builder
+--
+# onCreate(savedInstanceState: Bundle)
+# createViewModel(): CashFlowCategoryOverviewViewModel
+
+- setupHomepageBtn()
+- setupFloatBtnAdd()
+- setupDeleteAccountDialog()
+
+- addCategoryClicked()
+- deleteDialogYesClicked()
+- homepageClicked()
+
++ populateCategoriesRecyclerView(categories: List&lt;CashFlowCategory&gt;)
++ updateCategoriesRecyclerView(indexToDelete: int)
+- selectItem(cashFlowCategory: CashFlowCategory)
+- createItemName(category: CashFlowCategory): String
+
+goToCashFlowCategoryEdit(cashFlowCategoryName: String)
++ goToHomepageActivity()
++ goToCreateCashFlowCategoryActivity()
+
++ showDeleteCategory(title: String, message: String)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>91</x>
+      <y>147</y>
+      <w>21</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>238</x>
+      <y>301</y>
+      <w>266</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryOverviewViewModel
+
+--
+# createPresenter(): CashFlowCategoryOverviewPresenter
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>364</x>
+      <y>105</y>
+      <w>21</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>882</x>
+      <y>308</y>
+      <w>252</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryOverviewPresenter
+
+--
+_+ DELETE_TITLE: String {readOnly}_
+_+ DELETE_MSG: String {readOnly}_
+- currentFamily: Family
+- currentCashFlowCategory: CashFlowCategory
+- categories: List&lt;CashFlowCategory&gt;
+--
++ setUserDAO(userDAO: UserDAO)
++ setFamilyDAO(familyDAO: FamilyDAO)
++ searchCashFlowCategories()
++ showVerification(category: CashFlowCategory)
++ deleteCategory()
++ navigateToHomepage()
++ navigateToCreateCashFlowCategory()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>133</y>
+      <w>21</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>301</y>
+      <w>329</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+CashFlowCategoryOverviewView
+
+--
++ goToHomepageActivity()
++ populateCategoriesRecyclerView(categories: List&lt;CashFlowCategory&gt;)
++ updateCategoriesRecyclerView(indexToDelete: int)
++ goToCreateCashFlowCategoryActivity()
++ showDeleteCategory(title: String, message: String)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>182</y>
+      <w>21</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1036</x>
+      <y>560</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
++ findByID(userID: Long): User
++ findByUsername(username: String): User
++ save(user: User)
++ delete(entity: User)
++ findAll(): Set&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1057</x>
+      <y>497</y>
+      <w>84</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- userDAO
+m1=1</panel_attributes>
+    <additional_attributes>100.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>385</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>560</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+FamilyDAO
+--
++ findByID(familyID: Long): Family
++ save(user: Family)
++ delete(entity: Family)
++ findAll(): Set&lt;Family&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>875</x>
+      <y>497</y>
+      <w>91</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- familyDAO
+m1=1</panel_attributes>
+    <additional_attributes>10.0;90.0;60.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>98</x>
+      <y>238</y>
+      <w>336</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>GlobalStatisticsActivity
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
+# οnPause()
+
+- getExpensePerCategory(): List&lt;Tuples&lt;String,Integer\&gt;&gt;
+- getIncomePerCategory(): List&lt;Tuples&lt;String,Integer\&gt;&gt;
+
+- goBack()
+
++ getMonthlyStat(): List&lt;Tuples&lt;YearMonth, Double\&gt;&gt;
++ getYearlyStat(): List&lt;Quadruples&lt;YearMonth, Double, Double, Double\&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>595</x>
+      <y>259</y>
+      <w>336</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>GlobalStatisticsPresenter
+--
+- yearlyStat1: Int
+- yearlyStat2: Int
+- yearlyStat3: Int
+--
++ GlobalStatisticsPresenter(familyDAO: FamilyDAO)
++ getMonthlyStat(): List&lt;Tuples&lt;YearMonth, Double\&gt;&gt;
++ getYearlyStat(): List&lt;Quadruples&lt;YearMonth, Double, Double, Double\&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>455</x>
+      <y>462</y>
+      <w>133</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+GlobalStatisticsView
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>427</x>
+      <y>385</y>
+      <w>105</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>130.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>448</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
++ findByID(familyID: Long): Family
++ save(user: Family)
++ delete(entity: Family)
++ findAll(): Set&lt;Family&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>427</x>
+      <y>308</y>
+      <w>182</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- presenter
+m1=1</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>364</y>
+      <w>70</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- familyDAO
+m1=1</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>364</y>
+      <w>84</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;140.0;100.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -22,8 +22,15 @@ The result of the project is the existance of an app to help families organize a
   [Analysis classes](/docs/markdown/uml/requirements/analysis-classes.jpg)
 
 * R3 (Design and implementation of domain logic)\
- [Class diagram](/docs/markdown/uml/design/class-diagram.jpg)
+  [Class diagram](/docs/markdown/uml/design/class-diagram.jpg)
 
   [Methods Sequence diagrams](/docs/markdown/r3-methods-sequence-diagrams%20.md)
 
   [Coverage Report](/docs/coverage-reports/domain-coverage.png)
+
+* R4 (Design and implementation of system)\
+  [Class diagrams of Activities](/docs/markdown/r4-class-diagrams.md)
+
+  [Sequence diagrams of Activities](/docs/markdown/r4-sequence-diagrams.md)
+
+  [Full Coverage Report](/docs/coverage-reports/coverage-main.png)

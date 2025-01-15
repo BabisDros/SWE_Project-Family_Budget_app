@@ -11,18 +11,62 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyBudgetApp"
-        tools:targetApi="31">
+        >
         <activity
-            android:name='.view.HomePage.HomePageActivity'
+            android:name='.view.authentication.authOptions.AuthOptionsActivity'
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Budget.Personal.PersonalBudgetActivity"
+            android:name=".view.budget.showBudget.BudgetActivity"
+            android:label="Budget"
+            android:exported="true"/>
+        <activity
+            android:name=".view.budget.allocateSurplus.AllocateSurplusActivity"
+            android:label="Allocate Surplus"
+            android:exported="true"/>
+        <activity
+            android:label="Money Boxes"
+            android:name=".view.moneyBox.showMoneyBoxes.ShowMoneyBoxesActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.authentication.login.LoginActivity"
+            android:label="Login"
+            android:exported="true"/>
+        <activity
+            android:label="Home"
+            android:name=".view.homePage.HomePageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.membersManagement.registerCreate.RegisterCreateActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.moneyBox.addMoneyBox.AddMoneyBoxActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.budget.detailedBudget.DetailedBudgetActivity"
+            android:exported="true"/>
+        <activity
+            android:label="Global Statistics"
+            android:name=".view.globalStatistics.GlobalStatisticsActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.membersManagement.overview.MembersOverviewActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.membersManagement.edit.EditUserActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.create.CashFlowCategoryCreateActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.edit.CashFlowCategoryEditActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.cashFlowCategoryManagement.overview.CashFlowCategoryOverviewActivity"
             android:exported="true"/>
     </application>
 
