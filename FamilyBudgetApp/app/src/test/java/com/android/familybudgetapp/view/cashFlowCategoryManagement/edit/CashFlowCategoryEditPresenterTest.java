@@ -43,6 +43,11 @@ public class CashFlowCategoryEditPresenterTest
         currentFamily = currentUser.getFamily();
     }
 
+    /**
+     * Tests if the setCashFlowCategoryData method in the CashFlowCategoryEditPresenter class
+     * correctly sets the data for an existing (is set in Initializer) Expense cashFlowCategory
+     * by asserting that the category name, limit, and spinner are set by call to view.
+     */
     @Test
     public void setExistingCashFlowCategoryData()
     {
@@ -53,6 +58,10 @@ public class CashFlowCategoryEditPresenterTest
         assertTrue(viewStub.isSpinnerSet());
     }
 
+    /**
+     * Tests if the setCashFlowCategoryData method in the CashFlowCategoryEditPresenter class
+     * correctly doesn't enter the if statements because the categoryToEdit is null.
+     */
     @Test
     public void setNotExistingCashFlowCategoryData()
     {
@@ -61,6 +70,11 @@ public class CashFlowCategoryEditPresenterTest
         assertEquals(categoryName, viewStub.getName());
     }
 
+    /**
+     * Tests if the setCashFlowCategoryData method in the CashFlowCategoryEditPresenter class
+     * correctly sets the data for an existing (is set in Initializer) Income cashFlowCategory by asserting that the category name,
+     * limit, and spinner are set by calls to view.
+     */
     @Test
     public void setIncomeCashFlowCategoryData()
     {
@@ -69,6 +83,10 @@ public class CashFlowCategoryEditPresenterTest
         assertEquals(categoryName, viewStub.getName());
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryEditPresenter class
+     * correctly doesn't save a cashFlowCategory when the name is invalid.
+     */
     @Test
     public void saveInvalidName()
     {
@@ -77,6 +95,11 @@ public class CashFlowCategoryEditPresenterTest
         assertNull(currentFamily.getCashFlowCategories().get(categoryName));
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryEditPresenter class
+     * correctly updates the limit of an existing (is set in Initializer) Expense cashFlowCategory
+     * when the name remains the same and the limit is valid.
+     */
     @Test
     public void saveExpenseSameNameValidLimit()
     {
@@ -91,6 +114,11 @@ public class CashFlowCategoryEditPresenterTest
         assertEquals(newLimit, changedCategory.getLimit());
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryEditPresenter class
+     * correctly does not update the name when an existing (is set in Initializer)
+     * cashFlowCategory name is provided .
+     */
     @Test
     public void saveExpenseExistingName()
     {
@@ -106,6 +134,10 @@ public class CashFlowCategoryEditPresenterTest
         assertNotNull(categoryToEdit);
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryEditPresenter class
+     * correctly updates the name when a unique name and valid limit is provided .
+     */
     @Test
     public void saveExpenseDifferentName()
     {
@@ -124,6 +156,10 @@ public class CashFlowCategoryEditPresenterTest
         assertEquals(1, viewStub.getOverviewCounter());
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryEditPresenter class
+     * correctly does not update the limit when an invalid limit is provided.
+     */
     @Test
     public void saveExpenseValidNameInvalidLimit()
     {

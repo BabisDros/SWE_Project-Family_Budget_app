@@ -36,6 +36,11 @@ public class RegisterCreatePresenterTest
         presenter.setFamilyDAO(familyDAO);
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly registers a new member with valid data and unique username
+     * by asserting that the member's details are correctly saved and the success message is displayed.
+     */
     @Test
     public void registerValidDataUniqueName() throws Exception
     {
@@ -54,6 +59,10 @@ public class RegisterCreatePresenterTest
         assertEquals(String.format(RegisterCreatePresenter.SUCCESSFUL_ADD_MEMBER_TITLE, username), viewStub.getAddMemberTitle());
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly shows an error message when a user tries to register with an existing username.
+     */
     @Test
     public void registerExistingUsername()
     {
@@ -66,6 +75,10 @@ public class RegisterCreatePresenterTest
         assertEquals(RegisterCreatePresenter.USER_EXISTS_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly does not create a user and shows an error message when a user tries to register with an invalid username.
+     */
     @Test
     public void registerInvalidUsername()
     {
@@ -75,9 +88,15 @@ public class RegisterCreatePresenterTest
         String familyName = "Jane family";
         presenter.register(username, password, displayName, familyName);
 
+        User member = userDAO.findByUsername(username);
+        assertNull(member);
         assertEquals(RegisterCreatePresenter.WRONG_USERNAME_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly does not create a user and shows an error message when a user tries to register with an invalid password.
+     */
     @Test
     public void registerInvalidPassword()
     {
@@ -92,6 +111,10 @@ public class RegisterCreatePresenterTest
         assertEquals(RegisterCreatePresenter.WRONG_PASSWORD_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly does not create a user and shows an error message when a user tries to register with an invalid displayName.
+     */
     @Test
     public void registerInvalidDisplayName()
     {
@@ -106,6 +129,10 @@ public class RegisterCreatePresenterTest
         assertEquals(RegisterCreatePresenter.WRONG_DISPLAY_NAME_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the register method in the RegisterCreatePresenter class
+     * correctly does not create a user and shows an error message when a user tries to register with an invalid familyName.
+     */
     @Test
     public void registerInvalidFamilyName()
     {
@@ -120,6 +147,11 @@ public class RegisterCreatePresenterTest
         assertEquals(RegisterCreatePresenter.WRONG_FAMILY_NAME_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the register and saveMember methods in the RegisterCreatePresenter class
+     * correctly register a new protector and then save a new member with valid data by asserting
+     * that the member's details are correctly saved, and the success message is displayed.
+     */
     @Test
     public void registerAndSaveMemberValidData() throws Exception
     {
@@ -142,6 +174,11 @@ public class RegisterCreatePresenterTest
         assertEquals(String.format(RegisterCreatePresenter.SUCCESSFUL_ADD_MEMBER_TITLE, username), viewStub.getAddMemberTitle());
     }
 
+    /**
+     * Tests if the register and saveMember methods in the RegisterCreatePresenter class
+     * correctly register a new protector but does not save a new member with wrong username by asserting
+     * that the member is not added to family's members, and the correct error message is displayed.
+     */
     @Test
     public void registerAndSaveMemberWrongUsername() throws Exception
     {
@@ -160,18 +197,29 @@ public class RegisterCreatePresenterTest
         assertEquals(RegisterCreatePresenter.WRONG_USERNAME_TITLE, viewStub.getErrorTitle());
     }
 
+    /**
+     * Tests if the enableAddMemberMode method correctly sets up the view for adding a new member.
+     * If the enableAddMemberMode is called first time, it calls setupUIToAddMemberMode method in the view.
+     * Checks if the family name is displayed and the input fields are cleared.
+     */
     @Test
     public void memberModeNotEnabled()
     {
         String familyName = "mark Family";
         presenter.register("mark", "mark", "mark", familyName);
         presenter.enableAddMemberMode();
-
+        assertEquals(1,viewStub.uiSetupCounter());
 
         assertEquals(familyName, viewStub.getFamilyName());
         assertTrue(viewStub.isFieldsCleared());
     }
 
+    /**
+     * Tests if the enableAddMemberMode method correctly sets up the view for adding a new member.
+     * If the enableAddMemberMode is called first time, it calls setupUIToAddMemberMode method in the view.
+     * If the enableAddMemberMode is called again, it does not call setupUIToAddMemberMode again.
+     * Checks if the family name is displayed and the input fields are cleared.
+     */
     @Test
     public void memberModeEnabled()
     {
@@ -179,15 +227,19 @@ public class RegisterCreatePresenterTest
         String familyName = "mark Family";
         presenter.register("mark", "mark", "mark", familyName);
         presenter.enableAddMemberMode();
-        assertTrue(viewStub.isUISetup());
+        assertEquals(1,viewStub.uiSetupCounter());
 
-        //call to enable again
+        //call to enable again, will not call setupUIToAddMemberMode
         presenter.enableAddMemberMode();
-
+        assertNotEquals(2,viewStub.uiSetupCounter());
         assertEquals(familyName, viewStub.getFamilyName());
         assertTrue(viewStub.isFieldsCleared());
     }
 
+    /**
+     * Tests if the goToMemberManagement method in the RegisterCreatePresenter class
+     * correctly calls the goToMemberManagement in the view stub by counting the numbers of calls.
+     */
     @Test
     public void goToMemberManagement()
     {

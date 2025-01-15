@@ -40,6 +40,10 @@ public class CashFlowCategoryCreatePresenterTest
         Initializer.currentUserID = currentUser.getID();
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryCreatePresenter class
+     * correctly handles an invalid category name by asserting that the category is not added to the family's cash flow categories.
+     */
     @Test
     public void saveInvalidName()
     {
@@ -48,6 +52,11 @@ public class CashFlowCategoryCreatePresenterTest
         assertNull(currentUser.getFamily().getCashFlowCategories().get(categoryName));
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryCreatePresenter class
+     * correctly saves a valid name and valid limit by adding the category to the family's cash flow categories,
+     * and asserting that the correct success message and title is displayed in the view stub.
+     */
     @Test
     public void saveExpenseValidNameValidLimit()
     {
@@ -61,6 +70,11 @@ public class CashFlowCategoryCreatePresenterTest
         assertEquals(CashFlowCategoryCreatePresenter.ADD_EXTRA_CATEGORY_PROMPT, viewStub.getMsg());
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryCreatePresenter class
+     * correctly handles all invalid category limits (empty, zero, or negative) by not
+     * adding the cashflowCategory to the family's cash flow categories.
+     */
     @Test
     public void saveExpenseValidNameInvalidLimit()
     {
@@ -79,6 +93,10 @@ public class CashFlowCategoryCreatePresenterTest
         assertNull(currentUser.getFamily().getCashFlowCategories().get(categoryName3));
     }
 
+    /**
+     * Tests if the save method in the CashFlowCategoryCreatePresenter class
+     * correctly saves a valid category name for an income category by adding the category to the family's cash flow categories.
+     */
     @Test
     public void saveIncomeValidName()
     {
@@ -89,6 +107,10 @@ public class CashFlowCategoryCreatePresenterTest
         assertNotNull(currentUser.getFamily().getCashFlowCategories().get(categoryName));
     }
 
+    /**
+     * Tests if the resetFields method in the CashFlowCategoryCreatePresenter class
+     * correctly calls the view's clearFields method by counting the numbers of calls.
+     */
     @Test
     public void resetFields()
     {
@@ -96,6 +118,11 @@ public class CashFlowCategoryCreatePresenterTest
         assertEquals(1, viewStub.getClearFieldsCount());
     }
 
+    /**
+     * Tests if the validateName method in the CashFlowCategoryCreatePresenter class
+     * correctly validates a unique category name by asserting that the method returns true
+     * when a new, different category name is provided.
+     */
     @Test
     public void validateUniqueName()
     {
@@ -105,6 +132,11 @@ public class CashFlowCategoryCreatePresenterTest
         assertTrue(presenter.validateName("test2"));
     }
 
+    /**
+     * Tests if the validateName method in the CashFlowCategoryCreatePresenter class
+     * correctly validates a unique category name by asserting that the method returns false
+     * when an existing category name is provided.
+     */
     @Test
     public void validateNotUniqueName()
     {

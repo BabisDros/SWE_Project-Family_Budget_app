@@ -7,7 +7,7 @@ public class RegisterCreateViewStub extends ViewStub implements RegisterCreateVi
     private String title;
     private String msg;
     private int goToMemberCounter;
-    private boolean setupUI;
+    private int setupUICounter;
     private String familyName;
     private boolean fieldsCleared;
 
@@ -27,7 +27,7 @@ public class RegisterCreateViewStub extends ViewStub implements RegisterCreateVi
     @Override
     public void setupUIToAddMemberMode()
     {
-        setupUI = true;
+        ++setupUICounter;
     }
 
     @Override
@@ -67,8 +67,8 @@ public class RegisterCreateViewStub extends ViewStub implements RegisterCreateVi
         return fieldsCleared;
     }
 
-    public boolean isUISetup()
+    public int uiSetupCounter()
     {
-        return setupUI;
+        return setupUICounter;
     }
 }

@@ -40,6 +40,11 @@ public class EditUserPresenterTest
         Initializer.currentUserID = currentUser.getID();
     }
 
+    /**
+     * Tests if the setUserData method in the EditUserPresenter class
+     * correctly sets the user data by asserting that the username, display name,
+     * and family name are properly passed in the view.
+     */
     @Test
     public void setUserProtectorData()
     {
@@ -49,6 +54,11 @@ public class EditUserPresenterTest
         assertEquals(currentUser.getFamily().getName(), viewStub.getFamilyName());
     }
 
+    /**
+     * Tests if the setUserData method in the EditUserPresenter class
+     * correctly sets the user data for a member by asserting that the username, display name,
+     * family name are properly displayed, and the family field is disabled in the view to prevent editing.
+     */
     @Test
     public void setMemberProtectorData()
     {
@@ -63,6 +73,11 @@ public class EditUserPresenterTest
         assertTrue(viewStub.isFamilyFieldDisabled());
     }
 
+    /**
+     * Tests if the save method in the EditUserPresenter class correctly saves valid user data
+     * with a unique username by asserting that the username, password, display name, and family name
+     * are properly updated and correctly calls goToMemberManagementActivity in the view stub by counting the number of calls.
+     */
     @Test
     public void saveValidDataUniqueName() throws Exception
     {
@@ -81,6 +96,12 @@ public class EditUserPresenterTest
         assertEquals(1, viewStub.getGoToMemberManagementActivityCounter());
     }
 
+    /**
+     * Tests if the save method in the EditUserPresenter class correctly saves valid user data
+     * with a unique username and the same password by asserting that the username, display name,
+     * and family name are properly updated but the password remains the same.
+     * Asserts it correctly calls goToMemberManagementActivity in the view stub by counting the number of calls.
+     */
     @Test
     public void saveValidDataUniqueNameSamePassword() throws Exception
     {
@@ -99,6 +120,10 @@ public class EditUserPresenterTest
         assertEquals(1, viewStub.getGoToMemberManagementActivityCounter());
     }
 
+    /**
+     * Tests if the save method in the EditUserPresenter class
+     * correctly does not update the username when an invalid username is provided.
+     */
     @Test
     public void saveInvalidData()
     {
@@ -112,6 +137,11 @@ public class EditUserPresenterTest
         assertNotEquals(username, currentUser.getUsername());
     }
 
+    /**
+     * Tests if the validateUsernameUniqueness method in the EditUserPresenter class
+     * correctly validates that an existing username is not unique by asserting that
+     * the method returns false for an already existing username.
+     */
     @Test
     public void validateExistingName()
     {
@@ -119,6 +149,10 @@ public class EditUserPresenterTest
         assertFalse(presenter.validateUsernameUniqueness(Initializer.member1Username));
     }
 
+    /**
+     * Tests if the validateUsernameUniqueness method in the EditUserPresenter class
+     * correctly returns true if a user with the same username exists and is the user currently being edited.
+     */
     @Test
     public void validateNameOfUser()
     {
