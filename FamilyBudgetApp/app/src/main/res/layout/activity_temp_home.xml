@@ -6,6 +6,17 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/budget_title_savings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_text" />
+
+    <TextView
         android:id="@+id/budget_title_personal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,12 +32,11 @@
         android:id="@+id/btn_detailed_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="28dp"
         android:text="@string/personal_budget"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title_personal_text" />
+        app:layout_constraintTop_toBottomOf="@+id/budget_title_savings" />
 
     <Button
         android:id="@+id/btn_moneyboxes"

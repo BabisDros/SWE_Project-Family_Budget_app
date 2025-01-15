@@ -2,16 +2,26 @@ package com.android.familybudgetapp.view.homePage;
 
 import static org.junit.Assert.*;
 
+import com.android.familybudgetapp.dao.Initializer;
+import com.android.familybudgetapp.dao.UserDAO;
+import com.android.familybudgetapp.memorydao.MemoryInitializer;
+import com.android.familybudgetapp.memorydao.UserDAOMemory;
+import com.android.familybudgetapp.utilities.AmountConversion;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class HomePagePresenterTest {
 
+    private Initializer dataHelper;
+    private UserDAO userDAO;
     private HomePagePresenter presenter;
     private HomePageView view;
 
     @Before
     public void setUp(){
+        dataHelper = new MemoryInitializer();
+        userDAO = new UserDAOMemory();
         view = new HomePageStub();
         presenter = new HomePagePresenter(view);
     }
@@ -47,4 +57,11 @@ public class HomePagePresenterTest {
         presenter.onStats();
         assertTrue(((HomePageStub) view).success);
     }
+
+    @Test
+    public void getSavings(){
+        long savings = userDAO.findByID(Initializer.currentUserID).getFamily().getSavings();
+        assertEquals(AmountConversion.toEuro(savings), presenter.getSavings());
+    }
+    
 }
