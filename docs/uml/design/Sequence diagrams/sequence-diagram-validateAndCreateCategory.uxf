@@ -237,7 +237,7 @@ bg=ORANGE</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>showErrorMessage(title, message)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -316,7 +316,7 @@ fg=RED</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>showErrorMessage(title, message)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -489,7 +489,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>showErrorMessage(title, message)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -546,7 +546,7 @@ fg=BLUE
       <h>28</h>
     </coordinates>
     <panel_attributes>showErrorMessage(title, message)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>

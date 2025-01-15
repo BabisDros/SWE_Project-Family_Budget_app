@@ -270,7 +270,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>showAddCategoryMsg(title, message)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -527,7 +527,7 @@ lt=&lt;.</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>setNameField(name)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -556,7 +556,7 @@ bg=LIGHT_GRAY</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>setLimitField(limit)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -568,7 +568,7 @@ lt=&lt;.</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>setSpinnerToExpense()
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>

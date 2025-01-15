@@ -256,8 +256,8 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>240</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>goToCreateCashFlowCategoryActivity
-lt=&lt;.</panel_attributes>
+    <panel_attributes>goToCreateCashFlowCategoryActivity()
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -316,7 +316,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>updateCategoriesRecyclerView(indexToDelete)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -368,14 +368,14 @@ lt=&lt;&lt;&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
+      <x>300</x>
       <y>770</y>
-      <w>230</w>
+      <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>navigateToHomepage()
 lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -385,8 +385,8 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>240</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>goToHomepageActivity
-lt=&lt;.</panel_attributes>
+    <panel_attributes>goToHomepageActivity()
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -526,7 +526,7 @@ lt=&lt;.</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>populateCategoriesRecyclerView(categories)
-lt=&lt;.</panel_attributes>
+lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -582,7 +582,7 @@ fg=RED</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>130</x>
-      <y>450</y>
+      <y>440</y>
       <w>180</w>
       <h>40</h>
     </coordinates>

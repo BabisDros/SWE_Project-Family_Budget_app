@@ -129,7 +129,7 @@ layer=-1</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>setFamilyNameField(familyName)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -626,7 +626,7 @@ lt=&lt;.</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>setupUIToAddMemberMode()
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -638,7 +638,7 @@ lt=&lt;.</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>clearFields()
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
@@ -685,7 +685,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>goToMemberManagement()
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
