@@ -49,17 +49,6 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>315</x>
-      <y>72</y>
-      <w>18</w>
-      <h>513</h>
-    </coordinates>
-    <panel_attributes>bg=WHITE</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>315</x>
@@ -636,6 +625,28 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <y>747</y>
       <w>18</w>
       <h>18</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>315</x>
+      <y>405</y>
+      <w>18</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>315</x>
+      <y>72</y>
+      <w>18</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>

@@ -618,7 +618,7 @@ layer=-1</panel_attributes>
       <x>120</x>
       <y>456</y>
       <w>16</w>
-      <h>352</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>
@@ -658,5 +658,16 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <panel_attributes>goToMemberManagementActivity()
 lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>120</x>
+      <y>776</y>
+      <w>16</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

@@ -37,17 +37,6 @@ fontsize=10
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>180</x>
-      <y>150</y>
-      <w>20</w>
-      <h>270</h>
-    </coordinates>
-    <panel_attributes>bg=WHITE</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>180</x>
@@ -244,6 +233,28 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <y>390</y>
       <w>20</w>
       <h>20</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>180</x>
+      <y>170</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>180</x>
+      <y>280</y>
+      <w>20</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>bg=WHITE</panel_attributes>
     <additional_attributes/>
