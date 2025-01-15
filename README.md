@@ -32,3 +32,5 @@ The result of the project is the existance of an app to help families organize a
   [Class diagrams of Activities](/docs/markdown/r4-class-diagrams.md)
 
   [Sequence diagrams of Activities](/docs/markdown/r4-sequence-diagrams.md)
+
+  [Full Coverage Report](/docs/coverage-reports/coverage-main.png)
