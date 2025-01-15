@@ -9,6 +9,8 @@ import java.util.Base64;
 
 public class PBKDF2Hashing
 {
+    public static String hashAlgorithm="PBKDF2WithHmacSHA256";
+    public static final String HmacSHA256="PBKDF2WithHmacSHA256";
     public static String hashPassword(String password) throws Exception
     {
         // Securely generate a random salt
@@ -26,7 +28,7 @@ public class PBKDF2Hashing
         int keyLength = 256; // Derived key length
 
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, iterationCount, keyLength);
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+        SecretKeyFactory factory = SecretKeyFactory.getInstance(hashAlgorithm);
 
         byte[] hash = factory.generateSecret(spec).getEncoded();
         return Base64.getEncoder().encodeToString(hash) + "," + Base64.getEncoder().encodeToString(salt);

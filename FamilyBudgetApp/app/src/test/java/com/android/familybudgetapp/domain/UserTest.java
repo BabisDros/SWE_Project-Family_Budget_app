@@ -40,6 +40,22 @@ public class UserTest {
         assertEquals(0, user.getCashFlows().size());
     }
 
+
+    @Test
+    public void testUserCreationWithNonExistingHashAlgorithm()
+    {
+        family = new Family("testFamily");
+        familyPosition = FamPos.Protector;
+        PBKDF2Hashing.hashAlgorithm = "nonExistingAlgorithmInSystem";
+
+        assertThrows(RuntimeException.class, () ->
+        {
+            new User("John Doe", "john_doe", "password123", FamPos.Protector, new Family("testFamily"));
+        });
+        //revert to the common hashing algorithm else all other tests fail
+        PBKDF2Hashing.hashAlgorithm =PBKDF2Hashing.HmacSHA256;
+    }
+
     @Test
     public void testAddCashFlow() {
         CashFlow cashFlow1 = new OneOff(100, new Expense("test",100), LocalDateTime.now().plusDays(1));
