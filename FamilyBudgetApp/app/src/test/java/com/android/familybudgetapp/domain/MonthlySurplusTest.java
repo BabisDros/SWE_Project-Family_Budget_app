@@ -2,21 +2,31 @@ package com.android.familybudgetapp.domain;
 
 import static org.junit.Assert.*;
 
+import android.util.Pair;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 
 public class MonthlySurplusTest
 {
 
     private  MonthlySurplus surplus;
-    private LocalDateTime date=LocalDateTime.now();
+    private LocalDateTime date= YearMonth.now().atEndOfMonth().atStartOfDay();
+    private YearMonth yearMonth=YearMonth.now();
 
     @Before
     public void setUp()
     {
-        surplus=new MonthlySurplus(date);
+        surplus=new MonthlySurplus(YearMonth.now());
+    }
+
+    @Test
+    public void testConstructorWithSurplus() {
+        MonthlySurplus ms = new MonthlySurplus(YearMonth.now(), 15);
+        assertEquals(15, ms.getSurplus());
     }
 
 
@@ -24,7 +34,7 @@ public class MonthlySurplusTest
     public void instantiateObjectWithInvalidArguments()
     {
         assertThrows(IllegalArgumentException.class, ()-> {
-            new MonthlySurplus(null);;
+            new MonthlySurplus(null);
         });
     }
 
@@ -40,15 +50,20 @@ public class MonthlySurplusTest
         CashFlow cashFlow=new OneOff(10,new Income("test"),date.plusMonths(1));
         surplus.addCashFlowToSurplus(cashFlow);
 
+        assertEquals(0,surplus.getSurplus());
+
+        cashFlow=new OneOff(10,new Income("test"),yearMonth.atDay(10).atStartOfDay());
+        surplus.addCashFlowToSurplus(cashFlow);
         assertEquals(cashFlow.getAmount(),surplus.getSurplus());
     }
 
     @Test
     public void setDate()
     {
-        LocalDateTime newDate=date.plusMonths(1);
-        surplus.setDate(newDate);
-        assertEquals(newDate,surplus.getDate());
+        YearMonth current= yearMonth.plusMonths(1);
+        surplus.setDate(current);
+        LocalDateTime datetime=surplus.getDate();
+        assertEquals(current,YearMonth.of(datetime.getYear(),datetime.getMonth()));
     }
 
     @Test
@@ -60,32 +75,29 @@ public class MonthlySurplusTest
         surplus.addCashFlowToSurplus(cashFlow1);
         surplus.addCashFlowToSurplus(cashFlow2);
 
-        assertEquals(amount*2,surplus.getSurplus());
+        assertEquals(amount,surplus.getSurplus());
+    }
+
+    @Test
+    public void addAllowanceMoneyBoxPairNullTest()
+    {
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.addAllowanceMoneyBoxPair(null, "reason");
+        });
+
+        assertThrows(IllegalArgumentException.class, ()-> {
+            surplus.addAllowanceMoneyBoxPair(new Allowance(15, date), null);
+        });
+
     }
 
 
    @Test
     public void addInvalidCashFlowToSurplus()
     {
-        Repeating expiredEndDateRepeating=new  Repeating(10,new Income("test"),date,date.plusDays(1),recurPeriod.Monthly);
-        OneOff expiredDateOneOff = new OneOff(10,new Income("test"),date);
-        // Simulate passage of time
-        expiredEndDateRepeating.DebugSetDateStart(date.minusMonths(5));
-        expiredEndDateRepeating.DebugSetDateEnd(date.minusMonths(1));
-        expiredDateOneOff.DebugSetDateStart(date.minusMonths(1));
-
         assertThrows(IllegalArgumentException.class, ()-> {
             surplus.addCashFlowToSurplus(null);
         });
-
-        assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(expiredEndDateRepeating);
-        });
-
-        assertThrows(IllegalArgumentException.class, ()-> {
-            surplus.addCashFlowToSurplus(expiredDateOneOff);
-        });
-
     }
 
     @Test
@@ -129,5 +141,15 @@ public class MonthlySurplusTest
         surplus.addCashFlowToSurplus(cashFlow);
         surplus.removeCashFlowFromSurplus(cashFlow);
         assertEquals(0,surplus.getSurplus());
+    }
+
+    @Test
+    public void addReasonMoneyBoxPairValid() {
+        MonthlySurplus testSurplus = new MonthlySurplus(YearMonth.now());
+        Allowance newAllowance = new Allowance(15, LocalDateTime.now());
+        String reason = "test";
+        testSurplus.addAllowanceMoneyBoxPair(newAllowance, reason);
+        assertEquals(newAllowance, testSurplus.getAllowanceMoneyBoxReasonPairs().get(0).getFirst());
+        assertEquals(reason, testSurplus.getAllowanceMoneyBoxReasonPairs().get(0).getSecond());
     }
 }

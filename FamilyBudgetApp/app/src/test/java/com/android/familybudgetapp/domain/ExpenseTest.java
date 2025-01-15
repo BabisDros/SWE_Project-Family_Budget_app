@@ -19,11 +19,11 @@ public class ExpenseTest
     public void instantiateObjectWithInvalidArguments()
     {
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Expense("test",-1);;
+            new Expense("test",-1);
         });
 
         assertThrows(IllegalArgumentException.class, ()-> {
-            new Expense(" ",1);;
+            new Expense(" ",1);
         });
     }
 

@@ -1,7 +1,5 @@
 package com.android.familybudgetapp.domain;
 
-import androidx.annotation.IntRange;
-
 public class Expense extends CashFlowCategory
 {
     private int limit;
@@ -22,7 +20,10 @@ public class Expense extends CashFlowCategory
     }
 
     /**
-     * @param limit positive number
+     * Sets the limit for the category. The limit must be a positive number.
+     *
+     * @param limit the limit to be set. A positive number.
+     * @throws IllegalArgumentException if the limit is not a positive number
      */
     public void setLimit(int limit)
     {
@@ -34,7 +35,10 @@ public class Expense extends CashFlowCategory
     }
 
     /**
-     * @param limit int
+     * Validates if the provided limit is a positive number.
+     *
+     * @param limit the number to be validated
+     * @return true if the limit is a positive number, false otherwise
      */
     public static boolean isLimitValid(int limit)
     {

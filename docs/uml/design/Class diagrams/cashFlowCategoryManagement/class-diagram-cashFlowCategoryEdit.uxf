@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>21</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>BaseActivity
+{abstract}
+--
+
+--
+# onCreate(savedInstanceSate: Bundle)
++ showErrorMessage(title: String, message: String)
+# createViewModel(): V {abstract}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>833</x>
+      <y>56</y>
+      <w>119</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>BasePresenter
+{abstract}
+--
+
+--
++ setView(view: V)
++ clearView()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>147</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+BaseView
+--
++ showErrorMessage(title: String, message: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>35</y>
+      <w>161</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>BaseViewModel
+{abstract}
+--
+
+--
+# createPresenter(): P {abstract}
++ getPresenter(): P {query}
+# onCleared()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>35</y>
+      <w>91</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# viewModel
+m1=1</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>56</y>
+      <w>280</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# presenter
+m1=1</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>140</y>
+      <w>203</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>749</x>
+      <y>133</y>
+      <w>98</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+# view
+m1=1</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>294</y>
+      <w>336</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>BaseCashFlowManagementActivity
+
+--
+_+ INCOME: String {readOnly}_
+_+ EXPENSE: String {readOnly}_
+# cashFlowCategories: String [2]
+# btnSave: Button
+# btnCancel: Button
+# limitField: EditText
+# nameField: EditText
+# categorySpinner
+--
+# onCreate(savedInstanceSate: Bundle)
+# getLimit(): String {query}
+# getName(): String {query}
+# setupBtnSave()
+# setUpCancelBtn()
+# setType(type: String) {abstract}
+# setupSpinner()
+# saveClicked(name: String, limit: String) {abstract}
++ onItemSelected(parent: AdapterView, view: View, position: int, id: long )
++ onNothingSelected(parent: AdapterView)
++ goToCashFlowCategoryOverview()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>154</y>
+      <w>21</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>623</y>
+      <w>259</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryEditViewModel
+
+--
++ createPresenter(): CashFlowCategoryEditPresenter
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>112</y>
+      <w>21</w>
+      <h>525</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;730.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>294</y>
+      <w>294</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>BaseCashFlowManagementPresenter
+
+--
+# currentUser: User
+# currentFamily: Family
+# currentType: String
+# inputLowerCase: String
+--
++ setUserDAO(userDAO: UserDAO)
++ setFamilyDAO(familyDAO: FamilyDAO)
++ validateName(input: String): boolean
+# validateNameUniqueness(input: String): boolean {abstract}
++ validateLimit(limit: String): int
++ createCashFlow(name: String, limit: String): CashFlowCategory
++ setType(cashFlowCategory: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>140</y>
+      <w>21</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>651</x>
+      <y>189</y>
+      <w>21</w>
+      <h>448</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>385</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
++ findByID(userID: Long): User
++ findByUsername(username: String): User
++ save(user: User)
++ delete(entity: User)
++ findAll(): Set&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>987</x>
+      <y>413</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- userDAO
+m1=1</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>623</y>
+      <w>280</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryEditActivity
+
+--
+# onCreate(savedInstanceState: Bundle)
+# createViewModel(): CashFlowCategoryEditViewModel
+# saveClicked(name: String, limit: String)
+# setType(type: String)
++ setNameField(name: String)
++ setLimitField(limit: String)
++ setSpinnerToExpense()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>196</y>
+      <w>231</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+OnItemSelectedListener
+--
++ goToHomepage(famPos: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>245</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>294</y>
+      <w>196</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+FamilyDAO
+--
++ findByID(familyID: Long): Family
++ save(user: Family)
++ delete(entity: Family)
++ findAll(): Set&lt;Family&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>987</x>
+      <y>329</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+- familyDAO
+m1=1</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>546</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>826</x>
+      <y>623</y>
+      <w>245</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>CashFlowCategoryEditPresenter
+
+--
+- initialName: String
+--
++ setCashFlowCategoryData(name: String)
++ save(name: String, limit: String)
+# validateNameUniqueness(input: String): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>469</y>
+      <w>21</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>623</y>
+      <w>259</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt; 
+CashFlowCategoryEditView
+
+--
++ setNameField(name: String)
++ setLimitField(limit: String)
++ goToCashFlowCategoryOverview()
++ setSpinnerToExpense()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>693</y>
+      <w>308</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>420.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

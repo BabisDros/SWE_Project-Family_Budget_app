@@ -33,6 +33,10 @@ android {
 
 dependencies {
 
+    val lifecycleVersion = "2.8.6"
+    // ViewModel dependency
+    implementation(libs.lifecycle.viewmodel.ktx)
+
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)

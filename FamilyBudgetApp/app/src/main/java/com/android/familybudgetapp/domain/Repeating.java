@@ -3,6 +3,8 @@ package com.android.familybudgetapp.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 public class Repeating extends CashFlow {
     private LocalDateTime dateEnd;
@@ -38,32 +40,83 @@ public class Repeating extends CashFlow {
                 ", recurrencePeriod=" + recurrencePeriod +
                 '}';
     }
+
     // Calculates and returns the monthly amount based on the recurrence period
-    public double getMonthlyAmount() {
-        int daysOfCurMonth = YearMonth.now().lengthOfMonth();
-        int endDay = dateEnd.getDayOfMonth();
-        int endMonth = dateEnd.getMonthValue();
-        int endYear = dateEnd.getYear();
+    @Override
+    public int getMonthlyAmount(YearMonth yearMonth) {
+        LocalDate startOfMonth = yearMonth.atDay(1);
+        LocalDate endOfMonth = yearMonth.atEndOfMonth();
+
+        LocalDate overlapStart = getDateStart().isAfter(startOfMonth.atStartOfDay()) ? getDateStart().toLocalDate() : startOfMonth;
+        LocalDate overlapEnd = getDateEnd().isBefore(endOfMonth.atStartOfDay()) ? getDateEnd().toLocalDate() : endOfMonth;
+
+        // If dateStart is after the month or dateEnd is before the month the overlap is 0
+        if (overlapStart.isAfter(overlapEnd)) {
+            return 0;
+        }
+
+        int overlappingDays = (int) (overlapEnd.toEpochDay() - overlapStart.toEpochDay() + 1);
+        int daysOfCurMonth = yearMonth.lengthOfMonth();
         switch (recurrencePeriod) {
             case Daily:
-                // check if dateEnd is this month, return partial
-                if (LocalDateTime.now().getMonthValue() == endMonth &&
-                        LocalDateTime.now().getYear() == endYear) {
-                    return getAmount() * endDay;
-                }
-                // ongoing
-                return getAmount() * daysOfCurMonth;
+                return getAmount() * overlappingDays;
+
             case Weekly:
-                if (LocalDateTime.now().getMonthValue() == endMonth &&
-                        LocalDateTime.now().getYear() == endYear) {
-                    double remainingWeeks = endDay / 7.0;
-                    return getAmount() * remainingWeeks;
-                }
-                return getAmount() * (daysOfCurMonth/7.0);
+                // The full amount is added if there's any overlap
+                int overlappingWeeks = (overlappingDays+6) / 7; // add 6 to round up
+                return getAmount() * overlappingWeeks;
+
             case Monthly:
+                // The full amount is added if there's any overlap
                 return getAmount();
+
             case Yearly:
-                return getAmount() / 12.0;
+                // return the full yearly amount on the month of the start date
+                if (yearMonth.getMonth() == YearMonth.from(getDateStart()).getMonth()) {
+                    return getAmount();
+                }
+                return 0;
+
+
+            default:
+                throw new IllegalArgumentException("Invalid recurrence period");
+        }
+    }
+
+    // Calculates and returns the yearly amount based on the recurrence period
+    @Override
+    public int getYearlyAmount(YearMonth yearMonth) {
+        LocalDate startOfYear = yearMonth.atDay(1).withDayOfYear(1);
+        LocalDate endOfYear = yearMonth.atDay(1).withDayOfYear(startOfYear.lengthOfYear());
+
+        LocalDate overlapStart = getDateStart().isAfter(startOfYear.atStartOfDay()) ? getDateStart().toLocalDate() : startOfYear;
+        LocalDate overlapEnd = getDateEnd().isBefore(endOfYear.atStartOfDay()) ? getDateEnd().toLocalDate() : endOfYear;
+
+        // If dateStart is after the year or dateEnd is before the year, the overlap is 0
+        if (overlapStart.isAfter(overlapEnd)) {
+            return 0;
+        }
+
+        int overlappingDays = (int) (overlapEnd.toEpochDay() - overlapStart.toEpochDay() + 1);
+        switch (recurrencePeriod) {
+            case Daily:
+                return getAmount() * overlappingDays;
+
+            case Weekly:
+                // The full amount is added for partial weeks
+                int overlappingWeeks = (overlappingDays + 6) / 7; // add 6 to round up
+                return getAmount() * overlappingWeeks;
+
+            case Monthly:
+                YearMonth startMonth = YearMonth.from(overlapStart);
+                YearMonth endMonth = YearMonth.from(overlapEnd);
+                int overlappingMonths = (endMonth.getYear() - startMonth.getYear()) * 12 + endMonth.getMonthValue() - startMonth.getMonthValue() + 1;
+                return getAmount() * overlappingMonths;
+
+            case Yearly:
+                // The full amount is added if there's any overlap
+                return getAmount();
+
             default:
                 throw new IllegalArgumentException("Invalid recurrence period");
         }
