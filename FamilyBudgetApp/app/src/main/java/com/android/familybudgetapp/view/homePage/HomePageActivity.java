@@ -19,6 +19,13 @@ import com.android.familybudgetapp.view.membersManagement.overview.MembersOvervi
 
 import java.util.Objects;
 
+/**
+ * {@link HomePageActivity} Represents the main activity of the application, serving as a
+ * central user interface for navigation between other activities.
+ * This activity is the starting point after login or registration.
+ * Show different options based on logged {@link com.android.familybudgetapp.domain.User User}'s
+ * authority, stated from the {@link FamPos#Protector} and {@link FamPos#Member} attributes.
+ */
 public class HomePageActivity extends AppCompatActivity implements HomePageView
 {
 

@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.memorydao.UserDAOMemory;
 
+/**
+ * The {@link AddMoneyBoxActivity} class allows the user to add a new {@link com.android.familybudgetapp.domain.MoneyBox MoneyBox}.
+ * It provides the user interface and handles user interactions for creating
+ * a MoneyBox, such as entering its details and saving it.
+ */
 public class AddMoneyBoxActivity extends AppCompatActivity implements AddMoneyBoxView {
     private AddMoneyBoxPresenter presenter;
 

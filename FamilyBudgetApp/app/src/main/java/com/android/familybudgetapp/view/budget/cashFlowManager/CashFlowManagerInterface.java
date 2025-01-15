@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * Provides an interface for managing and processing {@link CashFlow} data ({@link Income} or {@link Expense}),
+ * either for the current logged {@link com.android.familybudgetapp.domain.User User} or for the whole
+ * {@link com.android.familybudgetapp.domain.Family Family}
+ */
 public interface CashFlowManagerInterface {
 
     /**

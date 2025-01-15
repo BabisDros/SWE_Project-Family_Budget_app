@@ -38,6 +38,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The {@link BudgetActivity} class displays the main page of information to view the {@link User Personal}
+ * and {@link com.android.familybudgetapp.domain.Family Family} budget, as well as the current surplus.
+ * Gives option for either in {@code Monthly} or {@code Yearly} range.
+ * {@link FamPos#Protector Protector} is given the option to allocate the previous month's
+ * {@link com.android.familybudgetapp.domain.MonthlySurplus Surplus} while on the
+ * {@link com.android.familybudgetapp.domain.Family Family} view
+ */
 public class BudgetActivity extends BaseActivity<BudgetViewModel> implements BudgetView {
     private BudgetViewModel vm;
 
