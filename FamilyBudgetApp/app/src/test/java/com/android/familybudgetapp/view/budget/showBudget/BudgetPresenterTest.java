@@ -52,6 +52,9 @@ public class BudgetPresenterTest {
         presenter.setCurrentUser(currentUser);
     }
 
+    /**
+     * Tests adding a recurring cash flow with valid input.
+     */
     @Test
     public void testAddCashFlow_ValidInput_Recurring() {
         LocalDateTime dateStart = LocalDateTime.now();
@@ -65,6 +68,9 @@ public class BudgetPresenterTest {
         assertEquals(15000, cashFlowList.get(cashFlowList.size()-1).getAmount());
     }
 
+    /**
+     * Tests adding a one-time cash flow with valid input.
+     */
     @Test
     public void testAddCashFlow_ValidInput_OneTime() {
         LocalDateTime dateStart = LocalDateTime.now();
@@ -78,6 +84,9 @@ public class BudgetPresenterTest {
         assertEquals(15000, cashFlowList.get(cashFlowList.size()-1).getAmount());
     }
 
+    /**
+     * Tests handling of an invalid category input when adding cash flow.
+     */
     @Test
     public void testAddCashFlow_InvalidCategory() {
         LocalDateTime dateStart = LocalDateTime.now();
@@ -87,6 +96,9 @@ public class BudgetPresenterTest {
         assertEquals("Please select a category.", viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests handling of invalid amount input when adding cash flow.
+     */
     @Test
     public void testAddCashFlow_InvalidAmount() {
         LocalDateTime dateStart = LocalDateTime.now();
@@ -99,6 +111,9 @@ public class BudgetPresenterTest {
         assertEquals("Please enter a valid amount.", viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests handling of an invalid start date input when adding cash flow.
+     */
     @Test
     public void testAddCashFlow_InvalidDateStart() {
         LocalDateTime dateStart = null;
@@ -108,6 +123,9 @@ public class BudgetPresenterTest {
         assertEquals("Please enter a valid start date.", viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests handling of an invalid end date input for recurring cash flow.
+     */
     @Test
     public void testAddCashFlow_InvalidRecurringDateEnd() {
         LocalDateTime dateStart = LocalDateTime.now();
@@ -118,12 +136,18 @@ public class BudgetPresenterTest {
         assertEquals("Please enter a valid end date.", viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests calculation of the user's surplus.
+     */
     @Test
     public void testCalculateSurplus() {
         int surplus = presenter.calculateSurplus();
         assertEquals(0, surplus);
     }
 
+    /**
+     * Tests updating the family's monthly surplus.
+     */
     @Test
     public void testUpdateFamilySurplus() {
         Family family = currentUser.getFamily();
@@ -137,6 +161,9 @@ public class BudgetPresenterTest {
         assertEquals(updatedSurplus, family.getMonthlySurpluses().get(currentMonth).getSurplus());
     }
 
+    /**
+     * Tests retrieval of the surplus left from the previous month.
+     */
     @Test
     public void testGetPreviousSurplusLeft() {
         Family family = currentUser.getFamily();
@@ -146,23 +173,35 @@ public class BudgetPresenterTest {
         assertEquals(300, presenter.getPreviousSurplusLeft());
     }
 
+    /**
+     * Tests retrieval of expenses per category.
+     */
     @Test
     public void getExpensePerCategory()
     {
         assertEquals(0, presenter.getExpensePerCategory().size());
     }
 
+    /**
+     * Tests retrieval of incomes per category.
+     */
     @Test
     public void getIncomePerCategory()
     {
         assertEquals(0, presenter.getIncomePerCategory().size());
     }
 
+    /**
+     * Tests retrieval of the family monthly surplus manager.
+     */
     @Test
     public void getFamilyMonthlySurplusManager() {
         assertEquals(familyMonthlySurplusManager, presenter.getFamilyMonthlySurplusManager());
     }
 
+    /**
+     * Tests surplus calculation considering user cash flows.
+     */
     @Test
     public void calculateSurplus() {
         OneOff exp = new OneOff(100, new Expense("test", 100), LocalDateTime.now());
@@ -170,6 +209,9 @@ public class BudgetPresenterTest {
         assertEquals(-100, presenter.calculateSurplus());
     }
 
+    /**
+     * Tests moving unallocated surplus from expired months to savings.
+     */
     @Test
     public void testMoveUnallocatedSurplusToSavings() {
         YearMonth old = YearMonth.now().minusMonths(2);
@@ -178,6 +220,5 @@ public class BudgetPresenterTest {
         assertEquals(0, currentUser.getFamily().getSavings());
         presenter.moveUnallocatedSurplusToSavings();
         assertEquals(1000, currentUser.getFamily().getSavings());
-
     }
 }
