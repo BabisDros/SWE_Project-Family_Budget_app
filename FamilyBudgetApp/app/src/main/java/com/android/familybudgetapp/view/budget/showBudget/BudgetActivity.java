@@ -3,6 +3,7 @@ package com.android.familybudgetapp.view.budget.showBudget;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.familybudgetapp.R;
 import com.android.familybudgetapp.domain.CashFlowCategory;
 import com.android.familybudgetapp.domain.FamPos;
+import com.android.familybudgetapp.domain.MoneyBox;
+import com.android.familybudgetapp.domain.User;
 import com.android.familybudgetapp.utilities.AmountConversion;
 import com.android.familybudgetapp.utilities.Tuples;
 import com.android.familybudgetapp.view.budget.allocateSurplus.AllocateSurplusActivity;
@@ -105,16 +108,27 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         this.finish();
     }
 
+    /**
+     * Retrieves a list of expense categories and their corresponding amounts
+     * @return A list of Tuples representing expense categories and their respective amounts.
+     */
     private List<Tuples<String,Integer>> getExpensePerCategory()
     {
         return vm.getPresenter().getExpensePerCategory();
     }
 
+    /**
+     * Retrieves a list of income categories and their corresponding amounts
+     * @return A list of Tuples representing income categories and their respective amounts.
+     */
     private List<Tuples<String,Integer>> getIncomePerCategory()
     {
         return vm.getPresenter().getIncomePerCategory();
     }
 
+    /**
+     * Navigates to the detailed expenses view.
+     */
     private void showDetailedExpenses()
     {
         Intent intent = new Intent(BudgetActivity.this, DetailedBudgetActivity.class);
@@ -125,6 +139,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         startActivity(intent);
     }
 
+    /**
+     * Navigates to the detailed income view.
+     */
     private void showDetailedIncome()
     {
         Intent intent = new Intent(BudgetActivity.this, DetailedBudgetActivity.class);
@@ -135,6 +152,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         startActivity(intent);
     }
 
+    /**
+     * Navigates to the detailed surplus view.
+     */
     private void showDetailedSurplus()
     {
         Intent intent = new Intent(BudgetActivity.this, DetailedBudgetActivity.class);
@@ -145,16 +165,28 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         startActivity(intent);
     }
 
+    /**
+     * Calculates and sets the surplus amount for the current budget view
+     * and calls setSurplus() to display it
+     */
     private void setSurplus()
     {
         int surplus = vm.getPresenter().calculateSurplus();
         setSurplus(surplus);
     }
+
+    /**
+     * Updates the displayed surplus amount.
+     * @param amount The amount of surplus to display.
+     */
     @Override
     public void setSurplus(int amount) {
         ((TextView)findViewById(R.id.txt_personal_monthly_surplus)).setText("Surplus: " + AmountConversion.toEuro(amount));
     }
 
+    /**
+     * Changes the budget's date range to the next available range.
+     */
     private void changeBudgetDateRange()
     {
         vm.changeToNextDateRange();
@@ -166,6 +198,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         this.finish();
     }
 
+    /**
+     * Changes the budget's view group to the next available group.
+     */
     private void changeBudgetViewGroup()
     {
         vm.changeToNextViewGroup();
@@ -177,6 +212,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         this.finish();
     }
 
+    /**
+     * Displays a dialog to add a new cash flow entry, either one-time or recurring.
+     */
     private void addNewCashFlow() {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet_add_cashflow, null);
@@ -258,6 +296,10 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         bottomSheetDialog.show();
     }
 
+    /**
+     * Displays a date picker dialog and updates the selected date on the provided button.
+     * @param buttonToUpdate The button to update with the selected date.
+     */
     private void showDatePicker(Button buttonToUpdate) {
         final Calendar calendar = Calendar.getInstance();
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
@@ -271,6 +313,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         datePickerDialog.show();
     }
 
+    /**
+     * Refreshes the data displayed in the activity, including expenses, income, and surplus.
+     */
     private void refreshData() {
         // Update expenses list
         List<Tuples<String, Integer>> updatedExpenses = getExpensePerCategory();
@@ -291,6 +336,14 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
         // Update surplus
         setSurplus();
     }
+
+    /**
+     * Displays an option to allocate any remaining surplus from the previous month.
+     * This option only appears if
+     * - There's unallocated surplus from the previous month
+     * - The user is a protector
+     * - The user is in the family view
+     */
     private void allocatePreviousSurplusOption() {
         int previousMonthSurplusLeft = vm.getPresenter().getPreviousSurplusLeft();
 
@@ -306,6 +359,9 @@ public class BudgetActivity extends BaseActivity<BudgetViewModel> implements Bud
                 "Allocate previous surplus: " + AmountConversion.toEuro(previousMonthSurplusLeft));
     }
 
+    /**
+     * Navigates to the AllocateSurplusActivity to handle surplus allocation and finishes the current activity.
+     */
     private void onAllocateSurplus() {
         Intent intent = new Intent(BudgetActivity.this, AllocateSurplusActivity.class);
         startActivity(intent);
