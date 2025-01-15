@@ -149,11 +149,11 @@ lt=&lt;.</panel_attributes>
       <x>760</x>
       <y>16</y>
       <w>24</w>
-      <h>1168</h>
+      <h>1184</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=-1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1440.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1460.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -161,11 +161,11 @@ layer=-1</panel_attributes>
       <x>880</x>
       <y>16</y>
       <w>24</w>
-      <h>1168</h>
+      <h>1184</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=-1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1440.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1460.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -453,11 +453,11 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <x>1008</x>
       <y>16</y>
       <w>24</w>
-      <h>1168</h>
+      <h>1184</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=-1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1440.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1460.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -737,7 +737,7 @@ lt=&lt;.</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>96</x>
-      <y>824</y>
+      <y>840</y>
       <w>120</w>
       <h>32</h>
     </coordinates>
@@ -749,7 +749,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>208</x>
-      <y>992</y>
+      <y>1008</y>
       <w>264</w>
       <h>32</h>
     </coordinates>
@@ -761,7 +761,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>208</x>
-      <y>864</y>
+      <y>880</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -772,7 +772,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>208</x>
-      <y>880</y>
+      <y>896</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
@@ -784,7 +784,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>208</x>
-      <y>896</y>
+      <y>912</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -795,7 +795,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>208</x>
-      <y>912</y>
+      <y>928</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -807,7 +807,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>208</x>
-      <y>928</y>
+      <y>944</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -818,7 +818,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>208</x>
-      <y>960</y>
+      <y>976</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -829,7 +829,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>208</x>
-      <y>944</y>
+      <y>960</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -841,7 +841,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>456</x>
-      <y>1000</y>
+      <y>1016</y>
       <w>16</w>
       <h>32</h>
     </coordinates>
@@ -852,7 +852,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>208</x>
-      <y>848</y>
+      <y>864</y>
       <w>112</w>
       <h>40</h>
     </coordinates>
@@ -864,7 +864,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>192</x>
-      <y>1032</y>
+      <y>1048</y>
       <w>304</w>
       <h>40</h>
     </coordinates>
@@ -878,7 +878,7 @@ bg=LIGHT_GRAY</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>928</x>
-      <y>1032</y>
+      <y>1048</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -891,10 +891,10 @@ bg=LIGHT_GRAY</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>144</x>
-      <y>848</y>
-      <w>920</w>
-      <h>320</h>
+      <x>96</x>
+      <y>824</y>
+      <w>968</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>loop 
 --
@@ -912,7 +912,7 @@ bg=GREEN</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>448</x>
-      <y>1072</y>
+      <y>1088</y>
       <w>376</w>
       <h>40</h>
     </coordinates>
@@ -926,7 +926,7 @@ bg=LIGHT_GRAY</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>192</x>
-      <y>1112</y>
+      <y>1128</y>
       <w>304</w>
       <h>40</h>
     </coordinates>
@@ -940,7 +940,7 @@ bg=LIGHT_GRAY</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>808</x>
-      <y>1112</y>
+      <y>1128</y>
       <w>224</w>
       <h>40</h>
     </coordinates>

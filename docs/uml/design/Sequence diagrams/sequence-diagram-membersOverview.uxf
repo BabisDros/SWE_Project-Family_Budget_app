@@ -154,9 +154,9 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>184</x>
+      <x>80</x>
       <y>424</y>
-      <w>568</w>
+      <w>752</w>
       <h>312</h>
     </coordinates>
     <panel_attributes>alt
