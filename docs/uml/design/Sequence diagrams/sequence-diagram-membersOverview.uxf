@@ -314,8 +314,8 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>192</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>goToRegisterActivity
-lt=&lt;.</panel_attributes>
+    <panel_attributes>goToRegisterActivity()
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -497,7 +497,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>exitApp()
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -555,7 +555,7 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>updateMembersRecyclerView(removedIndex)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -601,8 +601,8 @@ lt=&lt;&lt;&lt;-</panel_attributes>
       <w>192</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>goToHomepageActivity
-lt=&lt;.</panel_attributes>
+    <panel_attributes>goToHomepageActivity()
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -765,7 +765,7 @@ lt=&lt;.</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>populateMembersRecyclerView(members)
-lt=&lt;.</panel_attributes>
+lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>

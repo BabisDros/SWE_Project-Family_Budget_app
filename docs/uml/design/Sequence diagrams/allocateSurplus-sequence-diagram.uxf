@@ -131,7 +131,7 @@ layer=0</panel_attributes>
       <w>231</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 setView(this)</panel_attributes>
     <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -143,7 +143,7 @@ setView(this)</panel_attributes>
       <w>231</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getSurplusToAllocateAmount()</panel_attributes>
     <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -166,7 +166,7 @@ getSurplusToAllocateAmount()</panel_attributes>
       <w>175</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getMonthlySurpluses()</panel_attributes>
     <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -190,7 +190,7 @@ return surpluses</panel_attributes>
       <w>231</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getUserMoneyBoxes()</panel_attributes>
     <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -213,7 +213,7 @@ getUserMoneyBoxes()</panel_attributes>
       <w>175</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getMembers()</panel_attributes>
     <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -261,7 +261,7 @@ return members</panel_attributes>
       <w>315</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getMoneyBoxes()</panel_attributes>
     <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -300,7 +300,7 @@ bg=dark_gray</panel_attributes>
       <w>231</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 addToMoneyBox(amount, selectedBox)</panel_attributes>
     <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -323,7 +323,7 @@ addToMoneyBox(amount, selectedBox)</panel_attributes>
       <w>455</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 addMoney(allowance)</panel_attributes>
     <additional_attributes>630.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -335,7 +335,7 @@ addMoney(allowance)</panel_attributes>
       <w>231</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getSurplusToAllocateAmount()</panel_attributes>
     <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -361,7 +361,7 @@ bg=black</panel_attributes>
       <w>224</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
+    <panel_attributes>lt=&lt;&lt;&lt;-
 showErrorMessage()</panel_attributes>
     <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
   </element>
@@ -373,7 +373,7 @@ showErrorMessage()</panel_attributes>
       <w>175</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getPreviousSurplusObj()</panel_attributes>
     <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -408,7 +408,7 @@ return monthlySurplus</panel_attributes>
       <w>588</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 setSurplus(surplus - amount)</panel_attributes>
     <additional_attributes>820.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -420,7 +420,7 @@ setSurplus(surplus - amount)</panel_attributes>
       <w>588</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 addAllowanceMoneyBoxPair(allowance, reason)</panel_attributes>
     <additional_attributes>820.0;20.0;10.0;20.0</additional_attributes>
   </element>
