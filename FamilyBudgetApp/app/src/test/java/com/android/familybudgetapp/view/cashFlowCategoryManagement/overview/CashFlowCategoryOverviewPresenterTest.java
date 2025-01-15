@@ -48,6 +48,10 @@ public class CashFlowCategoryOverviewPresenterTest
         currentFamily = currentUser.getFamily();
     }
 
+    /**
+     * Tests if the UserDAO is correctly set in the CashFlowCategoryOverviewPresenter class
+     * by accessing the private userDAO field and asserting that it matches the provided userDAO.
+     */
     @Test
     public void correctSetUserDAO() throws NoSuchFieldException, IllegalAccessException
     {
@@ -59,10 +63,14 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(this.userDAO, userDAO);
     }
 
+    /**
+     * Tests if the familyDAO is correctly set in the CashFlowCategoryOverviewPresenter class
+     * by accessing the private userDAO field and asserting that it matches the provided familyDAO.
+     */
     @Test
     public void correctSetFamilyDAO() throws NoSuchFieldException, IllegalAccessException
     {
-        //temporary access private field userDAO
+        //temporary access private field familyDAO
         Field familyDAOField = CashFlowCategoryOverviewPresenter.class.getDeclaredField("familyDAO");
         familyDAOField.setAccessible(true);
         FamilyDAO familyDAO = (FamilyDAO) familyDAOField.get(presenter);
@@ -70,6 +78,11 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(this.familyDAO, familyDAO);
     }
 
+    /**
+     * Tests if the searchCashFlowCategories method in the CashFlowCategoryOverviewPresenter class
+     * correctly retrieves and calls populateCategoriesRecyclerView method in view by asserting the two lists are equal.
+     * (The family in the setup has non-empty CashFlowCategories).
+     */
     @Test
     public void searchNotEmptyCashFlowCategories()
     {
@@ -77,6 +90,12 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(new ArrayList<>(currentFamily.getCashFlowCategories().values()), viewStub.getCashFlowCategories());
     }
 
+    /**
+     * Tests if the searchCashFlowCategories method in the CashFlowCategoryOverviewPresenter class
+     * correctly retrieves the list of empty cashFlowCategories from the current family and asserts equality with
+     * the initialized empty list in view stub.
+     * (The family of user Test4 (set in Initializer) has empty CashFlowCategories).
+     */
     @Test
     public void searchEmptyCashFlowCategories()
     {
@@ -89,8 +108,13 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(new ArrayList<>(currentFamily.getCashFlowCategories().values()), viewStub.getCashFlowCategories());
     }
 
+    /**
+     * Tests if the showVerification method in the CashFlowCategoryOverviewPresenter class
+     * correctly shows the delete verification message and title when a cashFlowCategory is selected for deletion.
+     * The currentCategoryName 'Food' used, is set in Initializer.
+     */
     @Test
-    public void showVerification()
+    public void showDeleteVerification()
     {
         String currentCategoryName = "Food".toLowerCase();
         CashFlowCategory currentCategory = currentFamily.getCashFlowCategories().get(currentCategoryName);
@@ -102,6 +126,11 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(presenter.DELETE_TITLE, viewStub.getTitle());
     }
 
+    /**
+     * Tests if the deleteCategory method in the CashFlowCategoryOverviewPresenter class
+     * correctly deletes an existing cashFlowCategory by asserting that the category is removed
+     * from the current family and that the correct index to delete is passed to the view.
+     */
     @Test
     public void deleteExistingCategory()
     {
@@ -120,6 +149,10 @@ public class CashFlowCategoryOverviewPresenterTest
     }
 
 
+    /**
+     * Tests if the navigateToHomepage method in the CashFlowCategoryOverviewPresenter class
+     * correctly calls the goToHomepageActivity in the view stub by counting the numbers of calls.
+     */
     @Test
     public void navigateToHomepage()
     {
@@ -127,6 +160,10 @@ public class CashFlowCategoryOverviewPresenterTest
         assertEquals(1, viewStub.getHomepageActivityCounter());
     }
 
+    /**
+     * Tests if the navigateToCreateCashFlowCategory method in the CashFlowCategoryOverviewPresenter class
+     * correctly calls the goToCreateCashFlowCategoryActivity in the view stub by counting the numbers of calls.
+     */
     @Test
     public void navigateToCreateCashFlowCategory()
     {

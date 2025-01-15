@@ -83,6 +83,14 @@ public class EditUserPresenter extends BaseUserManagementPresenter<EditUserView>
         else return super.validatePassword(input);
     }
 
+    /**
+     * Validates if the given username is unique by checking if it already exists in the user DAO.
+     * If a user with the same username exists and is not the user currently being edited,
+     * a message is shown that the username already exists.
+     *
+     * @param input The username to validate.
+     * @return true if the username is unique, false if it already exists.
+     */
     @Override
     protected boolean validateUsernameUniqueness(String input)
     {

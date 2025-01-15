@@ -31,6 +31,10 @@ public class LoginPresenterTest
         presenter.setUserDAO(userDAO);
     }
 
+    /**
+     * Tests if the login method in the LoginPresenter class
+     * handles an invalid username by showing the correct error title and message in the view stub.
+     */
     @Test
     public void loginInvalidUsername()
     {
@@ -39,6 +43,11 @@ public class LoginPresenterTest
         assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
+
+    /**
+     * Tests if the login method in the LoginPresenter class
+     * handles a valid username with a null password by showing the correct error title and message in the view stub.
+     */
     @Test
     public void loginValidUsernameNullPassword()
     {
@@ -47,6 +56,10 @@ public class LoginPresenterTest
         assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests if the login method in the LoginPresenter class
+     * handles a valid username with an invalid password by showing the correct error title and message in the view stub.
+     */
     @Test
     public void loginValidUsernameInvalidPassword()
     {
@@ -55,6 +68,11 @@ public class LoginPresenterTest
         assertEquals(LoginPresenter.WRONG_CREDENTIALS_MSG, viewStub.getErrorMsg());
     }
 
+    /**
+     * Tests if the login method in the LoginPresenter class
+     * logs in successfully a valid username and valid password by setting the currentUserID
+     * and correctly calls goToHomepage in the view stub by counting the numbers of calls.
+     */
     @Test
     public void loginValidUsernameValidPassword()
     {

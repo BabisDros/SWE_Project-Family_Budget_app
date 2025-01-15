@@ -19,6 +19,10 @@ public class AuthOptionsPresenterTest
         presenter.setView(viewStub);
     }
 
+    /**
+     * Tests if the navigateToLogin method in the AuthOptionsPresenter class
+     * throws a NullPointerException after the view has been cleared.
+     */
     @Test
     public void clearView()
     {
@@ -28,6 +32,11 @@ public class AuthOptionsPresenterTest
             presenter.navigateToLogin();
         });
     }
+
+    /**
+     * Tests if the navigateToLogin method in the AuthOptionsPresenter class
+     * correctly calls the navigateToLogin in the view stub by counting the numbers of calls.
+     */
     @Test
     public void goToNavigation()
     {
@@ -35,6 +44,10 @@ public class AuthOptionsPresenterTest
         assertEquals(1, viewStub.getLoginNavigationCounter());
     }
 
+    /**
+     * Tests if the navigateToRegister method in the AuthOptionsPresenter class
+     * correctly calls the navigateToRegister in the view stub by counting the numbers of calls.
+     */
     @Test
     public void goToRegister()
     {
