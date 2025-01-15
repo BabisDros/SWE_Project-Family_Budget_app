@@ -74,6 +74,7 @@ public class UserTest {
         user.setPassword("passwordTest");
         assertTrue(PBKDF2Hashing.verifyPassword("passwordTest",user.getPassword()) );
         assertThrows(IllegalArgumentException.class, () -> {user.setPassword(null);});
+        assertThrows(IllegalArgumentException.class, () -> {user.setPassword("a");});
 
 
 

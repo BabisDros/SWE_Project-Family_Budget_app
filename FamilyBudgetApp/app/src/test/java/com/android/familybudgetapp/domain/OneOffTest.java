@@ -39,6 +39,7 @@ public class OneOffTest {
         assertThrows(IllegalArgumentException.class, () -> oneOff.setDateStart(null));
     }
 
+    @Test
     public void testToString() {
         /*
         Original toString:

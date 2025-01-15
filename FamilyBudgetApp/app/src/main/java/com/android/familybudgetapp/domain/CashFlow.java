@@ -71,15 +71,6 @@ public abstract class CashFlow {
         return (start != null) && !YearMonth.from(start).isBefore(YearMonth.now());
     }
 
-    @Override
-    public String toString() {
-        return "CashFlow{" +
-                "amount=" + amount +
-                ", category=" + category.toString() +
-                ", dateStart=" + dateStart +
-                '}';
-    }
-
     /**
      * Used ONLY to assist Junit tests with time Simulation
      */

@@ -9,5 +9,9 @@ public class Income extends CashFlowCategory
     {
         super.setName(name);
     }
+
+    public String toString() {
+        return "Income{name='" + getName() + "'}";
+    }
 }
 

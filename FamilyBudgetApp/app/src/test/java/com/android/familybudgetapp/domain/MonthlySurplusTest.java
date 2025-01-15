@@ -23,6 +23,12 @@ public class MonthlySurplusTest
         surplus=new MonthlySurplus(YearMonth.now());
     }
 
+    @Test
+    public void testConstructorWithSurplus() {
+        MonthlySurplus ms = new MonthlySurplus(YearMonth.now(), 15);
+        assertEquals(15, ms.getSurplus());
+    }
+
 
     @Test
     public void instantiateObjectWithInvalidArguments()
@@ -135,5 +141,15 @@ public class MonthlySurplusTest
         surplus.addCashFlowToSurplus(cashFlow);
         surplus.removeCashFlowFromSurplus(cashFlow);
         assertEquals(0,surplus.getSurplus());
+    }
+
+    @Test
+    public void addReasonMoneyBoxPairValid() {
+        MonthlySurplus testSurplus = new MonthlySurplus(YearMonth.now());
+        Allowance newAllowance = new Allowance(15, LocalDateTime.now());
+        String reason = "test";
+        testSurplus.addAllowanceMoneyBoxPair(newAllowance, reason);
+        assertEquals(newAllowance, testSurplus.getAllowanceMoneyBoxReasonPairs().get(0).getFirst());
+        assertEquals(reason, testSurplus.getAllowanceMoneyBoxReasonPairs().get(0).getSecond());
     }
 }

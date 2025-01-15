@@ -1,15 +1,16 @@
 package com.android.familybudgetapp.domain;
+import com.android.familybudgetapp.utilities.Tuples;
+
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import android.util.Pair;
 
 public class MonthlySurplus
 {
     private LocalDateTime date;
     private int surplus;
 
-    private ArrayList<Pair<Allowance, String>> allowanceMoneyBoxReasonPairs = new ArrayList<>();
+    private ArrayList<Tuples<Allowance, String>> allowanceMoneyBoxReasonPairs = new ArrayList<>();
 
     public MonthlySurplus(YearMonth date)
     {
@@ -54,8 +55,12 @@ public class MonthlySurplus
         {
             throw new IllegalArgumentException("Reason shouldn't be null");
         }
-        Pair<Allowance, String> pair = new Pair<>(allowance, reason);
+        Tuples<Allowance, String> pair = new Tuples<>(allowance, reason);
         this.allowanceMoneyBoxReasonPairs.add(pair);
+    }
+
+    public ArrayList<Tuples<Allowance, String>> getAllowanceMoneyBoxReasonPairs() {
+        return allowanceMoneyBoxReasonPairs;
     }
 
     public void addCashFlowToSurplus(CashFlow cashFlow)
