@@ -61,20 +61,39 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         return currentUser;
     }
 
+    /**
+     * Retrieves a list of expense categories and their corresponding amounts
+     * @return A list of Tuples representing expense categories and their respective amounts.
+     */
     public List<Tuples<String, Integer>> getExpensePerCategory()
     {
         return getCashFlowManager().CalculateAmountPerCategory(cashFlowType.Expense);
     }
+
+    /**
+     * Retrieves a list of income categories and their corresponding amounts
+     * @return A list of Tuples representing income categories and their respective amounts.
+     */
     public List<Tuples<String, Integer>> getIncomePerCategory()
     {
         return getCashFlowManager().CalculateAmountPerCategory(cashFlowType.Income);
     }
 
+    /**
+     * Calculates the surplus (income - expenses) for the current user or family.
+     *
+     * @return the surplus amount as an integer.
+     */
     public int calculateSurplus()
     {
         return cashFlowManager.CalculateSurplus();
     }
 
+    /**
+     * Updates the family's monthly surplus for the current month.
+     *
+     * @param surplus the surplus amount to update.
+     */
     public void updateFamilySurplus(int surplus)
     {
         FamilyUserStrategy strategy = (FamilyUserStrategy) familyMonthlySurplusManager.getUserRetrievalStrategy();
@@ -88,6 +107,16 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         }
     }
 
+    /**
+     * Adds a new cash flow (income or expense) for the current user.
+     *
+     * @param categoryName       the name of the category for the cash flow.
+     * @param cashFlowValue      the amount of the cash flow in euros as a string.
+     * @param isRecurring        boolean, whether the cash flow is recurring.
+     * @param dateStart          the start date of the cash flow.
+     * @param dateEnd            the end date of the cash flow, ignored if not recurring
+     * @param recurrencePeriodIdx the {@link recurPeriod} enum index of the recurrence period.
+     */
     public void addCashFlow(String categoryName, String cashFlowValue,
                               boolean isRecurring, LocalDateTime dateStart, LocalDateTime dateEnd,
                               int recurrencePeriodIdx) {
@@ -132,6 +161,13 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         updateFamilySurplus(familyMonthlySurplusManager.CalculateSurplus());
         userDAO.save(currentUser);
     }
+
+    /**
+     * Retrieves the surplus left from the previous month for the family.
+     *
+     * @return the surplus amount in cents as an integer.
+     * Returns 0 if no surplus exists for the previous month.
+     */
     public int getPreviousSurplusLeft() {
         Family family = getCurrentUser().getFamily();
         YearMonth previousMonth = YearMonth.now().minusMonths(1);
@@ -141,6 +177,9 @@ public class BudgetPresenter extends BasePresenter<BudgetView> {
         return family.getMonthlySurpluses().get(previousMonth).getSurplus();
     }
 
+    /**
+     * Moves any unallocated surplus to the family's savings.
+     */
     public void moveUnallocatedSurplusToSavings() {
         familyMonthlySurplusManager.moveUnallocatedSurplusToSavings(getCurrentUser().getFamily());
     }

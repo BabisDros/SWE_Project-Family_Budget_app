@@ -48,6 +48,9 @@ public class AllocateSurplusActivity extends BaseActivity<AllocateSurplusViewMod
         populateMoneyBoxOptions();
     }
 
+    /**
+     * Displays the name of the previous month in the surplus amount label.
+     */
     public void displayPreviousMonthName() {
         TextView surplusAmountLabel = findViewById(R.id.tv_surplus_amount_label);
 
@@ -61,11 +64,24 @@ public class AllocateSurplusActivity extends BaseActivity<AllocateSurplusViewMod
         surplusAmountLabel.setText(surplusText);
     }
 
+    /**
+     * Displays the surplus amount that is available for allocation.
+     * The amount is converted to a human-readable euro format before being displayed.
+     *
+     * @param amount The surplus amount to be displayed, in cents.
+     */
+
     @Override
     public void displaySurplusAmount(int amount) {
         String euroAmount = AmountConversion.toEuro(amount);
         ((TextView) findViewById(R.id.tv_surplus_amount)).setText(euroAmount);
     }
+
+    /**
+     * Populates the spinner dropdown with a list of available money boxes.
+     * Each option in the dropdown includes the reason, user name, current amount, and target amount
+     * for each money box.
+     */
     public void populateMoneyBoxOptions() {
         ArrayList<Pair<User, MoneyBox>> userMoneyBoxes = vm.getPresenter().getUserMoneyBoxes();
         List<String> moneyBoxOptions = new ArrayList<>();
@@ -90,6 +106,12 @@ public class AllocateSurplusActivity extends BaseActivity<AllocateSurplusViewMod
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
+
+    /**
+     * Handles the action of adding a specified amount to the selected money box.
+     * The method retrieves the selected money box and the input amount, updates the allocation,
+     * and clears the input field.
+     */
     public void addToMoneyBox() {
         Spinner spinnerMoneyBox = findViewById(R.id.spinner_moneybox);
         long selectedOptionIndex = spinnerMoneyBox.getSelectedItemId();
@@ -100,6 +122,9 @@ public class AllocateSurplusActivity extends BaseActivity<AllocateSurplusViewMod
         refreshData();
     }
 
+    /**
+     * Refreshes the UI data by re-populating the money box options and updating the displayed surplus amount.
+     */
     public void refreshData() {
         populateMoneyBoxOptions();
         displaySurplusAmount(vm.getPresenter().getSurplusToAllocateAmount());
