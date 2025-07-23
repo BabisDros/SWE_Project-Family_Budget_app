@@ -1,4 +1,4 @@
-## Διάγραμμα ακολουθίας 
+## Sequence diagrams
 ![image](/docs/markdown/uml/design/addCashFlowToSurplus-sequence-diagram.jpg)
 
 ![image](/docs/markdown/uml/design/createCashFlow-sequence-diagram.jpg)

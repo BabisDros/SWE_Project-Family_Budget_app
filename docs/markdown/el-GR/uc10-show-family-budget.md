@@ -34,4 +34,4 @@
 
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc10-activity-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc10-activity-diagram.jpg)

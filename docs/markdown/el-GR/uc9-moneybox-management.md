@@ -53,7 +53,7 @@
    * 1-2α. Το μέλος μπορεί να ακυρώσει τη Διαγραφή.
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc9-activity-diagram.jpg).
+![image](/docs/markdown/uml/requirements/el-GR/uc9-activity-diagram.jpg).
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/uc9-sequence-diagram.jpg).
+![image](/docs/markdown/uml/requirements/el-GR/uc9-sequence-diagram.jpg).

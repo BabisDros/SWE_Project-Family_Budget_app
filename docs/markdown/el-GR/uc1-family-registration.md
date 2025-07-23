@@ -35,7 +35,7 @@
    1. Η περίπτωση χρήσης τερματίζει.
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc1-activity-diagram.jpg).
+![image](/docs/markdown/uml/requirements/el-GR/uc1-activity-diagram.jpg).
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/uc1-sequence-diagram.jpg).
+![image](/docs/markdown/uml/requirements/el-GR/uc1-sequence-diagram.jpg).

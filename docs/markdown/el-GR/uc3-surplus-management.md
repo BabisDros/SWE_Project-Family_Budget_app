@@ -46,7 +46,7 @@
 
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc3-activity-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc3-activity-diagram.jpg)
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/uc3-sequence-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc3-sequence-diagram.jpg)

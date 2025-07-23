@@ -40,8 +40,8 @@
 
 
 ## Διάγραμμα δραστηριότητας
-![image](/docs/markdown/uml/requirements/uc5-activity-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc5-activity-diagram.jpg)
 
 ## Διάγραμμα ακολουθίας
 
-![image](/docs/markdown/uml/requirements/uc5-sequence-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc5-sequence-diagram.jpg)

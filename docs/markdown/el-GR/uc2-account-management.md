@@ -63,4 +63,4 @@
 
 
 ## Διάγραμμα ακολουθίας
-![image](/docs/markdown/uml/requirements/uc2-sequence-diagram.jpg)
+![image](/docs/markdown/uml/requirements/el-GR/uc2-sequence-diagram.jpg)
